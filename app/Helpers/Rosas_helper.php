@@ -2,20 +2,17 @@
 
 use App\Models\Querys;
 
-// if (!function_exists('authenticated')) {
-//     function authenticated()
-//     {
-//         $idUser = (new Querys())->view_usuarios('select', ['id_usuario' => (\Config\Services::session())->get('id_usuario')]);
-//         $idApi = (new Querys())->view_usuarios('select', ['id_api' => (\Config\Services::session())->get('id_api')]);
-//         if (!empty($idUser)) {
-//             return $idUser;
-//         } elseif (!empty($idApi)) {
-//             return $idApi;
-//         } else {
-//             return false;
-//         }
-//     }
-// }
+if (!function_exists('authenticated')) {
+    function authenticated()
+    {
+        $idUser = (new Querys())->view_users(['idusuario' => (\Config\Services::session())->get('idusuario')]);
+        if (!empty($idUser)) {
+            return $idUser;
+        } else {
+            return false;
+        }
+    }
+}
 
 if (!function_exists('css_tag')) {
     function css_tag($src = '', $type = 'text/css')

@@ -30,6 +30,8 @@ class BaseController extends Controller
 	 */
 	protected $helpers = ['Rosas', 'url'];
 	public $templater = null;
+	protected $user = null;
+	protected $db = null;
 
 	/**
 	 * Constructor.
@@ -42,7 +44,12 @@ class BaseController extends Controller
 	{
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
-
+		$this->db = \Config\Database::connect();
+		$this->user = authenticated();
+		if (!$this->user) {
+			return $this->response->redirect(base_url('/auth/login'));
+		}
+		$this->data['user'] = $this->user;
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------

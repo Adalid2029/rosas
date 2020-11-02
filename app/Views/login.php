@@ -12,27 +12,16 @@
 
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
-
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
+    <link href="<?php echo base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
     <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="css/nifty.min.css" rel="stylesheet">
-
-
+    <link href="<?php echo base_url('css/nifty.min.css') ?>" rel="stylesheet">
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
-
-
-
+    <link href="<?php echo base_url('css/demo/nifty-demo-icons.min.css') ?>" rel="stylesheet">
     <!--Demo [ DEMONSTRATION ]-->
-    <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
-
-
+    <link href="<?php echo base_url('css/demo/nifty-demo.min.css" rel="stylesheet') ?>">
     <!--Magic Checkbox [ OPTIONAL ]-->
-    <link href="plugins/magic-check/css/magic-check.min.css" rel="stylesheet">
+    <link href="<?php echo base_url('plugins/magic-check/css/magic-check.min.css') ?>" rel="stylesheet">
 
 
 
@@ -43,30 +32,18 @@
     <!--=================================================-->
 
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="plugins/pace/pace.min.css" rel="stylesheet">
-    <script src="plugins/pace/pace.min.js"></script>
-
-
+    <link href="<?php echo base_url('plugins/pace/pace.min.css') ?>" rel="stylesheet">
+    <script src="<?php echo base_url('plugins/pace/pace.min.js') ?>"></script>
     <!--jQuery [ REQUIRED ]-->
-    <script src="js/jquery.min.js"></script>
-
-
+    <script src="<?php echo base_url('js/jquery.min.js') ?>"></script>
     <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="js/bootstrap.min.js"></script>
-
-
+    <script src="<?php echo base_url('js/bootstrap.min.js') ?>"></script>
     <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="js/nifty.min.js"></script>
-
-
-
-
-
-
+    <script src="<?php echo base_url('js/nifty.min.js') ?>"></script>
     <!--=================================================-->
 
     <!--Background Image [ DEMONSTRATION ]-->
-    <script src="js/demo/bg-images.js"></script>
+    <script src="<?php echo base_url('js/demo/bg-images.js') ?>"></script>
 
 
 
@@ -121,12 +98,12 @@
                         <h1 class="h3">Account Login</h1>
                         <p>Sign In to your account</p>
                     </div>
-                    <form action="index.html">
+                    <form action="<?php echo base_url('/auth/authenticate') ?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" autofocus>
+                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox pad-btm text-left">
                             <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
@@ -161,14 +138,14 @@
         <div class="demo-bg">
             <div id="demo-bg-list">
                 <div class="demo-loading"><i class="psi-repeat-2"></i></div>
-                <img class="demo-chg-bg bg-trans active" src="img/bg-img/thumbs/bg-trns.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-1.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-2.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-3.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-4.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-5.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-6.jpg" alt="Background Image">
-                <img class="demo-chg-bg" src="img/bg-img/thumbs/bg-img-7.jpg" alt="Background Image">
+                <img class="demo-chg-bg bg-trans active" src="<?php echo base_url('img/bg-img/thumbs/bg-trns.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-1.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-2.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-3.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-4.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-5.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-6.jpg') ?>" alt="Background Image">
+                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-7.jpg') ?>" alt="Background Image">
             </div>
         </div>
         <!--===================================================-->

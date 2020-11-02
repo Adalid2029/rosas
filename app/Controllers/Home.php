@@ -9,4 +9,8 @@ class Home extends BaseController
 		// return view('welcome_message');
 		return $this->templater->view('home', []);
 	}
+	public function preview()
+	{
+		return $this->templater->view('home', []);
+	}
 }
