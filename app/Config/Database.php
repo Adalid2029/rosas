@@ -38,7 +38,7 @@ class Database extends \CodeIgniter\Database\Config
 		'password' => '',
 		'database' => 'dbrosas',
 		'DBDriver' => 'MySQLi',
-		'DBPrefix' => 'rosas_',
+		'DBPrefix' => 'rs_',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
 		'cacheOn'  => false,
