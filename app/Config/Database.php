@@ -33,12 +33,12 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'sql10.freemysqlhosting.net',
-		'username' => 'sql10373828',
-		'password' => 'Dfff1N9aGz',
-		'database' => 'sql10373828',
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => 'e522a5bf',
+		'database' => 'rosas',
 		'DBDriver' => 'MySQLi',
-		'DBPrefix' => 'rosas_',
+		'DBPrefix' => 'rs_',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
 		'cacheOn'  => false,
