@@ -43,11 +43,13 @@ class Auth extends Controller
 		#Contamos si $userSearched es ugual a 1 si lo es entendemos que podemos aprobar el inicio de sesion
 		if (count($userSearched) >= 1) {
 			# Agregamos una sesion al navegador
-			$this->session->set(['id_usuario' => $userSearched[0]['id_usuario']]);
+
+			$this->session->set(['id_persona' => $userSearched[0]['id_persona']]);
+
 			# Redireccionamos a la pagina principal
 			return redirect()->to(base_url('/'));
 		}
-		#Si $userSearched no es igual a 1 debemos devolverlo al mismo login 
+		#Si $userSearched no es igual a 1 debemos devolverlo al mismo login
 		else {
 			$this->session->destroy();
 			return redirect()->to(base_url('/auth/login'));

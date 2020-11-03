@@ -5,7 +5,7 @@ use App\Models\Querys;
 if (!function_exists('authenticated')) {
     function authenticated()
     {
-        $idUser = (new Querys())->view_users(['idusuario' => (\Config\Services::session())->get('idusuario')]);
+        $idUser = (new Querys())->view_users(['id_persona' => (\Config\Services::session())->get('id_persona')]);
         if (!empty($idUser)) {
             return $idUser;
         } else {
