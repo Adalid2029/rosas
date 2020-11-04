@@ -1,161 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page | Nifty - Admin Template</title>
+    <meta charset="utf-8" />
+    <title>Colegio | Las Rosas</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url('plugins/font-awesome/css/font-awesome.min.css') ?>" />
+    <link rel="stylesheet" href="assets/iniciativa/css/jquery.toast.css">
 
-    <!--STYLESHEET-->
-    <!--=================================================-->
+    <link href="<?php echo base_url('css/bootstrap.min.css') ?>" rel="stylesheet" />
 
-    <!--Open Sans Font [ OPTIONAL ]-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="<?php echo base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="<?php echo base_url('css/nifty.min.css') ?>" rel="stylesheet">
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="<?php echo base_url('css/demo/nifty-demo-icons.min.css') ?>" rel="stylesheet">
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="<?php echo base_url('css/demo/nifty-demo.min.css" rel="stylesheet') ?>">
-    <!--Magic Checkbox [ OPTIONAL ]-->
-    <link href="<?php echo base_url('plugins/magic-check/css/magic-check.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/login.css') ?>" rel="stylesheet" />
 
-
-
-
-
-
-    <!--JAVASCRIPT-->
-    <!--=================================================-->
-
-    <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="<?php echo base_url('plugins/pace/pace.min.css') ?>" rel="stylesheet">
-    <script src="<?php echo base_url('plugins/pace/pace.min.js') ?>"></script>
-    <!--jQuery [ REQUIRED ]-->
-    <script src="<?php echo base_url('js/jquery.min.js') ?>"></script>
-    <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="<?php echo base_url('js/bootstrap.min.js') ?>"></script>
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="<?php echo base_url('js/nifty.min.js') ?>"></script>
-    <!--=================================================-->
-
-    <!--Background Image [ DEMONSTRATION ]-->
-    <script src="<?php echo base_url('js/demo/bg-images.js') ?>"></script>
-
-
-
-
-
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
-
+    <link rel="shortcut icon" href="assets/iniciativa/img/logo-mmaa.ico" />
 
 </head>
 
-<!--TIPS-->
-<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
-
 <body>
-    <div id="container" class="cls-container">
 
-        <!-- BACKGROUND IMAGE -->
-        <!--===================================================-->
-        <div id="bg-overlay"></div>
+<div class="oscurecer"></div>
 
+<div class="contenido">
 
-        <!-- LOGIN FORM -->
-        <!--===================================================-->
-        <div class="cls-content">
-            <div class="cls-content-sm panel">
-                <div class="panel-body">
-                    <div class="mar-ver pad-btm">
-                        <h1 class="h3">Account Login</h1>
-                        <p>Sign In to your account</p>
-                    </div>
-                    <form action="<?php echo base_url('/auth/authenticate') ?>" method="post">
-                        <div class="form-group">
-                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="checkbox pad-btm text-left">
-                            <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
-                            <label for="demo-form-checkbox">Remember me</label>
-                        </div>
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
-                    </form>
-                </div>
-
-                <div class="pad-all">
-                    <a href="pages-password-reminder.html" class="btn-link mar-rgt">Forgot password ?</a>
-                    <a href="pages-register.html" class="btn-link mar-lft">Create a new account</a>
-
-                    <div class="media pad-top bord-top">
-                        <div class="pull-right">
-                            <a href="pages-login.html#" class="pad-rgt"><i class="demo-psi-facebook icon-lg text-primary"></i></a>
-                            <a href="pages-login.html#" class="pad-rgt"><i class="demo-psi-twitter icon-lg text-info"></i></a>
-                            <a href="pages-login.html#" class="pad-rgt"><i class="demo-psi-google-plus icon-lg text-danger"></i></a>
-                        </div>
-                        <div class="media-body text-left text-bold text-main">
-                            Login with
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--===================================================-->
-
-
-        <!-- DEMO PURPOSE ONLY -->
-        <!--===================================================-->
-        <div class="demo-bg">
-            <div id="demo-bg-list">
-                <div class="demo-loading"><i class="psi-repeat-2"></i></div>
-                <img class="demo-chg-bg bg-trans active" src="<?php echo base_url('img/bg-img/thumbs/bg-trns.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-1.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-2.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-3.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-4.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-5.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-6.jpg') ?>" alt="Background Image">
-                <img class="demo-chg-bg" src="<?php echo base_url('img/bg-img/thumbs/bg-img-7.jpg') ?>" alt="Background Image">
-            </div>
-        </div>
-        <!--===================================================-->
-
-
-
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="index.php">
+            <img alt="logo" class="logo" src="assets/iniciativa/img/logo1.png" style="margin-top: 15px;">
+        </a>
     </div>
-    <!--===================================================-->
-    <!-- END OF CONTAINER -->
+    <!-- END LOGO -->
 
+    <h4 class="form-title font-blue" style="text-align: center;">INICIAR SESIÓN</h4>
+    <br>
+
+    <div class="alert alert-danger hide" id="error_disp">
+        <span id="mensaje"> </span>
+    </div>
+
+    <form action="<?php echo base_url('/auth/authenticate');?>" method="POST">
+        <div class="form-group row">
+            <div class="col-md-12">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    <input class="form-control form-control-solid placeholder-no-fix"
+                           type="text" autocomplete="off" placeholder="Usuario..." name="username" id="username" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-key"></i>
+                        </span>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password"
+                           autocomplete="off" placeholder="Contraseña..." name="password" id="password" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                <div class="g-recaptcha" data-sitekey="6Lfp5q4ZAAAAADw5arMRXZeT4mrOQiQkbHocI16o"></div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-info btn-block" type="submit" id="login" class="btn blue">
+                <i class="fa fa-check"></i>
+                Iniciar Sesión
+            </button>
+
+        </div>
+    </form>
+    <hr>
+    <div class="copyright" style="text-align: center; color: gray;"> 2020 © Colegio Las Rosas.</div>
+</div>
+
+<!-- Recaptcha -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </body>
 

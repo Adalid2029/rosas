@@ -47,7 +47,7 @@ class BaseController extends Controller
 		$this->db = \Config\Database::connect();
 		$this->user = authenticated();
 		if (!$this->user) {
-			return $this->response->redirect(base_url('/auth/login'));
+			return $this->response->redirect(base_url('auth/login'));
 		}
 		$this->data['user'] = $this->user;
 		//--------------------------------------------------------------------

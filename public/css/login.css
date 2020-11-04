@@ -1,0 +1,94 @@
+.g-recaptcha {
+    position: relative;
+    width: 100%;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.g-recaptcha > * {
+    float: right;
+    right: 0;
+    margin: -2px -2px -10px;
+    /*remove borders*/
+}
+body {
+    background-color: #364150;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+/*Escritorio*/
+@media (min-width: 1199.98px) {
+    .contenido {
+        width: 27%;
+        background-color: #fff;
+        padding: 30px;
+        margin: 10% auto;
+        border-radius: 10px;
+        top: 40%;
+    }
+}
+/*Fin Escritorio*/
+
+/*Tablet*/
+/*Portrait*/
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {
+    .contenido {
+        width: 49%;
+        background-color: #fff;
+        padding: 30px;
+        margin: 10% auto;
+        top: 40%;
+    }
+}
+
+/*landscape*/
+@media (min-width: 991.98px) and (max-width: 1199.98px) and (orientation: landscape) {
+    .contenido {
+        width: 40%;
+        background-color: #fff;
+        padding: 30px;
+        margin: 10% auto;
+        top: 40%;
+    }
+}
+/*fin tablet*/
+
+/*movil*/
+/*Portrait*/
+/*Default*/
+@media (max-width: 575.98px) and (orientation: portrait) {
+    body {
+        background-color: #fff;
+    }
+    .contenido {
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        margin: 10% auto;
+        top: 10%;
+    }
+}
+/*landscape*/
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: landscape) {
+    .contenido {
+        width: 47%;
+        background-color: #fff;
+        padding: 30px;
+        margin: 10% auto;
+        top: 40%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .contenido {
+        width: 35%;
+        background-color: #fff;
+        padding: 30px;
+        margin: 10% auto;
+        top: 40%;
+    }
+}

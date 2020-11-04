@@ -55,4 +55,11 @@ class Auth extends Controller
 			return redirect()->to(base_url('/auth/login'));
 		}
 	}
+
+	// funcion para cerrar sesion
+    public function logout()
+    {
+        $this->session->destroy();
+        return redirect()->to(base_url('/auth/login'));
+    }
 }

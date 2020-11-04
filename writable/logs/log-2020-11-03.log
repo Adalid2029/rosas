@@ -395,3 +395,24 @@ CRITICAL - 2020-11-03 11:16:26 --> Undefined index: id_usuario
 #3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #5 {main}
+CRITICAL - 2020-11-03 16:17:24 --> syntax error, unexpected 'btn' (T_STRING), expecting ';' or ','
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('header', Array, true)
+#1 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(32): view('header', Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Home.php(10): App\Libraries\Templater->view('home', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Home->index()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-03 16:56:18 --> include(path.php): failed to open stream: No such file or directory
+#0 C:\xampp\htdocs\rosas\app\Views\login.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(path.ph...', 'C:\\xampp\\htdocs...', 143, Array)
+#1 C:\xampp\htdocs\rosas\app\Views\login.php(143): include()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('login', Array, true)
+#4 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(19): view('login')
+#5 C:\xampp\htdocs\rosas\app\Controllers\Auth.php(30): App\Libraries\Templater->login()
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Auth->login()
+#7 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
