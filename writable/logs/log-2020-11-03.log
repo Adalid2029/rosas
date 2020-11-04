@@ -362,3 +362,57 @@ CRITICAL - 2020-11-03 08:04:21 --> Unknown column 'idusuario' in 'where clause'
 #9 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #10 C:\Apache24\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #11 {main}
+CRITICAL - 2020-11-03 11:14:42 --> syntax error, unexpected '<<' (T_SL), expecting ']'
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Config\\Database')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Config\\Database')
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Debug\Toolbar\Collectors\Database.php(100): spl_autoload_call('Config\\Database')
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Debug\Toolbar.php(96): CodeIgniter\Debug\Toolbar\Collectors\Database->__construct()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Config\Services.php(856): CodeIgniter\Debug\Toolbar->__construct(Object(Config\Toolbar))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Config\BaseService.php(123): CodeIgniter\Config\Services::toolbar(Object(Config\Toolbar), false)
+#7 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Config\Services.php(848): CodeIgniter\Config\BaseService::getSharedInstance('toolbar', NULL)
+#8 C:\xampp\htdocs\rosas\app\Config\Events.php(50): CodeIgniter\Config\Services::toolbar()
+#9 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#10 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Events\Events.php(188): call_user_func(Object(Closure))
+#11 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(293): CodeIgniter\Events\Events::trigger('pre_system')
+#12 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2020-11-03 11:15:40 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2019): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\rosas\app\Models\Querys.php(18): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#3 C:\xampp\htdocs\rosas\app\Helpers\Rosas_helper.php(8): App\Models\Querys->view_users(Array)
+#4 C:\xampp\htdocs\rosas\app\Controllers\BaseController.php(48): authenticated()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(891): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#7 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2020-11-03 11:16:26 --> Undefined index: id_usuario
+#0 C:\xampp\htdocs\rosas\app\Controllers\Auth.php(47): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 47, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Auth->authenticate()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-03 16:17:24 --> syntax error, unexpected 'btn' (T_STRING), expecting ';' or ','
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('header', Array, true)
+#1 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(32): view('header', Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Home.php(10): App\Libraries\Templater->view('home', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Home->index()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-03 16:56:18 --> include(path.php): failed to open stream: No such file or directory
+#0 C:\xampp\htdocs\rosas\app\Views\login.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(path.ph...', 'C:\\xampp\\htdocs...', 143, Array)
+#1 C:\xampp\htdocs\rosas\app\Views\login.php(143): include()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('login', Array, true)
+#4 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(19): view('login')
+#5 C:\xampp\htdocs\rosas\app\Controllers\Auth.php(30): App\Libraries\Templater->login()
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Auth->login()
+#7 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
