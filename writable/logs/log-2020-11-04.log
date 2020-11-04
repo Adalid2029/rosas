@@ -284,3 +284,23 @@ CRITICAL - 2020-11-04 07:55:35 --> Unable to connect to the database.
 #7 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #8 C:\Apache24\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #9 {main}
+CRITICAL - 2020-11-04 08:03:10 --> Invalid file: home.php
+#0 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home.php')
+#1 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('home', Array, true)
+#2 C:\Apache24\htdocs\rosas\app\Libraries\Templater.php(34): view('home', Array)
+#3 C:\Apache24\htdocs\rosas\app\Controllers\Home.php(10): App\Libraries\Templater->view('home', Array)
+#4 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Home->index()
+#5 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Apache24\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:03:26 --> Invalid file: home.php
+#0 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home.php')
+#1 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('home', Array, true)
+#2 C:\Apache24\htdocs\rosas\app\Libraries\Templater.php(34): view('home', Array)
+#3 C:\Apache24\htdocs\rosas\app\Controllers\Home.php(10): App\Libraries\Templater->view('home', Array)
+#4 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Home->index()
+#5 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\Apache24\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Apache24\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
