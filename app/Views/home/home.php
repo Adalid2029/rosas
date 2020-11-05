@@ -14,14 +14,14 @@
             </div>
 
             <div class="panel-body">
-                <table id="tbl-category" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="tbl_list_people" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
+                        <tr>
+                            <th width="5%">#</th>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
 
                 </table>
