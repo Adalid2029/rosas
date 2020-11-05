@@ -1,0 +1,465 @@
+CRITICAL - 2020-11-04 08:24:53 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:24:56 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:24:56 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:24:56 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:25:03 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:04 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:23 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:24 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:24 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:25 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:40 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 08:26:41 --> Call to undefined function form_open()
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-04 10:17:05 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:17:21 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:24:26 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:25:05 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:26:19 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 15, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:29:47 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 15, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:30:42 --> Undefined property: App\Controllers\Persona::$output
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:31:32 --> Undefined property: App\Controllers\Persona::$output
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:33:40 --> Undefined property: App\Controllers\Persona::$output
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:34:20 --> Undefined property: App\Controllers\Persona::$output
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:39:49 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:40:03 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:40:05 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:40:57 --> CodeIgniter\Router\Router::main(): Failed opening required '../Libraries/SSP.php' (include_path='C:\xampp\php\PEAR')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-04 10:40:59 --> CodeIgniter\Router\Router::main(): Failed opening required '../Libraries/SSP.php' (include_path='C:\xampp\php\PEAR')
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-04 10:42:20 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:42:38 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:42:39 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:42:40 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:42:40 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:42:58 --> Call to a member function view() on null
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-04 10:42:59 --> Call to a member function view() on null
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-04 10:42:59 --> Call to a member function view() on null
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-04 10:43:00 --> Call to a member function view() on null
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-04 10:44:06 --> Undefined property: App\Controllers\Persona::$input
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 15, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:46:27 --> Undefined property: App\Controllers\Persona::$output
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:46:46 --> Undefined property: App\Controllers\Persona::$output
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(36): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 36, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:47:49 --> Class 'App\Controllers\SSP' not found
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-04 10:49:54 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 15, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:52:41 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(63): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(229): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 10:53:31 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(64): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(230): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 10:55:11 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(63): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(229): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(38): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 10:56:28 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:56:33 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:59:53 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:59:55 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 10:59:59 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 11:00:00 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 11:00:00 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 11:00:05 --> Undefined property: App\Controllers\Persona::$load
+#0 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Persona->__construct()
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-11-04 11:01:14 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(66): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(232): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:01:25 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(66): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(232): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:01:36 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(66): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(232): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:02:27 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(66): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(232): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:03:08 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(65): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(231): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:06:15 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(65): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(231): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:07:07 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(65): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(231): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-04 11:07:27 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(65): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(231): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

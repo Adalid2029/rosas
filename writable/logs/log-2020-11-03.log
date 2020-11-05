@@ -416,3 +416,63 @@ CRITICAL - 2020-11-03 16:56:18 --> include(path.php): failed to open stream: No 
 #8 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #9 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #10 {main}
+CRITICAL - 2020-11-03 20:13:15 --> Invalid file: administrativo.php
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('administrativo....')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-03 20:13:16 --> Invalid file: administrativo.php
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('administrativo....')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-03 20:13:16 --> Invalid file: administrativo.php
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('administrativo....')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-03 20:13:17 --> Invalid file: administrativo.php
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('administrativo....')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(26): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-03 20:13:22 --> Invalid file: administrativo.php
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('administrativo....')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(34): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-03 20:13:33 --> Invalid file: administrativo.php
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('administrativo....')
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('administrativo', Array, true)
+#2 C:\xampp\htdocs\rosas\app\Libraries\Templater.php(34): view('administrativo', Array)
+#3 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(10): App\Libraries\Templater->view('administrativo', Array)
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->administrativo()
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#6 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

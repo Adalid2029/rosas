@@ -11,6 +11,6 @@ class Home extends BaseController
 	}
 	public function preview()
 	{
-		return $this->templater->view('home', []);
+		return $this->templater->view('preview', []);
 	}
 }

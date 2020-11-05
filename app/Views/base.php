@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rosas</title>
+    <title>Colegio | Las Rosas</title>
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href="<?php echo base_url('css/opensans.css') ?>" rel="stylesheet" />
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
@@ -72,6 +72,9 @@
     <link href="<?php echo base_url('img/favicon.ico') ?>" rel="shortcut icon" />
     <link href="<?php echo base_url('img/favicon.png') ?>" rel="icon" />
     <link href="<?php echo base_url('img/favicon.png') ?>" rel="apple-touch-icon" />
+
+
+    <script src="<?= base_url('js/administrativo.js') ?>"></script>
 </head>
 
 <!--TIPS-->

@@ -36,8 +36,21 @@
 						<li class="active-sub active">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
-								<span class="menu-title">Registro persona</span>
+								<span class="menu-title">Registrar</span>
+                                <i class="arrow"></i>
 							</a>
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+
+                                <li class="">
+                                    <a class="menu--link" href="<?= base_url('/persona/administrativo'); ?>">
+                                        Administrativo
+                                    </a>
+                                </li>
+
+                                <li><a href="#">Estudiante</a></li>
+                                <li><a href="#">Maestro</a></li>
+                            </ul>
 						</li>
 
                         <li class="">

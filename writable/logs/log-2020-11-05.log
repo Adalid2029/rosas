@@ -1,0 +1,48 @@
+CRITICAL - 2020-11-05 10:18:52 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(65): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(231): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(37): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajax_listar_administrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-05 10:29:19 --> Class 'App\Libraries\PDO' not found
+#0 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(65): App\Libraries\SSP::sql_connect(Array)
+#1 C:\xampp\htdocs\rosas\app\Libraries\SSP.php(231): App\Libraries\SSP::db(Array)
+#2 C:\xampp\htdocs\rosas\app\Controllers\Persona.php(38): App\Libraries\SSP::simple(Array, Array, 'view_administra...', 'id_persona', Array)
+#3 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajaxListarAdministrativos()
+#4 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#5 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-11-05 10:33:45 --> Class 'App\Libraries\SSP' not found
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajaxListarAdministrativos()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-05 10:36:11 --> Class 'App\Libraries\SSP' not found
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajaxListarAdministrativos()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-05 10:36:15 --> Class 'App\Libraries\SSP' not found
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajaxListarAdministrativos()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-05 10:36:19 --> Class 'App\Libraries\SSP' not found
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajaxListarAdministrativos()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-11-05 10:36:23 --> Class 'App\Libraries\SSP' not found
+#0 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Persona->ajaxListarAdministrativos()
+#1 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Persona))
+#2 C:\xampp\htdocs\rosas\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\rosas\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
