@@ -33,23 +33,36 @@ $(document)
 				$('.mainnav-toggle').click();
 			}
 		});
-		window.simpleAlert = function (title, message, position, icon, hideAfter) {
-			/**
-			 * title: Titúlo de alerta
-			 * message:  Mensaje de la alerta
-			 * icon: info, warning, success, error
-			 * position : top-right, top-left
-			 * hideAfter: Tiempo de alerta
-			 */
-			$.toast({
-				heading: title,
-				text: message,
-				position: position,
-				loaderBg: '#ff6849',
-				icon: icon,
-				hideAfter: hideAfter,
-				stack: 6,
+
+		window.parametrosModal = function (idModal, titulo, tamano, onEscape, backdrop) {
+			$(idModal + '-title').html(titulo);
+			$(idModal + '-dialog').removeClass('modal-lg');
+			$(idModal + '-dialog').removeClass('modal-xl');
+			$(idModal + '-dialog').addClass(tamano);
+			$(idModal).modal({
+				backdrop: backdrop,
+				keyboard: onEscape,
+				focus: true,
+				show: true,
 			});
+		};
+		window.retornarCookie = function (nombre) {
+			const value = `; ${document.cookie}`;
+			const parts = value.split(`; ${nombre}=`);
+			if (parts.length === 2) return parts.pop().split(';').shift();
+			else return null;
+		};
+		window.agregarCookie = function (nombre, valor, dias) {
+			var expires = '';
+			if (dias) {
+				var date = new Date();
+				date.setTime(date.getTime() + dias * 24 * 60 * 60 * 1000);
+				expires = '; expires=' + date.toUTCString();
+			}
+			document.cookie = nombre + '=' + (valor || '45') + expires + '; path=/';
+			console.log(valor);
+			console.log(nombre);
+			console.log(dias);
 		};
 	})
 	.on('keydown', function (e) {

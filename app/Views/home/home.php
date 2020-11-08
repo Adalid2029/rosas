@@ -12,7 +12,6 @@
                 </div>
                 <h3 class="panel-title">Personas</h3>
             </div>
-
             <div class="panel-body">
                 <table id="tbl_list_people" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
@@ -23,7 +22,6 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-
                 </table>
             </div>
         </div>

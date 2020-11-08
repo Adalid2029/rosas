@@ -22,9 +22,9 @@
 						</div>
 						<div id="profile-nav" class="collapse list-group bg-trans">
 							<a href="<?= base_url('auth/logout'); ?>" class="list-group-item">
-                                <i class="demo-pli-unlock icon-lg icon-fw"></i>
-                                Cerrar sesión
-                            </a>
+								<i class="demo-pli-unlock icon-lg icon-fw"></i>
+								Cerrar sesión
+							</a>
 						</div>
 					</div>
 
@@ -40,24 +40,23 @@
 							</a>
 						</li>
 
-                        <li class="">
-                            <a href="#" data-original-title="" title="">
-                                <i class="demo-dpi-home"></i>
-                                <span class="menu-title">Dashboard</span>
-                                <i class="arrow"></i>
-                            </a>
+						<li class="">
+							<a href="#" data-original-title="" title="">
+								<i class="demo-dpi-home"></i>
+								<span class="menu-title">Dashboard</span>
+								<i class="arrow"></i>
+							</a>
 
-                            <!--Submenu-->
-                            <ul class="collapse" aria-expanded="false">
+							<!--Submenu-->
+							<ul class="collapse" aria-expanded="false">
 
-                                <li class="active-link">
-                                    <a class="menu--link" href="<?= base_url('/home/preview') ?>">Dashboard 1</a>
-                                </li>
-
-                                <li><a href="dashboard-2.html">Dashboard 2</a></li>
-                                <li><a href="dashboard-3.html">Dashboard 3</a></li>
-                            </ul>
-                        </li>
+								<li class="active-link">
+									<a class="menu--link" href="<?= base_url('/home/preview') ?>">Dashboard 1</a>
+								</li>
+								<li><a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>">Notas</a></li>
+								<li><a href="dashboard-3.html">Dashboard 3</a></li>
+							</ul>
+						</li>
 
 
 					</ul>
