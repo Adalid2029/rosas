@@ -4,17 +4,17 @@
             <div class="panel-heading">
                 <div class="panel-control">
 
-                    <button class="btn btn-success btn-active-success" id="agregar_administrativo">
+                    <button class="btn btn-success btn-active-success" id="agregar_maestro">
                         <i class="fa fa-plus-square-o"></i>
                         Registrar
                     </button>
 
                 </div>
-                <h3 class="panel-title">Administrativos</h3>
+                <h3 class="panel-title">Maestros</h3>
             </div>
 
             <div class="panel-body">
-                <table id="tbl_administativo" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="tbl_maestro" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th width="5%">#</th>
@@ -24,7 +24,7 @@
                         <th>Telefono</th>
                         <th>Sexo</th>
                         <th>Cargo</th>
-                        <th>Ingreso</th>
+                        <th>grado_academico</th>
                         <th>Acciones</th>
                     </tr>
                     </thead>
@@ -37,17 +37,17 @@
 </div>
 
 <!--  Modal de registro administrativo -->
-<div class="modal fade" id="agregar-administrativo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
+<div class="modal fade" id="agregar-maestro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document">
         <div class="modal-content">
-            <div id="agregar-administrativo-header" class="modal-header">
-                <h5 id="agregar-administrativo-title" class="modal-title"></h5>
+            <div id="agregar-maestro-header" class="modal-header">
+                <h5 id="agregar-maestro-title" class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="agregar-administrativo-body" class="modal-body">
-                <form id="frm_agregar_administrativo" method="post">
+            <div id="agregar-maestro-body" class="modal-body">
+                <form id="frm_agregar_maestro" method="post">
 
                     <div class="form-group row">
                         <label for="ci" class="col-md-8 col-form-label">CI: <span style="color: red;">(*)</span></label>
@@ -118,20 +118,15 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="cargo" class="col-md-6 col-form-label">Cargo: <span style="color: red;">(*)</span></label>
-                        <label for="gestion_ingreso" class="col-md-6 col-form-label">Gestion ingreso: <span style="color: red;">(*)</span></label>
+                        <label for="gestion_ingreso" class="col-md-6 col-form-label">Grado académico: <span style="color: red;">(*)</span></label>
                         <div class="col-md-6">
-                            <select name="carga" id="cargo" required class="form-control">
-                                <option value="">-- Seleccione cargo --</option>
+                            <select name="grado_academico" id="grado_academico" required class="form-control">
+                                <option value="">-- Seleccione grado académico --</option>
                                 <option value="Director">Director</option>
-                                <option value="Secretaria">Secretaria</option>
-                                <option value="Regente">Regente</option>
-                                <option value="Auxiliar">Auxiliar</option>
-                                <option value="Portera">Portera</option>
+                                <option value="Licenciatura">Licenciatura</option>
+                                <option value="Profesor">Profesor</option>
+                                <option value="Profesora">Profesora</option>
                             </select>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" name="gestion_ingreso" id="gestion_ingreso" class="form-control" placeholder="yyyy">
                         </div>
                     </div>
 
@@ -139,7 +134,7 @@
                     <div class="form-group row">
                         <div class="col-md-12 text-right">
                             <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
-                            <button type="submit" id="btn-guardar-administrativo" class="btn btn-primary">Agregar</button>
+                            <button type="submit" id="btn-guardar-maestro" class="btn btn-primary">Agregar</button>
                         </div>
                     </div>
                 </form>
@@ -149,11 +144,11 @@
 </div>
 
 <script>
-    // Modal para agregar usuario
+    // Modal para agregar maestro
     $("#agregar_administrativo").on("click", function (e) {
         parametrosModal(
-            "#agregar-administrativo",
-            "Agregar administrativo",
+            "#agregar-maestro",
+            "Agregar Maestro(a)",
             "modal-lg",
             false,
             true
@@ -161,12 +156,12 @@
     });
 
     //Listar datatable
-    $("#tbl_administativo")
+    $("#tbl_maestro")
         .DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax: "/persona/ajaxListarAdministrativos",
+            ajax: "/persona/ajaxListarMaestros",
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
@@ -214,7 +209,7 @@
         });
 
     // Guardar administrativo
-    $("#frm_agregar_administrativo").on("submit", function (e) {
+    $("#frm_agregar_maestro").on("submit", function (e) {
 
     });
 
@@ -230,3 +225,4 @@
         });
     }
 </script>
+
