@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'v4.0.4',
-    'version' => '4.0.4.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '64e66f041720a03179d5d87d31aa02957207d31f',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
   array (
     'codeigniter4/appstarter' => 
     array (
-      'pretty_version' => 'v4.0.4',
-      'version' => '4.0.4.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '64e66f041720a03179d5d87d31aa02957207d31f',
     ),
     'codeigniter4/framework' => 
     array (
@@ -321,6 +321,15 @@
       array (
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
+    ),
+    'setasign/fpdf' => 
+    array (
+      'pretty_version' => '1.8.2',
+      'version' => '1.8.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd77904018090c17dc9f3ab6e944679a7a47e710a',
     ),
     'symfony/polyfill-ctype' => 
     array (
