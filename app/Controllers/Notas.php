@@ -2,10 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\NotasReporte;
 use App\Libraries\SSP;
 
 class Notas extends BaseController
 {
+	public $notasReporte = null;
+	public function __construct()
+	{
+		$this->notasReporte = new NotasReporte();
+	}
+	public function imp()
+	{
+		$this->response->setContentType('application/pdf');
+		$this->notasReporte->imp();
+	}
 	public function listarEstudiantes()
 	{
 		return $this->templater->view('Notas/listarEstudiantes', []);
@@ -26,9 +37,9 @@ class Notas extends BaseController
 			// array(
 			// 	'db'        => 'start_date',
 			// 	'dt'        => 4,
-			// 	'formatter' => function ($d, $row) {
-			// 		return date('jS M y', strtotime($d));
-			// 	}
+			// 'formatter' => function ($d, $row) {
+			// 	return date('jS M y', strtotime($d));
+			// }
 			// ),
 			// array(
 			// 	'db'        => 'salary',

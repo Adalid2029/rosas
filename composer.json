@@ -5,11 +5,18 @@
 	"homepage": "https://codeigniter.com",
 	"license": "MIT",
 	"require": {
+<<<<<<< HEAD
 		"php": ">=7.3",
 		"codeigniter4/framework": "^4",
       "ext-pgsql": "*",
       "ext-json": "*"
     },
+=======
+		"php": ">=7.2",
+		"codeigniter4/framework": "^4",
+		"setasign/fpdf": "^1.8"
+	},
+>>>>>>> fe4222d7cd73eff88ca795a41f139829cc8a1df0
 	"require-dev": {
 		"fzaninotto/faker": "^1.9@dev",
 		"mikey179/vfsstream": "1.6.*",
