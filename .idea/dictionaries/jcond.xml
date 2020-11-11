@@ -3,40 +3,84 @@
     <words>
       <w>academico</w>
       <w>académico</w>
+      <w>accion</w>
       <w>acciones</w>
       <w>administativo</w>
       <w>administrativo</w>
       <w>administrativos</w>
+      <w>advertencia</w>
       <w>agregar</w>
       <w>apellido</w>
       <w>apellidos</w>
+      <w>busqueda</w>
+      <w>caracteres</w>
+      <w>clave</w>
+      <w>condicion</w>
+      <w>correctamente</w>
+      <w>creado</w>
+      <w>datatables</w>
+      <w>datos</w>
+      <w>debe</w>
+      <w>derechos</w>
       <w>descripción</w>
       <w>dirección</w>
+      <w>disableautofill</w>
+      <w>domicilio</w>
       <w>editar</w>
+      <w>educativa</w>
       <w>eliminar</w>
+      <w>especiales</w>
+      <w>existe</w>
+      <w>exito</w>
+      <w>expedición</w>
       <w>fecha</w>
       <w>femenino</w>
       <w>gestion</w>
+      <w>gestión</w>
       <w>grado</w>
       <w>guardar</w>
+      <w>ingresado</w>
       <w>ingreso</w>
+      <w>insertar</w>
+      <w>limpiar</w>
       <w>listado</w>
       <w>listar</w>
       <w>masculino</w>
+      <w>maskedinput</w>
       <w>materno</w>
+      <w>menos</w>
+      <w>mensaje</w>
+      <w>momentjs</w>
       <w>nacimiento</w>
       <w>nombre</w>
       <w>nombres</w>
+      <w>opensans</w>
+      <w>orderable</w>
       <w>parametros</w>
       <w>paterno</w>
+      <w>registrado</w>
       <w>registro</w>
+      <w>requerido</w>
+      <w>reservados</w>
+      <w>respuesta</w>
+      <w>rosas</w>
       <w>seleccione</w>
       <w>sexo</w>
+      <w>sweetalert</w>
       <w>tamano</w>
       <w>telefono</w>
       <w>teléfono</w>
+      <w>tener</w>
+      <w>tipo</w>
       <w>titulo</w>
+      <w>toastr</w>
+      <w>todos</w>
+      <w>unidad</w>
       <w>usuario</w>
+      <w>validación</w>
+      <w>validar</w>
+      <w>verificar</w>
+      <w>xmlhttprequest</w>
     </words>
   </dictionary>
 </component>

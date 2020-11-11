@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colegio | Las Rosas</title>
+    <title>Unidad Educativa | Las Rosas</title>
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href="<?php echo base_url('css/opensans.css') ?>" rel="stylesheet" />
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="<?php echo base_url('plugins/chosen/chosen.min.css') ?>" />
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
     <link href="<?php echo base_url('plugins/pace/pace.min.css') ?>" rel="stylesheet" />
+
+    <link rel="stylesheet" href="<?php echo base_url('css/toastr.css') ?>" />
 
 
     <script src="<?php echo base_url('plugins/pace/pace.min.js') ?>"></script>
@@ -73,6 +75,7 @@
     <link href="<?php echo base_url('img/favicon.png') ?>" rel="icon" />
     <link href="<?php echo base_url('img/favicon.png') ?>" rel="apple-touch-icon" />
 
+    <script src="<?php echo base_url('js/toastr.min.js') ?>"></script>
 
     <script src="<?= base_url('js/administrativo.js') ?>"></script>
 </head>
@@ -102,7 +105,7 @@
         <!-- FOOTER -->
         <!--===================================================-->
         <footer id="footer">
-            <p class="pad-lft">&#0169; 2020 Colegio Las Rosas, Todos los derechos reservados.</p>
+            <p class="pad-lft">&#0169; 2020 Unidad Educativa "Las Rosas", Todos los derechos reservados.</p>
         </footer>
         <!--===================================================-->
         <!-- END FOOTER -->

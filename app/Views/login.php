@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Colegio | Las Rosas</title>
+    <title>Unidad Educativa | Las Rosas</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
@@ -82,7 +82,7 @@
         </div>
     </form>
     <hr>
-    <div class="copyright" style="text-align: center; color: gray;"> 2020 © Colegio Las Rosas.</div>
+    <div class="copyright" style="text-align: center; color: gray;"> 2020 © Unidad Educativa "Las Rosas".</div>
 </div>
 
 <!-- Recaptcha -->

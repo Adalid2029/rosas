@@ -14,10 +14,11 @@
             </div>
 
             <div class="panel-body">
-                <table id="tbl_administativo" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="tbl_administrativo" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th width="5%">#</th>
+                        <th>Id adm</th>
                         <th>CI</th>
                         <th>Nombres y Apellidos</th>
                         <th>Fecha Nac.</th>
@@ -57,10 +58,11 @@
                         </div>
                         <div class="col-md-4">
                             <select name="exp" id="exp" class="form-control" required>
+                                <option value="">-- Expedido en --</option>
                                 <option value="LP">LP</option>
                                 <option value="OR">OR</option>
                                 <option value="PT">PT</option>
-                                <option value="TR">TR</option>
+                                <option value="TJ">TJ</option>
                                 <option value="PD">PD</option>
                                 <option value="BE">BE</option>
                                 <option value="SC">SC</option>
@@ -121,7 +123,7 @@
                         <label for="cargo" class="col-md-6 col-form-label">Cargo: <span style="color: red;">(*)</span></label>
                         <label for="gestion_ingreso" class="col-md-6 col-form-label">Gestion ingreso: <span style="color: red;">(*)</span></label>
                         <div class="col-md-6">
-                            <select name="carga" id="cargo" required class="form-control">
+                            <select name="cargo" id="cargo" required class="form-control">
                                 <option value="">-- Seleccione cargo --</option>
                                 <option value="Director">Director</option>
                                 <option value="Secretaria">Secretaria</option>
@@ -161,8 +163,7 @@
     });
 
     //Listar datatable
-    $("#tbl_administativo")
-        .DataTable({
+    $("#tbl_administrativo").DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -198,15 +199,25 @@
                 {
                     searchable: false,
                     orderable: false,
+                    visible: false,
+                    targets: 1
+                },
+                {
+                    searchable: false,
+                    orderable: false,
                     targets: -1,
                     data: null,
-                    render: function(data, type, row, meta) {
+                    render: function (data, type, row, meta) {
                         return (
-                            '<div class="btn-group" role="group"><a data-value="' +
+                            '<div class="btn-group" role="group">' +
+                            '<a data-value="' + data[0] +
+                            '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_administrativo" data-toggle="tooltip" title="Editar">' +
+                            '<i class="fa fa-pencil-square-o"></i></a>' +
+                            '<a data-value="' +
                             data[0] +
-                            '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn-editar-asignacion-horario" data-toggle="tooltip" title="Editar"></a><a data-value="' +
-                            data[0] +
-                            '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn-eliminar-asignacion-horario" data-toggle="tooltip" title="Eliminar"></a></div>'
+                            '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_administrativo" data-toggle="tooltip" title="Eliminar">' +
+                            '<i class="fa fa-trash-o"></i></a>' +
+                            '</div>'
                         );
                     }
                 }
@@ -215,9 +226,75 @@
 
     // Guardar administrativo
     $("#frm_agregar_administrativo").on("submit", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/persona/insertar_administrativo",
+            data: $("#frm_agregar_administrativo").serialize(),
+            dataType: "JSON"
+        }).done(function(response){
 
+            if(Object.keys(response).length === 12)
+            {
+                $("#ci").val(response.ci);
+                $("#exp").val(response.exp);
+                $("#nombre").val(response.nombres);
+                $("#paterno").val(response.paterno);
+                $("#materno").val(response.materno);
+                $("#nacimiento").val(response.nacimiento);
+                $("#telefono").val(response.telefono);
+                $("#sexo").val(response.sexo);
+                $("#domicilio").val(response.domicilio);
+                $("#cargo").val(response.cargo);
+                $("#gestion_ingreso").val(response.gestion_ingreso);
+
+                mensajeAlert("warning", "Los campos no deben llevar caracteres especiales!!!", "Advertencia");
+            }
+            if(Object.keys(response).length === 11)
+            {
+                $("#ci").val(response.ci);
+                $("#exp").val(response.exp);
+                $("#nombre").val(response.nombres);
+                $("#paterno").val(response.paterno);
+                $("#materno").val(response.materno);
+                $("#nacimiento").val(response.nacimiento);
+                $("#telefono").val(response.telefono);
+                $("#sexo").val(response.sexo);
+                $("#domicilio").val(response.domicilio);
+                $("#cargo").val(response.cargo);
+                $("#gestion_ingreso").val(response.gestion_ingreso);
+
+                mensajeAlert("warning", "Ya existe un usuario registro con el CI ingresado!!!", "Advertencia");
+            }
+
+            if (typeof response.exito !== "undefined") {
+                $("#tbl_administrativo").DataTable().draw();
+                $("#agregar-administrativo").modal("hide");
+                mensajeAlert("success", response.exito, "Exito");
+                limpiarCampos();
+            }
+
+        }).fail(function (e) {
+            mensajeAlert("error", "Error al registrar el administrativo", "Error");
+        });
     });
 
+    function limpiarCampos()
+    {
+        $("#id").val("");
+        $("#id_administrativo").val("");
+        $("#ci").val("");
+        $("#exp").val("");
+        $("#nombre").val("");
+        $("#paterno").val("");
+        $("#materno").val("");
+        $("#nacimiento").val("");
+        $("#telefono").val("");
+        $("#sexo").val("");
+        $("#domicilio").val("");
+        $("#cargo").val("");
+        $("#gestion_ingreso").val("");
+    }
 
     function parametrosModal(idModal, titulo, tamano, onEscape, backdrop) {
         $(idModal + "-title").html(titulo);

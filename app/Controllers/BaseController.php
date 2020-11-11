@@ -32,6 +32,7 @@ class BaseController extends Controller
 	public $templater = null;
 	protected $user = null;
 	protected $db = null;
+	
 
 	/**
 	 * Constructor.
