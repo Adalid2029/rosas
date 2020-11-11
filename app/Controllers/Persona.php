@@ -6,6 +6,13 @@ use App\Models\PersonaModel;
 
 class Persona extends BaseController
 {
+    public $model = null;
+    public function __construct()
+    {
+        parent::__construct();
+        $this -> model = new PersonaModel();
+    }
+
     // ADMINISTRATIVOS
     public function administrativo()
     {
@@ -48,27 +55,82 @@ class Persona extends BaseController
     // INSERTAR ADMINISTRATIVO
     public function insertar_administrativo()
     {
-        $data_aux = null;
+
         $fecha = new \DateTime();
+
+        // se Verifica si es petición ajax
         if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
-            if( preg_match('/^[a-zA-Z0-9]+$/', trim($this->request->getPost("ci"))) &&
-                preg_match('/^[A-Z]+$/', trim($this->request->getPost("exp"))) &&
-                preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', trim($this->request->getPost("paterno"))) &&
-                preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', trim($this->request->getPost("materno"))) &&
-                preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', trim($this->request->getPost("nombre"))) &&
-                preg_match('/^[A-Z]+$/', trim($this->request->getPost("sexo"))) &&
-                preg_match('/^[0-9 ]+$/', trim($this->request->getPost("telefono"))) &&
-                preg_match('/^[a-z0-9A-ZñÑáéíóúÁÉÍÓÚ ]+$/', trim($this->request->getPost("domicilio"))) &&
-                preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', trim($this->request->getPost("cargo"))) &&
-                preg_match('/^[0-9]+$/', trim($this->request->getPost("gestion_ingreso")))
-            ){
-                $p = new PersonaModel();
+            // Verificación del usuario
+            $res = $this-> model -> verificarNombreUsuario(trim($this->request->getPost("ci")));
+            if($res) {
+                //validación de formulario
+                $validation = \Config\Services::validation();
+                helper(['form', 'url']);
+                $val = $this->validate([ // rules
+                    "ci" => "required|alpha_numeric|min_length[6]",
+                    "exp" => "required|max_length[2]|alpha",
+                    "nombre" => "required|alpha_space",
+                    "paterno" => "required|alpha_space",
+                    "materno" => "alpha_space",
+                    "nacimiento" => 'required',
+                    "telefono" => "required|numeric",
+                    "sexo" => "required|max_length[1]|alpha",
+                    "cargo" => "required|alpha",
+                    "gestion_ingreso" => "required|numeric|max_length[4]"
+                ],
+                    [ // errors
+                        "ci" => [
+                            "required" => "El CI del usuario es requerido",
+                            "alpha_numeric" => "El CI del usuario no debe llevar caracteres especiales",
+                            "min_length" => "El CI del usuario debe tener al menos 6 caracteres"
+                        ],
+                        "exp" => [
+                            "required" => "La expedición del ci es requerido",
+                            "max_length" => "La expedición del ci debe llevar máximo 2 caracteres",
+                            "alpha" => "La expedición del ci debe llevar caracteres especiales"
+                        ],
+                        "nombre" => [
+                            "required" => "El nombre es requerido",
+                            "alpha_space" => "El nombre debe llevar caracteres alfabéticos o espacios."
+                        ],
+                        "paterno" => [
+                            "required" => "El apellido paterno es requerido",
+                            "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos o espacios."
+                        ],
+                        "materno" => [
+                            "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos o espacios."
+                        ],
+                        "nacimiento" => [
+                            "required" => "La fecha de nacimiento es requerido"
+                        ],
+                        "telefono" => [
+                            "required" => "El telefono es requerido",
+                            "numeric" => "El telefono debe llevar caracteres numéricos."
+                        ],
+                        "sexo" => [
+                            "required" => "El sexo es requerido",
+                            "max_length" => "El sexo debe llevar máximo 1 caracter",
+                            "alpha" => "El sexo no debe llevar caracteres especiales."
+                        ],
+                        "cargo" => [
+                            "required" => "El cargo es requerido",
+                            "alpha" => "El cargo debe llevar caracteres alfabéticos o espacios."
+                        ],
+                        "gestion_ingreso" => [
+                            "required" => "La gestión de ingreso es requerido",
+                            "numeric" => "La gestión de ingreso debe llevar caracteres numéricos",
+                            "max_length" => "La gestion de ingreso debe llevar máximo 4 caracteres"
+                        ]
+                    ]);
 
-                $respuesta = $p -> verificarNombreUsuario(trim($this->request->getPost("ci")));
-
-                if($respuesta)
-                {
+                if (!$val) {
+                    // se devuelve todos los errores
+                    return $this->response->setJSON(json_encode(array(
+                        "form" => $validation->listErrors()
+                    )));
+                } else {
+                    // Guardar el administrativo
                     $data = array(
                         "ci"            => trim($this->request->getPost("ci")),
                         "exp"           => $this->request->getPost("exp"),
@@ -81,7 +143,9 @@ class Persona extends BaseController
                         "domicilio"     => trim($this->request->getPost("domicilio")),
                         "creado_en"     => $fecha -> format('Y-m-d H:i:s')
                     );
-                    $respuesta = $p->persona("insert", $data, null, null,);
+
+                    $respuesta = $this-> model ->persona("insert", $data, null, null,);
+
                     if(is_numeric($respuesta))
                     {
                         $data2 = array(
@@ -90,7 +154,8 @@ class Persona extends BaseController
                             "gestion_ingreso" => $this->request->getPost("gestion_ingreso")
                         );
 
-                        $respuesta2 = $p ->administrativo("insert", $data2, null, null);
+                        $respuesta2 = $this-> model ->administrativo("insert", $data2, null, null);
+
                         if (is_numeric($respuesta2))
                         {
                             $data3 = array(
@@ -100,7 +165,8 @@ class Persona extends BaseController
                                 "creado_en"  => $fecha -> format('Y-m-d H:i:s')
                             );
 
-                            $respuesta3 = $p ->usuario("insert", $data3, null, null);
+                            $respuesta3 = $this -> model -> usuario("insert", $data3, null, null);
+
                             if(is_numeric($respuesta3))
                             {
                                 return $this->response->setJSON(json_encode(array(
@@ -111,40 +177,12 @@ class Persona extends BaseController
 
                     }
                 }
-                else{
-                    $data_aux = array(
-                        "ci"            => trim($this->request->getPost("ci")),
-                        "exp"           => $this->request->getPost("exp"),
-                        "paterno"       => trim($this->request->getPost("paterno")),
-                        "materno"       => trim($this->request->getPost("materno")),
-                        "nombres"       => trim($this->request->getPost("nombre")),
-                        "nacimiento"    => $this->request->getPost("nacimiento"),
-                        "sexo"          => $this->request->getPost("sexo"),
-                        "telefono"      => trim($this->request->getPost("telefono")),
-                        "domicilio"     => trim($this->request->getPost("domicilio")),
-                        "cargo" => $this->request->getPost("cargo"),
-                        "gestion_ingreso" => $this->request->getPost("gestion_ingreso")
-                    );
-                    return $this->response->setJSON(json_encode($data_aux));
-                }
             }else{
-                $data_aux = array(
-                    "ci"            => trim($this->request->getPost("ci")),
-                    "exp"           => $this->request->getPost("exp"),
-                    "paterno"       => trim($this->request->getPost("paterno")),
-                    "materno"       => trim($this->request->getPost("materno")),
-                    "nombres"       => trim($this->request->getPost("nombre")),
-                    "nacimiento"    => $this->request->getPost("nacimiento"),
-                    "sexo"          => $this->request->getPost("sexo"),
-                    "telefono"      => trim($this->request->getPost("telefono")),
-                    "domicilio"     => trim($this->request->getPost("domicilio")),
-                    "cargo" => $this->request->getPost("cargo"),
-                    "gestion_ingreso" => $this->request->getPost("gestion_ingreso"),
-                    "error" => "error"
-                );
-                return $this->response->setJSON(json_encode($data_aux));
+                // nombre de usuario exite
+                return $this->response->setJSON(json_encode(array(
+                    'warning' => "El ci ingresado ya  se encuentra registrado"
+                )));
             }
-
         }
 
         return $this->response->setJSON(json_encode(array(

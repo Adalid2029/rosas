@@ -10,9 +10,11 @@
       <w>administrativos</w>
       <w>advertencia</w>
       <w>agregar</w>
+      <w>alfabéticos</w>
       <w>apellido</w>
       <w>apellidos</w>
       <w>busqueda</w>
+      <w>caracter</w>
       <w>caracteres</w>
       <w>clave</w>
       <w>condicion</w>
@@ -23,18 +25,24 @@
       <w>debe</w>
       <w>derechos</w>
       <w>descripción</w>
+      <w>devuelve</w>
       <w>dirección</w>
       <w>disableautofill</w>
       <w>domicilio</w>
       <w>editar</w>
       <w>educativa</w>
       <w>eliminar</w>
+      <w>encuentra</w>
+      <w>errores</w>
+      <w>espacios</w>
       <w>especiales</w>
       <w>existe</w>
+      <w>exite</w>
       <w>exito</w>
       <w>expedición</w>
       <w>fecha</w>
       <w>femenino</w>
+      <w>formulario</w>
       <w>gestion</w>
       <w>gestión</w>
       <w>grado</w>
@@ -45,19 +53,24 @@
       <w>limpiar</w>
       <w>listado</w>
       <w>listar</w>
+      <w>llevar</w>
       <w>masculino</w>
       <w>maskedinput</w>
       <w>materno</w>
       <w>menos</w>
       <w>mensaje</w>
       <w>momentjs</w>
+      <w>máximo</w>
       <w>nacimiento</w>
       <w>nombre</w>
       <w>nombres</w>
+      <w>numéricos</w>
       <w>opensans</w>
       <w>orderable</w>
       <w>parametros</w>
       <w>paterno</w>
+      <w>petición</w>
+      <w>punct</w>
       <w>registrado</w>
       <w>registro</w>
       <w>requerido</w>
@@ -79,6 +92,8 @@
       <w>usuario</w>
       <w>validación</w>
       <w>validar</w>
+      <w>verifica</w>
+      <w>verificación</w>
       <w>verificar</w>
       <w>xmlhttprequest</w>
     </words>

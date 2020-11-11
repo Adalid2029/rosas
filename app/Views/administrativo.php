@@ -233,38 +233,14 @@
             data: $("#frm_agregar_administrativo").serialize(),
             dataType: "JSON"
         }).done(function(response){
-
-            if(Object.keys(response).length === 12)
-            {
-                $("#ci").val(response.ci);
-                $("#exp").val(response.exp);
-                $("#nombre").val(response.nombres);
-                $("#paterno").val(response.paterno);
-                $("#materno").val(response.materno);
-                $("#nacimiento").val(response.nacimiento);
-                $("#telefono").val(response.telefono);
-                $("#sexo").val(response.sexo);
-                $("#domicilio").val(response.domicilio);
-                $("#cargo").val(response.cargo);
-                $("#gestion_ingreso").val(response.gestion_ingreso);
-
-                mensajeAlert("warning", "Los campos no deben llevar caracteres especiales!!!", "Advertencia");
+            
+            if (typeof response.warning !== "undefined") {
+                mensajeAlert("warning", response.warning, "Advertencia");
+                $("#ci").focus();
             }
-            if(Object.keys(response).length === 11)
-            {
-                $("#ci").val(response.ci);
-                $("#exp").val(response.exp);
-                $("#nombre").val(response.nombres);
-                $("#paterno").val(response.paterno);
-                $("#materno").val(response.materno);
-                $("#nacimiento").val(response.nacimiento);
-                $("#telefono").val(response.telefono);
-                $("#sexo").val(response.sexo);
-                $("#domicilio").val(response.domicilio);
-                $("#cargo").val(response.cargo);
-                $("#gestion_ingreso").val(response.gestion_ingreso);
 
-                mensajeAlert("warning", "Ya existe un usuario registro con el CI ingresado!!!", "Advertencia");
+            if (typeof response.form !== "undefined") {
+                mensajeAlert("warning", response.form, "Advertencia");
             }
 
             if (typeof response.exito !== "undefined") {
