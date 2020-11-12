@@ -48,7 +48,7 @@
                                     </a>
                                 </li>
 
-                                <li><a href="#">Estudiante</a></li>
+                                <li><a href="<?= base_url("/estudiante/listarEstudiantes")?>">Estudiante</a></li>
                                 <li>
                                     <a href="<?= base_url("/persona/maestro")?>">Maestro</a>
                                 </li>
