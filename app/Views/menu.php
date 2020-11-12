@@ -10,7 +10,7 @@
 					<div id="mainnav-profile" class="mainnav-profile">
 						<div class="profile-wrap text-center">
 							<div class="pad-btm">
-								<img class="img-circle img-md" src="img/personas/persona.gif" alt="Profile Picture">
+								<img class="img-circle img-md" src="<?= base_url('img/personas/persona.gif') ?>" alt="Profile Picture">
 							</div>
 							<a href="index.html#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
 								<span class="pull-right dropdown-toggle">
@@ -37,22 +37,22 @@
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
 								<span class="menu-title">Registrar</span>
-                                <i class="arrow"></i>
+								<i class="arrow"></i>
 							</a>
-                            <!--Submenu-->
-                            <ul class="collapse" aria-expanded="false">
+							<!--Submenu-->
+							<ul class="collapse" aria-expanded="false">
 
-                                <li class="">
-                                    <a class="menu--link" href="<?= base_url('/persona/administrativo'); ?>">
-                                        Administrativo
-                                    </a>
-                                </li>
+								<li class="">
+									<a class="menu--link" href="<?= base_url('/persona/administrativo'); ?>">
+										Administrativo
+									</a>
+								</li>
 
-                                <li><a href="#">Estudiante</a></li>
-                                <li>
-                                    <a href="<?= base_url("/persona/maestro")?>">Maestro</a>
-                                </li>
-                            </ul>
+								<li><a href="#">Estudiante</a></li>
+								<li>
+									<a href="<?= base_url("/persona/maestro") ?>">Maestro</a>
+								</li>
+							</ul>
 						</li>
 
 						<li class="">
