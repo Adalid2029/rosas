@@ -77,6 +77,8 @@
 
     <script src="<?php echo base_url('js/toastr.min.js') ?>"></script>
 
+    <script src="<?php echo base_url('js/bootbox.min.js') ?>"></script>
+
     <script src="<?= base_url('js/administrativo.js') ?>"></script>
 </head>
 

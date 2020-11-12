@@ -150,6 +150,121 @@
     </div>
 </div>
 
+<!--  Modal de editar administrativo -->
+<div class="modal fade" id="editar-administrativo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
+    <div id="modal-dialog" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="editar-administrativo-header" class="modal-header">
+                <h5 id="editar-administrativo-title" class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="editar-administrativo-body" class="modal-body">
+                <form id="frm_editar_administrativo" method="post">
+
+                    <div class="form-group row">
+                        <label for="edit_ci" class="col-md-8 col-form-label">CI: <span style="color: red;">(*)</span></label>
+                        <label for="edit_exp" class="col-md-4 col-form-label">EXP: <span style="color: red;">(*)</span></label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="edit_ci" id="edit_ci" required>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="edit_exp" id="edit_exp" class="form-control" required>
+                                <option value="">-- Expedido en --</option>
+                                <option value="LP">LP</option>
+                                <option value="OR">OR</option>
+                                <option value="PT">PT</option>
+                                <option value="TJ">TJ</option>
+                                <option value="PD">PD</option>
+                                <option value="BE">BE</option>
+                                <option value="SC">SC</option>
+                                <option value="CB">CB</option>
+                                <option value="CH">CH</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="edit_id_persona" id="edit_id_persona">
+                    </div>
+
+                    <div class="form-group m-t-10 row">
+                        <label for="edit_nombre" class="col-md-12 col-form-label">Nombre: <span style="color: red;">(*)</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="edit_nombre" id="edit_nombre" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-t-10 row">
+                        <label for="edit_paterno" class="col-md-12 col-form-label">Paterno: <span style="color: red;">(*)</span></label>
+                        <div class="col-md-12">
+                            <input type="text" name="edit_paterno" id="edit_paterno" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-t-10 row">
+                        <label for="edit_materno" class="col-md-12 col-form-label">Materno: </label>
+                        <div class="col-md-12">
+                            <input type="text" name="edit_materno" id="edit_materno" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="edit_nacimiento" class="col-md-6 col-form-label">Fecha Nacimiento: <span style="color: red;">(*)</span></label>
+                        <label for="edit_telefono" class="col-md-3 col-form-label">Teléfono: <span style="color: red;">(*)</span></label>
+                        <label for="edit_sexo" class="col-md-3 col-form-label">Sexo: <span style="color: red;">(*)</span></label>
+                        <div class="col-md-6">
+                            <input type="date" class="form-control" name="edit_nacimiento" id="edit_nacimiento" required>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" name="edit_telefono" id="edit_telefono" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <select name="edit_sexo" id="edit_sexo" class="form-control" required>
+                                <option value="M">M</option>
+                                <option value="F">F</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="edit_domicilio" class="col-md-12 col-form-label">Dirección: <span style="color: red;">(*)</span></label>
+                        <div class="col-md-12">
+                            <textarea class="form-control" id="edit_domicilio" name="edit_domicilio" rows="2"></textarea>
+                        </div>
+                        <input type="hidden" id="edit_id_administrativo" name="edit_id_administrativo">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="edit_cargo" class="col-md-6 col-form-label">Cargo: <span style="color: red;">(*)</span></label>
+                        <label for="edit_gestion_ingreso" class="col-md-6 col-form-label">Gestion ingreso: <span style="color: red;">(*)</span></label>
+                        <div class="col-md-6">
+                            <select name="edit_cargo" id="edit_cargo" required class="form-control">
+                                <option value="">-- Seleccione cargo --</option>
+                                <option value="Director">Director</option>
+                                <option value="Secretaria">Secretaria</option>
+                                <option value="Regente">Regente</option>
+                                <option value="Auxiliar">Auxiliar</option>
+                                <option value="Portera">Portera</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="edit_gestion_ingreso" id="edit_gestion_ingreso" class="form-control">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
+                            <button type="submit" id="btn-editar-administrativo" class="btn btn-primary">Editar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     // Modal para agregar usuario
     $("#agregar_administrativo").on("click", function (e) {
@@ -163,7 +278,8 @@
     });
 
     //Listar datatable
-    $("#tbl_administrativo").DataTable({
+    $("#tbl_administrativo").DataTable(
+        {
             responsive: true,
             processing: true,
             serverSide: true,
@@ -210,10 +326,10 @@
                     render: function (data, type, row, meta) {
                         return (
                             '<div class="btn-group" role="group">' +
-                            '<a data-value="' + data[0] +
+                            '<a data="' + data[0] +
                             '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_administrativo" data-toggle="tooltip" title="Editar">' +
                             '<i class="fa fa-pencil-square-o"></i></a>' +
-                            '<a data-value="' +
+                            '<a data="' +
                             data[0] +
                             '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_administrativo" data-toggle="tooltip" title="Eliminar">' +
                             '<i class="fa fa-trash-o"></i></a>' +
@@ -233,7 +349,7 @@
             data: $("#frm_agregar_administrativo").serialize(),
             dataType: "JSON"
         }).done(function(response){
-            
+
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
                 $("#ci").focus();
@@ -247,7 +363,7 @@
                 $("#tbl_administrativo").DataTable().draw();
                 $("#agregar-administrativo").modal("hide");
                 mensajeAlert("success", response.exito, "Exito");
-                limpiarCampos();
+                limpiarCamposAgregar();
             }
 
         }).fail(function (e) {
@@ -255,7 +371,7 @@
         });
     });
 
-    function limpiarCampos()
+    function limpiarCamposAgregar()
     {
         $("#id").val("");
         $("#id_administrativo").val("");
@@ -272,14 +388,117 @@
         $("#gestion_ingreso").val("");
     }
 
-    function parametrosModal(idModal, titulo, tamano, onEscape, backdrop) {
-        $(idModal + "-title").html(titulo);
-        $(idModal + "-dialog").addClass(tamano);
-        $(idModal).modal({
-            backdrop: backdrop,
-            keyboard: onEscape,
-            focus: false,
-            show: true
-        });
+    function limpiarCamposEditar()
+    {
+        $("#edit_id").val("");
+        $("#edit_id_administrativo").val("");
+        $("#edit_ci").val("");
+        $("#edit_exp").val("");
+        $("#edit_nombre").val("");
+        $("#edit_paterno").val("");
+        $("#edit_materno").val("");
+        $("#edit_nacimiento").val("");
+        $("#edit_telefono").val("");
+        $("#edit_sexo").val("");
+        $("#edit_domicilio").val("");
+        $("#edit_cargo").val("");
+        $("#edit_gestion_ingreso").val("");
     }
+    // Editar Administrativo
+    $('#tbl_administrativo').on("click", ".btn_editar_administrativo", function(e){
+        let id = $(this).attr("data");
+        $.ajax({
+            type: "POST",
+            url: "/persona/editar_administrativo",
+            data: {"id":id},
+            dataType: "JSON"
+        }).done(function (response) {
+
+            $("#edit_id_persona").val(response[0]["id_persona"]);
+            $("#edit_ci").val(response[0]["ci"]);
+            $("#edit_exp").val(response[0]["exp"]);
+            $("#edit_paterno").val(response[0]["paterno"]);
+            $("#edit_materno").val(response[0]["materno"]);
+            $("#edit_nombre").val(response[0]["nombres"]);
+            $("#edit_nacimiento").val(response[0]["nacimiento"]);
+            $("#edit_sexo").val(response[0]["sexo"]);
+            $("#edit_telefono").val(response[0]["telefono"]);
+            $("#edit_domicilio").val(response[0]["domicilio"]);
+
+            $("#edit_id_administrativo").val(response[0]["id_administrativo"]);
+            $("#edit_cargo").val(response[0]["cargo"]);
+            $("#edit_gestion_ingreso").val(response[0]["gestion_ingreso"]);
+
+            parametrosModal(
+                "#editar-administrativo",
+                "Editar administrativo",
+                "modal-lg",
+                false,
+                true
+            );
+
+        }).fail(function (e) {
+            console.log("error");
+        });
+
+    });
+
+    // Editar administrativo
+    $("#frm_editar_administrativo").on("submit", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/persona/actualizar_administrativo",
+            data: $("#frm_editar_administrativo").serialize(),
+            dataType: "JSON"
+        }).done(function(response){
+
+            if (typeof response.warning !== "undefined") {
+                mensajeAlert("warning", response.warning, "Advertencia");
+                $("#ci").focus();
+            }
+
+            if (typeof response.form !== "undefined") {
+                mensajeAlert("warning", response.form, "Advertencia");
+            }
+
+            if (typeof response.exito !== "undefined") {
+                $("#tbl_administrativo").DataTable().draw();
+                $("#editar-administrativo").modal("hide");
+                mensajeAlert("success", response.exito, "Exito");
+                limpiarCamposEditar();
+            }
+
+        }).fail(function (e) {
+            mensajeAlert("error", "Error al editar el administrativo seleccionado", "Error");
+        });
+    });
+
+    // Eliminar Administrativo
+    $("#tbl_administrativo").on("click", ".btn_eliminar_administrativo", function(e){
+        let id = $(this).attr("data");
+        bootbox.confirm("¿Estas seguro de eliminar al administrativo?", function(result){
+           if (result){
+               $.ajax({
+                   type: "POST",
+                   url: "/persona/eliminar_administrativo",
+                   data: {"id":id},
+                   dataType: "JSON"
+               }).done(function (response) {
+
+                   if (typeof response.exito !== "undefined") {
+                       $("#tbl_administrativo").DataTable().draw();
+                       mensajeAlert("success", response.exito, "Exito");
+                   }
+
+               }).fail(function (e) {
+                   mensajeAlert("error", "Error al procesar la peticion", "Error");
+               });
+           }
+        });
+
+    });
+
+
+
 </script>

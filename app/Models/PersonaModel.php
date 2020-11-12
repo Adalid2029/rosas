@@ -40,6 +40,16 @@ class PersonaModel extends Database
 
     }
 
+    // select para edit persona y administrativo
+    public function personaAdministrativo($id)
+    {
+        $builder = $this -> db -> table("persona as p");
+        $builder -> select('*');
+        $builder -> join("administrativo as a", "p.id_persona = a.id_persona");
+        $builder -> where("p.id_persona", $id);
+        return $builder->get() ->getResultArray();
+    }
+
     // INSERT ADMINISTRATIVO
     public function administrativo($accion, $datos, $condicion = null, $busqueda = null)
     {

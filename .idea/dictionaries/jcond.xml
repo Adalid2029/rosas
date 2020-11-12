@@ -5,6 +5,8 @@
       <w>académico</w>
       <w>accion</w>
       <w>acciones</w>
+      <w>actualizado</w>
+      <w>actualizar</w>
       <w>administativo</w>
       <w>administrativo</w>
       <w>administrativos</w>
@@ -13,6 +15,7 @@
       <w>alfabéticos</w>
       <w>apellido</w>
       <w>apellidos</w>
+      <w>bootbox</w>
       <w>busqueda</w>
       <w>caracter</w>
       <w>caracteres</w>
@@ -29,13 +32,16 @@
       <w>dirección</w>
       <w>disableautofill</w>
       <w>domicilio</w>
+      <w>editado</w>
       <w>editar</w>
       <w>educativa</w>
+      <w>eliminado</w>
       <w>eliminar</w>
       <w>encuentra</w>
       <w>errores</w>
       <w>espacios</w>
       <w>especiales</w>
+      <w>estado</w>
       <w>existe</w>
       <w>exite</w>
       <w>exito</w>
