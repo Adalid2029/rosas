@@ -46,6 +46,7 @@ class PersonaModel extends Database
         $builder = $this -> db -> table("persona as p");
         $builder -> select('*');
         $builder -> join("administrativo as a", "p.id_persona = a.id_persona");
+        $builder -> join("usuario as u", "u.id_persona = p.id_persona");
         $builder -> where("p.id_persona", $id);
         return $builder->get() ->getResultArray();
     }

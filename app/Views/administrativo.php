@@ -214,6 +214,7 @@
                         <label for="edit_sexo" class="col-md-3 col-form-label">Sexo: <span style="color: red;">(*)</span></label>
                         <div class="col-md-6">
                             <input type="date" class="form-control" name="edit_nacimiento" id="edit_nacimiento" required>
+                            <input type="hidden" id="edit_id_usuario" name="edit_id_usuario">
                         </div>
                         <div class="col-md-3">
                             <input type="text" name="edit_telefono" id="edit_telefono" class="form-control">
@@ -403,6 +404,7 @@
         $("#edit_domicilio").val("");
         $("#edit_cargo").val("");
         $("#edit_gestion_ingreso").val("");
+        $("#edit_id_usuario").val("");
     }
     // Editar Administrativo
     $('#tbl_administrativo').on("click", ".btn_editar_administrativo", function(e){
@@ -429,6 +431,9 @@
             $("#edit_cargo").val(response[0]["cargo"]);
             $("#edit_gestion_ingreso").val(response[0]["gestion_ingreso"]);
 
+            $("#edit_id_usuario").val(response[0]["id_usuario"]);
+
+
             parametrosModal(
                 "#editar-administrativo",
                 "Editar administrativo",
@@ -443,7 +448,7 @@
 
     });
 
-    // Editar administrativo
+    // Actualizar administrativo
     $("#frm_editar_administrativo").on("submit", function (e) {
         e.preventDefault();
         $.ajax({

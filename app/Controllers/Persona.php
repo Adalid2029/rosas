@@ -306,9 +306,18 @@ class Persona extends BaseController
 
                         if ($respuesta2)
                         {
-                            return $this->response->setJSON(json_encode(array(
-                                'exito' => "Administrativo editado correctamente"
-                            )));
+                            $data3 = array(
+                                "usuario" => trim($this->request->getPost("edit_ci")),
+                                "clave"   => md5($this->request->getPost("edit_nacimiento")),
+                                "actualizado_en"     => $fecha -> format('Y-m-d H:i:s')
+                            );
+                            $respuesta3 = $this -> model -> usuario("update", $data3, array("id_usuario" => trim($this->request->getPost("edit_id_usuario"))), null);
+                            if ($respuesta3){
+                                return $this->response->setJSON(json_encode(array(
+                                    'exito' => "Administrativo editado correctamente"
+                                )));
+                            }
+
                         }
 
                     }
