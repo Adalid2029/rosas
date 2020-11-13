@@ -28,7 +28,7 @@ class Notas extends BaseController
 			(SELECT e.id_estudiante, p.id_persona, rude, concat(ci, ' ', exp) ci, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
 			FROM
 			  rs_estudiante e
-			  join rs_persona p on e.id_estudiante = p.id_persona
+			  join rs_persona p on e.id_persona = p.id_persona
 			  left join rs_calificacion rc on rc.id_estudiante = e.id_estudiante
 			) temp 
 			EOT;
