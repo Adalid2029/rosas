@@ -10,6 +10,7 @@ class Notas extends BaseController
 	public $notasReporte = null;
 	public function __construct()
 	{
+		parent::__construct();
 		$this->notasReporte = new NotasReporte();
 	}
 	public function imp()
@@ -24,9 +25,12 @@ class Notas extends BaseController
 	public function ajaxListarEstudiantes()
 	{
 		$table = <<<EOT
-			(SELECT id_estudiante, p.id_persona, rude, gestion_ingreso, concat(ci,' ', exp) ci,
-			concat(paterno,' ',materno,' ',nombres)as nombre_completo, nacimiento, sexo, telefono, domicilio
-			FROM rs_estudiante e join rs_persona p on e.id_estudiante  = p.id_persona) temp 
+			(SELECT e.id_estudiante, p.id_persona, rude, concat(ci, ' ', exp) ci, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
+			FROM
+			  rs_estudiante e
+			  join rs_persona p on e.id_estudiante = p.id_persona
+			  left join rs_calificacion rc on rc.id_estudiante = e.id_estudiante
+			) temp 
 			EOT;
 		$primaryKey = 'id_persona';
 		$columns = array(
@@ -34,6 +38,10 @@ class Notas extends BaseController
 			array('db' => 'nombre_completo', 'dt' => 1),
 			array('db' => 'nacimiento', 'dt' => 2),
 			array('db' => 'ci', 'dt' => 3),
+			array('db' => 'nota1', 'dt' => 4),
+			array('db' => 'nota2', 'dt' => 5),
+			array('db' => 'nota3', 'dt' => 6),
+			array('db' => 'nota_final', 'dt' => 7),
 			// array(
 			// 	'db'        => 'start_date',
 			// 	'dt'        => 4,
@@ -42,8 +50,8 @@ class Notas extends BaseController
 			// }
 			// ),
 			// array(
-			// 	'db'        => 'salary',
-			// 	'dt'        => 5,
+			// 	'db'        => 'nota1',
+			// 	'dt'        => 4,
 			// 	'formatter' => function ($d, $row) {
 			// 		return '$' . number_format($d);
 			// 	}
