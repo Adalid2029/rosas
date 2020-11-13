@@ -192,6 +192,10 @@ class Estudiante extends BaseController
 
                     }
 
+                }else{
+                    return $this->response->setJSON(json_encode(array(
+                        'warning' => "El ci ingresado ya  se encuentra registrado"
+                    )));
                 }
 
             } else{
