@@ -2,21 +2,21 @@
 
 namespace App\Controllers;
 use App\Libraries\SSP;
-use App\Models\PersonaModel;
+use App\Models\AdministrativoModel;
 
-class Persona extends BaseController
+class Administrativo extends BaseController
 {
     public $model = null;
     public function __construct()
     {
         parent::__construct();
-        $this -> model = new PersonaModel();
+        $this -> model = new AdministrativoModel();
     }
 
     // ADMINISTRATIVOS
-    public function administrativo()
+    public function listarAdministrativos()
     {
-        return $this->templater->view('administrativo', []);
+        return $this->templater->view('personas/administrativo', []);
     }
 
     // Listado de administrativos

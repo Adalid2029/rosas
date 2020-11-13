@@ -4,7 +4,7 @@
         <!--================================-->
         <div class="navbar-header">
             <a href="index.html" class="navbar-brand">
-                <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+                <img src="<?= base_url('img/logo.png') ?>" alt="Nifty Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">Las Rosas</span>
                 </div>

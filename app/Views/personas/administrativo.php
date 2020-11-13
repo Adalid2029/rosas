@@ -284,7 +284,7 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax: "/persona/ajaxListarAdministrativos",
+            ajax: "/administrativo/ajaxListarAdministrativos",
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
@@ -346,7 +346,7 @@
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "/persona/insertar_administrativo",
+            url: "/administrativo/insertar_administrativo",
             data: $("#frm_agregar_administrativo").serialize(),
             dataType: "JSON"
         }).done(function(response){
@@ -411,7 +411,7 @@
         let id = $(this).attr("data");
         $.ajax({
             type: "POST",
-            url: "/persona/editar_administrativo",
+            url: "/administrativo/editar_administrativo",
             data: {"id":id},
             dataType: "JSON"
         }).done(function (response) {
@@ -453,7 +453,7 @@
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "/persona/actualizar_administrativo",
+            url: "/administrativo/actualizar_administrativo",
             data: $("#frm_editar_administrativo").serialize(),
             dataType: "JSON"
         }).done(function(response){
@@ -486,7 +486,7 @@
            if (result){
                $.ajax({
                    type: "POST",
-                   url: "/persona/eliminar_administrativo",
+                   url: "/administrativo/eliminar_administrativo",
                    data: {"id":id},
                    dataType: "JSON"
                }).done(function (response) {
@@ -503,7 +503,5 @@
         });
 
     });
-
-
 
 </script>

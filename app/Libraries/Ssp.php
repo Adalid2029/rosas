@@ -27,7 +27,7 @@ if (is_file($file)) {
 }
 
 
-class SSP
+class Ssp
 {
     /**
      * Create the data output array for the DataTables rows

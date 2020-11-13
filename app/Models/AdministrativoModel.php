@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Database\Database;
 
-class PersonaModel extends Database
+class AdministrativoModel extends Database
 {
     public $db = null;
 
