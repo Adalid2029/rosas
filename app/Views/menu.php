@@ -47,9 +47,11 @@
 										Administrativo
 									</a>
 								</li>
-                                <li><a href="<?= base_url("/estudiante/listarEstudiantes")?>">Estudiante</a></li>
                                 <li>
-                                    <a href="<?= base_url("/persona/maestro")?>">Maestro</a>
+                                    <a href="<?= base_url("/estudiante/listarEstudiantes")?>">Estudiante</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url("/maestro/listarMaestros")?>">Maestro</a>
                                 </li>
 							</ul>
 						</li>
