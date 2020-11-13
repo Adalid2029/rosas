@@ -34,7 +34,32 @@
                 <h4 id="modal-title" class="modal-title">Modal title</h4>
             </div>
             <div id="modal-body" class="modal-body">
-                ...
+                <form id="frm-nota" method="post" autocomplete="off">
+                    <div class="row">
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="nota1" class="control-label">Nota 1</label>
+                            <input type="text" id="nota1" class="form-control" name="nota1">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="nota2" class="control-label">Nota 2</label>
+                            <input type="password" id="nota2" name="nota2" class="form-control">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="nota3" class="control-label">Nota 3</label>
+                            <input type="password" id="nota3" name="nota3" class="form-control">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="nota3" class="control-label">Nota Final</label>
+                            <input type="password" id="nota_final" name="nota_final" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
+                                <button type="submit" class="btn btn-primary"></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- <div id="modal-footer" class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

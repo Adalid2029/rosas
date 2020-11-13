@@ -14,6 +14,17 @@ $(document).ready(function () {
 		],
 	});
 	$('#tbl_listar_estudiantes').on('click', '.editar-estudiante', function () {
-		parametrosModal('#modal', 'sljds', 'modal-lg', false, true);
+		var botonSubir = $('button[type=submit]', $('#frm-nota'));
+		$.get('/notas/editarNota', { id_estudiante: $(this).attr('data-id-estudiante') }).done(function (r) {
+			botonSubir.html('Editar');
+			botonSubir.attr('id', 'editar-nota');
+		});
+		parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, true);
+	});
+	$('#frm-nota').on('submit', function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+		alert();
+		console.log($(this).serialize());
 	});
 });

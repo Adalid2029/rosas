@@ -20,7 +20,16 @@ class Notas extends BaseController
 	}
 	public function listarEstudiantes()
 	{
-		return $this->templater->view('Notas/listarEstudiantes', []);
+		return $this->templater->view('Notas/notasListarEstudiantes', []);
+	}
+	public function editarNota()
+	{
+		if ($this->request->isAJAX()) {
+			print_r($_REQUEST);
+		}
+	}
+	public function actualizarNota()
+	{
 	}
 	public function ajaxListarEstudiantes()
 	{
