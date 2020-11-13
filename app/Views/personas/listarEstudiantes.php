@@ -93,6 +93,7 @@
                             <input type="hidden" name="id_persona" id="id_persona">
                             <input type="hidden" name="id_estudiante" id="id_estudiante">
                             <input type="hidden" name="id_usuario" id="id_usuario">
+                            <input type="hidden" name="accion" id="accion" value="">
                         </div>
 
                         <div class="row">
@@ -117,7 +118,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="control-label" for="nacimiento">Nacimiento <span style="color: red;">(*)</span> :</label>
-                                    <input type="text" name="nacimiento" id="nacimiento" class="form-control" required>
+                                    <input type="date" name="nacimiento" id="nacimiento" class="form-control" required>
                                 </div>
                             </div>
 
@@ -161,7 +162,7 @@
                     </div>
                     <div class="panel-footer text-right">
                         <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
-                        <button type="submit" id="btn-guardar-estudiante" class="btn btn-primary">Guardar</button>
+                        <button type="submit" id="btn-guardar-estudiante" class="btn btn-primary"></button>
                     </div>
                 </form>
             </div>
@@ -237,6 +238,8 @@
 
     // Modal para agregar estudiante
     $("#agregar_estudiante").on("click", function (e) {
+        $("#btn-guardar-estudiante").html("Guardar");
+        $("#accion").val("in");
         parametrosModal(
             "#agregar-estudiante",
             "Agregar Estudiante",
@@ -244,7 +247,124 @@
             false,
             true
         );
+
     });
 
+    // Guardar estudiante
+    $("#frm_guardar_estudiante").on("submit", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/estudiante/guardar_estudiante",
+            data: $("#frm_guardar_estudiante").serialize(),
+            dataType: "JSON"
+        }).done(function(response){
+
+            if (typeof response.warning !== "undefined") {
+                mensajeAlert("warning", response.warning, "Advertencia");
+                $("#ci").focus();
+            }
+
+            if (typeof response.form !== "undefined") {
+                mensajeAlert("warning", response.form, "Advertencia");
+            }
+
+            if (typeof response.exito !== "undefined") {
+                $("#tbl_estudiante").DataTable().draw();
+                $("#agregar-estudiante").modal("hide");
+                mensajeAlert("success", response.exito, "Exito");
+                limpiarCampos();
+            }
+
+        }).fail(function (e) {
+            mensajeAlert("error", "Error al registrar/editar el estudiante", "Error");
+        });
+    });
+
+    // Limpiar Campos
+    function limpiarCampos()
+    {
+        $("#id_persona").val("");
+        $("#id_estudiante").val("");
+        $("#id_usuario").val("");
+        $("#rude").val("");
+        $("#ci").val("");
+        $("#exp").val("");
+        $("#nombres").val("");
+        $("#paterno").val("");
+        $("#materno").val("");
+        $("#nacimiento").val("");
+        $("#telefono").val("");
+        $("#sexo").val("");
+        $("#domicilio").val("");
+        $("#gestion_ingreso").val("");
+        $("#accion").val("");
+    }
+
+    // Editar Estudiante
+    $('#tbl_estudiante').on("click", ".btn_editar_estudiante", function(e){
+        let id = $(this).attr("data");
+        $.ajax({
+            type: "POST",
+            url: "/estudiante/editar_estudiante",
+            data: {"id":id},
+            dataType: "JSON"
+        }).done(function (response) {
+
+            $("#id_persona").val(response[0]["id_persona"]);
+            $("#id_estudiante").val(response[0]["id_estudiante"]);
+            $("#id_usuario").val(response[0]["id_usuario"]);
+            $("#rude").val(response[0]["rude"]);
+            $("#ci").val(response[0]["ci"]);
+            $("#exp").val(response[0]["exp"]);
+            $("#nombres").val(response[0]["nombres"]);
+            $("#paterno").val(response[0]["paterno"]);
+            $("#materno").val(response[0]["materno"]);
+            $("#nacimiento").val(response[0]["nacimiento"]);
+            $("#telefono").val(response[0]["telefono"]);
+            $("#sexo").val(response[0]["sexo"]);
+            $("#domicilio").val(response[0]["domicilio"]);
+            $("#gestion_ingreso").val(response[0]["gestion_ingreso"]);
+            $("#accion").val("up");
+
+            $("#btn-guardar-estudiante").html("Editar");
+            parametrosModal(
+                "#agregar-estudiante",
+                "Editar Estudiante",
+                "modal-lg",
+                false,
+                true
+            );
+
+        }).fail(function (e) {
+            $("#agregar-estudiante").modal("hide");
+        });
+
+    });
+
+    // Eliminar Estudiante
+    $("#tbl_estudiante").on("click", ".btn_eliminar_estudiante", function(e){
+        let id = $(this).attr("data");
+        bootbox.confirm("¿Estas seguro de eliminar al estudiante?", function(result){
+            if (result){
+                $.ajax({
+                    type: "POST",
+                    url: "/estudiante/eliminar_estudiante",
+                    data: {"id":id},
+                    dataType: "JSON"
+                }).done(function (response) {
+
+                    if (typeof response.exito !== "undefined") {
+                        $("#tbl_estudiante").DataTable().draw();
+                        mensajeAlert("success", response.exito, "Exito");
+                    }
+
+                }).fail(function (e) {
+                    mensajeAlert("error", "Error al procesar la peticion", "Error");
+                });
+            }
+        });
+
+    });
 
 </script>
