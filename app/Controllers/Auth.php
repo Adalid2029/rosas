@@ -45,6 +45,12 @@ class Auth extends Controller
 			# Agregamos una sesion al navegador
 
 			$this->session->set(['id_persona' => $userSearched[0]['id_persona']]);
+            $this->session->set(['paterno' => $userSearched[0]['paterno']]);
+            $this->session->set(['materno' => $userSearched[0]['materno']]);
+            $this->session->set(['nombres' => $userSearched[0]['nombres']]);
+            $this->session->set(['domicilio' => $userSearched[0]['domicilio']]);
+            $this->session->set(['telefono' => $userSearched[0]['telefono']]);
+            $this->session->set(['sexo' => $userSearched[0]['sexo']]);
 
 			# Redireccionamos a la pagina principal
 			return redirect()->to(base_url('/'));

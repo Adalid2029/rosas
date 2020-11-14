@@ -36,14 +36,14 @@
                             <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                             <i class="demo-pli-male"></i>
                         </span>
-                        <div class="username hidden-xs">Aaron Chavez</div>
+                        <div class="username hidden-xs"><?= isset($_SESSION["nombres"])?$_SESSION["nombres"]." " .$_SESSION["paterno"]:"Invitado"; ?></div>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
                         <!-- User dropdown menu -->
                         <ul class="head-list">
                             <li>
-                                <a href="">
+                                <a href="<?= base_url("perfil/perfil") ?>">
                                     <i class="demo-pli-male icon-lg icon-fw"></i>
                                     Mi perfil
                                 </a>

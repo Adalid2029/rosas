@@ -7,6 +7,7 @@
       <w>académico</w>
       <w>accion</w>
       <w>acciones</w>
+      <w>acerca</w>
       <w>actualizado</w>
       <w>actualizar</w>
       <w>actuzalizar</w>
@@ -19,13 +20,17 @@
       <w>apellido</w>
       <w>apellidos</w>
       <w>busqueda</w>
+      <w>cambiar</w>
       <w>caracter</w>
       <w>caracteres</w>
       <w>cargar</w>
       <w>cerrar</w>
       <w>clave</w>
       <w>condicion</w>
+      <w>confirmar</w>
       <w>contener</w>
+      <w>contrasenia</w>
+      <w>contraseña</w>
       <w>correctamente</w>
       <w>creado</w>
       <w>datatables</w>
@@ -65,10 +70,14 @@
       <w>guardar</w>
       <w>hermana</w>
       <w>hermano</w>
+      <w>iguala</w>
+      <w>información</w>
       <w>ingresado</w>
+      <w>ingrese</w>
       <w>ingreso</w>
       <w>insertamos</w>
       <w>insertar</w>
+      <w>invitado</w>
       <w>licenciatura</w>
       <w>limpiar</w>
       <w>listado</w>
@@ -86,18 +95,21 @@
       <w>nombre</w>
       <w>nombres</w>
       <w>notas</w>
+      <w>nuevo</w>
       <w>numéricos</w>
       <w>opensans</w>
       <w>orderable</w>
       <w>parametros</w>
       <w>parentesco</w>
       <w>paterno</w>
+      <w>perfil</w>
       <w>petición</w>
       <w>profesor</w>
       <w>profesora</w>
       <w>punct</w>
       <w>registrado</w>
       <w>registro</w>
+      <w>repita</w>
       <w>reporte</w>
       <w>requerido</w>
       <w>reservados</w>

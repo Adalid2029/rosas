@@ -10,14 +10,23 @@
 					<div id="mainnav-profile" class="mainnav-profile">
 						<div class="profile-wrap text-center">
 							<div class="pad-btm">
-								<img class="img-circle img-md" src="<?= base_url('img/personas/persona.gif') ?>" alt="Profile Picture">
+                                <?php
+                                if (isset($_SESSION["sexo"])){
+                                    if ($_SESSION["sexo"] == "M")
+                                    {
+                                        echo '<img src="'.base_url('img/profile-photos/1.png').'" class="img-lg img-circle" alt="Profile Picture">';
+                                    }else{
+                                        echo '<img src="'.base_url('img/profile-photos/6.png').'" class="img-lg img-circle" alt="Profile Picture">';
+                                    }
+                                }
+                                ?>
 							</div>
 							<a href="index.html#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
 								<span class="pull-right dropdown-toggle">
 									<i class="dropdown-caret"></i>
 								</span>
-								<p class="mnp-name">Aaron Chavez</p>
-								<span class="mnp-desc">aaron.cha@themeon.net</span>
+								<p class="mnp-name"><?= (isset($_SESSION["nombres"]))? $_SESSION["nombres"]." " .$_SESSION["paterno"]: "Invitado"; ?></p>
+								<span class="mnp-desc">Director</span>
 							</a>
 						</div>
 						<div id="profile-nav" class="collapse list-group bg-trans">
