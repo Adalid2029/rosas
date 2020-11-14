@@ -53,6 +53,9 @@
                                 <li>
                                     <a href="<?= base_url("/maestro/listarMaestros")?>">Maestro</a>
                                 </li>
+                                <li>
+                                    <a href="<?= base_url("/tutor/listarTutor")?>">Tutor</a>
+                                </li>
 							</ul>
 						</li>
 

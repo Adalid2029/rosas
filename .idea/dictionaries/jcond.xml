@@ -1,6 +1,8 @@
 <component name="ProjectDictionaryState">
   <dictionary name="jcond">
     <words>
+      <w>abuela</w>
+      <w>abuelo</w>
       <w>academico</w>
       <w>académico</w>
       <w>accion</w>
@@ -61,6 +63,8 @@
       <w>gestión</w>
       <w>grado</w>
       <w>guardar</w>
+      <w>hermana</w>
+      <w>hermano</w>
       <w>ingresado</w>
       <w>ingreso</w>
       <w>insertamos</w>
@@ -70,6 +74,7 @@
       <w>listado</w>
       <w>listar</w>
       <w>llevar</w>
+      <w>madre</w>
       <w>masculino</w>
       <w>maskedinput</w>
       <w>materno</w>
@@ -85,6 +90,7 @@
       <w>opensans</w>
       <w>orderable</w>
       <w>parametros</w>
+      <w>parentesco</w>
       <w>paterno</w>
       <w>petición</w>
       <w>profesor</w>
@@ -95,6 +101,7 @@
       <w>reporte</w>
       <w>requerido</w>
       <w>reservados</w>
+      <w>responsable</w>
       <w>respuesta</w>
       <w>rosas</w>
       <w>seleccione</w>
