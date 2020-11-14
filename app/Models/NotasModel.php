@@ -11,26 +11,17 @@ class NotasModel extends Database
     {
         $this->db = \Config\Database::connect();
     }
-    public function persona($accion, $datos, $condicion = null, $busqueda = null)
+    public function listarCursos($condicion = null, $orden = '', $agrupacion = '')
     {
-        $builder = $this->db->table('persona');
-        switch ($accion) {
-            case 'select':
-                if (is_array($condicion)) {
-                    return $builder->getWhere($condicion);
-                } else {
-                    return $builder->get();
-                }
-                break;
-            case 'insert':
-                return $builder->insert($datos) ? $this->db->insertID() : $this->db->error();
-                break;
-            case 'update':
-                return $builder->update($datos, $condicion) ? true : $this->db->error();
-                break;
-            case 'search':
-                return $builder->like('nombres', $busqueda)->get()->getResultArray();
-                break;
-        }
+        $builder = $this->db->table('maestro m');
+        $builder->select('*');
+        $builder->join('clase c', 'c.id_maestro = m.id_maestro');
+        $builder->join('curso cu', 'cu.id_curso = c.id_curso');
+        $builder->join('materia ma', 'ma.id_materia = c.id_materia');
+        $builder->where($condicion);
+        $builder->groupBy($agrupacion);
+        $builder->orderBy($orden);
+
+        return $builder->get();
     }
 }

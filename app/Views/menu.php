@@ -10,22 +10,23 @@
 					<div id="mainnav-profile" class="mainnav-profile">
 						<div class="profile-wrap text-center">
 							<div class="pad-btm">
-                                <?php
-                                if (isset($_SESSION["sexo"])){
-                                    if ($_SESSION["sexo"] == "M")
-                                    {
-                                        echo '<img src="'.base_url('img/profile-photos/1.png').'" class="img-lg img-circle" alt="Profile Picture">';
-                                    }else{
-                                        echo '<img src="'.base_url('img/profile-photos/6.png').'" class="img-lg img-circle" alt="Profile Picture">';
-                                    }
-                                }
-                                ?>
+								<?php
+								/**Jefe este $user tiene todo lo que necesitas poner en session en el controlador Auth */
+								// var_dump($user);
+								if (isset($_SESSION["sexo"])) {
+									if ($_SESSION["sexo"] == "M") {
+										echo '<img src="' . base_url('img/profile-photos/1.png') . '" class="img-lg img-circle" alt="Profile Picture">';
+									} else {
+										echo '<img src="' . base_url('img/profile-photos/6.png') . '" class="img-lg img-circle" alt="Profile Picture">';
+									}
+								}
+								?>
 							</div>
 							<a href="index.html#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
 								<span class="pull-right dropdown-toggle">
 									<i class="dropdown-caret"></i>
 								</span>
-								<p class="mnp-name"><?= (isset($_SESSION["nombres"]))? $_SESSION["nombres"]." " .$_SESSION["paterno"]: "Invitado"; ?></p>
+								<p class="mnp-name"><?= (isset($_SESSION["nombres"])) ? $_SESSION["nombres"] . " " . $_SESSION["paterno"] : "Invitado"; ?></p>
 								<span class="mnp-desc">Director</span>
 							</a>
 						</div>
@@ -56,37 +57,29 @@
 										Administrativo
 									</a>
 								</li>
-                                <li>
-                                    <a href="<?= base_url("/estudiante/listarEstudiantes")?>">Estudiante</a>
-                                </li>
-                                <li>
-                                    <a href="<?= base_url("/maestro/listarMaestros")?>">Maestro</a>
-                                </li>
-                                <li>
-                                    <a href="<?= base_url("/tutor/listarTutor")?>">Tutor</a>
-                                </li>
+								<li>
+									<a href="<?= base_url("/estudiante/listarEstudiantes") ?>">Estudiante</a>
+								</li>
+								<li>
+									<a href="<?= base_url("/maestro/listarMaestros") ?>">Maestro</a>
+								</li>
+								<li>
+									<a href="<?= base_url("/tutor/listarTutor") ?>">Tutor</a>
+								</li>
 							</ul>
 						</li>
 
 						<li class="">
 							<a href="#" data-original-title="" title="">
-								<i class="demo-dpi-home"></i>
-								<span class="menu-title">Dashboard</span>
+								<i class="fa fa fa-id-card-o"></i>
+								<span class="menu-title">Kardex Estudiantil</span>
 								<i class="arrow"></i>
 							</a>
-
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false">
-
-								<li class="active-link">
-									<a class="menu--link" href="<?= base_url('/home/preview') ?>">Dashboard 1</a>
-								</li>
-								<li><a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>">Notas</a></li>
-								<li><a href="dashboard-3.html">Dashboard 3</a></li>
+								<li><a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>">Cursos</a></li>
 							</ul>
 						</li>
-
-
 					</ul>
 
 				</div>

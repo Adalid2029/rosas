@@ -13,6 +13,10 @@ $(document).ready(function () {
 			},
 		],
 	});
+	$.get('/notas/listarCursos').done(function (r) {
+		$('.panel-body').html(r.vista);
+	});
+
 	$('#tbl_listar_estudiantes').on('click', '.editar-estudiante', function () {
 		var botonSubir = $('button[type=submit]', $('#frm-nota'));
 		$.get('/notas/editarNota', { id_estudiante: $(this).attr('data-id-estudiante') }).done(function (r) {
@@ -21,10 +25,32 @@ $(document).ready(function () {
 		});
 		parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, true);
 	});
-	$('#frm-nota').on('submit', function (e) {
-		e.preventDefault();
-		e.stopPropagation();
-		alert();
-		console.log($(this).serialize());
+
+	$('#frm-nota').on('keyup', 'input, select', function (event) {
+		event.preventDefault();
+		var id_estudiante = $('[name="id_estudiante"]').val();
+		let formData = new FormData();
+		formData.append(event.target.name, event.target.value.trim());
+		formData.append('id_estudiante', id_estudiante);
+		$.ajax({
+			type: 'post',
+			url: '/notas/actualizarNota',
+			data: formData,
+			processData: false,
+			contentType: false,
+			cache: false,
+			async: false,
+		})
+			.done(function (data) {
+				if (typeof data.exito !== 'undefined') {
+					mensajeAlert('success', data.exito + event.target.name, 'Exito');
+					$('#tbl_listar_estudiantes').DataTable().draw();
+				} else {
+					mensajeAlert('warning', data.error, 'Advertencia');
+				}
+			})
+			.fail(function (jqXHR, textStatus) {
+				console.log(jqXHR.responseText);
+			});
 	});
 });

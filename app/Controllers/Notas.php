@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\Reportes\NotasReporte;
 use App\Libraries\SSP;
+use App\Models\NotasModel;
 
 class Notas extends BaseController
 {
 	public $notasReporte = null;
+	public $notasModel = null;
 	public function __construct()
 	{
 		parent::__construct();
 		$this->notasReporte = new NotasReporte();
+		$this->notasModel = new NotasModel();
 	}
 	public function imp()
 	{
@@ -30,6 +33,26 @@ class Notas extends BaseController
 	}
 	public function actualizarNota()
 	{
+		if ($this->request->isAJAX()) {
+			print_r($_REQUEST);
+		}
+	}
+	public function listarCursos()
+	{
+		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => 1], '', 'cu.id_curso')->getResultArray();
+		$cursosMaterias = [];
+		foreach ($cursos as $key => $value) {
+			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => 1, 'cu.id_curso' => $value['id_curso']], '', '')->getResultArray();
+		}
+		// var_dump($cursosMaterias);
+		if (!empty($cursosMaterias)) {
+			$vista = '';
+			foreach ($cursosMaterias as $key => $value) {
+				$vista .= view('Notas/tarjetas/notasTarjetaCurso', ['curso' => $value]);
+			}
+			return $this->response->setJSON(json_encode(['exito' => true, 'vista' => $vista]));
+		} else
+			return $this->response->setJSON(json_encode(['error' => 'No se encontro registros']));
 	}
 	public function ajaxListarEstudiantes()
 	{
@@ -37,7 +60,7 @@ class Notas extends BaseController
 			(SELECT e.id_estudiante, p.id_persona, rude, concat(ci, ' ', exp) ci, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
 			FROM
 			  rs_estudiante e
-			  join rs_persona p on e.id_persona = p.id_persona
+			  join rs_persona p on p.id_persona = e.id_persona
 			  left join rs_calificacion rc on rc.id_estudiante = e.id_estudiante
 			) temp 
 			EOT;

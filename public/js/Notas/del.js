@@ -244,31 +244,4 @@ $(document).ready(function () {
 				console.log(jqXHR.responseText);
 			});
 	});
-	window.listar_archivos = function () {
-		$.post('/persona/listar_archivos', {
-			id_persona: $('#id_persona').val(),
-		}).done(function (data) {
-			parametrosModal('#seleccionar-archivo', 'Seleccione su archivo', '', false, false);
-			$('#seleccionar-archivo-body').html(data);
-			$('.seleccionar_archivo').on('click', function (event) {
-				event.preventDefault();
-				event.stopPropagation();
-				if (event.currentTarget.dataset.type == '.jpg' || event.currentTarget.dataset.type == '.png' || event.currentTarget.dataset.type == '.gif' || event.currentTarget.dataset.type == '.jpeg') {
-					$('[name="id_respaldo_digital"]').val(event.currentTarget.dataset.value);
-					$('#respaldo_digital_texto').html(event.currentTarget.dataset.name);
-					$('#seleccionar-archivo').modal('hide');
-				} else {
-					alertaSimple('ERROR', 'Tipo de formato no admitido ' + event.currentTarget.dataset.name, 'top-right', 'error', 2000);
-				}
-			});
-			$('#seleccionar-archivo-close').on('click', function () {
-				$('#respaldo_digital_texto').html('No se ha seleccionado ningún archivo');
-				$('[name="id_respaldo_digital"]').val(0);
-			});
-			$('.parent-container').magnificPopup({
-				delegate: 'a',
-				type: 'image',
-			});
-		});
-	};
 });

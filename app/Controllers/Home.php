@@ -9,7 +9,7 @@ class Home extends BaseController
 	public function index()
 	{
 		// return view('welcome_message');
-		return $this->templater->view('Home/home', []);
+		return $this->templater->view('Home/home', $this->data);
 	}
 	public function preview()
 	{
@@ -49,6 +49,6 @@ class Home extends BaseController
 			'db'   => $this->db->database,
 			'host' => $this->db->hostname
 		);
-		return $this->response->setJSON(json_encode(SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)));
+			return $this->response->setJSON(json_encode(SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)));
 	}
 }
