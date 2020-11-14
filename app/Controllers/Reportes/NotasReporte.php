@@ -6,10 +6,31 @@ use FPDF;
 
 class NotasReporte extends FPDF
 {
+    public function encabezado_posgraduante($lista_programa_modulo_paralelo_fila = null)
+    {
+        $this->Ln(4);
+        $this->SetFont('Arial', 'I', 15);
+        $this->Cell(0, 3, utf8_decode($this->titulo_), 0, 1, 'C', 0);
+        $this->Ln(2);
+        $this->SetFont('Arial', 'I', 7);
+        // $this->datos_encabezado($lista_programa_modulo_paralelo_fila);
+        $this->Ln(4);
+        $this->SetTextColor(255, 255, 255, 255); //Color de texto
+        $this->SetFillColor(14, 10, 87, 0.75); //Color de relleno    
+        $this->SetDrawColor(235, 238, 245, 1); //Color de borde
+        $this->Cell(10, 5, utf8_decode('Nro'), 'L R B', 0, 'L', 1);
+        $this->Cell(20, 5, utf8_decode('C.I.'), 'L R B', 0, 'L', 1);
+        $this->Cell(20, 5, utf8_decode('R.U.'), 'L R B', 0, 'L', 1);
+        $this->Cell(30, 5, utf8_decode('PATERNO'), 'L R B', 0, 'L', 1);
+        $this->Cell(30, 5, utf8_decode('MATERNO'), 'L R B', 0, 'L', 1);
+        $this->Cell(30, 5, utf8_decode('NOMBRES'), 'L R B', 0, 'L', 1);
+        $this->Cell(15, 5, utf8_decode('CEL'), 'L R B', 0, 'L', 1);
+        $this->Cell(30, 5, utf8_decode('CORREO ELECTRÓNICO'), 'L R B', 1, 'L', 1);
+    }
     public function imp()
     {
         $this->AddPage('P', 'letter');
-        // $this->encabezado_posgraduante($datos_programa);
+        $this->encabezado_posgraduante();
         $this->AliasNbPages();
         $this->SetFillColor(229, 229, 229); // DEFINE EL COLOR// Se define el formato de fuente: Arial, negritas, tamaño 9
         $this->SetLineWidth(0);
