@@ -38,19 +38,19 @@
                     <div class="row">
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota1" class="control-label">Nota 1</label>
-                            <input type="text" id="nota1" class="form-control" name="nota1">
+                            <input type="number" id="nota1" name="nota1" class="form-control">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota2" class="control-label">Nota 2</label>
-                            <input type="password" id="nota2" name="nota2" class="form-control">
+                            <input type="number" id="nota2" name="nota2" class="form-control">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota3" class="control-label">Nota 3</label>
-                            <input type="password" id="nota3" name="nota3" class="form-control">
+                            <input type="number" id="nota3" name="nota3" class="form-control">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota3" class="control-label">Nota Final</label>
-                            <input type="password" id="nota_final" name="nota_final" class="form-control">
+                            <input type="number" id="nota_final" name="nota_final" class="form-control">
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 text-right">
