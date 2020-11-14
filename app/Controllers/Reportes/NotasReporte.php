@@ -10,7 +10,7 @@ class NotasReporte extends FPDF
     {
         $this->Ln(4);
         $this->SetFont('Arial', 'I', 15);
-        $this->Cell(0, 3, utf8_decode($this->titulo_), 0, 1, 'C', 0);
+        $this->Cell(0, 3, utf8_decode('titulo va aqui'), 0, 1, 'C', 0);
         $this->Ln(2);
         $this->SetFont('Arial', 'I', 7);
         // $this->datos_encabezado($lista_programa_modulo_paralelo_fila);
@@ -53,6 +53,7 @@ class NotasReporte extends FPDF
                 $this->AjustCell(30, 5, utf8_decode($lista_posgraduante_fila->email), 1, 1, 'L', 1);
             }
         }
+        $this->Output();
     }
     function AjustCell($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '')
     {
