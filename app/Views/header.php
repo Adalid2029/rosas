@@ -43,7 +43,7 @@
                         <!-- User dropdown menu -->
                         <ul class="head-list">
                             <li>
-                                <a href="<?= base_url("perfil/perfil") ?>">
+                                <a class="menu--link" href="<?= base_url("perfil/perfil") ?>">
                                     <i class="demo-pli-male icon-lg icon-fw"></i>
                                     Mi perfil
                                 </a>
