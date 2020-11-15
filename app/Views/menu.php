@@ -51,20 +51,19 @@
 							</a>
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false">
-
 								<li class="">
 									<a class="menu--link" href="<?= base_url('/administrativo/listarAdministrativos'); ?>">
 										Administrativo
 									</a>
 								</li>
 								<li>
-									<a href="<?= base_url("/estudiante/listarEstudiantes") ?>">Estudiante</a>
+									<a class="menu--link" href="<?= base_url("/estudiante/listarEstudiantes") ?>">Estudiante</a>
 								</li>
 								<li>
-									<a href="<?= base_url("/maestro/listarMaestros") ?>">Maestro</a>
+									<a class="menu--link" href="<?= base_url("/maestro/listarMaestros") ?>">Maestro</a>
 								</li>
 								<li>
-									<a href="<?= base_url("/tutor/listarTutor") ?>">Tutor</a>
+									<a class="menu--link" href="<?= base_url("/tutor/listarTutor") ?>">Tutor</a>
 								</li>
 							</ul>
 						</li>
@@ -80,6 +79,23 @@
 								<li><a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>">Cursos</a></li>
 							</ul>
 						</li>
+
+                        <li class="">
+                            <a href="#" data-original-title="" title="">
+                                <i class="fa fa fa-th-list"></i>
+                                <span class="menu-title">Materias y cursos</span>
+                                <i class="arrow"></i>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>">Materias</a>
+                                </li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>">Cursos</a>
+                                </li>
+                            </ul>
+                        </li>
 					</ul>
 
 				</div>
