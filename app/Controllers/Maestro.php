@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Libraries\Ssp;
 use App\Models\AdministrativoModel;
 use App\Models\MaestroModel;
@@ -13,9 +14,9 @@ class Maestro extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this -> model = new MaestroModel();
-        $this -> fecha = new \DateTime();
-        $this -> administrativo = new AdministrativoModel();
+        $this->model = new MaestroModel();
+        $this->fecha = new \DateTime();
+        $this->administrativo = new AdministrativoModel();
     }
 
     // Cargar la vista maestros
@@ -27,7 +28,7 @@ class Maestro extends BaseController
     // Listado de maestros
     public function ajaxListarMaestros()
     {
-        if ($this -> request -> isAJAX()) {
+        if ($this->request->isAJAX()) {
             $this->db->transBegin();
             $table = "rs_view_maestro";
             $where = "estado = 1";
@@ -51,10 +52,9 @@ class Maestro extends BaseController
             );
 
             return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where)));
-        }else{
+        } else {
             return null;
         }
-
     }
 
     // Insert o Update maestro
@@ -64,13 +64,12 @@ class Maestro extends BaseController
         $data1 = null;
         $data2 = null;
 
-        if ($this -> request -> isAJAX())
-        {
+        if ($this->request->isAJAX()) {
 
-            if($this->request->getPost("accion") == "in" && $this->request->getPost("id_persona") == ""){
+            if ($this->request->getPost("accion") == "in" && $this->request->getPost("id_persona") == "") {
                 // Se verifica el registro de CI del estudiante
-                $res = $this-> administrativo -> verificarNombreUsuario(trim($this->request->getPost("ci")));
-                if($res) {
+                $res = $this->administrativo->verificarNombreUsuario(trim($this->request->getPost("ci")));
+                if ($res) {
                     //validación de formulario
                     $validation = \Config\Services::validation();
                     helper(['form', 'url']);
@@ -145,47 +144,43 @@ class Maestro extends BaseController
                             "sexo"          => $this->request->getPost("sexo"),
                             "telefono"      => trim($this->request->getPost("telefono")),
                             "domicilio"     => trim($this->request->getPost("domicilio")),
-                            "creado_en"     => $this -> fecha -> format('Y-m-d H:i:s')
+                            "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
                         );
 
-                        $respuesta = $this-> model ->persona("insert", $data, null, null,);
+                        $respuesta = $this->model->persona("insert", $data, null, null,);
 
-                        if (is_numeric($respuesta)){
+                        if (is_numeric($respuesta)) {
                             $data2 = array(
-                                "id_persona"      => $respuesta,
+                                "id_maestro"      => $respuesta,
                                 "grado_academico" => trim($this->request->getPost("grado_academico"))
                             );
 
-                            $respuesta1 = $this -> model -> maestro("insert", $data2, null, null);
+                            $respuesta1 = $this->model->maestro("insert", $data2, null, null);
 
-                            if (is_numeric($respuesta1)){
+                            if (is_numeric($respuesta1)) {
                                 $data2 = array(
-                                    "id_persona" => $respuesta,
+                                    "id_usuario" => $respuesta,
                                     "usuario"    => trim($this->request->getPost("ci")),
                                     "clave"      => md5($this->request->getPost("nacimiento")),
-                                    "creado_en"  => $this -> fecha -> format('Y-m-d H:i:s')
+                                    "creado_en"  => $this->fecha->format('Y-m-d H:i:s')
                                 );
 
-                                $respuesta2 = $this -> model -> usuario("insert", $data2, null, null);
+                                $respuesta2 = $this->model->usuario("insert", $data2, null, null);
 
-                                if(is_numeric($respuesta2))
-                                {
+                                if (is_numeric($respuesta2)) {
                                     return $this->response->setJSON(json_encode(array(
                                         'exito' => "Maestro registrado correctamente"
                                     )));
                                 }
                             }
                         }
-
                     }
-
-                }else{
+                } else {
                     return $this->response->setJSON(json_encode(array(
                         'warning' => "El ci ingresado ya  se encuentra registrado"
                     )));
                 }
-
-            } else{
+            } else {
                 // actualizar formulario
                 //validación de formulario
                 $validation = \Config\Services::validation();
@@ -262,70 +257,71 @@ class Maestro extends BaseController
                         "sexo"          => $this->request->getPost("sexo"),
                         "telefono"      => trim($this->request->getPost("telefono")),
                         "domicilio"     => trim($this->request->getPost("domicilio")),
-                        "actualizado_en"     => $this -> fecha -> format('Y-m-d H:i:s')
+                        "actualizado_en"     => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this-> model ->persona("update", $data, array("id_persona" => $this->request->getPost("id_persona") ), null,);
+                    $respuesta = $this->model->persona("update", $data, array(
+                        "id_persona" => $this->request->getPost("id_persona")
+                    ), null,);
 
-                    if ($respuesta){
+                    if ($respuesta) {
                         $data2 = array(
-                            "id_persona"      => $this->request->getPost("id_persona"),
                             "grado_academico"            => trim($this->request->getPost("grado_academico")),
                         );
 
-                        $respuesta1 = $this -> model -> maestro("update", $data2, array("id_maestro" => $this->request->getPost("id_maestro")), null);
+                        $respuesta1 = $this->model->maestro("update", $data2, array(
+                            "id_maestro" => $this->request->getPost("id_maestro")
+                        ), null);
 
-                        if ($respuesta1){
+                        if ($respuesta1) {
                             $data2 = array(
-                                "id_persona" => $this->request->getPost("id_persona"),
                                 "usuario"    => trim($this->request->getPost("ci")),
                                 "clave"      => md5($this->request->getPost("nacimiento")),
-                                "actualizado_en"  => $this -> fecha -> format('Y-m-d H:i:s')
+                                "actualizado_en"  => $this->fecha->format('Y-m-d H:i:s')
                             );
 
-                            $respuesta2 = $this -> model -> usuario("update", $data2, array("id_usuario" =>  $this->request->getPost("id_usuario")), null);
+                            $respuesta2 = $this->model->usuario("update", $data2, array(
+                                "id_usuario" =>  $this->request->getPost("id_usuario")
+                            ), null);
 
-                            if($respuesta2)
-                            {
+                            if ($respuesta2) {
                                 return $this->response->setJSON(json_encode(array(
                                     'exito' => "Usuario editado correctamente"
                                 )));
                             }
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
 
     // Editar Maestro
     public function editar_maestro()
     {
         // se Verifica si es petición ajax
-        if ( $this -> request -> isAJAX() ) {
-            $respuesta = $this -> model -> personaMaestro(trim($this->request->getPost("id")));
+        if ($this->request->isAJAX()) {
+            $respuesta = $this->model->personaMaestro(trim($this->request->getPost("id")));
             return $this->response->setJSON(json_encode($respuesta));
         }
-
     }
 
     // Eliminar estudiante
     public function eliminar_maestro()
     {
         // se Verifica si es petición ajax
-        if ( $this -> request -> isAJAX() ) {
-            $respuesta = $this -> model -> persona("update", array("estado" => 0), array("id_persona" => trim($this->request->getPost("id"))), null);
-            if ($respuesta)
-            {
+        if ($this->request->isAJAX()) {
+
+            $respuesta = $this->model->persona("update", array("estado" => 0), array(
+                "id_persona" => trim($this->request->getPost("id"))
+            ), null);
+
+            if ($respuesta) {
                 return $this->response->setJSON(json_encode(array(
                     'exito' => "Maestro Eliminado correctamente"
                 )));
             }
+
         }
     }
-
 }
