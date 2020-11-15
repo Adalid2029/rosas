@@ -13,9 +13,6 @@ $(document).ready(function () {
 			},
 		],
 	});
-	$.get('/notas/listarCursos').done(function (r) {
-		$('.panel-body').html(r.vista);
-	});
 
 	$('#tbl_listar_estudiantes').on('click', '.editar-estudiante', function () {
 		var botonSubir = $('button[type=submit]', $('#frm-nota'));

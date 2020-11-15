@@ -361,7 +361,7 @@ class Ssp
             $db,
             $bindings,
             "SELECT `" . implode("`, `", self::pluck($columns, 'db')) . "`
-			 FROM `$table`
+			 FROM $table
 			 $where
 			 $order
 			 $limit"
@@ -372,7 +372,7 @@ class Ssp
             $db,
             $bindings,
             "SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table`
+			 FROM   $table
 			 $where"
         );
         $recordsFiltered = $resFilterLength[0][0];
@@ -382,7 +382,7 @@ class Ssp
             $db,
             $bindings,
             "SELECT COUNT(`{$primaryKey}`)
-			 FROM   `$table` " .
+			 FROM   $table " .
                 $whereAllSql
         );
         $recordsTotal = $resTotalLength[0][0];

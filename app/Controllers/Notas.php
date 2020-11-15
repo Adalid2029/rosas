@@ -16,6 +16,10 @@ class Notas extends BaseController
 		$this->notasReporte = new NotasReporte();
 		$this->notasModel = new NotasModel();
 	}
+	public function index()
+	{
+		return $this->templater->view('Notas/notasListarCursos', $this->data);
+	}
 	public function imp()
 	{
 		$this->response->setContentType('application/pdf');
@@ -23,7 +27,10 @@ class Notas extends BaseController
 	}
 	public function listarEstudiantes()
 	{
-		return $this->templater->view('Notas/notasListarEstudiantes', []);
+		$this->data['id_materia'] = $this->request->getGet('id_materia');
+		$this->data['id_maestro'] = $this->request->getGet('id_maestro');
+		$this->data['id_curso'] = $this->request->getGet('id_curso');
+		return $this->templater->view('Notas/notasListarEstudiantes', $this->data);
 	}
 	public function editarNota()
 	{
@@ -57,14 +64,15 @@ class Notas extends BaseController
 	public function ajaxListarEstudiantes()
 	{
 		$table = <<<EOT
-			(SELECT e.id_estudiante, p.id_persona, rude, concat(ci, ' ', exp) ci, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
+			(SELECT e.id_estudiante, p.id_persona, rude, concat(ci, ' ', exp) ci, rc.id_materia, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
 			FROM
 			  rs_estudiante e
 			  join rs_persona p on p.id_persona = e.id_persona
 			  left join rs_calificacion rc on rc.id_estudiante = e.id_estudiante
-			) temp 
+			) temp
 			EOT;
 		$primaryKey = 'id_persona';
+		// $where = "id_materia = 2";
 		$columns = array(
 			array('db' => 'id_estudiante', 'dt' => 0),
 			array('db' => 'nombre_completo', 'dt' => 1),
@@ -73,24 +81,10 @@ class Notas extends BaseController
 			array('db' => 'nota1', 'dt' => 4),
 			array('db' => 'nota2', 'dt' => 5),
 			array('db' => 'nota3', 'dt' => 6),
-			array('db' => 'nota_final', 'dt' => 7),
-			// array(
-			// 	'db'        => 'start_date',
-			// 	'dt'        => 4,
-			// 'formatter' => function ($d, $row) {
-			// 	return date('jS M y', strtotime($d));
-			// }
-			// ),
-			// array(
-			// 	'db'        => 'nota1',
-			// 	'dt'        => 4,
-			// 	'formatter' => function ($d, $row) {
-			// 		return '$' . number_format($d);
-			// 	}
-			// )
+			array('db' => 'nota_final', 'dt' => 7)
 		);
 
 		$sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
-		return $this->response->setJSON(json_encode(SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)));
+		return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null)));
 	}
 }
