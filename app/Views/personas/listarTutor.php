@@ -16,17 +16,17 @@
             <div class="panel-body">
                 <table id="tbl_tutor" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>id tutor</th>
-                        <th>Ci</th>
-                        <th>Nombres y Apellidos</th>
-                        <th>Fecha Nac.</th>
-                        <th>Telefono</th>
-                        <th>Sexo</th>
-                        <th>Parentesco</th>
-                        <th>Acciones</th>
-                    </tr>
+                        <tr>
+                            <th width="5%">#</th>
+                            <th>id tutor</th>
+                            <th>Ci</th>
+                            <th>Nombres y Apellidos</th>
+                            <th>Fecha Nac.</th>
+                            <th>Telefono</th>
+                            <th>Sexo</th>
+                            <th>Parentesco</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
                 </table>
 
@@ -37,8 +37,7 @@
 </div>
 
 <!--  Modal de registro maestro -->
-<div class="modal fade" id="agregar-tutor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true" style="overflow-y: scroll;">
+<div class="modal fade" id="agregar-tutor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document">
         <div class="modal-content">
             <div id="agregar-tutor-header" class="modal-header">
@@ -176,71 +175,65 @@
 
 <script>
     //Listar datatable
-    $("#tbl_tutor").DataTable(
-        {
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            ajax: "/tutor/ajaxListarTutor",
-            language: {
-                sProcessing: "Procesando...",
-                sLengthMenu: "Mostrar _MENU_ registros",
-                sZeroRecords: "No se encontraron resultados",
-                sEmptyTable: "Ningún dato disponible en esta tabla",
-                sInfo:
-                    "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-                sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
-                sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-                sInfoPostFix: "",
-                sSearch: "Buscar:",
-                sUrl: "",
-                sInfoThousands: ",",
-                sLoadingRecords: "Cargando...",
-                oPaginate: {
-                    sFirst: "Primero",
-                    sLast: "Último",
-                    sNext: "Siguiente",
-                    sPrevious: "Anterior"
-                },
-                oAria: {
-                    sSortAscending:
-                        ": Activar para ordenar la columna de manera ascendente",
-                    sSortDescending:
-                        ": Activar para ordenar la columna de manera descendente"
-                }
+    $("#tbl_tutor").DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: "/tutor/ajaxListarTutor",
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
             },
-            columnDefs: [
-                {
-                    searchable: false,
-                    orderable: false,
-                    visible: false,
-                    targets: 1
-                },
-                {
-                    searchable: false,
-                    orderable: false,
-                    targets: -1,
-                    data: null,
-                    render: function (data, type, row, meta) {
-                        return (
-                            '<div class="btn-group" role="group">' +
-                            '<a data="' + data[0] +
-                            '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_tutor" data-toggle="tooltip" title="Editar">' +
-                            '<i class="fa fa-pencil-square-o"></i></a>' +
-                            '<a data="' +
-                            data[0] +
-                            '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_tutor" data-toggle="tooltip" title="Eliminar">' +
-                            '<i class="fa fa-trash-o"></i></a>' +
-                            '</div>'
-                        );
-                    }
+            oAria: {
+                sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+                sSortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        columnDefs: [{
+                searchable: false,
+                orderable: false,
+                visible: false,
+                targets: 1
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: -1,
+                data: null,
+                render: function(data, type, row, meta) {
+                    return (
+                        '<div class="btn-group" role="group">' +
+                        '<a data="' + data[0] +
+                        '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_tutor" data-toggle="tooltip" title="Editar">' +
+                        '<i class="fa fa-pencil-square-o"></i></a>' +
+                        '<a data="' +
+                        data[0] +
+                        '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_tutor" data-toggle="tooltip" title="Eliminar">' +
+                        '<i class="fa fa-trash-o"></i></a>' +
+                        '</div>'
+                    );
                 }
-            ]
-        }
-    );
+            }
+        ]
+    });
 
     // Modal para agregar tutor
-    $("#agregar_tutor").on("click", function (e) {
+    $("#agregar_tutor").on("click", function(e) {
         $("#btn-guardar-tutor").html("Guardar");
         $("#accion").val("in");
         parametrosModal(
@@ -253,14 +246,14 @@
     });
 
     // Guardar tutor
-    $("#frm_guardar_tutor").on("submit", function (e) {
+    $("#frm_guardar_tutor").on("submit", function(e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/tutor/guardar_tutor",
             data: $("#frm_guardar_tutor").serialize(),
             dataType: "JSON"
-        }).done(function(response){
+        }).done(function(response) {
 
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
@@ -278,14 +271,13 @@
                 limpiarCampos();
             }
 
-        }).fail(function (e) {
+        }).fail(function(e) {
             mensajeAlert("error", "Error al registrar/editar el tutor(a)", "Error");
         });
     });
 
     // Limpiar Campos
-    function limpiarCampos()
-    {
+    function limpiarCampos() {
         $("#id_persona").val("");
         $("#id_tutor").val("");
         $("#id_usuario").val("");
@@ -303,14 +295,16 @@
     }
 
     // Editar Maestro
-    $('#tbl_tutor').on("click", ".btn_editar_tutor", function(e){
+    $('#tbl_tutor').on("click", ".btn_editar_tutor", function(e) {
         let id = $(this).attr("data");
         $.ajax({
             type: "POST",
             url: "/tutor/editar_tutor",
-            data: {"id":id},
+            data: {
+                "id": id
+            },
             dataType: "JSON"
-        }).done(function (response) {
+        }).done(function(response) {
 
             $("#id_persona").val(response[0]["id_persona"]);
             $("#id_tutor").val(response[0]["id_tutor"]);
@@ -336,38 +330,36 @@
                 true
             );
 
-        }).fail(function (e) {
+        }).fail(function(e) {
             $("#agregar-tutor").modal("hide");
         });
 
     });
 
     // Eliminar Tutor
-    $("#tbl_tutor").on("click", ".btn_eliminar_tutor", function(e){
+    $("#tbl_tutor").on("click", ".btn_eliminar_tutor", function(e) {
         let id = $(this).attr("data");
-        bootbox.confirm("¿Estas seguro de eliminar al tutor?", function(result){
-            if (result){
+        bootbox.confirm("¿Estas seguro de eliminar al tutor?", function(result) {
+            if (result) {
                 $.ajax({
                     type: "POST",
                     url: "/tutor/eliminar_tutor",
-                    data: {"id":id},
+                    data: {
+                        "id": id
+                    },
                     dataType: "JSON"
-                }).done(function (response) {
+                }).done(function(response) {
 
                     if (typeof response.exito !== "undefined") {
                         $("#tbl_tutor").DataTable().draw();
                         mensajeAlert("success", response.exito, "Exito");
                     }
 
-                }).fail(function (e) {
+                }).fail(function(e) {
                     mensajeAlert("error", "Error al procesar la peticion", "Error");
                 });
             }
         });
 
     });
-
-
-
 </script>
-

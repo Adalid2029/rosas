@@ -1,6 +1,6 @@
 <?php
-namespace App\Controllers;
 
+namespace App\Controllers;
 
 use App\Libraries\Ssp;
 use App\Models\AdministrativoModel;
@@ -15,9 +15,9 @@ class Tutor extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this -> model = new TutorModel();
-        $this -> fecha = new \DateTime();
-        $this -> administrativo = new AdministrativoModel();
+        $this->model = new TutorModel();
+        $this->fecha = new \DateTime();
+        $this->administrativo = new AdministrativoModel();
     }
 
     // Cargar la vista tutor
@@ -29,7 +29,7 @@ class Tutor extends BaseController
     // Listado de maestros
     public function ajaxListarTutor()
     {
-        if ($this -> request -> isAJAX()) {
+        if ($this->request->isAJAX()) {
             $this->db->transBegin();
             $table = "rs_view_tutor";
             $where = "estado = 1";
@@ -53,10 +53,9 @@ class Tutor extends BaseController
             );
 
             return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where)));
-        }else{
+        } else {
             return null;
         }
-
     }
 
     // Insert o Update tutor
@@ -66,13 +65,12 @@ class Tutor extends BaseController
         $data1 = null;
         $data2 = null;
 
-        if ($this -> request -> isAJAX())
-        {
+        if ($this->request->isAJAX()) {
 
-            if($this->request->getPost("accion") == "in" && $this->request->getPost("id_persona") == ""){
+            if ($this->request->getPost("accion") == "in" && $this->request->getPost("id_persona") == "") {
                 // Se verifica el registro de CI del estudiante
-                $res = $this-> administrativo -> verificarNombreUsuario(trim($this->request->getPost("ci")));
-                if($res) {
+                $res = $this->administrativo->verificarNombreUsuario(trim($this->request->getPost("ci")));
+                if ($res) {
                     //validación de formulario
                     $validation = \Config\Services::validation();
                     helper(['form', 'url']);
@@ -147,47 +145,43 @@ class Tutor extends BaseController
                             "sexo"          => $this->request->getPost("sexo"),
                             "telefono"      => trim($this->request->getPost("telefono")),
                             "domicilio"     => trim($this->request->getPost("domicilio")),
-                            "creado_en"     => $this -> fecha -> format('Y-m-d H:i:s')
+                            "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
                         );
 
-                        $respuesta = $this-> model ->persona("insert", $data, null, null,);
+                        $respuesta = $this->model->persona("insert", $data, null, null,);
 
-                        if (is_numeric($respuesta)){
+                        if (is_numeric($respuesta)) {
                             $data2 = array(
-                                "id_persona"      => $respuesta,
+                                "id_tutor" => $respuesta,
                                 "parentesco" => trim($this->request->getPost("parentesco"))
                             );
 
-                            $respuesta1 = $this -> model -> tutor("insert", $data2, null, null);
+                            $respuesta1 = $this->model->tutor("insert", $data2, null, null);
 
-                            if (is_numeric($respuesta1)){
+                            if (is_numeric($respuesta1)) {
                                 $data2 = array(
-                                    "id_persona" => $respuesta,
+                                    "id_usuario" => $respuesta,
                                     "usuario"    => trim($this->request->getPost("ci")),
                                     "clave"      => md5($this->request->getPost("nacimiento")),
-                                    "creado_en"  => $this -> fecha -> format('Y-m-d H:i:s')
+                                    "creado_en"  => $this->fecha->format('Y-m-d H:i:s')
                                 );
 
-                                $respuesta2 = $this -> model -> usuario("insert", $data2, null, null);
+                                $respuesta2 = $this->model->usuario("insert", $data2, null, null);
 
-                                if(is_numeric($respuesta2))
-                                {
+                                if (is_numeric($respuesta2)) {
                                     return $this->response->setJSON(json_encode(array(
                                         'exito' => "Tutor registrado correctamente"
                                     )));
                                 }
                             }
                         }
-
                     }
-
-                }else{
+                } else {
                     return $this->response->setJSON(json_encode(array(
                         'warning' => "El ci ingresado ya  se encuentra registrado"
                     )));
                 }
-
-            } else{
+            } else {
                 // actualizar formulario
                 //validación de formulario
                 $validation = \Config\Services::validation();
@@ -264,71 +258,70 @@ class Tutor extends BaseController
                         "sexo"          => $this->request->getPost("sexo"),
                         "telefono"      => trim($this->request->getPost("telefono")),
                         "domicilio"     => trim($this->request->getPost("domicilio")),
-                        "actualizado_en"     => $this -> fecha -> format('Y-m-d H:i:s')
+                        "actualizado_en"     => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this-> model ->persona("update", $data, array("id_persona" => $this->request->getPost("id_persona") ), null,);
+                    $respuesta = $this->model->persona("update", $data, array(
+                        "id_persona" => $this->request->getPost("id_persona")
+                    ), null,);
 
-                    if ($respuesta){
+                    if ($respuesta) {
                         $data2 = array(
-                            "id_persona"      => $this->request->getPost("id_persona"),
                             "parentesco"            => trim($this->request->getPost("parentesco")),
                         );
 
-                        $respuesta1 = $this -> model -> tutor("update", $data2, array("id_tutor" => $this->request->getPost("id_tutor")), null);
+                        $respuesta1 = $this->model->tutor("update", $data2, array(
+                            "id_tutor" => $this->request->getPost("id_tutor")
+                        ), null);
 
-                        if ($respuesta1){
+                        if ($respuesta1) {
                             $data2 = array(
-                                "id_persona" => $this->request->getPost("id_persona"),
                                 "usuario"    => trim($this->request->getPost("ci")),
                                 "clave"      => md5($this->request->getPost("nacimiento")),
-                                "actualizado_en"  => $this -> fecha -> format('Y-m-d H:i:s')
+                                "actualizado_en"  => $this->fecha->format('Y-m-d H:i:s')
                             );
 
-                            $respuesta2 = $this -> model -> usuario("update", $data2, array("id_usuario" =>  $this->request->getPost("id_usuario")), null);
+                            $respuesta2 = $this->model->usuario("update", $data2, array(
+                                "id_usuario" =>  $this->request->getPost("id_usuario")
+                            ), null);
 
-                            if($respuesta2)
-                            {
+                            if ($respuesta2) {
                                 return $this->response->setJSON(json_encode(array(
                                     'exito' => "Tutor(a) editado correctamente"
                                 )));
                             }
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
 
     // Editar Tutor
     public function editar_tutor()
     {
         // se Verifica si es petición ajax
-        if ( $this -> request -> isAJAX() ) {
-            $respuesta = $this -> model -> personaTutor(trim($this->request->getPost("id")));
+        if ($this->request->isAJAX()) {
+            $respuesta = $this->model->personaTutor(trim($this->request->getPost("id")));
             return $this->response->setJSON(json_encode($respuesta));
         }
-
     }
 
     // Eliminar tutor
     public function eliminar_tutor()
     {
         // se Verifica si es petición ajax
-        if ( $this -> request -> isAJAX() ) {
-            $respuesta = $this -> model -> persona("update", array("estado" => 0), array("id_persona" => trim($this->request->getPost("id"))), null);
-            if ($respuesta)
-            {
+        if ($this->request->isAJAX()) {
+
+            $respuesta = $this->model->persona("update", array("estado" => 0), array(
+                "id_persona" => trim($this->request->getPost("id"))
+            ), null);
+
+            if ($respuesta) {
                 return $this->response->setJSON(json_encode(array(
                     'exito' => "Tutor(a) Eliminado correctamente"
                 )));
             }
         }
     }
-
-
 }

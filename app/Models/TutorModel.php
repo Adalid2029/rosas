@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Database\Database;
 
 class TutorModel extends Database
@@ -14,7 +16,7 @@ class TutorModel extends Database
     // PERSONA
     public function persona($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("persona");
+        $builder = $this->db->table("persona");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -35,13 +37,12 @@ class TutorModel extends Database
         }
 
         return null;
-
     }
 
     // MAESTRO
     public function tutor($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("tutor");
+        $builder = $this->db->table("tutor");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -62,13 +63,12 @@ class TutorModel extends Database
         }
 
         return null;
-
     }
 
     // USUARIO
     public function usuario($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("usuario");
+        $builder = $this->db->table("usuario");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -89,18 +89,16 @@ class TutorModel extends Database
         }
 
         return null;
-
     }
 
     // select para edit persona y maestro
     public function personaTutor($id)
     {
-        $builder = $this -> db -> table("persona as p");
-        $builder -> select('*');
-        $builder -> join("tutor as t", "p.id_persona = t.id_persona");
-        $builder -> join("usuario as u", "u.id_persona = p.id_persona");
-        $builder -> where("p.id_persona", $id);
-        return $builder->get() ->getResultArray();
+        $builder = $this->db->table("persona as p");
+        $builder->select('*');
+        $builder->join("tutor as t", "p.id_persona = t.id_tutor");
+        $builder->join("usuario as u", "u.id_usuario = p.id_persona");
+        $builder->where("p.id_persona", $id);
+        return $builder->get()->getResultArray();
     }
-
 }
