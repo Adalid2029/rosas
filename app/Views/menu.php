@@ -11,10 +11,8 @@
 						<div class="profile-wrap text-center">
 							<div class="pad-btm">
 								<?php
-								/**Jefe este $user tiene todo lo que necesitas poner en session en el controlador Auth */
-								// var_dump($user);
-								if (isset($_SESSION["sexo"])) {
-									if ($_SESSION["sexo"] == "M") {
+								if (isset($user[0]["sexo"])) {
+									if ($user[0]["sexo"] == "M") {
 										echo '<img src="' . base_url('img/profile-photos/1.png') . '" class="img-lg img-circle" alt="Profile Picture">';
 									} else {
 										echo '<img src="' . base_url('img/profile-photos/6.png') . '" class="img-lg img-circle" alt="Profile Picture">';
@@ -26,7 +24,7 @@
 								<span class="pull-right dropdown-toggle">
 									<i class="dropdown-caret"></i>
 								</span>
-								<p class="mnp-name"><?= (isset($_SESSION["nombres"])) ? $_SESSION["nombres"] . " " . $_SESSION["paterno"] : "Invitado"; ?></p>
+								<p class="mnp-name"><?= (isset($user[0]["nombres"])) ? $user[0]["nombres"] . " " . $user[0]["paterno"] : "Invitado"; ?></p>
 								<span class="mnp-desc">Director</span>
 							</a>
 						</div>
@@ -83,6 +81,8 @@
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false">
 								<li><a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>"><i class="fa fa-circle-o"></i>Cursos</a></li>
+
+								<li><a class="menu--link" href="<?= base_url('/Notas') ?>">Cursos</a></li>
 							</ul>
 						</li>
 

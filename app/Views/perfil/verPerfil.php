@@ -14,16 +14,15 @@
                         <div class="text-center">
                             <div class="pad-ver">
                                 <?php
-                                    if ($_SESSION["sexo"] == "M")
-                                    {
-                                        echo '<img src="'.base_url('img/profile-photos/1.png').'" class="img-lg img-circle" alt="Profile Picture">';
-                                    }else{
-                                        echo '<img src="'.base_url('img/profile-photos/6.png').'" class="img-lg img-circle" alt="Profile Picture">';
-                                    }
+                                if ($user[0]["sexo"] == "M") {
+                                    echo '<img src="' . base_url('img/profile-photos/1.png') . '" class="img-lg img-circle" alt="Profile Picture">';
+                                } else {
+                                    echo '<img src="' . base_url('img/profile-photos/6.png') . '" class="img-lg img-circle" alt="Profile Picture">';
+                                }
                                 ?>
 
                             </div>
-                            <h4 class="text-lg text-overflow mar-no" id="perfil_nombre"><?= $_SESSION["nombres"]." " .$_SESSION["paterno"]; ?></h4>
+                            <h4 class="text-lg text-overflow mar-no" id="perfil_nombre"><?= $user[0]["nombres"] . " " . $user[0]["paterno"]; ?></h4>
                             <p class="text-sm text-muted" id="perfil_persona">Director</p>
 
                             <div class="pad-ver btn-groups">
@@ -36,9 +35,9 @@
                         <hr>
                         <!-- Profile Details -->
                         <p class="pad-ver text-main text-sm text-uppercase text-bold">Acerca de mí</p>
-                        <p><i class="demo-pli-map-marker-2 icon-lg icon-fw" id="perfil_domicilio"></i><?= $_SESSION["domicilio"] ?></p>
+                        <p><i class="demo-pli-map-marker-2 icon-lg icon-fw" id="perfil_domicilio"></i><?= $user[0]["domicilio"] ?></p>
                         <p><a href="#" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw"></i> https://www.rosas.com</a></p>
-                        <p><i class="demo-pli-old-telephone icon-lg icon-fw" id="perfil_telefono"></i><?= $_SESSION["telefono"] ?></p>
+                        <p><i class="demo-pli-old-telephone icon-lg icon-fw" id="perfil_telefono"></i><?= $user[0]["telefono"] ?></p>
 
                     </div>
 
@@ -111,7 +110,7 @@
 
 <script>
     // Cambiar password
-    $('#frm_cambiar_password').on("submit", function(e){
+    $('#frm_cambiar_password').on("submit", function(e) {
         e.preventDefault();
         e.stopPropagation();
         $.ajax({
@@ -119,7 +118,7 @@
             url: "/perfil/cambiar_password",
             data: $("#frm_cambiar_password").serialize(),
             dataType: "JSON"
-        }).done(function (response) {
+        }).done(function(response) {
             if (typeof response.pass !== "undefined") {
                 mensajeAlert("warning", response.pass, "Advertencia");
                 $("#password_actual").val("");
@@ -142,5 +141,4 @@
 
         });
     });
-
 </script>

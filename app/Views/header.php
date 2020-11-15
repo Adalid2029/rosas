@@ -36,7 +36,7 @@
                             <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                             <i class="demo-pli-male"></i>
                         </span>
-                        <div class="username hidden-xs"><?= isset($_SESSION["nombres"])?$_SESSION["nombres"]." " .$_SESSION["paterno"]:"Invitado"; ?></div>
+                        <div class="username hidden-xs">Juan Carlos User</div>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">

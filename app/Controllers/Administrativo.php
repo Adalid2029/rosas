@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Libraries\SSP;
 use App\Models\AdministrativoModel;
 
@@ -10,19 +11,19 @@ class Administrativo extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this -> model = new AdministrativoModel();
+        $this->model = new AdministrativoModel();
     }
 
     // ADMINISTRATIVOS
     public function listarAdministrativos()
     {
-        return $this->templater->view('personas/administrativo', []);
+        return $this->templater->view('personas/administrativo', $this->data);
     }
 
     // Listado de administrativos
     public function ajaxListarAdministrativos()
     {
-        if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        if ($this->request->isAJAX()) {
             $this->db->transBegin();
             $table = "rs_view_administrativo";
             $where = "estado = 1";
@@ -47,10 +48,9 @@ class Administrativo extends BaseController
             );
 
             return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where)));
-        }else{
+        } else {
             return null;
         }
-
     }
 
     // INSERTAR ADMINISTRATIVO
@@ -60,26 +60,27 @@ class Administrativo extends BaseController
         $fecha = new \DateTime();
 
         // se Verifica si es petición ajax
-        if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        if ($this->request->isAJAX()) {
 
             // Verificación del usuario
-            $res = $this-> model -> verificarNombreUsuario(trim($this->request->getPost("ci")));
-            if($res) {
+            $res = $this->model->verificarNombreUsuario(trim($this->request->getPost("ci")));
+            if ($res) {
                 //validación de formulario
                 $validation = \Config\Services::validation();
                 helper(['form', 'url']);
-                $val = $this->validate([ // rules
-                    "ci" => "required|alpha_numeric|min_length[6]",
-                    "exp" => "required|max_length[2]|alpha",
-                    "nombre" => "required|alpha_space",
-                    "paterno" => "required|alpha_space",
-                    "materno" => "alpha_space",
-                    "nacimiento" => 'required',
-                    "telefono" => "required|numeric",
-                    "sexo" => "required|max_length[1]|alpha",
-                    "cargo" => "required|alpha",
-                    "gestion_ingreso" => "required|numeric|max_length[4]"
-                ],
+                $val = $this->validate(
+                    [ // rules
+                        "ci" => "required|alpha_numeric|min_length[6]",
+                        "exp" => "required|max_length[2]|alpha",
+                        "nombre" => "required|alpha_space",
+                        "paterno" => "required|alpha_space",
+                        "materno" => "alpha_space",
+                        "nacimiento" => 'required',
+                        "telefono" => "required|numeric",
+                        "sexo" => "required|max_length[1]|alpha",
+                        "cargo" => "required|alpha",
+                        "gestion_ingreso" => "required|numeric|max_length[4]"
+                    ],
                     [ // errors
                         "ci" => [
                             "required" => "El CI del usuario es requerido",
@@ -123,7 +124,8 @@ class Administrativo extends BaseController
                             "numeric" => "La gestión de ingreso debe llevar caracteres numéricos",
                             "max_length" => "La gestion de ingreso debe llevar máximo 4 caracteres"
                         ]
-                    ]);
+                    ]
+                );
 
                 if (!$val) {
                     // se devuelve todos los errores
@@ -142,43 +144,39 @@ class Administrativo extends BaseController
                         "sexo"          => $this->request->getPost("sexo"),
                         "telefono"      => trim($this->request->getPost("telefono")),
                         "domicilio"     => trim($this->request->getPost("domicilio")),
-                        "creado_en"     => $fecha -> format('Y-m-d H:i:s')
+                        "creado_en"     => $fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this-> model ->persona("insert", $data, null, null,);
+                    $respuesta = $this->model->persona("insert", $data, null, null,);
 
-                    if(is_numeric($respuesta))
-                    {
+                    if (is_numeric($respuesta)) {
                         $data2 = array(
-                            "id_persona" => $respuesta,
+                            "id_administrativo" => $respuesta,
                             "cargo" => $this->request->getPost("cargo"),
                             "gestion_ingreso" => $this->request->getPost("gestion_ingreso")
                         );
 
-                        $respuesta2 = $this-> model ->administrativo("insert", $data2, null, null);
+                        $respuesta2 = $this->model->administrativo("insert", $data2, null, null);
 
-                        if (is_numeric($respuesta2))
-                        {
+                        if (is_numeric($respuesta2)) {
                             $data3 = array(
-                                "id_persona" => $respuesta,
+                                "id_usuario" => $respuesta,
                                 "usuario"    => trim($this->request->getPost("ci")),
                                 "clave"      => md5($this->request->getPost("nacimiento")),
-                                "creado_en"  => $fecha -> format('Y-m-d H:i:s')
+                                "creado_en"  => $fecha->format('Y-m-d H:i:s')
                             );
 
-                            $respuesta3 = $this -> model -> usuario("insert", $data3, null, null);
+                            $respuesta3 = $this->model->usuario("insert", $data3, null, null);
 
-                            if(is_numeric($respuesta3))
-                            {
+                            if (is_numeric($respuesta3)) {
                                 return $this->response->setJSON(json_encode(array(
                                     'exito' => "Administrativo registrado correctamente"
                                 )));
                             }
                         }
-
                     }
                 }
-            }else{
+            } else {
                 // nombre de usuario exite
                 return $this->response->setJSON(json_encode(array(
                     'warning' => "El ci ingresado ya  se encuentra registrado"
@@ -195,8 +193,8 @@ class Administrativo extends BaseController
     public function editar_administrativo()
     {
         // se Verifica si es petición ajax
-        if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $respuesta = $this -> model -> personaAdministrativo(trim($this->request->getPost("id")));
+        if ($this->request->isAJAX()) {
+            $respuesta = $this->model->personaAdministrativo(trim($this->request->getPost("id")));
             return $this->response->setJSON(json_encode($respuesta));
         }
     }
@@ -208,26 +206,27 @@ class Administrativo extends BaseController
         $fecha = new \DateTime();
 
         // se Verifica si es petición ajax
-        if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        if ($this->request->isAJAX()) {
 
             // Verificación del usuario
             $res = true;
-            if($res) {
+            if ($res) {
                 //validación de formulario
                 $validation = \Config\Services::validation();
                 helper(['form', 'url']);
-                $val = $this->validate([ // rules
-                    "edit_ci" => "required|alpha_numeric|min_length[6]",
-                    "edit_exp" => "required|max_length[2]|alpha",
-                    "edit_nombre" => "required|alpha_space",
-                    "edit_paterno" => "required|alpha_space",
-                    "edit_materno" => "alpha_space",
-                    "edit_nacimiento" => 'required',
-                    "edit_telefono" => "required|numeric",
-                    "edit_sexo" => "required|max_length[1]|alpha",
-                    "edit_cargo" => "required|alpha",
-                    "edit_gestion_ingreso" => "required|numeric|max_length[4]"
-                ],
+                $val = $this->validate(
+                    [ // rules
+                        "edit_ci" => "required|alpha_numeric|min_length[6]",
+                        "edit_exp" => "required|max_length[2]|alpha",
+                        "edit_nombre" => "required|alpha_space",
+                        "edit_paterno" => "required|alpha_space",
+                        "edit_materno" => "alpha_space",
+                        "edit_nacimiento" => 'required',
+                        "edit_telefono" => "required|numeric",
+                        "edit_sexo" => "required|max_length[1]|alpha",
+                        "edit_cargo" => "required|alpha",
+                        "edit_gestion_ingreso" => "required|numeric|max_length[4]"
+                    ],
                     [ // errors
                         "edit_ci" => [
                             "required" => "El CI del usuario es requerido",
@@ -271,7 +270,8 @@ class Administrativo extends BaseController
                             "numeric" => "La gestión de ingreso debe llevar caracteres numéricos",
                             "max_length" => "La gestion de ingreso debe llevar máximo 4 caracteres"
                         ]
-                    ]);
+                    ]
+                );
 
                 if (!$val) {
                     // se devuelve todos los errores
@@ -290,39 +290,41 @@ class Administrativo extends BaseController
                         "sexo"          => $this->request->getPost("edit_sexo"),
                         "telefono"      => trim($this->request->getPost("edit_telefono")),
                         "domicilio"     => trim($this->request->getPost("edit_domicilio")),
-                        "actualizado_en"     => $fecha -> format('Y-m-d H:i:s')
+                        "actualizado_en" => $fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this-> model ->persona("update", $data, array("id_persona" => trim($this->request->getPost("edit_id_persona")) ), null,);
+                    $respuesta = $this->model->persona("update", $data, array(
+                        "id_persona" => trim($this->request->getPost("edit_id_persona"))
+                    ), null,);
 
-                    if($respuesta)
-                    {
+                    if ($respuesta) {
                         $data2 = array(
                             "cargo" => trim($this->request->getPost("edit_cargo")),
                             "gestion_ingreso" => trim($this->request->getPost("edit_gestion_ingreso"))
                         );
 
-                        $respuesta2 = $this-> model ->administrativo("update", $data2, array("id_administrativo" => trim($this->request->getPost("edit_id_administrativo"))), null);
+                        $respuesta2 = $this->model->administrativo("update", $data2, array(
+                            "id_administrativo" => trim($this->request->getPost("edit_id_administrativo"))
+                        ), null);
 
-                        if ($respuesta2)
-                        {
+                        if ($respuesta2) {
                             $data3 = array(
                                 "usuario" => trim($this->request->getPost("edit_ci")),
                                 "clave"   => md5($this->request->getPost("edit_nacimiento")),
-                                "actualizado_en"     => $fecha -> format('Y-m-d H:i:s')
+                                "actualizado_en"     => $fecha->format('Y-m-d H:i:s')
                             );
-                            $respuesta3 = $this -> model -> usuario("update", $data3, array("id_usuario" => trim($this->request->getPost("edit_id_usuario"))), null);
-                            if ($respuesta3){
+                            $respuesta3 = $this->model->usuario("update", $data3, array(
+                                "id_usuario" => trim($this->request->getPost("edit_id_usuario"))
+                            ), null);
+                            if ($respuesta3) {
                                 return $this->response->setJSON(json_encode(array(
                                     'exito' => "Administrativo editado correctamente"
                                 )));
                             }
-
                         }
-
                     }
                 }
-            }else{
+            } else {
                 // nombre de usuario exite
                 return $this->response->setJSON(json_encode(array(
                     'warning' => "El ci ingresado ya  se encuentra registrado"
@@ -339,10 +341,18 @@ class Administrativo extends BaseController
     public function eliminar_administrativo()
     {
         // se Verifica si es petición ajax
-        if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $respuesta = $this -> model -> persona("update", array("estado" => 0), array("id_persona" => trim($this->request->getPost("id"))), null);
-            if ($respuesta)
-            {
+        if ($this->request->isAJAX()) {
+            $data = array(
+              "estado" => 0
+            );
+
+            $condicion = array(
+                "id_persona" => trim($this->request->getPost("id"))
+            );
+
+            $respuesta = $this->model->persona("update", $data, $condicion, null);
+
+            if ($respuesta) {
                 return $this->response->setJSON(json_encode(array(
                     'exito' => "Administrativo Eliminado correctamente"
                 )));
@@ -361,7 +371,7 @@ class Administrativo extends BaseController
     // Listado de administrativos
     public function ajaxListarMaestros()
     {
-        if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        if ($this->request->isAJAX()) {
             $table = "rs_view_maestro";
             $primaryKey = "id_persona";
             $columns = array(
@@ -382,9 +392,8 @@ class Administrativo extends BaseController
             );
 
             return $this->response->setJSON(json_encode(SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)));
-        }else{
+        } else {
             return null;
         }
-
     }
 }

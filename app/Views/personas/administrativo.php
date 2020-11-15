@@ -433,7 +433,6 @@
 
             $("#edit_id_usuario").val(response[0]["id_usuario"]);
 
-
             parametrosModal(
                 "#editar-administrativo",
                 "Editar administrativo",
@@ -443,7 +442,6 @@
             );
 
         }).fail(function (e) {
-            console.log("error");
         });
 
     });
