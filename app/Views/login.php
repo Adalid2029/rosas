@@ -30,7 +30,7 @@
     <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="index.php">
-            <img alt="logo" class="logo" src="assets/iniciativa/img/logo1.png" style="margin-top: 15px;">
+            <img alt="logo" class="logo" width="60px" height="60px" src="<?= base_url("img/images/escudo_rosas.png")?>" style="margin-top: 15px;">
         </a>
     </div>
     <!-- END LOGO -->

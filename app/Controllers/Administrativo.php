@@ -147,7 +147,7 @@ class Administrativo extends BaseController
                         "creado_en"     => $fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->persona("insert", $data, null, null,);
+                    $respuesta = $this->model->persona("insert", $data, null, null);
 
                     if (is_numeric($respuesta)) {
                         $data2 = array(
@@ -295,7 +295,7 @@ class Administrativo extends BaseController
 
                     $respuesta = $this->model->persona("update", $data, array(
                         "id_persona" => trim($this->request->getPost("edit_id_persona"))
-                    ), null,);
+                    ), null);
 
                     if ($respuesta) {
                         $data2 = array(

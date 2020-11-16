@@ -148,7 +148,7 @@ class Tutor extends BaseController
                             "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
                         );
 
-                        $respuesta = $this->model->persona("insert", $data, null, null,);
+                        $respuesta = $this->model->persona("insert", $data, null, null);
 
                         if (is_numeric($respuesta)) {
                             $data2 = array(
@@ -263,7 +263,7 @@ class Tutor extends BaseController
 
                     $respuesta = $this->model->persona("update", $data, array(
                         "id_persona" => $this->request->getPost("id_persona")
-                    ), null,);
+                    ), null);
 
                     if ($respuesta) {
                         $data2 = array(

@@ -158,7 +158,7 @@ class Estudiante extends BaseController
                             "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
                         );
 
-                        $respuesta = $this->model->persona("insert", $data, null, null,);
+                        $respuesta = $this->model->persona("insert", $data, null, null);
 
                         if (is_numeric($respuesta)) {
                             $data2 = array(
@@ -281,7 +281,7 @@ class Estudiante extends BaseController
                     $respuesta = $this->model->persona("update", $data,
                         array(
                             "id_persona" => $this->request->getPost("id_persona")
-                        ), null,);
+                        ), null);
 
                     if ($respuesta) {
                         $data2 = array(
@@ -289,7 +289,8 @@ class Estudiante extends BaseController
                             "gestion_ingreso" => trim($this->request->getPost("gestion_ingreso")),
                         );
 
-                        $respuesta1 = $this->model->estudiante("update", $data2, array("id_estudiante" => $this->request->getPost("id_estudiante")), null);
+                        $respuesta1 = $this->model->estudiante("update", $data2, array(
+                            "id_estudiante" => $this->request->getPost("id_estudiante")), null);
 
                         if ($respuesta1) {
                             $data2 = array(
