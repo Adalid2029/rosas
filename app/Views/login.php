@@ -67,11 +67,11 @@
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-md-12">
-                <div class="g-recaptcha" data-sitekey="6Lfp5q4ZAAAAADw5arMRXZeT4mrOQiQkbHocI16o"></div>
-            </div>
-        </div>
+<!--        <div class="form-group row">-->
+<!--            <div class="col-md-12">-->
+<!--                <div class="g-recaptcha" data-sitekey="6Lfp5q4ZAAAAADw5arMRXZeT4mrOQiQkbHocI16o"></div>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="form-actions">
             <button class="btn btn-info btn-block" type="submit" id="login" class="btn blue">
