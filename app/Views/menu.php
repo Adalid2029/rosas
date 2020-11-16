@@ -51,23 +51,23 @@
 							<ul class="collapse" aria-expanded="false">
 								<li class="">
 									<a class="menu--link" href="<?= base_url('/administrativo/listarAdministrativos'); ?>">
-                                        <i class="fa fa-circle-o"></i>Administrativo
+										<i class="fa fa-circle-o"></i>Administrativo
 									</a>
 								</li>
 								<li>
 									<a class="menu--link" href="<?= base_url("/estudiante/listarEstudiantes") ?>">
-                                        <i class="fa fa-circle-o"></i>Estudiante
-                                    </a>
+										<i class="fa fa-circle-o"></i>Estudiante
+									</a>
 								</li>
 								<li>
 									<a class="menu--link" href="<?= base_url("/maestro/listarMaestros") ?>">
-                                        <i class="fa fa-circle-o"></i>Maestro
-                                    </a>
+										<i class="fa fa-circle-o"></i>Maestro
+									</a>
 								</li>
 								<li>
 									<a class="menu--link" href="<?= base_url("/tutor/listarTutor") ?>">
-                                        <i class="fa fa-circle-o"></i>Tutor
-                                    </a>
+										<i class="fa fa-circle-o"></i>Tutor
+									</a>
 								</li>
 							</ul>
 						</li>
@@ -86,26 +86,26 @@
 							</ul>
 						</li>
 
-                        <li class="active-sub active">
-                            <a href="#" data-original-title="" title="">
-                                <i class="fa fa fa-th-list"></i>
-                                <span class="menu-title">Materias y cursos</span>
-                                <i class="arrow"></i>
-                            </a>
-                            <!--Submenu-->
-                            <ul class="collapse" aria-expanded="false">
-                                <li>
-                                    <a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
-                                        <i class="fa fa-circle-o"></i>Materias
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
-                                        <i class="fa fa-circle-o"></i>Cursos
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+						<li class="active-sub active">
+							<a href="#" data-original-title="" title="">
+								<i class="fa fa fa-th-list"></i>
+								<span class="menu-title">Materias y cursos</span>
+								<i class="arrow"></i>
+							</a>
+							<!--Submenu-->
+							<ul class="collapse" aria-expanded="false">
+								<li>
+									<a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
+										<i class="fa fa-circle-o"></i>Materias
+									</a>
+								</li>
+								<li>
+									<a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
+										<i class="fa fa-circle-o"></i>Cursos
+									</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 
 				</div>
