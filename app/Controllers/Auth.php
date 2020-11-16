@@ -39,7 +39,7 @@ class Auth extends Controller
 		$username = trim($this->request->getPost('username'));
 		$password = $this->request->getPost('password');
 		#Bucasmos en la base de datos los 2 datos que nos mando el Login
-		$userSearched = $this->querys->view_users(['usuario' => $username, 'clave' => md5($password)]);
+		$userSearched = $this->querys->view_users(['usuario' => $username, 'clave' => hash("sha512", $password)]);
 		#Contamos si $userSearched es ugual a 1 si lo es entendemos que podemos aprobar el inicio de sesion
 		if (count($userSearched) >= 1) {
 			# Agregamos una sesion al navegador

@@ -162,7 +162,7 @@ class Administrativo extends BaseController
                             $data3 = array(
                                 "id_usuario" => $respuesta,
                                 "usuario"    => trim($this->request->getPost("ci")),
-                                "clave"      => md5($this->request->getPost("nacimiento")),
+                                "clave"      => hash("sha512", $this->request->getPost("nacimiento")),
                                 "creado_en"  => $fecha->format('Y-m-d H:i:s')
                             );
 
@@ -310,7 +310,7 @@ class Administrativo extends BaseController
                         if ($respuesta2) {
                             $data3 = array(
                                 "usuario" => trim($this->request->getPost("edit_ci")),
-                                "clave"   => md5($this->request->getPost("edit_nacimiento")),
+                                "clave"   => hash("sha512", $this->request->getPost("edit_nacimiento")),
                                 "actualizado_en"     => $fecha->format('Y-m-d H:i:s')
                             );
                             $respuesta3 = $this->model->usuario("update", $data3, array(

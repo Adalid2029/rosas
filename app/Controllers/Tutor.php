@@ -162,7 +162,7 @@ class Tutor extends BaseController
                                 $data2 = array(
                                     "id_usuario" => $respuesta,
                                     "usuario"    => trim($this->request->getPost("ci")),
-                                    "clave"      => md5($this->request->getPost("nacimiento")),
+                                    "clave"      => hash("sha512", $this->request->getPost("nacimiento")),
                                     "creado_en"  => $this->fecha->format('Y-m-d H:i:s')
                                 );
 
@@ -277,7 +277,7 @@ class Tutor extends BaseController
                         if ($respuesta1) {
                             $data2 = array(
                                 "usuario"    => trim($this->request->getPost("ci")),
-                                "clave"      => md5($this->request->getPost("nacimiento")),
+                                "clave"      => hash("sha512", $this->request->getPost("nacimiento")),
                                 "actualizado_en"  => $this->fecha->format('Y-m-d H:i:s')
                             );
 
