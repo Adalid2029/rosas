@@ -16,7 +16,7 @@ class PerfilModel extends Database
     {
         $builder = $this -> db -> table("usuario as u");
         $builder -> select('usuario, clave');
-        $builder -> where("u.id_persona", $_SESSION["id_persona"]);
+        $builder -> where("u.id_usuario", $_SESSION["id_persona"]);
         return $builder->get() ->getResultArray();
     }
 
