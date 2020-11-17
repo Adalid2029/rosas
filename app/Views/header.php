@@ -36,7 +36,7 @@
                             <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                             <i class="demo-pli-male"></i>
                         </span>
-                        <div class="username hidden-xs">Juan Carlos User</div>
+                        <div class="username hidden-xs"><?= (isset($user[0]["nombres"])) ? $user[0]["nombres"] . " " . $user[0]["paterno"] : "Invitado"; ?></div>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">

@@ -19,6 +19,9 @@
       <w>alfabéticos</w>
       <w>apellido</w>
       <w>apellidos</w>
+      <w>asignado</w>
+      <w>asignados</w>
+      <w>asignar</w>
       <w>busqueda</w>
       <w>cambiada</w>
       <w>cambiar</w>
@@ -45,6 +48,7 @@
       <w>debe</w>
       <w>derechos</w>
       <w>descripción</w>
+      <w>designado</w>
       <w>devuelve</w>
       <w>dirección</w>
       <w>direción</w>
@@ -127,6 +131,7 @@
       <w>requerido</w>
       <w>reservados</w>
       <w>responsable</w>
+      <w>responsables</w>
       <w>respuesta</w>
       <w>rosas</w>
       <w>seguro</w>
@@ -141,6 +146,7 @@
       <w>titulo</w>
       <w>toastr</w>
       <w>todos</w>
+      <w>tutores</w>
       <w>unidad</w>
       <w>usuario</w>
       <w>validación</w>
