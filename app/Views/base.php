@@ -71,9 +71,9 @@
     <script src="<?php echo base_url('plugins/disableautofill/jquery.disableAutoFill.min.js') ?>"></script>
     <script src="<?php echo base_url('js/wow.min.js') ?>"></script>
     <script src="<?php echo base_url('js/demo/dashboard.js') ?>"></script>
-    <link href="<?php echo base_url('img/favicon.ico') ?>" rel="shortcut icon" />
-    <link href="<?php echo base_url('img/favicon.png') ?>" rel="icon" />
-    <link href="<?php echo base_url('img/favicon.png') ?>" rel="apple-touch-icon" />
+    <link href="<?php echo base_url('img/images/favicon.ico') ?>" rel="shortcut icon" />
+    <link href="<?php echo base_url('img/images/favicon.ico') ?>" rel="icon" />
+    <link href="<?php echo base_url('img/images/favicon.ico') ?>" rel="apple-touch-icon" />
 
     <script src="<?php echo base_url('js/toastr.min.js') ?>"></script>
 
