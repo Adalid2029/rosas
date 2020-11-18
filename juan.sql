@@ -25,6 +25,11 @@ ALTER TABLE `rs_materia` ADD UNIQUE(`nombre`);
 --add column estado
 ALTER TABLE `rs_materia` ADD `estado` TINYINT NOT NULL DEFAULT '1' AFTER `actualizado_en`;
 
+-- adicionar columnas
+ALTER TABLE `rs_responsable` ADD `creado_en` TIMESTAMP NULL DEFAULT NULL AFTER `id_estudiante`;
+ALTER TABLE `rs_responsable` ADD `actualizado_en` TIMESTAMP NULL DEFAULT NULL AFTER `creado_en`;
+ALTER TABLE rs_responsable ADD estado TINYINT NOT NULL DEFAULT '1' AFTER actualizado_en;
+
 
 -- QUERYS DE LA ASIGNACION DE TUTORES A UN ESTUDIANTE
 create or replace view rs_view_estudiantes_tutores as
@@ -53,7 +58,3 @@ from
 join `rs_tutor` `rst` on
     (`rsp`.`id_persona` = `rst`.`id_tutor`));
 
--- adicionar columnas
-ALTER TABLE `rs_responsable` ADD `creado_en` TIMESTAMP NULL DEFAULT NULL AFTER `id_estudiante`;
-ALTER TABLE `rs_responsable` ADD `actualizado_en` TIMESTAMP NULL DEFAULT NULL AFTER `creado_en`;
-ALTER TABLE rs_responsable ADD estado TINYINT NOT NULL DEFAULT '1' AFTER actualizado_en;
