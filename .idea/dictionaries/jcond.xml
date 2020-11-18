@@ -31,6 +31,7 @@
       <w>cargar</w>
       <w>cerrar</w>
       <w>clave</w>
+      <w>clearfix</w>
       <w>codigo</w>
       <w>columna</w>
       <w>condicion</w>
@@ -101,6 +102,7 @@
       <w>listar</w>
       <w>llevar</w>
       <w>madre</w>
+      <w>mainnav</w>
       <w>masculino</w>
       <w>maskedinput</w>
       <w>materia</w>
@@ -111,6 +113,7 @@
       <w>momentjs</w>
       <w>máximo</w>
       <w>nacimiento</w>
+      <w>navbar</w>
       <w>navigación</w>
       <w>nivel</w>
       <w>niveles</w>
@@ -154,6 +157,7 @@
       <w>titulo</w>
       <w>toastr</w>
       <w>todos</w>
+      <w>toogle</w>
       <w>tutores</w>
       <w>unidad</w>
       <w>usuario</w>

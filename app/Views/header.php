@@ -3,8 +3,8 @@
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
-            <a href="index.html" class="navbar-brand">
-                <img src="<?= base_url('img/logo.png') ?>" alt="Logo" class="brand-icon">
+            <a href="#" class="navbar-brand">
+                <img src="<?= base_url('img/images/escudo_rosas.png') ?>" alt="Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">Las Rosas</span>
                 </div>
@@ -20,7 +20,7 @@
                 <!--Navigation toogle button-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <li class="tgl-menu-btn">
-                    <a class="mainnav-toggle" href="index.html#">
+                    <a class="mainnav-toggle" href="#">
                         <i class="demo-pli-view-list"></i>
                     </a>
                 </li>
@@ -31,7 +31,7 @@
                 <!--User dropdown-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <li id="dropdown-user" class="dropdown">
-                    <a href="index.html#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                         <span class="ic-user pull-right">
                             <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                             <i class="demo-pli-male"></i>
