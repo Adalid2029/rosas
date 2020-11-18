@@ -41,6 +41,8 @@
       <w>correctamente</w>
       <w>correctemente</w>
       <w>creado</w>
+      <w>crear</w>
+      <w>curso</w>
       <w>cursos</w>
       <w>código</w>
       <w>datatables</w>
@@ -69,6 +71,7 @@
       <w>estudiante</w>
       <w>estudiantes</w>
       <w>existe</w>
+      <w>existencia</w>
       <w>exite</w>
       <w>exito</w>
       <w>expedición</w>
@@ -109,6 +112,8 @@
       <w>máximo</w>
       <w>nacimiento</w>
       <w>navigación</w>
+      <w>nivel</w>
+      <w>niveles</w>
       <w>nombre</w>
       <w>nombres</w>
       <w>notas</w>
@@ -116,6 +121,8 @@
       <w>numéricos</w>
       <w>opensans</w>
       <w>orderable</w>
+      <w>paralelo</w>
+      <w>paralelos</w>
       <w>parametros</w>
       <w>parentesco</w>
       <w>paterno</w>
@@ -135,6 +142,7 @@
       <w>respuesta</w>
       <w>rosas</w>
       <w>seguro</w>
+      <w>seleccionado</w>
       <w>seleccione</w>
       <w>sexo</w>
       <w>sweetalert</w>
@@ -155,6 +163,7 @@
       <w>verificación</w>
       <w>verificamos</w>
       <w>verificar</w>
+      <w>warni</w>
       <w>xmlhttprequest</w>
     </words>
   </dictionary>
