@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\AdministrativosReporte;
 use App\Libraries\SSP;
 use App\Models\AdministrativoModel;
 
 class Administrativo extends BaseController
 {
     public $model = null;
+    public $reporte;
     public function __construct()
     {
         parent::__construct();
         $this->model = new AdministrativoModel();
+        $this->reporte= new AdministrativosReporte();
     }
 
     // ADMINISTRATIVOS
@@ -395,5 +398,12 @@ class Administrativo extends BaseController
         } else {
             return null;
         }
+    }
+
+    public function imprimir()
+    {
+        $data = $this->model->administrativoReporte();
+        $this->response->setContentType('application/pdf');
+        $this->reporte->imprimir($data);
     }
 }

@@ -16,7 +16,7 @@ class NotasReporte extends FPDF
         // $this->datos_encabezado($lista_programa_modulo_paralelo_fila);
         $this->Ln(4);
         $this->SetTextColor(255, 255, 255, 255); //Color de texto
-        $this->SetFillColor(14, 10, 87, 0.75); //Color de relleno    
+        $this->SetFillColor(14, 10, 87, 0.75); //Color de relleno
         $this->SetDrawColor(235, 238, 245, 1); //Color de borde
         $this->Cell(10, 5, utf8_decode('Nro'), 'L R B', 0, 'L', 1);
         $this->Cell(20, 5, utf8_decode('C.I.'), 'L R B', 0, 'L', 1);
@@ -38,7 +38,7 @@ class NotasReporte extends FPDF
 
 
         $this->SetTextColor(0, 0, 0, 0); //Color de texto
-        $this->SetFillColor(255, 255, 255, 255); //Color de relleno    
+        $this->SetFillColor(255, 255, 255, 255); //Color de relleno
         $this->SetDrawColor(235, 238, 245, 1); //Color de borde
         if (!empty($lista_posgraduante)) {
             $x = 1;
@@ -55,6 +55,7 @@ class NotasReporte extends FPDF
         }
         $this->Output();
     }
+
     function AjustCell($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = false, $link = '')
     {
         $TamanoInicial = $this->FontSizePt;
@@ -65,4 +66,5 @@ class NotasReporte extends FPDF
         $this->Cell($w, $h, $txt, $border, $ln, $align, $fill, $link);
         $this->SetFontSize($TamanoInicial);
     }
+
 }

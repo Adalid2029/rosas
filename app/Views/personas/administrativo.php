@@ -4,6 +4,11 @@
             <div class="panel-heading">
                 <div class="panel-control">
 
+                    <a class="btn btn-danger-basic btn-active-success" id="imprimir_administrativo" target="_blank" href="<?= base_url("/administrativo/imprimir")?>">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Imprimir
+                    </a>
+
                     <button class="btn btn-success btn-active-success" id="agregar_administrativo">
                         <i class="fa fa-plus-square-o"></i>
                         Registrar

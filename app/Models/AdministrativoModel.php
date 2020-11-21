@@ -118,5 +118,14 @@ class AdministrativoModel extends Database
 
     }
 
+    // select para edit persona y administrativo
+    public function administrativoReporte()
+    {
+        $builder = $this -> db -> table("view_administrativo");
+        $builder -> select('ci, nombres_apellidos, nacimiento, telefono, sexo, cargo, gestion_ingreso');
+        $builder -> where("estado", 1);
+        return $builder->get() ->getResultArray();
+    }
+
 
 }
