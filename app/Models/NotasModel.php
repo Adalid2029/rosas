@@ -15,9 +15,10 @@ class NotasModel extends Database
     {
         $builder = $this->db->table('maestro m');
         $builder->select('*');
-        $builder->join('clase c', 'c.id_maestro = m.id_maestro');
-        $builder->join('curso cu', 'cu.id_curso = c.id_curso');
-        $builder->join('materia ma', 'ma.id_materia = c.id_materia');
+        $builder->join('materia_maestro mm', 'mm.id_maestro = m.id_maestro');
+        $builder->join('curso cu', 'cu.id_curso = mm.id_curso');
+        $builder->join('materia ma', 'ma.id_materia = mm.id_materia');
+        $builder->join('gestion g', 'g.id_gestion = mm.id_gestion');
         $builder->where($condicion);
         $builder->groupBy($agrupacion);
         $builder->orderBy($orden);
