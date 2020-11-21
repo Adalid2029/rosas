@@ -58,6 +58,7 @@ class AdministrativosReporte extends FPDF
         if ($data != null) {
 
             for ($i = 0; $i < count($data); $i++) {
+                $this->SetX(8);
                 $this->SetFont('Arial', '', 8);
                 $this->Cell($w[0], 8, $i+1, 'LR', 0, 'C', $fill);
                 $this->Cell($w[1], 8, utf8_decode($data[$i]['ci']), 'LR', 0, 'L', $fill);
