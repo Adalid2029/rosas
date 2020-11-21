@@ -105,5 +105,4 @@ class EstudianteModel extends Database
         return $builder->get() ->getResultArray();
     }
 
-
-}
+}// class

@@ -130,6 +130,6 @@
 			</div>
 		</div>
 		<!--================================-->
-		<!--End menu-->
+		<!--Fin del menu de navegacion -->
 	</div>
 </nav>

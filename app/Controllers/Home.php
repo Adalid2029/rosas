@@ -51,4 +51,4 @@ class Home extends BaseController
 		);
 		return $this->response->setJSON(json_encode(SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns)));
 	}
-}
+}// class

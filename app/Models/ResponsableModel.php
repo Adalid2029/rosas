@@ -58,5 +58,4 @@ class ResponsableModel extends Database
         return $builder->get()->getResultArray();
     }
 
-
-}//class
+}//class // class

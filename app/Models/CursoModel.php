@@ -59,5 +59,4 @@ class CursoModel extends Database
         return null;
     }
 
-
-}
+}// class

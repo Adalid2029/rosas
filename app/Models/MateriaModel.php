@@ -39,5 +39,4 @@ class MateriaModel extends Database
         return null;
     }
 
-
-}
+}// class

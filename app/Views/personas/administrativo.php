@@ -506,5 +506,6 @@
         });
 
     });
+    // fin script
 
 </script>

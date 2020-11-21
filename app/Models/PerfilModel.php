@@ -47,7 +47,4 @@ class PerfilModel extends Database
 
     }
 
-
-
-
-}
+}// class

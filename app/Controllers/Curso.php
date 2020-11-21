@@ -196,4 +196,4 @@ class Curso extends BaseController
         }
     }
 
-}//class
+}//class // class

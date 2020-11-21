@@ -190,4 +190,4 @@ class Responsable extends BaseController
         }
     }
 
-}//class
+}//class // class

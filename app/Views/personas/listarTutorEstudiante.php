@@ -276,6 +276,6 @@
         });
 
     });
-
+    // fin script
 
 </script>

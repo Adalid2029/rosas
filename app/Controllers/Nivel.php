@@ -182,5 +182,4 @@ class Nivel extends BaseController
         }
     }
 
-
-}
+}// class

@@ -20,4 +20,5 @@ class Querys extends Database
             return $builder->get()->getResultArray();
         }
     }
-}
+
+}// class

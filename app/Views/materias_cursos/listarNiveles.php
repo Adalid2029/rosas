@@ -231,6 +231,7 @@
         });
 
     });
+    // fin script
 
 </script>
 

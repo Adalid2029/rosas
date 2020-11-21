@@ -40,5 +40,4 @@ class ParaleloModel extends  Database
         return null;
     }
 
-
-}
+}// class

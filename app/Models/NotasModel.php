@@ -24,4 +24,5 @@ class NotasModel extends Database
 
         return $builder->get();
     }
-}
+
+}// class

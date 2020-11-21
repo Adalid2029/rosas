@@ -127,5 +127,4 @@ class AdministrativoModel extends Database
         return $builder->get() ->getResultArray();
     }
 
-
-}
+}// class

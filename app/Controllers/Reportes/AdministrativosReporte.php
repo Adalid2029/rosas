@@ -169,4 +169,4 @@ class AdministrativosReporte extends FPDF
             $this->x += $w;
     }
 
-}
+}// class

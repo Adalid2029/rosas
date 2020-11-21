@@ -67,4 +67,4 @@ class NotasReporte extends FPDF
         $this->SetFontSize($TamanoInicial);
     }
 
-}
+}// class

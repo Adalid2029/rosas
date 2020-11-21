@@ -40,5 +40,4 @@ class NivelModel extends  Database
         return null;
     }
 
-
-}
+}// class

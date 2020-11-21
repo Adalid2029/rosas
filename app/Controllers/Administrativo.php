@@ -406,4 +406,4 @@ class Administrativo extends BaseController
         $this->response->setContentType('application/pdf');
         $this->reporte->imprimir($data);
     }
-}
+}// class

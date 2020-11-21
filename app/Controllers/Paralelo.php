@@ -180,5 +180,4 @@ class Paralelo extends BaseController
         }
     }
 
-
-}
+}// class
