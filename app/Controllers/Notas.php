@@ -46,10 +46,10 @@ class Notas extends BaseController
 	}
 	public function listarCursos()
 	{
-		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => 1], '', 'cu.id_curso')->getResultArray();
+		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona']], '', 'cu.id_curso')->getResultArray();
 		$cursosMaterias = [];
 		foreach ($cursos as $key => $value) {
-			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => 1, 'cu.id_curso' => $value['id_curso']], '', '')->getResultArray();
+			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona'], 'cu.id_curso' => $value['id_curso']], '', '')->getResultArray();
 		}
 		// var_dump($cursosMaterias);
 		if (!empty($cursosMaterias)) {
