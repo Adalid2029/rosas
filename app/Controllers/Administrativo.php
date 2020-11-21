@@ -2,8 +2,12 @@
 
 namespace App\Controllers;
 
+<<<<<<< HEAD
 use App\Controllers\Reportes\AdministrativosReporte;
 use App\Libraries\SSP;
+=======
+use App\Libraries\Ssp;
+>>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
 use App\Models\AdministrativoModel;
 
 class Administrativo extends BaseController
@@ -346,7 +350,7 @@ class Administrativo extends BaseController
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
             $data = array(
-              "estado" => 0
+                "estado" => 0
             );
 
             $condicion = array(

@@ -31,7 +31,6 @@
       <w>cargar</w>
       <w>cerrar</w>
       <w>clave</w>
-      <w>clearfix</w>
       <w>codigo</w>
       <w>columna</w>
       <w>condicion</w>
@@ -42,8 +41,6 @@
       <w>correctamente</w>
       <w>correctemente</w>
       <w>creado</w>
-      <w>crear</w>
-      <w>curso</w>
       <w>cursos</w>
       <w>código</w>
       <w>datatables</w>
@@ -73,8 +70,11 @@
       <w>estudiante</w>
       <w>estudiantes</w>
       <w>existe</w>
+<<<<<<< HEAD
       <w>existen</w>
       <w>existencia</w>
+=======
+>>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
       <w>exite</w>
       <w>exito</w>
       <w>expedición</w>
@@ -105,7 +105,6 @@
       <w>listar</w>
       <w>llevar</w>
       <w>madre</w>
-      <w>mainnav</w>
       <w>masculino</w>
       <w>maskedinput</w>
       <w>materia</w>
@@ -117,11 +116,12 @@
       <w>mostrar</w>
       <w>máximo</w>
       <w>nacimiento</w>
+<<<<<<< HEAD
       <w>navbar</w>
       <w>navegacion</w>
+=======
+>>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
       <w>navigación</w>
-      <w>nivel</w>
-      <w>niveles</w>
       <w>nombre</w>
       <w>nombres</w>
       <w>notas</w>
@@ -129,8 +129,6 @@
       <w>numéricos</w>
       <w>opensans</w>
       <w>orderable</w>
-      <w>paralelo</w>
-      <w>paralelos</w>
       <w>parametros</w>
       <w>parentesco</w>
       <w>paterno</w>
@@ -152,7 +150,6 @@
       <w>respuesta</w>
       <w>rosas</w>
       <w>seguro</w>
-      <w>seleccionado</w>
       <w>seleccione</w>
       <w>sexo</w>
       <w>sweetalert</w>
@@ -164,7 +161,6 @@
       <w>titulo</w>
       <w>toastr</w>
       <w>todos</w>
-      <w>toogle</w>
       <w>tutores</w>
       <w>unidad</w>
       <w>usuario</w>
@@ -174,7 +170,6 @@
       <w>verificación</w>
       <w>verificamos</w>
       <w>verificar</w>
-      <w>warni</w>
       <w>xmlhttprequest</w>
     </words>
   </dictionary>
