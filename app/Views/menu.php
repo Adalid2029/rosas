@@ -41,7 +41,7 @@
 						<li class="list-header">Navigación</li>
 
 						<!--Menu list item-->
-						<li class="active-sub active">
+						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
 								<span class="menu-title">Registrar</span>
@@ -91,7 +91,7 @@
 							</ul>
 						</li>
 
-						<li class="">
+						<li class="active-sub active">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa fa-th-list"></i>
 								<span class="menu-title">Materias y cursos</span>
@@ -105,10 +105,20 @@
 									</a>
 								</li>
 								<li>
-									<a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
-										<i class="fa fa-circle-o"></i>Cursos
+									<a class="menu--link" href="<?= base_url('/nivel/listarNiveles') ?>">
+										<i class="fa fa-circle-o"></i>Crear Nivel
 									</a>
 								</li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
+                                        <i class="fa fa-circle-o"></i>Crear Paralelos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
+                                        <i class="fa fa-circle-o"></i>Crear Curso
+                                    </a>
+                                </li>
 							</ul>
 						</li>
 					</ul>

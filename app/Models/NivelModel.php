@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Models;
+
 use CodeIgniter\Database\Database;
 
-class MateriaModel extends Database
+class NivelModel extends  Database
 {
 
     public $db = null;
@@ -14,9 +15,9 @@ class MateriaModel extends Database
     }
 
     // MATERIA
-    public function materia($accion, $datos, $condicion = null, $busqueda = null)
+    public function nivel($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this->db->table("materia");
+        $builder = $this->db->table("curso");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {

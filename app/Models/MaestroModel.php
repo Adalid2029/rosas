@@ -105,5 +105,4 @@ class MaestroModel extends Database
         return $builder->get() ->getResultArray();
     }
 
-
-}
+}// class

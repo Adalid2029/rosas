@@ -62,4 +62,4 @@ class Auth extends Controller
 		$this->session->destroy();
 		return redirect()->to(base_url('/auth/login'));
 	}
-}
+}// class

@@ -4,23 +4,21 @@
             <div class="panel-heading">
                 <div class="panel-control">
 
-                    <button class="btn btn-success btn-active-success" id="agregar_materia">
+                    <button class="btn btn-success btn-active-success" id="agregar_paralelo">
                         <i class="fa fa-plus-square-o"></i>
                         Registrar
                     </button>
 
                 </div>
-                <h3 class="panel-title">Materias</h3>
+                <h3 class="panel-title">Paralelos</h3>
             </div>
 
             <div class="panel-body">
-                <table id="tbl_materia" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="tbl_paralelo" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th width="5%">#</th>
-                            <th>Código</th>
-                            <th>Nombre</th>
-                            <th>Creado en</th>
+                            <th>Paralelo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -33,44 +31,35 @@
 </div>
 
 <!--  Modal de registro materia -->
-<div class="modal fade" id="agregar-materia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
+<div class="modal fade" id="agregar-paralelo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document">
         <div class="modal-content">
-            <div id="agregar-materia-header" class="modal-header">
-                <h5 id="agregar-materia-title" class="modal-title"></h5>
+            <div id="agregar-paralelo-header" class="modal-header">
+                <h5 id="agregar-paralelo-title" class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="agregar-materia-body" class="modal-body">
-                <form id="frm_guardar_materia" method="POST">
+            <div id="agregar-paralelo-body" class="modal-body">
+                <form id="frm_guardar_paralelo" method="POST">
                     <div class="panel-body">
 
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label class="control-label" for="codigo">Código <span style="color: red;">(*)</span> :</label>
-                                    <input type="text" name="codigo" id="codigo" class="form-control" required>
+                                    <label class="control-label" for="nivel">Paralelo <span style="color: red;">(*)</span> :</label>
+                                    <input type="text" name="paralelo" id="paralelo" required class="form-control">
                                 </div>
                             </div>
-                            <input type="hidden" name="id_materia" id="id_materia">
+                            <input type="hidden" name="id_paralelo" id="id_paralelo">
                             <input type="hidden" name="accion" id="accion" value="">
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label class="control-label" for="nombre">Nombre Materia <span style="color: red;">(*)</span> :</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control" required>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
 
                     <div class="panel-footer text-right">
                         <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
-                        <button type="submit" id="btn-guardar-materia" class="btn btn-primary"></button>
+                        <button type="submit" id="btn-guardar-paralelo" class="btn btn-primary"></button>
                     </div>
                 </form>
             </div>
@@ -78,14 +67,13 @@
     </div>
 </div>
 
-
 <script>
-    //Listar Materias
-    $("#tbl_materia").DataTable({
+    //Listar Paralelos
+    $("#tbl_paralelo").DataTable({
         responsive: true,
         processing: true,
         serverSide: true,
-        ajax: "/materia/ajaxListarMaterias",
+        ajax: "/paralelo/ajaxListarParalelos",
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_ registros",
@@ -119,11 +107,11 @@
                 return (
                     '<div class="btn-group" role="group">' +
                     '<a data="' + data[0] +
-                    '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_materia" data-toggle="tooltip" title="Editar">' +
+                    '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_paralelo" data-toggle="tooltip" title="Editar">' +
                     '<i class="fa fa-pencil-square-o"></i></a>' +
                     '<a data="' +
                     data[0] +
-                    '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_materia" data-toggle="tooltip" title="Eliminar">' +
+                    '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_paralelo" data-toggle="tooltip" title="Eliminar">' +
                     '<i class="fa fa-trash-o"></i></a>' +
                     '</div>'
                 );
@@ -131,130 +119,96 @@
         }]
     });
 
-    // Modal para agregar materia
-    $("#agregar_materia").on("click", function(e) {
-        $("#btn-guardar-materia").html("Guardar");
+    // Modal para agregar paralelo
+    $("#agregar_paralelo").on("click", function(e) {
+        $("#btn-guardar-paralelo").html("Guardar");
         $("#accion").val("in");
         parametrosModal(
-            "#agregar-materia",
-            "Agregar Materia",
+            "#agregar-paralelo",
+            "Agregar Paralelo",
             "modal-lg",
             false,
             true
         );
     });
 
-    // verificar codigo repetido
-    $("#codigo").on("change", function (e) {
-        e.preventDefault();
-        let cod = $("#codigo").val();
-        $.ajax({
-            type: "POST",
-            url: "/materia/verificar",
-            data: {"cod": cod, "columna": "codigo"},
-            dataType: "JSON"
-        }).done(function (response) {
-            if (typeof response.warning !== "undefined") {
-                mensajeAlert("warning", response.warning, "Advertencia");
-                $("#codigo").val("");
-                $("#codigo").focus();
-            }
-        });
-    });
-
-    // verificar nombre materia repetido
-    $("#nombre").on("change", function (e) {
-        e.preventDefault();
-        let cod = $("#nombre").val();
-        $.ajax({
-            type: "POST",
-            url: "/materia/verificar",
-            data: {"cod": cod, "columna": "nombre"},
-            dataType: "JSON"
-        }).done(function (response) {
-            if (typeof response.warning !== "undefined") {
-                mensajeAlert("warning", response.warning, "Advertencia");
-                $("#nombre").val("");
-                $("#nombre").focus();
-            }
-        });
-    });
-
-    // Guardar tutor
-    $("#frm_guardar_materia").on("submit", function(e) {
+    // Guardar paralelo
+    $("#frm_guardar_paralelo").on("submit", function(e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "/materia/guardar_materia",
-            data: $("#frm_guardar_materia").serialize(),
+            url: "/paralelo/guardar_paralelo",
+            data: $("#frm_guardar_paralelo").serialize(),
             dataType: "JSON"
         }).done(function(response) {
+
+            if (typeof response.error !== "undefined") {
+                mensajeAlert("error", response.error, "Error");
+            }
 
             if (typeof response.form !== "undefined") {
                 mensajeAlert("warning", response.form, "Advertencia");
             }
 
             if (typeof response.exito !== "undefined") {
-                $("#tbl_materia").DataTable().draw();
-                $("#agregar-materia").modal("hide");
+                $("#tbl_paralelo").DataTable().draw();
+                $("#agregar-paralelo").modal("hide");
                 mensajeAlert("success", response.exito, "Exito");
                 limpiarCampos();
             }
 
         }).fail(function(e) {
-            mensajeAlert("error", "Error al registrar/editar la materia", "Error");
+            mensajeAlert("error", "Error al registrar/editar el paralelo", "Error");
         });
     });
 
     // Limpiar Campos
     function limpiarCampos() {
-        $("#id_materia").val("");
-        $("#codigo").val("");
-        $("#nombre").val("");
+        $("#id_paralelo").val("");
+        $("#paralelo").val("");
         $("#accion").val("");
     }
 
     // Editar Materia
-    $('#tbl_materia').on("click", ".btn_editar_materia", function(e) {
+    $('#tbl_paralelo').on("click", ".btn_editar_paralelo", function(e) {
         let id = $(this).attr("data");
         $.ajax({
             type: "POST",
-            url: "/materia/editar_materia",
+            url: "/paralelo/editar_paralelo",
             data: {
                 "id": id
             },
             dataType: "JSON"
         }).done(function(response) {
 
-            $("#id_materia").val(response[0]["id_materia"]);
-            $("#codigo").val(response[0]["codigo"]);
-            $("#nombre").val(response[0]["nombre"]);
+            $("#id_paralelo").val(response[0]["id_paralelo"]);
+            $("#paralelo").val(response[0]["paralelo"]);
             $("#accion").val("up");
 
-            $("#btn-guardar-materia").html("Editar");
+            $("#btn-guardar-paralelo").html("Editar");
             parametrosModal(
-                "#agregar-materia",
-                "Editar Materia",
+                "#agregar-paralelo",
+                "Editar Paralelo",
                 "modal-lg",
                 false,
                 true
             );
 
         }).fail(function(e) {
-            $("#agregar-materia").modal("hide");
+            $("#agregar-paralelo").modal("hide");
             limpiarCampos();
         });
 
     });
 
-    // Eliminar Materi
-    $("#tbl_materia").on("click", ".btn_eliminar_materia", function(e) {
+    // Eliminar Paralelo
+    $("#tbl_paralelo").on("click", ".btn_eliminar_paralelo", function(e) {
         let id = $(this).attr("data");
-        bootbox.confirm("¿Estas seguro de eliminar la materia?", function(result) {
+        bootbox.confirm("¿Estas seguro de eliminar el paralelo seleccionado?", function(result) {
             if (result) {
                 $.ajax({
                     type: "POST",
-                    url: "/materia/eliminar_materia",
+                    url: "/paralelo/eliminar_paralelo",
                     data: {
                         "id": id
                     },
@@ -262,8 +216,12 @@
                 }).done(function(response) {
 
                     if (typeof response.exito !== "undefined") {
-                        $("#tbl_materia").DataTable().draw();
+                        $("#tbl_paralelo").DataTable().draw();
                         mensajeAlert("success", response.exito, "Exito");
+                    }
+
+                    if (typeof response.error !== "undefined") {
+                        mensajeAlert("error", response.error, "Error");
                     }
 
                 }).fail(function(e) {
@@ -275,7 +233,5 @@
     });
     // fin script
 
-
-
-
 </script>
+

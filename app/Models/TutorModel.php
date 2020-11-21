@@ -101,4 +101,5 @@ class TutorModel extends Database
         $builder->where("p.id_persona", $id);
         return $builder->get()->getResultArray();
     }
-}
+
+}// class

@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Libraries\Ssp;
+use App\Controllers\Reportes\AdministrativosReporte;
+use App\Libraries\SSP;
 use App\Models\AdministrativoModel;
 
 class Administrativo extends BaseController
 {
     public $model = null;
+    public $reporte;
     public function __construct()
     {
         parent::__construct();
         $this->model = new AdministrativoModel();
+        $this->reporte= new AdministrativosReporte();
     }
 
     // ADMINISTRATIVOS
@@ -343,7 +346,7 @@ class Administrativo extends BaseController
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
             $data = array(
-                "estado" => 0
+              "estado" => 0
             );
 
             $condicion = array(
@@ -396,4 +399,11 @@ class Administrativo extends BaseController
             return null;
         }
     }
-}
+
+    public function imprimir()
+    {
+        $data = $this->model->administrativoReporte();
+        $this->response->setContentType('application/pdf');
+        $this->reporte->imprimir($data);
+    }
+} // Class

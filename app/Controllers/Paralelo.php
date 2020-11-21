@@ -3,51 +3,37 @@
 namespace App\Controllers;
 
 use App\Libraries\Ssp;
-use App\Models\EstudianteModel;
-use App\Models\ResponsableModel;
-use App\Models\TutorModel;
+use App\Models\ParaleloModel;
 
-class Responsable extends BaseController
+class Paralelo extends BaseController
 {
+
     public $model = null;
     public $fecha = null;
-    public $estudiante = null;
 
     public function __construct()
     {
         parent::__construct();
-        $this->model = new ResponsableModel();
+        $this->model = new ParaleloModel();
         $this->fecha = new \DateTime();
-        $this->estudiante = new EstudianteModel();
     }
 
-    // Cargar la vista tutores y estudiantes
-    public function listarTutoresEstudiantes()
+    public function listarParalelos()
     {
-        $this->data["estudiantes"] = $this->model ->listarEstudiantes();
-        $this->data["tutores"] = $this->model ->listarTutores();
-
-        return $this->templater->view('personas/listarTutorEstudiante', $this->data);
-
+        return $this->templater->view('materias_cursos/listarParalelos', $this->data);
     }
 
-    // Listado de estudiantes y sus tutores
-    public function ajaxListarEstudianteTutor()
+    // Listado de paralelos
+    public function ajaxListarParalelos()
     {
         if ($this->request->isAJAX()) {
             $this->db->transBegin();
-            $table = "rs_view_estudiantes_tutores";
+            $table = "rs_paralelo";
             $where = "estado=1";
-            $primaryKey = "id_responsable";
+            $primaryKey = "id_paralelo";
             $columns = array(
-                array('db' => 'id_responsable', 'dt'   => 0),
-                array('db' => 'nombres_est', 'dt'      => 1),
-                array('db' => 'ci_est', 'dt'           => 2),
-                array('db' => 'telefono_est', 'dt'     => 3),
-                array('db' => 'nombres_tutor', 'dt'    => 4),
-                array('db' => 'ci_tutor', 'dt'         => 5),
-                array('db' => 'telefono_tutor', 'dt'   => 6),
-                array('db' => 'parentesco', 'dt'       => 7)
+                array('db' => 'id_paralelo', 'dt' => 0),
+                array('db' => 'paralelo', 'dt'    => 1)
             );
 
             $sql_details = array(
@@ -63,28 +49,25 @@ class Responsable extends BaseController
         }
     }
 
-    // Insert o Update responsable
-    public function guardar_responsable()
+    // Insert o Update paralelo
+    public function guardar_paralelo()
     {
         $data  = null;
 
         if ($this->request->isAJAX()) {
 
-            if ($this->request->getPost("accion") == "in" && $this->request->getPost("id_responsable") == "") {
+            if ($this->request->getPost("accion") == "in" && $this->request->getPost("id_paralelo") == "") {
                 //validación de formulario
                 $validation = \Config\Services::validation();
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "id_tutor" => "required",
-                        "id_estudiante" => "required"
+                        "paralelo" => "required|alpha"
                     ],
                     [ // errors
-                        "id_tutor" => [
-                            "required" => "El tutor(a) es requerido"
-                        ],
-                        "nombre" => [
-                            "id_estudiante" => "El estudiante es requerido"
+                        "paralelo" => [
+                            "required" => "El paralelo es requerido",
+                            "alpha"    => "El paralelo debe tener caracteres alfanuméricos"
                         ]
                     ]
                 );
@@ -97,16 +80,19 @@ class Responsable extends BaseController
                 } else {
                     // Insertar datos
                     $data = array(
-                        "id_tutor"      => trim($this->request->getPost("id_tutor")),
-                        "id_estudiante"      => trim($this->request->getPost("id_estudiante")),
+                        "paralelo"      => mb_strtoupper(trim($this->request->getPost("paralelo")), "utf-8"),
                         "creado_en"   => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->responsable("insert", $data, null, null);
+                    $respuesta = $this->model->paralelo("insert", $data, null, null);
 
                     if (is_numeric($respuesta)) {
                         return $this->response->setJSON(json_encode(array(
-                            'exito' => "Tutor asignado correctamente"
+                            'exito' => "Paralelo registrado correctamente"
+                        )));
+                    }else{
+                        return $this->response->setJSON(json_encode(array(
+                            'error' => "Error al registrar el paralelo"
                         )));
                     }
                 }
@@ -117,15 +103,12 @@ class Responsable extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "id_tutor" => "required",
-                        "id_estudiante" => "required"
+                        "paralelo" => "required|alpha"
                     ],
                     [ // errors
-                        "id_tutor" => [
-                            "required" => "El tutor(a) es requerido"
-                        ],
-                        "nombre" => [
-                            "id_estudiante" => "El estudiante es requerido"
+                        "paralelo" => [
+                            "required" => "El paralelo es requerido",
+                            "alpha"    => "El paralelo debe tener caracteres alfanuméricos"
                         ]
                     ]
                 );
@@ -139,18 +122,21 @@ class Responsable extends BaseController
 
                     // Actualizar datos
                     $data = array(
-                        "id_tutor"      => trim($this->request->getPost("id_tutor")),
-                        "id_estudiante"      => trim($this->request->getPost("id_estudiante")),
+                        "paralelo" => mb_strtoupper(trim($this->request->getPost("paralelo")),"utf-8"),
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->responsable("update", $data, array(
-                        "id_responsable" => $this->request->getPost("id_responsable")
+                    $respuesta = $this->model->paralelo("update", $data, array(
+                        "id_paralelo" => $this->request->getPost("id_paralelo")
                     ), null);
 
                     if ($respuesta) {
                         return $this->response->setJSON(json_encode(array(
-                            'exito' => "Tutor editado correctamente"
+                            'exito' => "Paralelo editado correctamente"
+                        )));
+                    }else{
+                        return $this->response->setJSON(json_encode(array(
+                            'error' => "Error al actualizar el paralelo"
                         )));
                     }
                 }
@@ -159,35 +145,39 @@ class Responsable extends BaseController
         return null;
     }
 
-    // Editar Responsable
-    public function editar_responsable()
+    // Editar paralelo
+    public function editar_paralelo()
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
             $condicion = array(
-                "id_responsable" => trim($this->request->getPost("id"))
+                "id_paralelo" => trim($this->request->getPost("id"))
             );
-            $respuesta = $this->model->responsable("select", null, $condicion, null);
+            $respuesta = $this->model->paralelo("select", null, $condicion, null);
             return $this->response->setJSON(json_encode($respuesta->getResultArray()));
         }
     }
 
-    // Eliminar responsable
-    public function eliminar_responsable()
+    // Eliminar paralelo
+    public function eliminar_paralelo()
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
 
-            $respuesta = $this->model->responsable("update", array("estado" => 0), array(
-                "id_responsable" => trim($this->request->getPost("id"))
+            $respuesta = $this->model->paralelo("update", array("estado" => 0), array(
+                "id_paralelo" => trim($this->request->getPost("id"))
             ), null);
 
             if ($respuesta) {
                 return $this->response->setJSON(json_encode(array(
-                    'exito' => "Responsable Eliminado correctamente"
+                    'exito' => "Paralelo Eliminado correctamente"
+                )));
+            }else{
+                return $this->response->setJSON(json_encode(array(
+                    'error' => "Error al eliminar el paralelo"
                 )));
             }
         }
     }
 
-}//class // class
+}// class

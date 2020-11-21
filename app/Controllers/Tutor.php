@@ -324,4 +324,5 @@ class Tutor extends BaseController
             }
         }
     }
-}
+
+}// class

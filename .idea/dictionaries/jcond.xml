@@ -60,6 +60,7 @@
       <w>educativa</w>
       <w>eliminado</w>
       <w>eliminar</w>
+      <w>encabezado</w>
       <w>encuentra</w>
       <w>errores</w>
       <w>espacios</w>
@@ -69,6 +70,11 @@
       <w>estudiante</w>
       <w>estudiantes</w>
       <w>existe</w>
+<<<<<<< HEAD
+      <w>existen</w>
+      <w>existencia</w>
+=======
+>>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
       <w>exite</w>
       <w>exito</w>
       <w>expedición</w>
@@ -84,6 +90,7 @@
       <w>hermano</w>
       <w>igual</w>
       <w>iguala</w>
+      <w>imprimir</w>
       <w>información</w>
       <w>ingresado</w>
       <w>ingrese</w>
@@ -106,8 +113,14 @@
       <w>menos</w>
       <w>mensaje</w>
       <w>momentjs</w>
+      <w>mostrar</w>
       <w>máximo</w>
       <w>nacimiento</w>
+<<<<<<< HEAD
+      <w>navbar</w>
+      <w>navegacion</w>
+=======
+>>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
       <w>navigación</w>
       <w>nombre</w>
       <w>nombres</w>
@@ -121,6 +134,7 @@
       <w>paterno</w>
       <w>perfil</w>
       <w>petición</w>
+      <w>posgraduante</w>
       <w>profesor</w>
       <w>profesora</w>
       <w>punct</w>
@@ -128,6 +142,7 @@
       <w>registro</w>
       <w>repita</w>
       <w>reporte</w>
+      <w>reportes</w>
       <w>requerido</w>
       <w>reservados</w>
       <w>responsable</w>

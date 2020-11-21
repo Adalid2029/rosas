@@ -3,51 +3,37 @@
 namespace App\Controllers;
 
 use App\Libraries\Ssp;
-use App\Models\EstudianteModel;
-use App\Models\ResponsableModel;
-use App\Models\TutorModel;
+use App\Models\NivelModel;
 
-class Responsable extends BaseController
+class Nivel extends BaseController
 {
+
     public $model = null;
     public $fecha = null;
-    public $estudiante = null;
 
     public function __construct()
     {
         parent::__construct();
-        $this->model = new ResponsableModel();
+        $this->model = new NivelModel();
         $this->fecha = new \DateTime();
-        $this->estudiante = new EstudianteModel();
     }
 
-    // Cargar la vista tutores y estudiantes
-    public function listarTutoresEstudiantes()
+    public function listarNiveles()
     {
-        $this->data["estudiantes"] = $this->model ->listarEstudiantes();
-        $this->data["tutores"] = $this->model ->listarTutores();
-
-        return $this->templater->view('personas/listarTutorEstudiante', $this->data);
-
+        return $this->templater->view('materias_cursos/listarNiveles', $this->data);
     }
 
-    // Listado de estudiantes y sus tutores
-    public function ajaxListarEstudianteTutor()
+    // Listado de niveles
+    public function ajaxListarNiveles()
     {
         if ($this->request->isAJAX()) {
             $this->db->transBegin();
-            $table = "rs_view_estudiantes_tutores";
+            $table = "rs_curso";
             $where = "estado=1";
-            $primaryKey = "id_responsable";
+            $primaryKey = "id_curso";
             $columns = array(
-                array('db' => 'id_responsable', 'dt'   => 0),
-                array('db' => 'nombres_est', 'dt'      => 1),
-                array('db' => 'ci_est', 'dt'           => 2),
-                array('db' => 'telefono_est', 'dt'     => 3),
-                array('db' => 'nombres_tutor', 'dt'    => 4),
-                array('db' => 'ci_tutor', 'dt'         => 5),
-                array('db' => 'telefono_tutor', 'dt'   => 6),
-                array('db' => 'parentesco', 'dt'       => 7)
+                array('db' => 'id_curso', 'dt' => 0),
+                array('db' => 'nivel', 'dt'    => 1)
             );
 
             $sql_details = array(
@@ -63,28 +49,26 @@ class Responsable extends BaseController
         }
     }
 
-    // Insert o Update responsable
-    public function guardar_responsable()
+    // Insert o Update nivel
+    public function guardar_nivel()
     {
         $data  = null;
 
         if ($this->request->isAJAX()) {
 
-            if ($this->request->getPost("accion") == "in" && $this->request->getPost("id_responsable") == "") {
+            if ($this->request->getPost("accion") == "in" && $this->request->getPost("id_curso") == "") {
                 //validación de formulario
                 $validation = \Config\Services::validation();
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "id_tutor" => "required",
-                        "id_estudiante" => "required"
+                        "nivel" => "required|numeric|max_length[1]"
                     ],
                     [ // errors
-                        "id_tutor" => [
-                            "required" => "El tutor(a) es requerido"
-                        ],
-                        "nombre" => [
-                            "id_estudiante" => "El estudiante es requerido"
+                        "nivel" => [
+                            "required" => "El nivel es requerido",
+                            "numeric"  => "El nivel debe tener caracteres numéricos",
+                            "max_length" => "El debe tener un caracter"
                         ]
                     ]
                 );
@@ -97,16 +81,19 @@ class Responsable extends BaseController
                 } else {
                     // Insertar datos
                     $data = array(
-                        "id_tutor"      => trim($this->request->getPost("id_tutor")),
-                        "id_estudiante"      => trim($this->request->getPost("id_estudiante")),
+                        "nivel"      => trim($this->request->getPost("nivel")),
                         "creado_en"   => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->responsable("insert", $data, null, null);
+                    $respuesta = $this->model->nivel("insert", $data, null, null);
 
                     if (is_numeric($respuesta)) {
                         return $this->response->setJSON(json_encode(array(
-                            'exito' => "Tutor asignado correctamente"
+                            'exito' => "Nivel registrado correctamente"
+                        )));
+                    }else{
+                        return $this->response->setJSON(json_encode(array(
+                            'error' => "Error al registrar el nivel"
                         )));
                     }
                 }
@@ -117,15 +104,13 @@ class Responsable extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "id_tutor" => "required",
-                        "id_estudiante" => "required"
+                        "nivel" => "required|numeric|max_length[1]"
                     ],
                     [ // errors
-                        "id_tutor" => [
-                            "required" => "El tutor(a) es requerido"
-                        ],
-                        "nombre" => [
-                            "id_estudiante" => "El estudiante es requerido"
+                        "nivel" => [
+                            "required" => "El nivel es requerido",
+                            "numeric"  => "El nivel debe tener caracteres numéricos",
+                            "max_length" => "El debe tener un caracter"
                         ]
                     ]
                 );
@@ -139,18 +124,21 @@ class Responsable extends BaseController
 
                     // Actualizar datos
                     $data = array(
-                        "id_tutor"      => trim($this->request->getPost("id_tutor")),
-                        "id_estudiante"      => trim($this->request->getPost("id_estudiante")),
+                        "nivel" => trim($this->request->getPost("nivel")),
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->responsable("update", $data, array(
-                        "id_responsable" => $this->request->getPost("id_responsable")
+                    $respuesta = $this->model->nivel("update", $data, array(
+                        "id_curso" => $this->request->getPost("id_curso")
                     ), null);
 
                     if ($respuesta) {
                         return $this->response->setJSON(json_encode(array(
-                            'exito' => "Tutor editado correctamente"
+                            'exito' => "Nivel editado correctamente"
+                        )));
+                    }else{
+                        return $this->response->setJSON(json_encode(array(
+                            'error' => "Error al actualizar el nivel"
                         )));
                     }
                 }
@@ -159,35 +147,39 @@ class Responsable extends BaseController
         return null;
     }
 
-    // Editar Responsable
-    public function editar_responsable()
+    // Editar nivel
+    public function editar_nivel()
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
             $condicion = array(
-                "id_responsable" => trim($this->request->getPost("id"))
+                "id_curso" => trim($this->request->getPost("id"))
             );
-            $respuesta = $this->model->responsable("select", null, $condicion, null);
+            $respuesta = $this->model->nivel("select", null, $condicion, null);
             return $this->response->setJSON(json_encode($respuesta->getResultArray()));
         }
     }
 
-    // Eliminar responsable
-    public function eliminar_responsable()
+    // Eliminar nivel
+    public function eliminar_nivel()
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
 
-            $respuesta = $this->model->responsable("update", array("estado" => 0), array(
-                "id_responsable" => trim($this->request->getPost("id"))
+            $respuesta = $this->model->nivel("update", array("estado" => 0), array(
+                "id_curso" => trim($this->request->getPost("id"))
             ), null);
 
             if ($respuesta) {
                 return $this->response->setJSON(json_encode(array(
-                    'exito' => "Responsable Eliminado correctamente"
+                    'exito' => "Nivel Eliminado correctamente"
+                )));
+            }else{
+                return $this->response->setJSON(json_encode(array(
+                    'error' => "Error al eliminar el nivel"
                 )));
             }
         }
     }
 
-}//class // class
+}// class
