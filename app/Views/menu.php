@@ -121,7 +121,26 @@
                                 </li>
 							</ul>
 						</li>
-					</ul>
+
+                        <li class="">
+                            <a href="#" data-original-title="" title="">
+                                <i class="fa fa fa-address-book-o"></i>
+                                <span class="menu-title">Kardex</span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('kardex/listarKardex') ?>">
+                                        <i class="fa fa-circle-o"></i>Kardex
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
 
 				</div>
 				<div class="nano-pane" style="display: none;">

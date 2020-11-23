@@ -1,176 +1,82 @@
 <component name="ProjectDictionaryState">
   <dictionary name="jcond">
     <words>
-      <w>abuela</w>
-      <w>abuelo</w>
-      <w>academico</w>
-      <w>académico</w>
       <w>accion</w>
       <w>acciones</w>
-      <w>acerca</w>
       <w>actualizado</w>
       <w>actualizar</w>
-      <w>actuzalizar</w>
-      <w>administativo</w>
-      <w>administrativo</w>
-      <w>administrativos</w>
-      <w>advertencia</w>
       <w>agregar</w>
-      <w>alfabéticos</w>
-      <w>apellido</w>
+      <w>anio</w>
       <w>apellidos</w>
-      <w>asignado</w>
-      <w>asignados</w>
-      <w>asignar</w>
       <w>busqueda</w>
-      <w>cambiada</w>
-      <w>cambiar</w>
-      <w>campo</w>
-      <w>caracter</w>
       <w>caracteres</w>
-      <w>cargar</w>
       <w>cerrar</w>
-      <w>clave</w>
-      <w>codigo</w>
-      <w>columna</w>
+      <w>clearfix</w>
       <w>condicion</w>
-      <w>confirmar</w>
-      <w>contener</w>
-      <w>contrasenia</w>
-      <w>contraseña</w>
       <w>correctamente</w>
-      <w>correctemente</w>
       <w>creado</w>
+      <w>curso</w>
       <w>cursos</w>
-      <w>código</w>
-      <w>datatables</w>
       <w>datos</w>
       <w>debe</w>
-      <w>derechos</w>
-      <w>descripción</w>
-      <w>designado</w>
       <w>devuelve</w>
-      <w>dirección</w>
-      <w>direción</w>
-      <w>disableautofill</w>
-      <w>domicilio</w>
       <w>editado</w>
       <w>editar</w>
-      <w>editarmos</w>
-      <w>educativa</w>
       <w>eliminado</w>
       <w>eliminar</w>
-      <w>encabezado</w>
-      <w>encuentra</w>
       <w>errores</w>
-      <w>espacios</w>
-      <w>especiales</w>
       <w>estado</w>
       <w>estas</w>
       <w>estudiante</w>
       <w>estudiantes</w>
-      <w>existe</w>
-<<<<<<< HEAD
-      <w>existen</w>
+      <w>está</w>
+      <w>estás</w>
       <w>existencia</w>
-=======
->>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
-      <w>exite</w>
       <w>exito</w>
-      <w>expedición</w>
-      <w>expedido</w>
+      <w>falta</w>
       <w>fecha</w>
-      <w>femenino</w>
       <w>formulario</w>
       <w>gestion</w>
       <w>gestión</w>
-      <w>grado</w>
       <w>guardar</w>
-      <w>hermana</w>
-      <w>hermano</w>
-      <w>igual</w>
-      <w>iguala</w>
-      <w>imprimir</w>
-      <w>información</w>
-      <w>ingresado</w>
-      <w>ingrese</w>
-      <w>ingreso</w>
-      <w>inicio</w>
-      <w>insertamos</w>
       <w>insertar</w>
       <w>invitado</w>
-      <w>licenciatura</w>
-      <w>limpiar</w>
+      <w>kardex</w>
       <w>listado</w>
       <w>listar</w>
       <w>llevar</w>
-      <w>madre</w>
-      <w>masculino</w>
-      <w>maskedinput</w>
-      <w>materia</w>
-      <w>materias</w>
-      <w>materno</w>
-      <w>menos</w>
-      <w>mensaje</w>
-      <w>momentjs</w>
-      <w>mostrar</w>
+      <w>mainnav</w>
       <w>máximo</w>
-      <w>nacimiento</w>
-<<<<<<< HEAD
       <w>navbar</w>
-      <w>navegacion</w>
-=======
->>>>>>> 184b87e96e0da130a54be00c7d4ff2283a56a463
-      <w>navigación</w>
-      <w>nombre</w>
+      <w>nivel</w>
+      <w>niveles</w>
       <w>nombres</w>
-      <w>notas</w>
-      <w>nuevo</w>
       <w>numéricos</w>
-      <w>opensans</w>
       <w>orderable</w>
-      <w>parametros</w>
-      <w>parentesco</w>
+      <w>paralelo</w>
+      <w>paralelos</w>
+      <w>pararelo</w>
       <w>paterno</w>
       <w>perfil</w>
       <w>petición</w>
-      <w>posgraduante</w>
-      <w>profesor</w>
-      <w>profesora</w>
-      <w>punct</w>
       <w>registrado</w>
       <w>registro</w>
-      <w>repita</w>
-      <w>reporte</w>
-      <w>reportes</w>
+      <w>registros</w>
       <w>requerido</w>
-      <w>reservados</w>
       <w>responsable</w>
-      <w>responsables</w>
       <w>respuesta</w>
       <w>rosas</w>
       <w>seguro</w>
       <w>seleccione</w>
-      <w>sexo</w>
-      <w>sweetalert</w>
-      <w>tamano</w>
-      <w>telefono</w>
-      <w>teléfono</w>
-      <w>tener</w>
-      <w>tipo</w>
-      <w>titulo</w>
+      <w>sesión</w>
       <w>toastr</w>
       <w>todos</w>
+      <w>toogle</w>
       <w>tutores</w>
-      <w>unidad</w>
-      <w>usuario</w>
       <w>validación</w>
-      <w>validar</w>
       <w>verifica</w>
-      <w>verificación</w>
-      <w>verificamos</w>
-      <w>verificar</w>
-      <w>xmlhttprequest</w>
+      <w>warni</w>
+      <w>yearpicker</w>
     </words>
   </dictionary>
 </component>
