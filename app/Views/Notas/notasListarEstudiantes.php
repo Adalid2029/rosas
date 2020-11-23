@@ -1,4 +1,4 @@
-<table id="tbl_listar_estudiantes" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="tbl_listar_estudiantes" class="table table-striped table-bordered" cellspacing="0" width="100%" data-id-curso-paralelo="<?= $id_curso_paralelo ?>" data-id-materia="<?= $id_materia ?>" data-id-maestro="<?= $id_maestro ?>">
     <thead>
         <tr>
             <th width="5%">#</th>
@@ -13,4 +13,3 @@
         </tr>
     </thead>
 </table>
-

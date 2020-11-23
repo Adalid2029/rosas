@@ -9,7 +9,7 @@
 
             <div class="list-group bg-trans mar-no">
                 <?php foreach ($curso as $key => $value) : ?>
-                    <a class="list-group-item list-item-sm seleccion-materia" data-id-materia="<?= $value['id_materia'] ?>" data-id-maestro="<?= $value['id_maestro'] ?>" data-id-curso="<?= $value['id_curso'] ?>">
+                    <a class="list-group-item list-item-sm seleccion-materia" data-id-materia="<?= $value['id_materia'] ?>" data-id-maestro="<?= $value['id_maestro'] ?>" data-id-curso-paralelo="<?= $value['id_curso_paralelo'] ?>">
                         <span class="label label-danger pull-right"><?= $value['codigo'] ?></span>
                         <?= $value['nombre'] ?>
                     </a>

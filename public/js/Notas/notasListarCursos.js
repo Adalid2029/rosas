@@ -5,8 +5,8 @@ $(document).ready(function () {
 	$('.panel-body').on('click', '.seleccion-materia', function () {
 		id_materia = $(this).attr('data-id-materia');
 		id_maestro = $(this).attr('data-id-maestro');
-		id_curso = $(this).attr('data-id-curso');
-		$.get('/notas/listarEstudiantes', { id_materia, id_maestro, id_curso }).done(function (r) {
+		id_curso_paralelo = $(this).attr('data-id-curso-paralelo');
+		$.get('/notas/listarEstudiantes', { id_materia, id_maestro, id_curso_paralelo }).done(function (r) {
 			parametrosModal('#estudiantes', 'Editar notas del Estudiante: ', 'modal-lg', false, 'static');
 			$('#estudiantes-body').html(r);
 		});

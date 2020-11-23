@@ -1,6 +1,7 @@
 $(document).ready(function () {
-	tbl_listar_estudiantes = $('#tbl_listar_estudiantes').DataTable({
-		ajax: '/Notas/ajaxListarEstudiantes',
+	var t = $('#tbl_listar_estudiantes');
+	var tbl_listar_estudiantes = $('#tbl_listar_estudiantes').DataTable({
+		ajax: '/Notas/ajaxListarEstudiantes/?id_curso_paralelo=' + $(t).attr('data-id-curso-paralelo') + '&id_materia=' + $(t).attr('data-id-materia') + '&id_maestro=' + $(t).attr('data-id-maestro'),
 		columnDefs: [
 			{
 				searchable: false,
@@ -16,19 +17,48 @@ $(document).ready(function () {
 
 	$('#tbl_listar_estudiantes').on('click', '.editar-estudiante', function () {
 		var botonSubir = $('button[type=submit]', $('#frm-nota'));
-		$.get('/notas/editarNota', { id_estudiante: $(this).attr('data-id-estudiante') }).done(function (r) {
+		var id_estudiante = $(this).attr('data-id-estudiante');
+		var id_curso_paralelo = $(t).attr('data-id-curso-paralelo');
+		var id_materia = $(t).attr('data-id-materia');
+		var id_maestro = $(t).attr('data-id-maestro');
+		$.get('/notas/editarNota', { id_estudiante, id_curso_paralelo, id_materia, id_maestro }).done(function (r) {
 			botonSubir.html('Editar');
 			botonSubir.attr('id', 'editar-nota');
+			botonSubir.attr('data-id-estudiante', id_estudiante);
+			botonSubir.attr('data-id-curso-paralelo', id_curso_paralelo);
+			botonSubir.attr('data-id-materia', id_materia);
+			botonSubir.attr('data-id-maestro', id_maestro);
+			if (typeof r.exito !== 'undefined') {
+				$('#nota1').val(r.datos.nota1);
+				$('#nota2').val(r.datos.nota2);
+				$('#nota3').val(r.datos.nota3);
+				$('#nota_final').val(r.datos.nota_final);
+			} else {
+				$('#nota1').val('');
+				$('#nota2').val('');
+				$('#nota3').val('');
+				$('#nota_final').val('');
+				// mensajeAlert('warning', r.error, 'Advertencia');
+			}
+			parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, true);
 		});
-		parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, true);
 	});
-
 	$('#frm-nota').on('keyup', 'input, select', function (event) {
+		var nota1 = parseInt($('#nota1').val()),
+			nota2 = parseInt($('#nota2').val()),
+			nota3 = parseInt($('#nota3').val());
+		$('#nota_final').val(((isNaN(nota1) ? 0 : nota1) + (isNaN(nota2) ? 0 : nota2) + (isNaN(nota3) ? 0 : nota3)) / 3);
+	});
+	$('#frm-nota').on('submit', function (event) {
+		$('#frm-nota').unbind('submit');
 		event.preventDefault();
-		var id_estudiante = $('[name="id_estudiante"]').val();
-		let formData = new FormData();
-		formData.append(event.target.name, event.target.value.trim());
-		formData.append('id_estudiante', id_estudiante);
+		event.stopPropagation();
+		var formData = new FormData($(this)[0]);
+		formData.append('id_estudiante', $('#editar-nota').attr('data-id-estudiante'));
+		formData.append('id_curso_paralelo', $('#editar-nota').attr('data-id-curso-paralelo'));
+		formData.append('id_materia', $('#editar-nota').attr('data-id-materia'));
+		formData.append('id_maestro', $('#editar-nota').attr('data-id-maestro'));
+
 		$.ajax({
 			type: 'post',
 			url: '/notas/actualizarNota',
@@ -41,7 +71,8 @@ $(document).ready(function () {
 			.done(function (data) {
 				if (typeof data.exito !== 'undefined') {
 					mensajeAlert('success', data.exito + event.target.name, 'Exito');
-					$('#tbl_listar_estudiantes').DataTable().draw();
+					tbl_listar_estudiantes.ajax.reload();
+					$('#modal').modal('hide');
 				} else {
 					mensajeAlert('warning', data.error, 'Advertencia');
 				}

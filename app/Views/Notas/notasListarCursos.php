@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota3" class="control-label">Nota Final</label>
-                            <input type="number" id="nota_final" name="nota_final" class="form-control">
+                            <input type="number" id="nota_final" name="nota_final" class="form-control" disabled>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 text-right">

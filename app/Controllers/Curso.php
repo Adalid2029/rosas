@@ -4,10 +4,12 @@ namespace App\Controllers;
 
 use App\Libraries\Ssp;
 use App\Models\CursoModel;
+use App\Models\NotasModel;
 
 class Curso extends BaseController
 {
     public $model = null;
+    public $notasModel = null;
     public $fecha = null;
     public $data;
 
@@ -15,6 +17,7 @@ class Curso extends BaseController
     {
         parent::__construct();
         $this->model = new CursoModel();
+        $this->notasModel = new NotasModel();
         $this->fecha = new \DateTime();
     }
 
@@ -24,7 +27,33 @@ class Curso extends BaseController
         $this->data["paralelos"] = $this->model->listarParalelos();
 
         return $this->templater->view('materias_cursos/listarCursos', $this->data);
+    }
 
+    public function listarAsignacionesCursoEstudiante()
+    {
+        $this->data['gestiones'] = $this->db->table('gestion')->orderBy('id_gestion DESC')->get()->getResultArray();
+        $this->data['estudiantes'] = $this->notasModel->listarEstudiantes()->getResultArray();
+        $this->data['cursos_paralelos'] = $this->notasModel->cursosParalelos()->getResultArray(9);
+        return $this->templater->view('materias_cursos/listarAsignacionesCursoEstudiante', $this->data);
+    }
+
+    public function insertarAsignacionesCursoEstudiante()
+    {
+        if ($this->request->isAJAX()) {
+            print_r($_REQUEST);
+        }
+    }
+    public function actualizarAsignacionesCursoEstudiante()
+    {
+        if ($this->request->isAJAX()) {
+            print_r($_REQUEST);
+        }
+    }
+    public function editarAsignacionesCursoEstudiante()
+    {
+        if ($this->request->isAJAX()) {
+            print_r($_REQUEST);
+        }
     }
 
     // Listado de cursos
@@ -53,6 +82,32 @@ class Curso extends BaseController
         } else {
             return null;
         }
+    }
+
+    public function ajaxListarAsignacionesEstudiantes()
+    {
+        // print_r($_REQUEST);
+        $table = <<<EOT
+        (SELECT rce.id_curso_estudiante, p.estado, concat(c.nivel, ' ', rp.paralelo)as curso, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo, rg.gestion 
+                from rs_estudiante e
+                join rs_persona p on p.id_persona = e.id_estudiante
+                join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
+                join rs_gestion rg on rg.id_gestion = rce.id_gestion 
+                join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo 
+                join rs_curso c on c.id_curso =  cp.id_curso
+                join rs_paralelo rp on rp.id_paralelo = cp.id_paralelo) temp
+        EOT;
+        $primaryKey = 'id_curso_estudiante';
+        $where = "estado = 1";
+        $columns = array(
+            array('db' => 'id_curso_estudiante', 'dt' => 0),
+            array('db' => 'curso', 'dt' => 1),
+            array('db' => 'nombre_completo', 'dt' => 2),
+            array('db' => 'gestion', 'dt' => 3),
+        );
+
+        $sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
+        return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, $where)));
     }
 
     // Insert curso y paralelo
@@ -86,8 +141,7 @@ class Curso extends BaseController
                     "id_paralelo"  => $this->request->getPost("id_paralelo")
                 );
                 $res = $this->model->curso_paralelo("select", null, $cond, null);
-                if(is_null($res->getRowArray()))
-                {
+                if (is_null($res->getRowArray())) {
                     if (!$val) {
                         // se devuelve todos los errores
                         return $this->response->setJSON(json_encode(array(
@@ -109,13 +163,11 @@ class Curso extends BaseController
                             )));
                         }
                     }
-                }else{
+                } else {
                     return $this->response->setJSON(json_encode(array(
                         "warni" => "El nivel y el paralelo ya existe"
                     )));
                 }
-
-
             } else {
                 // actualizar formulario
                 //validación de formulario
@@ -195,5 +247,4 @@ class Curso extends BaseController
             }
         }
     }
-
 }//class // class

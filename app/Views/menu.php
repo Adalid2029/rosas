@@ -69,11 +69,11 @@
 										<i class="fa fa-circle-o"></i>Tutor
 									</a>
 								</li>
-                                <li>
-                                    <a class="menu--link" href="<?= base_url("/responsable/listarTutoresEstudiantes") ?>">
-                                        <i class="fa fa-circle-o"></i>Asignar tutor
-                                    </a>
-                                </li>
+								<li>
+									<a class="menu--link" href="<?= base_url("/responsable/listarTutoresEstudiantes") ?>">
+										<i class="fa fa-circle-o"></i>Asignar tutor
+									</a>
+								</li>
 							</ul>
 						</li>
 
@@ -85,9 +85,7 @@
 							</a>
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false">
-								<li><a class="menu--link" href="<?= base_url('/notas/listarEstudiantes') ?>"><i class="fa fa-circle-o"></i>Cursos</a></li>
-
-								<li><a class="menu--link" href="<?= base_url('/Notas') ?>">Cursos</a></li>
+								<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Cursos</a></li>
 							</ul>
 						</li>
 
@@ -109,16 +107,32 @@
 										<i class="fa fa-circle-o"></i>Crear Nivel
 									</a>
 								</li>
-                                <li>
-                                    <a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
-                                        <i class="fa fa-circle-o"></i>Crear Paralelos
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
-                                        <i class="fa fa-circle-o"></i>Crear Curso
-                                    </a>
-                                </li>
+								<li>
+									<a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
+										<i class="fa fa-circle-o"></i>Crear Paralelos
+									</a>
+								</li>
+								<li>
+									<a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
+										<i class="fa fa-circle-o"></i>Crear Curso
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="">
+							<a href="#" data-original-title="" title="">
+								<i class="fa fa fa-th-list"></i>
+								<span class="menu-title">Asignacion Maestros y Estudiantes</span>
+								<i class="arrow"></i>
+							</a>
+							<!--Submenu-->
+							<ul class="collapse" aria-expanded="false">
+								<li>
+									<a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
+										<i class="fa fa-circle-o"></i>Materias
+									</a>
+								</li>
 							</ul>
 						</li>
 					</ul>

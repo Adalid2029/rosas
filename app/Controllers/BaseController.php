@@ -53,6 +53,7 @@ class BaseController extends Controller
 			return $this->response->redirect(base_url('auth/login'));
 		}
 		$this->data['user'] = $this->user;
+		setlocale(LC_TIME, 'es_BO.utf8');
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------

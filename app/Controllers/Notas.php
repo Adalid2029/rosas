@@ -29,27 +29,63 @@ class Notas extends BaseController
 	{
 		$this->data['id_materia'] = $this->request->getGet('id_materia');
 		$this->data['id_maestro'] = $this->request->getGet('id_maestro');
-		$this->data['id_curso'] = $this->request->getGet('id_curso');
+		$this->data['id_curso_paralelo'] = $this->request->getGet('id_curso_paralelo');
 		return $this->templater->view('Notas/notasListarEstudiantes', $this->data);
 	}
 	public function editarNota()
 	{
 		if ($this->request->isAJAX()) {
-			print_r($_REQUEST);
+			// print_r($_REQUEST);
+			$notas = $this->notasModel->calificacion('select', null, [
+				'id_estudiante' => $this->request->getGet('id_estudiante'),
+				'id_curso_paralelo' => $this->request->getGet('id_curso_paralelo'),
+				'id_materia' => $this->request->getGet('id_materia'),
+				'id_maestro' => $this->request->getGet('id_maestro')
+			]);
+			if ($notas->getRowArray() !== null) {
+				return $this->response->setJSON(json_encode(['exito' => true, 'datos' => $notas->getRowArray()]));
+			} else
+				return $this->response->setJSON(json_encode(['error' => false]));
 		}
 	}
 	public function actualizarNota()
 	{
 		if ($this->request->isAJAX()) {
-			print_r($_REQUEST);
+			// print_r($_REQUEST);
+
+			$notas = $this->notasModel->calificacion('select', null, [
+				'id_estudiante' => $this->request->getPost('id_estudiante'),
+				'id_curso_paralelo' => $this->request->getPost('id_curso_paralelo'),
+				'id_materia' => $this->request->getPost('id_materia'),
+				'id_maestro' => $this->request->getPost('id_maestro')
+			]);
+
+			$datos = [
+				'id_estudiante' => $this->request->getPost('id_estudiante'),
+				'id_materia' => $this->request->getPost('id_materia'),
+				'id_maestro' => $this->request->getPost('id_maestro'),
+				'id_curso_paralelo' => $this->request->getPost('id_curso_paralelo'),
+				'nota1' => empty($this->request->getPost('nota1')) ? null : $this->request->getPost('nota1'),
+				'nota2' => empty($this->request->getPost('nota2')) ? null : $this->request->getPost('nota2'),
+				'nota3' => empty($this->request->getPost('nota3')) ? null : $this->request->getPost('nota3'),
+				'nota_final' => (intval($this->request->getPost('nota1')) + intval($this->request->getPost('nota2')) + intval($this->request->getPost('nota3'))) / 3,
+				'fecha_registro' => date('Y-m-d H:i:s')
+			];
+			if ($notas->getRowArray() !== null) {
+				$calificacion = $this->notasModel->calificacion('update', $datos, ['id_calificacion' => $notas->getRowArray()['id_calificacion']]);
+				return ($calificacion == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la calificacion con exito'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al actualizar la calificacion']));
+			} else {
+				$id_calificacion = $this->notasModel->calificacion('insert', $datos, null);
+				return is_numeric($id_calificacion) ? $this->response->setJSON(json_encode(['exito' => 'Se inserto la calificacion con exito'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al insertar la calificacion']));
+			}
 		}
 	}
 	public function listarCursos()
 	{
-		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona']], '', 'cu.id_curso')->getResultArray();
+		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona']], '', 'cu.id_curso_paralelo')->getResultArray();
 		$cursosMaterias = [];
 		foreach ($cursos as $key => $value) {
-			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona'], 'cu.id_curso' => $value['id_curso']], '', '')->getResultArray();
+			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona'], 'cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
 		}
 		// var_dump($cursosMaterias);
 		if (!empty($cursosMaterias)) {
@@ -63,16 +99,20 @@ class Notas extends BaseController
 	}
 	public function ajaxListarEstudiantes()
 	{
+		// print_r($_REQUEST);
 		$table = <<<EOT
-			(SELECT e.id_estudiante, p.id_persona, rude, concat(ci, ' ', exp) ci, rc.id_materia, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
-			FROM
-			  rs_estudiante e
-			  join rs_persona p on p.id_persona = e.id_persona
-			  left join rs_calificacion rc on rc.id_estudiante = e.id_estudiante
+			(SELECT e.id_estudiante, p.estado, rude, concat(ci, ' ', exp) ci, rmm.id_maestro, cp.id_curso_paralelo, rmm.id_materia, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, concat(paterno, ' ', materno, ' ', nombres) as nombre_completo, nacimiento, sexo, telefono, domicilio
+			from rs_estudiante e
+			join rs_persona p on p.id_persona = e.id_estudiante
+			join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
+			join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo 
+			join rs_curso c on c.id_curso =  cp.id_curso 
+			join rs_materia_maestro rmm on rmm.id_curso_paralelo = cp.id_curso_paralelo
+			left join rs_calificacion rc on rc.id_materia =rmm.id_materia
 			) temp
 			EOT;
-		$primaryKey = 'id_persona';
-		// $where = "id_materia = 2";
+		$primaryKey = 'id_estudiante';
+		$where = "id_curso_paralelo = " . $this->request->getGet('id_curso_paralelo') . " and id_maestro = " . $this->request->getGet('id_maestro') . " and id_materia = " . $this->request->getGet('id_materia') . " and estado=1";
 		$columns = array(
 			array('db' => 'id_estudiante', 'dt' => 0),
 			array('db' => 'nombre_completo', 'dt' => 1),
@@ -85,6 +125,6 @@ class Notas extends BaseController
 		);
 
 		$sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
-		return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null)));
+		return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, $where)));
 	}
 }// class

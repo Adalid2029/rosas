@@ -65,7 +65,7 @@ class App extends BaseConfig
 	| should run under for this request.
 	|
 	*/
-	public $defaultLocale = 'en';
+	public $defaultLocale = 'es';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ class App extends BaseConfig
 	| found, the first locale will be used.
 	|
 	*/
-	public $supportedLocales = ['en'];
+	public $supportedLocales = ['es'];
 
 	/*
 	|--------------------------------------------------------------------------
