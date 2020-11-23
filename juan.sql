@@ -58,3 +58,67 @@ from
 join `rs_tutor` `rst` on
     (`rsp`.`id_persona` = `rst`.`id_tutor`));
 
+
+--------------- QUERYS DE KARDEX -----------
+-- db_rosas1.rs_kardex definition
+
+
+-- eliminar llave foranea de kardex
+ALTER TABLE rs_kardex DROP FOREIGN KEY fk_kardex_curso;
+
+-- eliminar index
+ALTER TABLE `rs_kardex` DROP INDEX `fk_kardex_curso`;
+
+-- cambiar nombre de columna
+ALTER TABLE `rs_kardex` CHANGE `id_curso` `id_curso_paralelo` INT(11) NOT NULL;
+
+-- agregar foreign key curso paralelo
+alter table rs_kardex  add CONSTRAINT `fk_kardex_cursoparalelo` FOREIGN KEY (`id_curso_paralelo`) REFERENCES rs_curso_paralelo (`id_curso_paralelo`);
+
+
+-- eliminar tabla pedagogico
+drop table rs_pedagogico ;
+
+-- adicionar columnas de fechas en kardex
+ALTER TABLE rs_kardex ADD `creado_en` TIMESTAMP NULL DEFAULT NULL AFTER `registrante`;
+ALTER TABLE `rs_kardex` ADD `actualizado_en` TIMESTAMP NULL DEFAULT NULL AFTER `creado_en`;
+ALTER TABLE rs_kardex ADD estado TINYINT NOT NULL DEFAULT '1' AFTER actualizado_en;
+
+-- eliminar disciplinacio y falta cometida
+drop table rs_disciplinario, rs_falta_cometida ;
+
+-- creacion de la tabla tipo de falta
+create table rs_tipo_falta(
+	id_tipo_falta INT not null auto_increment,
+	id_kardex int not null,
+	tipo VARCHAR(50) not null,
+	contador INT not null,
+	descripcion varchar(255) not null,
+	fecha date not null,
+	creado_en TIMESTAMP not NULL default now(),
+	actualizado_en TIMESTAMP NULL DEFAULT null,
+	estado TINYINT NOT NULL DEFAULT '1',
+	primary key (id_tipo_falta),
+	constraint fk_tipofalta_kardex foreign key (id_kardex) references rs_kardex(id_kardex)
+);
+
+-- eliminar registrante de kardex
+ALTER TABLE `rs_kardex` DROP `registrante`;
+ALTER TABLE `rs_tipo_falta` ADD `registrante` TEXT NOT NULL AFTER `fecha`;
+
+create or replace view rs_view_kardex as
+select rk.id_kardex, rk.id_estudiante, rk.id_curso_paralelo, concat(rp.nombres, ' ', rp.paterno, ' ', rp.materno)as estudiante, rk.gestion, rk.contador, rk.creado_en, rk.estado
+from rs_persona rp inner join rs_estudiante re on rp.id_persona = re.id_estudiante
+inner join rs_kardex rk on re.id_estudiante = rk.id_estudiante order by rk.id_kardex desc;
+
+ALTER TABLE `rs_tipo_falta` DROP `contador`;
+
+ALTER TABLE `rs_kardex` ADD `contador` INT NOT NULL DEFAULT '0' AFTER `gestion`;
+
+
+
+
+
+
+
+

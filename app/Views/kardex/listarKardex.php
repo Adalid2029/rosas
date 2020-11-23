@@ -21,6 +21,7 @@
                             <th>Curso</th>
                             <th>Estudiante</th>
                             <th>Gestión</th>
+                            <th>Faltas</th>
                             <th>Creado en</th>
                             <th>Acciones</th>
                         </tr>
@@ -97,6 +98,105 @@
     </div>
 </div>
 
+<!--  Modal de registro falta -->
+<div class="modal fade" id="agregar-falta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
+    <div id="modal-dialog" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="agregar-falta-header" class="modal-header">
+                <h5 id="agregar-falta-title" class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="agregar-falta-body" class="modal-body">
+                <form id="frm_guardar_falta" method="POST">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="tipo">Tipo <span style="color: red;">(*)</span> :</label>
+                                    <select name="tipo" id="tipo" class="form-control" required>
+                                        <option value="">-- Seleccione --</option>
+                                        <option value="Disciplinario">Disciplinario</option>
+                                        <option value="Pedagógico">Pedagógico</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="hidden" name="id_tipo_falta" id="id_tipo_falta">
+                            <input type="hidden" name="id_kardex_falta" id="id_kardex_falta">
+                            <input type="hidden" name="accion_falta" id="accion_falta">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="descripcion">Descripción <span style="color: red;">(*)</span> :</label>
+                                    <textarea name="descripcion" id="descripcion"  rows="2" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="fecha">Fecha <span style="color: red;">(*)</span> :</label>
+                                    <input type="date" name="fecha" id="fecha" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="registrante">Registrante <span style="color: red;">(*)</span> :</label>
+                                    <textarea name="registrante" id="registrante"  rows="2" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="panel-footer text-right">
+                        <button class="btn btn-default btn-cerrar-falta" data-dismiss="modal" type="button">Cerrar</button>
+                        <button type="submit" id="btn-guardar-falta" class="btn btn-primary"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  Modal de ver faltas -->
+<div class="modal fade" id="agregar-faltas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
+    <div id="modal-dialog" class="modal-dialog" role="document" style="width: 70%;">
+        <div class="modal-content">
+            <div id="agregar-faltas-header" class="modal-header">
+                <h5 id="agregar-faltas-title" class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tbl_faltas" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th width="5%">#</th>
+                        <th>Kardex</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Registrante</th>
+                        <th>Creado en</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <script>
@@ -141,6 +241,12 @@
                     '<a data="' + data[0] +
                     '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_kardex" data-toggle="tooltip" title="Editar">' +
                     '<i class="fa fa-pencil-square-o"></i></a>' +
+                    '<a data="' + data[0] +
+                    '" nombre="'+data[2]+'" class="btn btn-info-basic btn-sm mdi mdi-tooltip-edit text-white btn_agregar_falta" data-toggle="tooltip" title="Agregar falta">' +
+                    '<i class="fa fa-warning"></i></a>' +
+                    '<a data="' + data[0] +
+                    '" nombre="'+data[2]+'" class="btn btn-success btn-sm mdi mdi-tooltip-edit text-white btn_ver_faltas" data-toggle="tooltip" title="Ver faltas">' +
+                    '<i class="fa fa-eye"></i></a>' +
                     '<a data="' +
                     data[0] +
                     '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_kardex" data-toggle="tooltip" title="Eliminar">' +
@@ -296,6 +402,137 @@
         });
 
     });
-    // fin script
+    // fin script kardex
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // script de faltas
+    // Modal para falta
+    $('#tbl_kardex').on("click", ".btn_agregar_falta", function(e) {
+        let id = $(this).attr("data");
+        let nom = $(this).attr("nombre");
+        $("#id_kardex_falta").val(id);
+        $("#btn-guardar-falta").html(`Guardar`);
+        $("#accion_falta").val("in");
+        $("#id_curso_paralelo").val('').trigger('change');
+        $("#id_estudiante").val('').trigger('change');
+
+        parametrosModal(
+            "#agregar-falta",
+            "Agregar Falta a: " + nom,
+            "modal-lg",
+            false,
+            true
+        );
+    });
+
+    $(".btn-cerrar-falta").on("click", function (e) {
+        limpiarCamposFalta();
+    });
+
+    // Limpiar Campos
+    function limpiarCamposFalta() {
+        $("#id_tipo_falta").val("");
+        $("#id_kardex_falta").val('');
+        $("#tipo").val('');
+        $("#descripcion").val("");
+        $("#fecha").val("");
+        $("#registrante").val("");
+        $("#accion_falta").val("");
+    }
+
+    // Guardar falta
+    $("#frm_guardar_falta").on("submit", function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/falta/guardar_falta",
+            data: $("#frm_guardar_falta").serialize(),
+            dataType: "JSON"
+        }).done(function(response) {
+
+            if (typeof response.form !== "undefined") {
+                mensajeAlert("warning", response.form, "Advertencia");
+            }
+
+            if (typeof response.exito !== "undefined") {
+                $("#tbl_falta").DataTable().draw();
+                $("#tbl_kardex").DataTable().draw();
+                $("#agregar-falta").modal("hide");
+                mensajeAlert("success", response.exito, "Exito");
+                limpiarCamposFalta();
+            }
+
+        }).fail(function(e) {
+            mensajeAlert("error", "Error al registrar/editar la falta", "Error");
+        });
+    });
+
+    // modal para mostrar faltas cometidas por estudiante
+    $("#tbl_kardex").on("click", ".btn_ver_faltas", function(e) {
+        let id = $(this).attr("data");
+        let nom = $(this).attr("nombre");
+        console.log(id)
+
+        //Listado de falta por estudiante
+        $("#tbl_faltas").DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            ajax: {
+                type:"get",
+                url :"/falta/ajaxListarFaltas",
+                data:{"id": id}
+            },
+            language: {
+                sProcessing: "Procesando...",
+                sLengthMenu: "Mostrar _MENU_ registros",
+                sZeroRecords: "No se encontraron resultados",
+                sEmptyTable: "Ningún dato disponible en esta tabla",
+                sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+                sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
+                sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+                sInfoPostFix: "",
+                sSearch: "Buscar:",
+                sUrl: "",
+                sInfoThousands: ",",
+                sLoadingRecords: "Cargando...",
+                oPaginate: {
+                    sFirst: "Primero",
+                    sLast: "Último",
+                    sNext: "Siguiente",
+                    sPrevious: "Anterior"
+                },
+                oAria: {
+                    sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+                    sSortDescending: ": Activar para ordenar la columna de manera descendente"
+                }
+            },
+            columnDefs: [{
+                searchable: false,
+                orderable: false,
+                targets: -1,
+                data: null,
+                render: function(data, type, row, meta) {
+                    return (
+                        '<div class="btn-group" role="group">' +
+                        '<a data="' + data[0] +
+                        '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_kardex" data-toggle="tooltip" title="Editar">' +
+                        '<i class="fa fa-pencil-square-o"></i></a>' +
+                        '<a data="' + data[0] +
+                        '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_kardex" data-toggle="tooltip" title="Eliminar">' +
+                        '<i class="fa fa-trash-o"></i></a>' +
+                        '</div>'
+                    );
+                }
+            }]
+        });
+
+        parametrosModal(
+            "#agregar-faltas",
+            "Faltas del Estudiante: " + nom,
+            "modal-lg",
+            false,
+            true
+        );
+    });
 
 </script>

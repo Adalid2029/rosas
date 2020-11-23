@@ -6,25 +6,33 @@
       <w>actualizado</w>
       <w>actualizar</w>
       <w>agregar</w>
+      <w>alfabéticos</w>
       <w>anio</w>
       <w>apellidos</w>
       <w>busqueda</w>
+      <w>cantidad</w>
       <w>caracteres</w>
       <w>cerrar</w>
       <w>clearfix</w>
+      <w>cometidas</w>
       <w>condicion</w>
+      <w>contador</w>
       <w>correctamente</w>
       <w>creado</w>
       <w>curso</w>
       <w>cursos</w>
       <w>datos</w>
       <w>debe</w>
+      <w>descripcion</w>
+      <w>descripción</w>
       <w>devuelve</w>
+      <w>disciplinario</w>
       <w>editado</w>
       <w>editar</w>
       <w>eliminado</w>
       <w>eliminar</w>
       <w>errores</w>
+      <w>espacios</w>
       <w>estado</w>
       <w>estas</w>
       <w>estudiante</w>
@@ -34,6 +42,7 @@
       <w>existencia</w>
       <w>exito</w>
       <w>falta</w>
+      <w>faltas</w>
       <w>fecha</w>
       <w>formulario</w>
       <w>gestion</w>
@@ -42,14 +51,17 @@
       <w>insertar</w>
       <w>invitado</w>
       <w>kardex</w>
+      <w>limpiar</w>
       <w>listado</w>
       <w>listar</w>
       <w>llevar</w>
       <w>mainnav</w>
+      <w>mostrar</w>
       <w>máximo</w>
       <w>navbar</w>
       <w>nivel</w>
       <w>niveles</w>
+      <w>nombre</w>
       <w>nombres</w>
       <w>numéricos</w>
       <w>orderable</w>
@@ -57,9 +69,11 @@
       <w>paralelos</w>
       <w>pararelo</w>
       <w>paterno</w>
+      <w>pedagógico</w>
       <w>perfil</w>
       <w>petición</w>
       <w>registrado</w>
+      <w>registrante</w>
       <w>registro</w>
       <w>registros</w>
       <w>requerido</w>
@@ -69,6 +83,7 @@
       <w>seguro</w>
       <w>seleccione</w>
       <w>sesión</w>
+      <w>tipo</w>
       <w>toastr</w>
       <w>todos</w>
       <w>toogle</w>

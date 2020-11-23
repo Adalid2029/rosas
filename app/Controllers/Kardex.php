@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controllers;
-
 
 use App\Libraries\Ssp;
 use App\Models\KardexModel;
@@ -42,11 +40,12 @@ class Kardex extends BaseController
             $where = "estado=1";
             $primaryKey = "id_kardex";
             $columns = array(
-                array('db' => 'id_kardex', 'dt'   => 0),
-                array('db' => 'id_curso_paralelo', 'dt'       => 1),
-                array('db' => 'estudiante', 'dt'  => 2),
-                array('db' => 'gestion', 'dt'     => 3),
-                array('db' => 'creado_en', 'dt'   => 4)
+                array('db' => 'id_kardex', 'dt'         => 0),
+                array('db' => 'id_curso_paralelo', 'dt' => 1),
+                array('db' => 'estudiante', 'dt'        => 2),
+                array('db' => 'gestion', 'dt'           => 3),
+                array('db' => 'contador', 'dt'          => 4),
+                array('db' => 'creado_en', 'dt'         => 5)
             );
 
             $sql_details = array(
