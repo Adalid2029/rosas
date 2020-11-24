@@ -3,17 +3,25 @@
     <words>
       <w>accion</w>
       <w>acciones</w>
+      <w>acción</w>
       <w>actualizado</w>
       <w>actualizar</w>
+      <w>administrativo</w>
+      <w>administrativos</w>
       <w>agregar</w>
       <w>alfabéticos</w>
       <w>anio</w>
       <w>apellidos</w>
       <w>busqueda</w>
+      <w>cambiar</w>
       <w>cantidad</w>
       <w>caracteres</w>
       <w>cerrar</w>
+      <w>citacion</w>
+      <w>citaciones</w>
+      <w>citación</w>
       <w>clearfix</w>
+      <w>cometida</w>
       <w>cometidas</w>
       <w>condicion</w>
       <w>contador</w>
@@ -29,8 +37,10 @@
       <w>disciplinario</w>
       <w>editado</w>
       <w>editar</w>
+      <w>educativa</w>
       <w>eliminado</w>
       <w>eliminar</w>
+      <w>entonces</w>
       <w>errores</w>
       <w>espacios</w>
       <w>estado</w>
@@ -45,9 +55,13 @@
       <w>faltas</w>
       <w>fecha</w>
       <w>formulario</w>
+      <w>generado</w>
       <w>gestion</w>
       <w>gestión</w>
       <w>guardar</w>
+      <w>idkardex</w>
+      <w>imprimir</w>
+      <w>inserta</w>
       <w>insertar</w>
       <w>invitado</w>
       <w>kardex</w>
@@ -56,6 +70,8 @@
       <w>listar</w>
       <w>llevar</w>
       <w>mainnav</w>
+      <w>marcado</w>
+      <w>marcar</w>
       <w>mostrar</w>
       <w>máximo</w>
       <w>navbar</w>
@@ -71,15 +87,24 @@
       <w>paterno</w>
       <w>pedagógico</w>
       <w>perfil</w>
+      <w>peticion</w>
       <w>petición</w>
+      <w>procesar</w>
+      <w>puede</w>
       <w>registrado</w>
       <w>registrante</w>
       <w>registro</w>
       <w>registros</w>
+      <w>reporte</w>
+      <w>reportes</w>
       <w>requerido</w>
       <w>responsable</w>
       <w>respuesta</w>
+      <w>revertir</w>
+      <w>revisado</w>
+      <w>revisar</w>
       <w>rosas</w>
+      <w>sacar</w>
       <w>seguro</w>
       <w>seleccione</w>
       <w>sesión</w>
@@ -88,8 +113,11 @@
       <w>todos</w>
       <w>toogle</w>
       <w>tutores</w>
+      <w>unidad</w>
       <w>validación</w>
       <w>verifica</w>
+      <w>verificar</w>
+      <w>visto</w>
       <w>warni</w>
       <w>yearpicker</w>
     </words>

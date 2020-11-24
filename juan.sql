@@ -115,9 +115,21 @@ ALTER TABLE `rs_tipo_falta` DROP `contador`;
 
 ALTER TABLE `rs_kardex` ADD `contador` INT NOT NULL DEFAULT '0' AFTER `gestion`;
 
+ALTER TABLE `rs_tipo_falta` ADD `visto` TINYINT NOT NULL DEFAULT '0' AFTER `registrante`;
 
 
+-- citacion
+ALTER TABLE `rs_citacion` DROP `tipo`;
+ALTER TABLE `rs_citacion` DROP `citacion`;
 
+
+-- crear la vista citacion
+
+create or replace view rs_view_citacion  AS
+select rc.id_citacion, rc.id_kardex, concat(rp.paterno, ' ', rp.materno, ' ', rp.nombres) as nombres_apellidos, rc.fecha
+from rs_citacion rc inner join rs_kardex rk on rc.id_kardex = rk.id_kardex
+inner join rs_estudiante re on rk.id_estudiante = re.id_estudiante
+inner join rs_persona rp on re.id_estudiante =rp.id_persona;
 
 
 

@@ -23,7 +23,7 @@ ALTER TABLE rs_grupo_usuario ADD CONSTRAINT psg_grupo_usuario_usuario FOREIGN KE
 
 
 --- 21/11/2020
-drop table db_rosas.rs_materia_maestro;
+drop table db_rosas.rs_materia_maestro; -- ejecutado
 -- db_rosas.rs_materia_maestro definition
 
 CREATE TABLE `rs_materia_maestro` (
@@ -44,12 +44,13 @@ CREATE TABLE `rs_materia_maestro` (
 INSERT INTO db_rosas.rs_gestion
 (gestion)
 values
-(2015), 
+(2015),
 (2016),
 (2017),
 (2018),
 (2019),
 (2020);
+-- ejecutado hasta aqui jco.
 
-INSERT INTO db_rosas.rs_materia_maestro (id_materia, id_curso, id_maestro, id_gestion) 
+INSERT INTO db_rosas.rs_materia_maestro (id_materia, id_curso, id_maestro, id_gestion)
 VALUES(5, 6, 7, 60);
