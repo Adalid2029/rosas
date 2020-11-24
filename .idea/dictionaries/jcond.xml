@@ -3,6 +3,7 @@
     <words>
       <w>accion</w>
       <w>acciones</w>
+      <w>acción</w>
       <w>actualizado</w>
       <w>actualizar</w>
       <w>agregar</w>
@@ -10,10 +11,12 @@
       <w>anio</w>
       <w>apellidos</w>
       <w>busqueda</w>
+      <w>cambiar</w>
       <w>cantidad</w>
       <w>caracteres</w>
       <w>cerrar</w>
       <w>clearfix</w>
+      <w>cometida</w>
       <w>cometidas</w>
       <w>condicion</w>
       <w>contador</w>
@@ -56,6 +59,8 @@
       <w>listar</w>
       <w>llevar</w>
       <w>mainnav</w>
+      <w>marcado</w>
+      <w>marcar</w>
       <w>mostrar</w>
       <w>máximo</w>
       <w>navbar</w>
@@ -72,6 +77,7 @@
       <w>pedagógico</w>
       <w>perfil</w>
       <w>petición</w>
+      <w>puede</w>
       <w>registrado</w>
       <w>registrante</w>
       <w>registro</w>
@@ -79,6 +85,9 @@
       <w>requerido</w>
       <w>responsable</w>
       <w>respuesta</w>
+      <w>revertir</w>
+      <w>revisado</w>
+      <w>revisar</w>
       <w>rosas</w>
       <w>seguro</w>
       <w>seleccione</w>
@@ -90,6 +99,7 @@
       <w>tutores</w>
       <w>validación</w>
       <w>verifica</w>
+      <w>visto</w>
       <w>warni</w>
       <w>yearpicker</w>
     </words>
