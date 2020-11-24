@@ -51,6 +51,7 @@ class NotasModel extends Database
         $builder->join('estudiante e', 'e.id_estudiante = p.id_persona');
         return is_array($condicion) ? $builder->getWhere($condicion) : $builder->get();
     }
+
     public function cursosParalelos($condicion = null)
     {
         $builder = $this->db->table('curso_paralelo cp');

@@ -130,31 +130,38 @@
 							<ul class="collapse" aria-expanded="false">
 								<li>
 									<a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
-										<i class="fa fa-circle-o"></i>Materias
+										<i class="fa fa-circle-o"></i>Asignar Estudiante
+									</a>
+								</li>
+							</ul>
+							<ul class="collapse" aria-expanded="false">
+								<li>
+									<a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
+										<i class="fa fa-circle-o"></i>Asignar Maestro
 									</a>
 								</li>
 							</ul>
 						</li>
 
-                        <li class="">
-                            <a href="#" data-original-title="" title="">
-                                <i class="fa fa fa-address-book-o"></i>
-                                <span class="menu-title">Kardex</span>
-                                <i class="arrow"></i>
-                            </a>
+						<li class="">
+							<a href="#" data-original-title="" title="">
+								<i class="fa fa fa-address-book-o"></i>
+								<span class="menu-title">Kardex</span>
+								<i class="arrow"></i>
+							</a>
 
-                            <!--Submenu-->
-                            <ul class="collapse" aria-expanded="false">
-                                <li>
-                                    <a class="menu--link" href="<?= base_url('kardex/listarKardex') ?>">
-                                        <i class="fa fa-circle-o"></i>Kardex
-                                    </a>
-                                </li>
+							<!--Submenu-->
+							<ul class="collapse" aria-expanded="false">
+								<li>
+									<a class="menu--link" href="<?= base_url('kardex/listarKardex') ?>">
+										<i class="fa fa-circle-o"></i>Kardex
+									</a>
+								</li>
 
-                            </ul>
-                        </li>
+							</ul>
+						</li>
 
-                    </ul>
+					</ul>
 
 				</div>
 				<div class="nano-pane" style="display: none;">
