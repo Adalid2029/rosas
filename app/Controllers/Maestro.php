@@ -19,6 +19,72 @@ class Maestro extends BaseController
         $this->administrativo = new AdministrativoModel();
     }
 
+    public function listarAsignacionesMateriaMaestro()
+    {
+        $this->data['gestiones'] = $this->db->table('gestion')->orderBy('id_gestion DESC')->get()->getResultArray();
+        $this->data['materias'] = $this->db->table('materia')->get()->getResultArray();
+        $this->data['maestros'] = $this->model->listarMaestros()->getResultArray();
+        $this->data['cursos_paralelos'] = $this->model->cursosParalelos()->getResultArray();
+
+        return $this->templater->view('materias_cursos/listarAsignacionesMateriaMaestro', $this->data);
+    }
+
+    public function insertarAsignacionesMateriaMaestro()
+    {
+        if ($this->request->isAJAX()) {
+            $id_curso_estudiante = $this->db->table('materia_maestro')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
+            return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+        }
+    }
+    public function actualizarAsignacionesMateriaMaestro()
+    {
+        if ($this->request->isAJAX()) {
+            $curso_estudiante = $this->db->table('materia_maestro')->update($this->request->getPost(), ['id_materia_maestro' => $this->request->getPost('id_materia_maestro')]) ? true : $this->db->error();
+            return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error actualizar la asignacion']));
+        }
+    }
+    public function eliminarAsignacionesMateriaMaestro()
+    {
+        if ($this->request->isAJAX()) {
+            $materia_maestro = $this->db->table('materia_maestro')->delete(['id_materia_maestro' => $this->request->getPost('id_materia_maestro')]) ? true : $this->db->error();
+            return ($materia_maestro == true) ? $this->response->setJSON(json_encode(['exito' => 'Se elimino la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error eliminar la asignacion']));
+        }
+    }
+    public function editarAsignacionesMateriaMaestro()
+    {
+        if ($this->request->isAJAX()) {
+            $materia_maestro = $this->db->table('materia_maestro')->getWhere(['id_materia_maestro' => $this->request->getPost('id_materia_maestro')])->getRowArray();
+            if ($materia_maestro !== null) {
+                return $this->response->setJSON(json_encode(['exito' => true, 'datos' => $materia_maestro]));
+            } else
+                return $this->response->setJSON(json_encode(['error' => false]));
+        }
+    }
+    public function ajaxListarAsignacionesMaestros()
+    {
+        // print_r($_REQUEST);
+        $table = <<<EOT
+        (SELECT mm.id_materia_maestro, p.estado, concat(ma.codigo, ' ', ma.nombre)as materia, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo, g.gestion 
+        from rs_maestro m
+        join rs_persona p on p.id_persona = m.id_maestro
+        join rs_materia_maestro mm on mm.id_maestro = m.id_maestro
+        join rs_gestion g on g.id_gestion = mm.id_gestion                
+        join rs_curso_paralelo cp on cp.id_curso_paralelo =  mm.id_curso_paralelo 
+        join rs_materia ma on ma.id_materia = mm.id_materia) temp
+        EOT;
+        $primaryKey = 'id_materia_maestro';
+        $where = "estado = 1";
+        $columns = array(
+            array('db' => 'id_materia_maestro', 'dt' => 0),
+            array('db' => 'materia', 'dt' => 1),
+            array('db' => 'nombre_completo', 'dt' => 2),
+            array('db' => 'gestion', 'dt' => 3),
+        );
+
+        $sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
+        return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, $where)));
+    }
+
     // Cargar la vista maestros
     public function listarMaestros()
     {
@@ -321,7 +387,6 @@ class Maestro extends BaseController
                     'exito' => "Maestro Eliminado correctamente"
                 )));
             }
-
         }
     }
 }// class

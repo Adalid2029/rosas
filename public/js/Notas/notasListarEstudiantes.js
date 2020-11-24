@@ -53,11 +53,11 @@ $(document).ready(function () {
 		$('#frm-nota').unbind('submit');
 		event.preventDefault();
 		event.stopPropagation();
-		var formData = new FormData($(this)[0]);
-		formData.append('id_estudiante', $('#editar-nota').attr('data-id-estudiante'));
-		formData.append('id_curso_paralelo', $('#editar-nota').attr('data-id-curso-paralelo'));
-		formData.append('id_materia', $('#editar-nota').attr('data-id-materia'));
-		formData.append('id_maestro', $('#editar-nota').attr('data-id-maestro'));
+			var formData = new FormData($(this)[0]);
+			formData.append('id_estudiante', $('#editar-nota').attr('data-id-estudiante'));
+			formData.append('id_curso_paralelo', $('#editar-nota').attr('data-id-curso-paralelo'));
+			formData.append('id_materia', $('#editar-nota').attr('data-id-materia'));
+			formData.append('id_maestro', $('#editar-nota').attr('data-id-maestro'));
 
 		$.ajax({
 			type: 'post',

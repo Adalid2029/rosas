@@ -40,20 +40,58 @@ class Curso extends BaseController
     public function insertarAsignacionesCursoEstudiante()
     {
         if ($this->request->isAJAX()) {
-            print_r($_REQUEST);
+            $id_curso_estudiante = $this->db->table('curso_estudiante')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
+            return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
         }
     }
     public function actualizarAsignacionesCursoEstudiante()
     {
         if ($this->request->isAJAX()) {
-            print_r($_REQUEST);
+            $curso_estudiante = $this->db->table('curso_estudiante')->update($this->request->getPost(), ['id_curso_estudiante' => $this->request->getPost('id_curso_estudiante')]) ? true : $this->db->error();
+            return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error actualizar la asignacion']));
+        }
+    }
+    public function eliminarAsignacionesCursoEstudiante()
+    {
+        if ($this->request->isAJAX()) {
+            $curso_estudiante = $this->db->table('curso_estudiante')->delete(['id_curso_estudiante' => $this->request->getPost('id_curso_estudiante')]) ? true : $this->db->error();
+            return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se elimino la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error eliminar la asignacion']));
         }
     }
     public function editarAsignacionesCursoEstudiante()
     {
         if ($this->request->isAJAX()) {
-            print_r($_REQUEST);
+            $curso_estudiante = $this->db->table('curso_estudiante')->getWhere(['id_curso_estudiante' => $this->request->getPost('id_curso_estudiante')])->getRowArray();
+            if ($curso_estudiante !== null) {
+                return $this->response->setJSON(json_encode(['exito' => true, 'datos' => $curso_estudiante]));
+            } else
+                return $this->response->setJSON(json_encode(['error' => false]));
         }
+    }
+    public function ajaxListarAsignacionesEstudiantes()
+    {
+        // print_r($_REQUEST);
+        $table = <<<EOT
+        (SELECT rce.id_curso_estudiante, p.estado, concat(c.nivel, ' ', rp.paralelo)as curso, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo, rg.gestion 
+                from rs_estudiante e
+                join rs_persona p on p.id_persona = e.id_estudiante
+                join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
+                join rs_gestion rg on rg.id_gestion = rce.id_gestion 
+                join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo 
+                join rs_curso c on c.id_curso =  cp.id_curso
+                join rs_paralelo rp on rp.id_paralelo = cp.id_paralelo) temp
+        EOT;
+        $primaryKey = 'id_curso_estudiante';
+        $where = "estado = 1";
+        $columns = array(
+            array('db' => 'id_curso_estudiante', 'dt' => 0),
+            array('db' => 'curso', 'dt' => 1),
+            array('db' => 'nombre_completo', 'dt' => 2),
+            array('db' => 'gestion', 'dt' => 3),
+        );
+
+        $sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
+        return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, $where)));
     }
 
     // Listado de cursos
@@ -84,31 +122,7 @@ class Curso extends BaseController
         }
     }
 
-    public function ajaxListarAsignacionesEstudiantes()
-    {
-        // print_r($_REQUEST);
-        $table = <<<EOT
-        (SELECT rce.id_curso_estudiante, p.estado, concat(c.nivel, ' ', rp.paralelo)as curso, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo, rg.gestion 
-                from rs_estudiante e
-                join rs_persona p on p.id_persona = e.id_estudiante
-                join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
-                join rs_gestion rg on rg.id_gestion = rce.id_gestion 
-                join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo 
-                join rs_curso c on c.id_curso =  cp.id_curso
-                join rs_paralelo rp on rp.id_paralelo = cp.id_paralelo) temp
-        EOT;
-        $primaryKey = 'id_curso_estudiante';
-        $where = "estado = 1";
-        $columns = array(
-            array('db' => 'id_curso_estudiante', 'dt' => 0),
-            array('db' => 'curso', 'dt' => 1),
-            array('db' => 'nombre_completo', 'dt' => 2),
-            array('db' => 'gestion', 'dt' => 3),
-        );
 
-        $sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
-        return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, $where)));
-    }
 
     // Insert curso y paralelo
     public function guardar_curso()
