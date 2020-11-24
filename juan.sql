@@ -115,6 +115,7 @@ ALTER TABLE `rs_tipo_falta` DROP `contador`;
 
 ALTER TABLE `rs_kardex` ADD `contador` INT NOT NULL DEFAULT '0' AFTER `gestion`;
 
+ALTER TABLE `rs_tipo_falta` ADD `visto` TINYINT NOT NULL DEFAULT '0' AFTER `registrante`;
 
 
 
