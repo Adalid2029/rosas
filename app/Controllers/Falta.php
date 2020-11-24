@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\CitacionReporte;
 use App\Libraries\Ssp;
 use App\Models\FaltaModel;
 use App\Models\KardexModel;
@@ -12,12 +13,14 @@ class Falta extends BaseController
     public $fecha = null;
     public $data;
     public $kardex;
+    public $reporte;
 
     public function __construct()
     {
         parent::__construct();
         $this->model = new FaltaModel();
         $this->kardex = new KardexModel();
+        $this->reporte = new CitacionReporte();
         $this->fecha = new \DateTime();
     }
 
@@ -89,9 +92,31 @@ class Falta extends BaseController
                             $cont = intval($respuesta1[0]["contador"])+1;
                             $res = $this->kardex->kardex("update", array("contador" => $cont), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null );
                             if ($res){
-                                return $this->response->setJSON(json_encode(array(
-                                    'exito' => "Falta registrado correctamente"
-                                )));
+
+                                // se verifica el contador de faltas
+                                $respuesta = $this->model->verificar5Faltas($this->request->getPost("id_kardex_falta"));
+
+                                if (intval($respuesta[0]["contador"]) == 5){
+                                    // si el contador es 5 entonces se inserta la citacion
+                                    $data3 = array(
+                                        "id_kardex"     => $this->request->getPost("id_kardex_falta"),
+                                        "fecha"     => $this->fecha->format('Y-m-d H:i:s')
+                                    );
+                                    $re = $this->model->citacion("insert", $data3, null, null);
+                                    if (is_numeric($re))
+                                    {
+                                        $res = $this->kardex->kardex("update", array("contador" => 0), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null );
+                                        return $this->response->setJSON(json_encode(array(
+                                            'exito' => "Falta registrado correctamente y una CITACION GENERADO!!!"
+                                        )));
+                                    }
+
+                                }else{
+                                    return $this->response->setJSON(json_encode(array(
+                                        'exito' => "Falta registrado correctamente"
+                                    )));
+                                }
+
                             }
                         }
 
@@ -259,6 +284,42 @@ class Falta extends BaseController
 
             }
         }
+    }
+
+    // Listado de citacion
+    public function ajaxListarCitacion()
+    {
+        if ($this->request->isAJAX()) {
+            $this->db->transBegin();
+            $table = "rs_view_citacion";
+            $where = "id_kardex=".$this->request->getGet("id_kardex") ;
+            $primaryKey = "id_citacion";
+            $columns = array(
+                array('db' => 'id_citacion', 'dt'      => 0),
+                array('db' => 'id_kardex', 'dt'        => 1),
+                array('db' => 'nombres_apellidos', 'dt'=> 2),
+                array('db' => 'fecha', 'dt'            => 3)
+            );
+
+            $sql_details = array(
+                'user' => $this->db->username,
+                'pass' => $this->db->password,
+                'db' => $this->db->database,
+                'host' => $this->db->hostname
+            );
+
+            return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where)));
+        } else {
+            return null;
+        }
+    }
+
+    public function imprimirCitacion(){
+        $name = $this->request->getGet("name");
+        $fecha = $this->request->getGet("fecha");
+        $this->response->setContentType('application/pdf');
+        $this->reporte->imprimir($name, $fecha);
+
     }
 
 }
