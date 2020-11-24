@@ -105,10 +105,9 @@ class Notas extends BaseController
 			from rs_estudiante e
 			join rs_persona p on p.id_persona = e.id_estudiante
 			join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
-			join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo 
-			join rs_curso c on c.id_curso =  cp.id_curso 
+			join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo  
 			join rs_materia_maestro rmm on rmm.id_curso_paralelo = cp.id_curso_paralelo
-			left join rs_calificacion rc on rc.id_materia =rmm.id_materia
+			left join rs_calificacion rc on rc.id_materia = rmm.id_materia and rc.id_maestro = rmm.id_maestro  and rc.id_curso_paralelo = rmm.id_curso_paralelo and rc.id_estudiante = e.id_estudiante
 			) temp
 			EOT;
 		$primaryKey = 'id_estudiante';

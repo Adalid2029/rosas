@@ -50,14 +50,13 @@ $(document).ready(function () {
 		$('#nota_final').val(((isNaN(nota1) ? 0 : nota1) + (isNaN(nota2) ? 0 : nota2) + (isNaN(nota3) ? 0 : nota3)) / 3);
 	});
 	$('#frm-nota').on('submit', function (event) {
-		$('#frm-nota').unbind('submit');
 		event.preventDefault();
 		event.stopPropagation();
-			var formData = new FormData($(this)[0]);
-			formData.append('id_estudiante', $('#editar-nota').attr('data-id-estudiante'));
-			formData.append('id_curso_paralelo', $('#editar-nota').attr('data-id-curso-paralelo'));
-			formData.append('id_materia', $('#editar-nota').attr('data-id-materia'));
-			formData.append('id_maestro', $('#editar-nota').attr('data-id-maestro'));
+		var formData = new FormData($(this)[0]);
+		formData.append('id_estudiante', $('#editar-nota').attr('data-id-estudiante'));
+		formData.append('id_curso_paralelo', $('#editar-nota').attr('data-id-curso-paralelo'));
+		formData.append('id_materia', $('#editar-nota').attr('data-id-materia'));
+		formData.append('id_maestro', $('#editar-nota').attr('data-id-maestro'));
 
 		$.ajax({
 			type: 'post',
