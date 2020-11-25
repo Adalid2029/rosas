@@ -38,9 +38,9 @@
 
 					<ul id="mainnav-menu" class="list-group">
 						<!--Category name-->
-						<li class="list-header">Navigación</li>
+						<li class="list-header">Navegación</li>
 
-						<!--Menu list item-->
+						<!--Menu list Registrar -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
@@ -77,10 +77,67 @@
 							</ul>
 						</li>
 
+                        <!--Menu list Cursos y Areas -->
+                        <li class="active-sub active">
+                            <a href="#" data-original-title="" title="">
+                                <i class="fa fa fa-list-alt"></i>
+                                <span class="menu-title">Cursos y Areas</span>
+                                <i class="arrow"></i>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
+                                        <i class="fa fa-circle-o"></i>Materias
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/nivel/listarNiveles') ?>">
+                                        <i class="fa fa-circle-o"></i>Crear Curso
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
+                                        <i class="fa fa-circle-o"></i>Crear Paralelos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
+                                        <i class="fa fa-circle-o"></i>Asignar Curso
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--Menu list Asignar maestros y estudiantes -->
+                        <li class="">
+                            <a href="#" data-original-title="" title="">
+                                <i class="fa fa fa-th-list"></i>
+                                <span class="menu-title">Asignar Maestros y Estudiantes</span>
+                                <i class="arrow"></i>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
+                                        <i class="fa fa-circle-o"></i>Asignar Estudiante
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="collapse" aria-expanded="false">
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
+                                        <i class="fa fa-circle-o"></i>Asignar Maestro
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--Menu list Asistencias y calificación -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa fa-id-card-o"></i>
-								<span class="menu-title">Kardex Estudiantil</span>
+								<span class="menu-title">Asistencias y Calificaciones</span>
 								<i class="arrow"></i>
 							</a>
 							<!--Submenu-->
@@ -89,64 +146,11 @@
 							</ul>
 						</li>
 
-						<li class="active-sub active">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-th-list"></i>
-								<span class="menu-title">Materias y cursos</span>
-								<i class="arrow"></i>
-							</a>
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
-										<i class="fa fa-circle-o"></i>Materias
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url('/nivel/listarNiveles') ?>">
-										<i class="fa fa-circle-o"></i>Crear Nivel
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
-										<i class="fa fa-circle-o"></i>Crear Paralelos
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
-										<i class="fa fa-circle-o"></i>Crear Curso
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-th-list"></i>
-								<span class="menu-title">Asignacion Maestros y Estudiantes</span>
-								<i class="arrow"></i>
-							</a>
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
-										<i class="fa fa-circle-o"></i>Asignar Estudiante
-									</a>
-								</li>
-							</ul>
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
-										<i class="fa fa-circle-o"></i>Asignar Maestro
-									</a>
-								</li>
-							</ul>
-						</li>
-
+                        <!--Menu list Kardex Estudiantil -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa fa-address-book-o"></i>
-								<span class="menu-title">Kardex</span>
+								<span class="menu-title">Kardex Estudiantil</span>
 								<i class="arrow"></i>
 							</a>
 
