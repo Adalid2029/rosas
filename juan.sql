@@ -131,6 +131,39 @@ from rs_citacion rc inner join rs_kardex rk on rc.id_kardex = rk.id_kardex
 inner join rs_estudiante re on rk.id_estudiante = re.id_estudiante
 inner join rs_persona rp on re.id_estudiante =rp.id_persona;
 
+--   faltas y sus correcciones
+
+
+-- renama tipo_falta por falta cometida
+ALTER TABLE rs_tipo_falta RENAME rs_falta_cometida;
+ -- rename id
+ ALTER TABLE `rs_falta_cometida` CHANGE `id_tipo_falta` `id_falta_cometida` INT(11) NOT NULL AUTO_INCREMENT;
+
+
+--- creacion de tipo de falta
+create table rs_tipo_falta (
+	id_tipo_falta INT not null auto_increment,
+	nombre VARCHAR(100) not null,
+	creado_en TIMESTAMP NULL DEFAULT now(),
+	actualizado_en TIMESTAMP NULL DEFAULT null,
+	estado TINYINT NOT NULL DEFAULT '1',
+	primary key(id_tipo_falta)
+);
+
+drop table falta;
+
+create table rs_falta(
+	id_falta INT not null auto_increment,
+	id_tipo_falta int not null,
+	descripcion varchar(150) not null,
+	creado_en TIMESTAMP NULL DEFAULT now(),
+	actualizado_en TIMESTAMP NULL DEFAULT null,
+	estado TINYINT NOT NULL DEFAULT '1',
+	primary key(id_falta),
+	constraint fk_faltas_tipofalta foreign key(id_tipo_falta) references rs_tipo_falta(id_tipo_falta)
+);
+
+
 
 
 

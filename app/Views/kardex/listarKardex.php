@@ -122,7 +122,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <input type="hidden" name="id_tipo_falta" id="id_tipo_falta">
+                            <input type="hidden" name="id_falta_cometida" id="id_falta_cometida">
                             <input type="hidden" name="id_kardex_falta" id="id_kardex_falta">
                             <input type="hidden" name="accion_falta" id="accion_falta">
                         </div>
@@ -467,7 +467,7 @@
 
     // Limpiar Campos
     function limpiarCamposFalta() {
-        $("#id_tipo_falta").val("");
+        $("#id_falta_cometida").val("");
         $("#id_kardex_falta").val('');
         $("#tipo").val('');
         $("#descripcion").val("");
@@ -610,7 +610,7 @@
                     type: "POST",
                     url: "/falta/editar_visto",
                     data: {
-                        "id_tipo_falta": id,
+                        "id_falta_cometida": id,
                         "visto": value
                     },
                     dataType: "JSON"
@@ -642,7 +642,7 @@
             dataType: "JSON"
         }).done(function(response) {
 
-            $("#id_tipo_falta").val(response[0]["id_tipo_falta"]);
+            $("#id_falta_cometida").val(response[0]["id_falta_cometida"]);
             $("#id_kardex_falta").val(response[0]["id_kardex"]);
             $("#tipo").val(response[0]["tipo"]);
             $("#descripcion").val(response[0]["descripcion"]);

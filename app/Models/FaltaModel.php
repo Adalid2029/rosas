@@ -14,9 +14,9 @@ class FaltaModel extends Database
     }
 
     // tipo falta
-    public function tipo_falta($accion, $datos, $condicion = null, $busqueda = null)
+    public function falta_cometida($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this->db->table("tipo_falta");
+        $builder = $this->db->table("falta_cometida");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {

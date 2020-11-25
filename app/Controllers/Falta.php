@@ -31,7 +31,7 @@ class Falta extends BaseController
 
         if ($this->request->isAJAX()) {
 
-            if ($this->request->getPost("accion_falta") == "in" && $this->request->getPost("id_tipo_falta") == "") {
+            if ($this->request->getPost("accion_falta") == "in" && $this->request->getPost("id_falta_cometida") == "") {
                 //validación de formulario
                 $validation = \Config\Services::validation();
                 helper(['form', 'url']);
@@ -81,7 +81,7 @@ class Falta extends BaseController
                         "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->tipo_falta("insert", $data, null, null);
+                    $respuesta = $this->model->falta_cometida("insert", $data, null, null);
 
                     if (is_numeric($respuesta)) {
 
@@ -176,8 +176,8 @@ class Falta extends BaseController
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->tipo_falta("update", $data, array(
-                        "id_tipo_falta" => $this->request->getPost("id_tipo_falta")
+                    $respuesta = $this->model->falta_cometida("update", $data, array(
+                        "id_falta_cometida" => $this->request->getPost("id_falta_cometida")
                     ), null);
 
                     if ($respuesta) {
@@ -197,11 +197,11 @@ class Falta extends BaseController
     {
         if ($this->request->isAJAX()) {
             $this->db->transBegin();
-            $table = "rs_tipo_falta";
+            $table = "rs_falta_cometida";
             $where = "id_kardex=".$this->request->getGet("id_kardex") . " AND estado = 1";
-            $primaryKey = "id_tipo_falta";
+            $primaryKey = "id_falta_cometida";
             $columns = array(
-                array('db' => 'id_tipo_falta', 'dt' => 0),
+                array('db' => 'id_falta_cometida', 'dt' => 0),
                 array('db' => 'id_kardex', 'dt'     => 1),
                 array('db' => 'tipo', 'dt'          => 2),
                 array('db' => 'descripcion', 'dt'   => 3),
@@ -228,8 +228,8 @@ class Falta extends BaseController
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
-            $respuesta = $this->model->tipo_falta("update", array("visto" => $this->request->getPost("visto")), array(
-                "id_tipo_falta" => trim($this->request->getPost("id_tipo_falta"))
+            $respuesta = $this->model->falta_cometida("update", array("visto" => $this->request->getPost("visto")), array(
+                "id_falta_cometida" => trim($this->request->getPost("id_falta_cometida"))
             ), null);
 
             if (($this->request->getPost("visto") === "0")) {
@@ -252,9 +252,9 @@ class Falta extends BaseController
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
             $condicion = array(
-                "id_tipo_falta" => trim($this->request->getPost("id"))
+                "id_falta_cometida" => trim($this->request->getPost("id"))
             );
-            $respuesta = $this->model->tipo_falta("select", null, $condicion, null);
+            $respuesta = $this->model->falta_cometida("select", null, $condicion, null);
             return $this->response->setJSON(json_encode($respuesta->getResultArray()));
         }
     }
@@ -265,8 +265,8 @@ class Falta extends BaseController
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
 
-            $respuesta = $this->model->tipo_falta("update", array("estado" => 0), array(
-                "id_tipo_falta" => trim($this->request->getPost("id"))
+            $respuesta = $this->model->falta_cometida("update", array("estado" => 0), array(
+                "id_falta_cometida" => trim($this->request->getPost("id"))
             ), null);
 
             if ($respuesta) {
