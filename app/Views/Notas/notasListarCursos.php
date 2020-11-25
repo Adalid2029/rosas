@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="estudiantes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="estudiantes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="overflow-y: scroll;">
     <div id="estudiantes-dialog" class="modal-dialog" role="document">
         <div id="estudiantes-content" class="modal-content">
             <div id="estudiantes-header" class="modal-header">
@@ -38,19 +38,19 @@
                     <div class="row">
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota1" class="control-label">Nota 1</label>
-                            <input type="number" id="nota1" name="nota1" class="form-control">
+                            <input type="text" id="nota1" name="nota1" class="form-control">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota2" class="control-label">Nota 2</label>
-                            <input type="number" id="nota2" name="nota2" class="form-control">
+                            <input type="text" id="nota2" name="nota2" class="form-control">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota3" class="control-label">Nota 3</label>
-                            <input type="number" id="nota3" name="nota3" class="form-control">
+                            <input type="text" id="nota3" name="nota3" class="form-control">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-3">
                             <label for="nota3" class="control-label">Nota Final</label>
-                            <input type="number" id="nota_final" name="nota_final" class="form-control" disabled>
+                            <input type="text" id="nota_final" name="nota_final" class="form-control" disabled>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 text-right">
