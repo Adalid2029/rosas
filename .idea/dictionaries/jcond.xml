@@ -12,7 +12,11 @@
       <w>alfabéticos</w>
       <w>anio</w>
       <w>apellidos</w>
+      <w>asignar</w>
+      <w>asistencias</w>
       <w>busqueda</w>
+      <w>calificaciones</w>
+      <w>calificación</w>
       <w>cambiar</w>
       <w>cantidad</w>
       <w>caracteres</w>
@@ -27,6 +31,7 @@
       <w>contador</w>
       <w>correctamente</w>
       <w>creado</w>
+      <w>crear</w>
       <w>curso</w>
       <w>cursos</w>
       <w>datos</w>
@@ -47,6 +52,7 @@
       <w>estas</w>
       <w>estudiante</w>
       <w>estudiantes</w>
+      <w>estudiantil</w>
       <w>está</w>
       <w>estás</w>
       <w>existencia</w>
@@ -72,9 +78,12 @@
       <w>mainnav</w>
       <w>marcado</w>
       <w>marcar</w>
+      <w>materia</w>
+      <w>materias</w>
       <w>mostrar</w>
       <w>máximo</w>
       <w>navbar</w>
+      <w>navegación</w>
       <w>nivel</w>
       <w>niveles</w>
       <w>nombre</w>
@@ -108,6 +117,7 @@
       <w>seguro</w>
       <w>seleccione</w>
       <w>sesión</w>
+      <w>tener</w>
       <w>tipo</w>
       <w>toastr</w>
       <w>todos</w>

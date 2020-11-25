@@ -62,13 +62,12 @@ class Nivel extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "nivel" => "required|numeric|max_length[1]"
+                        "nivel" => "required|alpha"
                     ],
                     [ // errors
                         "nivel" => [
                             "required" => "El nivel es requerido",
-                            "numeric"  => "El nivel debe tener caracteres numéricos",
-                            "max_length" => "El debe tener un caracter"
+                            "alpha"  => "El nivel debe tener caracteres alfabéticos"
                         ]
                     ]
                 );
@@ -81,7 +80,7 @@ class Nivel extends BaseController
                 } else {
                     // Insertar datos
                     $data = array(
-                        "nivel"      => trim($this->request->getPost("nivel")),
+                        "nivel"      => strtoupper(trim($this->request->getPost("nivel"))),
                         "creado_en"   => $this->fecha->format('Y-m-d H:i:s')
                     );
 
@@ -104,13 +103,12 @@ class Nivel extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "nivel" => "required|numeric|max_length[1]"
+                        "nivel" => "required|alpha"
                     ],
                     [ // errors
                         "nivel" => [
                             "required" => "El nivel es requerido",
-                            "numeric"  => "El nivel debe tener caracteres numéricos",
-                            "max_length" => "El debe tener un caracter"
+                            "alpha"  => "El nivel debe tener caracteres alfabéticos"
                         ]
                     ]
                 );
@@ -124,7 +122,7 @@ class Nivel extends BaseController
 
                     // Actualizar datos
                     $data = array(
-                        "nivel" => trim($this->request->getPost("nivel")),
+                        "nivel" => strtoupper(trim($this->request->getPost("nivel"))),
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                     );
 
