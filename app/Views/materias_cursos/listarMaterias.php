@@ -145,15 +145,18 @@
     });
 
     // verificar codigo repetido
-    $("#codigo").on("change", function (e) {
+    $("#codigo").on("change", function(e) {
         e.preventDefault();
         let cod = $("#codigo").val();
         $.ajax({
             type: "POST",
             url: "/materia/verificar",
-            data: {"cod": cod, "columna": "codigo"},
+            data: {
+                "cod": cod,
+                "columna": "codigo"
+            },
             dataType: "JSON"
-        }).done(function (response) {
+        }).done(function(response) {
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
                 $("#codigo").val("");
@@ -163,15 +166,18 @@
     });
 
     // verificar nombre materia repetido
-    $("#nombre").on("change", function (e) {
+    $("#nombre").on("change", function(e) {
         e.preventDefault();
         let cod = $("#nombre").val();
         $.ajax({
             type: "POST",
             url: "/materia/verificar",
-            data: {"cod": cod, "columna": "nombre"},
+            data: {
+                "cod": cod,
+                "columna": "nombre"
+            },
             dataType: "JSON"
-        }).done(function (response) {
+        }).done(function(response) {
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
                 $("#nombre").val("");
@@ -274,8 +280,4 @@
 
     });
     // fin script
-
-
-
-
 </script>

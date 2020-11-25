@@ -154,7 +154,7 @@ class Materia extends BaseController
 
                     // Actualizar datos
                     $data = array(
-                        "codigo" => mb_strtoupper(trim($this->request->getPost("codigo")),"utf-8"),
+                        "codigo" => mb_strtoupper(trim($this->request->getPost("codigo")), "utf-8"),
                         "nombre" => mb_strtoupper(trim($this->request->getPost("nombre")), "utf-8"),
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                     );
@@ -204,5 +204,4 @@ class Materia extends BaseController
             }
         }
     }
-
 }// class

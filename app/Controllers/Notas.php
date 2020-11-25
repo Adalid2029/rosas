@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\Reportes\NotasReporte;
-use App\Libraries\SSP;
+use App\Libraries\Ssp;
 use App\Models\NotasModel;
 
 class Notas extends BaseController
