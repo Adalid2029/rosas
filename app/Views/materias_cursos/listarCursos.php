@@ -54,39 +54,7 @@
                                     foreach ($this->data["niveles"] as $key => $value) {
                                         echo '<option value="'.$value["id_curso"].'">'.$value["nivel"].'</option>';
                                     }
-                                    ?>
-                                </select>
-                            </div>
-                            <input type="hidden" name="id_curso_paralelo" id="id_curso_paralelo">
-                            <input type="hidden" name="accion" id="accion">
-                        </div>
-                        <hr>
-                        <div class="form-group row">
-                            <label for="id_paralelo" class="col-md-3 col-form-label">Paralelo:</label>
-                            <div class="col-md-12">
-                                <select name="id_paralelo" id="id_paralelo" class="form-control" required>
-                                    <?php
-                                    foreach ($this->data["paralelos"] as $key => $value) {
-                                        echo '<option value="'.$value["id_paralelo"].'">'.$value["paralelo"].'</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="panel-footer text-right">
-                        <button class="btn btn-default btn-cerrar" data-dismiss="modal" type="button">Cerrar</button>
-                        <button type="submit" id="btn-guardar-curso" class="btn btn-primary"></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+ç
 <script>
     //Listar Cursos
     $("#tbl_curso").DataTable({
