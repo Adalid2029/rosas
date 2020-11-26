@@ -48,5 +48,23 @@ class KardexModel extends Database
         return $builder->get()->getResultArray();
     }
 
+    // select para listado de tutores en la vista
+    public function listarTipoFaltas()
+    {
+        $builder = $this->db->table("tipo_falta");
+        $builder->select('id_tipo_falta, nombre');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
+    // select maestros
+    public function listarMaestros()
+    {
+        $builder = $this->db->table("view_maestro");
+        $builder->select('nombres_apellidos');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
 
 } // class

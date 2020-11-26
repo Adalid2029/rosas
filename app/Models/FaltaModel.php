@@ -90,5 +90,27 @@ class FaltaModel extends Database
         return null;
     }
 
+    // tipo falta
+    public function seleccionarFaltas($id_tipo_falta)
+    {
+        $cond = array(
+            "id_tipo_falta" => $id_tipo_falta
+        );
+        $builder = $this->db->table("falta");
+        $builder->select('id_falta, descripcion');
+        $builder->where($cond);
+        return $builder->get()->getResultArray();
+    }
+
+    public function editarFalta($id_falta)
+    {
+
+        $builder = $this->db->table("falta_cometida as fc");
+        $builder->select('fc.id_falta_cometida, fc.id_kardex, fc.id_falta, fc.fecha, fc.registrante, fc.visto, tf.id_tipo_falta, f.descripcion');
+        $builder->join("falta as f", "fc.id_falta = f.id_falta");
+        $builder->join("tipo_falta as tf", "f.id_tipo_falta = tf.id_tipo_falta");
+        return $builder->getWhere(array("fc.id_falta_cometida" => $id_falta));
+    }
+
 
 }

@@ -116,9 +116,11 @@
                                 <div class="form-group">
                                     <label class="control-label" for="tipo">Tipo <span style="color: red;">(*)</span> :</label>
                                     <select name="tipo" id="tipo" class="form-control" required>
-                                        <option value="">-- Seleccione --</option>
-                                        <option value="Disciplinario">Disciplinario</option>
-                                        <option value="Pedagógico">Pedagógico</option>
+                                        <?php
+                                        foreach ($this->data["tipo_faltas"] as $key => $value) {
+                                            echo '<option value="'.$value["id_tipo_falta"].'">'.$value["nombre"].'</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -130,8 +132,9 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label class="control-label" for="descripcion">Descripción <span style="color: red;">(*)</span> :</label>
-                                    <textarea name="descripcion" id="descripcion"  rows="2" class="form-control"></textarea>
+                                    <label class="control-label" for="id_falta">Falta <span style="color: red;">(*)</span> :</label>
+                                    <select name="id_falta" id="id_falta" class="form-control" required>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +152,13 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label class="control-label" for="registrante">Registrante <span style="color: red;">(*)</span> :</label>
-                                    <textarea name="registrante" id="registrante"  rows="2" class="form-control"></textarea>
+                                    <select name="registrante" id="registrante" class="form-control" required>
+                                        <?php
+                                            foreach ($this->data["maestros"] as $key => $value) {
+                                                echo '<option value="'.$value["nombres_apellidos"].'">'.$value["nombres_apellidos"].'</option>';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +191,9 @@
                         <tr>
                             <th width="5%">#</th>
                             <th>Kardex</th>
-                            <th>Tipo</th>
+                            <th>Tipo falta</th>
+                            <th>Tipo Falta</th>
+                            <th>Falta</th>
                             <th>Descripción</th>
                             <th>Fecha</th>
                             <th>Registrante</th>
@@ -234,7 +245,7 @@
 
 
 <script>
-    //Listar Cursos
+    //Listar kardex
     $("#tbl_kardex").DataTable({
         responsive: true,
         processing: true,
@@ -303,14 +314,6 @@
 
         let anio = (new Date).getFullYear();
         $("#gestion").val(anio);
-        // $(".yearpicker").yearpicker({
-        //     year: anio,
-        //     startYear: 2012,
-        //     endYear: 2030,
-        //     zIndex: 2346546,
-        // });
-
-
 
         parametrosModal(
             "#agregar-kardex",
@@ -451,6 +454,9 @@
         $("#accion_falta").val("in");
         $("#id_curso_paralelo").val('').trigger('change');
         $("#id_estudiante").val('').trigger('change');
+        $("#tipo").val('').trigger('change');
+        $("#id_falta").val('').trigger('change');
+        $("#registrante").val('').trigger('change');
 
         parametrosModal(
             "#agregar-falta",
@@ -546,13 +552,27 @@
                     visible: false,
                     targets: 1,
                 },
+
                 {
                     searchable: false,
                     orderable: false,
-                    targets: 6,
+                    visible: false,
+                    targets: 2,
+                },
+
+                {
+                    searchable: false,
+                    orderable: false,
+                    visible: false,
+                    targets: 4,
+                },
+                {
+                    searchable: false,
+                    orderable: false,
+                    targets: 8,
                     data: null,
                     render: function(data, type, row, meta) {
-                        return data[6] === '0' ? '<a data="'+data[0]+'" class="btn btn-active-danger btn-dark-basic btn-sm text-white btn-revisar" data-value="1" data-toggle="tooltip" title="Marcar revisado"><i class="fa fa-window-close-o"></i> No revisado</a>'
+                        return data[8] === '0' ? '<a data="'+data[0]+'" class="btn btn-active-danger btn-dark-basic btn-sm text-white btn-revisar" data-value="1" data-toggle="tooltip" title="Marcar revisado"><i class="fa fa-window-close-o"></i> No revisado</a>'
                             : '<a data="'+data[0]+'" class="btn btn-success btn-sm text-white btn-revisar" data-toggle="tooltip" data-value="0" title="Marcar no revisado"><i class="fa fa-check-square-o"></i> Revisado</a>';
                     }
                 },
@@ -562,7 +582,7 @@
                 targets: -1,
                 data: null,
                 render: function(data, type, row, meta) {
-                    return  data[6] === '0' ?
+                    return  data[8] === '0' ?
                             '<div class="btn-group" role="group">' +
                             '<a data="' + data[0] +
                             '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_faltas" data-toggle="tooltip" title="Editar">' +
@@ -644,10 +664,11 @@
 
             $("#id_falta_cometida").val(response[0]["id_falta_cometida"]);
             $("#id_kardex_falta").val(response[0]["id_kardex"]);
-            $("#tipo").val(response[0]["tipo"]);
-            $("#descripcion").val(response[0]["descripcion"]);
+            $("#tipo").val(response[0]["id_tipo_falta"]).trigger('change');
+            $("#id_falta").val(response[0]["id_falta"]).trigger('change.id_falta');
+
             $("#fecha").val(response[0]["fecha"]);
-            $("#registrante").val(response[0]["registrante"]);
+            $("#registrante").val(response[0]["registrante"]).trigger('change');
             $("#accion_falta").val("up");
 
             $("#btn-guardar-falta").html("Editar");
@@ -780,4 +801,37 @@
         let fecha = $(this).attr("data-fecha");
         window.location.href = "/falta/imprimirCitacion/?name=" + name + "&fecha=" + fecha;
     });
+
+    //Select2 faltas
+    $("#tipo").select2({
+        placeholder: "-- Seleccione Tipo Falta --",
+        allowClear: true,
+        dropdownParent: $("#agregar-falta"),
+        width: '100%'
+    });
+    $("#id_falta").select2({
+        placeholder: "-- Seleccione Falta --",
+        allowClear: true,
+        dropdownParent: $(`#agregar-falta`),
+        width: '100%'
+    });
+    $("#registrante").select2({
+        placeholder: "-- Seleccione Maestro --",
+        allowClear: true,
+        dropdownParent: $(`#agregar-falta`),
+        width: '100%'
+    });
+
+    // cargar faltas segun tipo de falta
+    $("#tipo").on("change", function (e) {
+        let id_tipo_falta = $("#tipo").val();
+        $("#id_falta").val('').trigger('change');
+        $('#id_falta').empty();
+        $.getJSON("/falta/listarFaltas/?id_tipo_falta=" + id_tipo_falta, function(json) {
+            $.each(json, function(i, obj) {
+                $('#id_falta').append($('<option>').text(obj.descripcion).attr('value', obj.id_falta));
+            });
+
+        });
+    })
 </script>
