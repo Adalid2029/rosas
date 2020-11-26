@@ -136,8 +136,8 @@ inner join rs_persona rp on re.id_estudiante =rp.id_persona;
 
 -- renama tipo_falta por falta cometida
 ALTER TABLE rs_tipo_falta RENAME rs_falta_cometida;
- -- rename id
- ALTER TABLE `rs_falta_cometida` CHANGE `id_tipo_falta` `id_falta_cometida` INT(11) NOT NULL AUTO_INCREMENT;
+-- rename id
+ALTER TABLE `rs_falta_cometida` CHANGE `id_tipo_falta` `id_falta_cometida` INT(11) NOT NULL AUTO_INCREMENT;
 
 
 --- creacion de tipo de falta
@@ -150,7 +150,7 @@ create table rs_tipo_falta (
 	primary key(id_tipo_falta)
 );
 
-drop table falta;
+
 
 create table rs_falta(
 	id_falta INT not null auto_increment,
@@ -163,13 +163,12 @@ create table rs_falta(
 	constraint fk_faltas_tipofalta foreign key(id_tipo_falta) references rs_tipo_falta(id_tipo_falta)
 );
 
---------------------------
 
 INSERT INTO rs_tipo_falta (nombre,creado_en,actualizado_en,estado) VALUES
 	 ('DISCIPLINARIO','2020-11-25 10:16:22.0',NULL,1),
 	 ('PEDAGÓGICO','2020-11-25 10:16:22.0',NULL,1);
 
-INSERT INTO db_rosas1.rs_falta (id_tipo_falta,descripcion,creado_en,actualizado_en,estado) VALUES
+INSERT INTO rs_falta (id_tipo_falta,descripcion,creado_en,actualizado_en,estado) VALUES
 	 (1,'ABANDONÓ EL CURSO SIN AUTORIZACIÓN','2020-11-25 10:22:05.0',NULL,1),
 	 (1,'NO PORTA EL UNIFORME','2020-11-25 10:22:05.0',NULL,1),
 	 (1,'DESCUIDA SU HIGIENE PERSONAL','2020-11-25 10:22:58.0',NULL,1),
@@ -180,7 +179,7 @@ INSERT INTO db_rosas1.rs_falta (id_tipo_falta,descripcion,creado_en,actualizado_
 	 (1,'TRAE OBJETOS DE VALOR','2020-11-25 10:24:26.0',NULL,1),
 	 (1,'SE EXPRESA CON PALABRAS GROSERAS','2020-11-25 10:25:22.0',NULL,1),
 	 (1,'DESTROZA EL MOBILIARIO DEL CURSO','2020-11-25 10:25:22.0',NULL,1);
-INSERT INTO db_rosas1.rs_falta (id_tipo_falta,descripcion,creado_en,actualizado_en,estado) VALUES
+INSERT INTO rs_falta (id_tipo_falta,descripcion,creado_en,actualizado_en,estado) VALUES
 	 (2,'NO PRESENTÓ SU TAREA','2020-11-25 10:26:08.0',NULL,1),
 	 (2,'NO REALIZÓ SU TRABAJO PRÁCTICO','2020-11-25 10:26:08.0',NULL,1),
 	 (2,'NO EXPUSO EL TEMA ASIGNADO','2020-11-25 10:27:08.0',NULL,1),
@@ -190,18 +189,29 @@ INSERT INTO db_rosas1.rs_falta (id_tipo_falta,descripcion,creado_en,actualizado_
 	 (2,'NO TIENE MATERIAL DE TRABAJO','2020-11-25 10:28:24.0',NULL,1),
 	 (2,'NO TIENE TEXTO DE LECTURA','2020-11-25 10:28:24.0',NULL,1);
 
-
+drop table rs_falta_cometida;
+CREATE TABLE `rs_falta_cometida` (
+  `id_falta_cometida` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kardex` int(11) NOT NULL,
+  `id_falta` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `registrante` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `visto` tinyint(4) NOT NULL DEFAULT 0,
+  `creado_en` timestamp NOT NULL DEFAULT current_timestamp(),
+  `actualizado_en` timestamp NULL DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id_falta_cometida`),
+  KEY `fk_tipofalta_kardex` (`id_kardex`),
+  KEY `fk_falta_faltacometida` (`id_falta`),
+  CONSTRAINT `fk_falta_faltacometida` FOREIGN KEY (`id_falta`) REFERENCES `rs_falta` (`id_falta`),
+  CONSTRAINT `fk_tipofalta_kardex` FOREIGN KEY (`id_kardex`) REFERENCES `rs_kardex` (`id_kardex`)
+  );
 
 
 -- cracion de la vista de las faltas cometidas
 create or replace view rs_view_falta_cometida as
 select rfc.id_falta_cometida, rk.id_kardex, rtf.id_tipo_falta, rtf.nombre, rf.id_falta, rf.descripcion, rfc.fecha, rfc.registrante, rfc.visto, rfc.estado
-from rs_falta_cometida rfc inner join rs_kardex rk on rfc.id_kardex = rk.id_kardex
+from rs_falta_cometida rfc 
+inner join rs_kardex rk on rfc.id_kardex = rk.id_kardex
 inner join rs_falta rf on rfc.id_falta = rf.id_falta
 inner join rs_tipo_falta rtf on rf.id_tipo_falta = rtf.id_tipo_falta;
-
-
-
-
-
-
