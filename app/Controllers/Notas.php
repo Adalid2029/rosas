@@ -95,7 +95,7 @@ class Notas extends BaseController
 			}
 			return $this->response->setJSON(json_encode(['exito' => true, 'vista' => $vista]));
 		} else
-			return $this->response->setJSON(json_encode(['error' => 'No se encontro registros']));
+			return $this->response->setJSON(json_encode(['error' => 'No se encontraron registros']));
 	}
 	public function ajaxListarEstudiantes()
 	{
@@ -126,4 +126,4 @@ class Notas extends BaseController
 		$sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
 		return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, $where)));
 	}
-}// class
+}

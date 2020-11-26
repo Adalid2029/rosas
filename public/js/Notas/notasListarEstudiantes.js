@@ -1,4 +1,7 @@
 $(document).ready(function () {
+	$('#nota1').inputmask('numeric', { min: 0, max: 100 });
+	$('#nota2').inputmask('numeric', { min: 0, max: 100 });
+	$('#nota3').inputmask('numeric', { min: 0, max: 100 });
 	var t = $('#tbl_listar_estudiantes');
 	var tbl_listar_estudiantes = $('#tbl_listar_estudiantes').DataTable({
 		ajax: '/Notas/ajaxListarEstudiantes/?id_curso_paralelo=' + $(t).attr('data-id-curso-paralelo') + '&id_materia=' + $(t).attr('data-id-materia') + '&id_maestro=' + $(t).attr('data-id-maestro'),
@@ -13,6 +16,9 @@ $(document).ready(function () {
 				},
 			},
 		],
+		language: {
+			url: '/plugins/datatables/lang/Spanish.json',
+		},
 	});
 
 	$('#tbl_listar_estudiantes').on('click', '.editar-estudiante', function () {
@@ -40,7 +46,10 @@ $(document).ready(function () {
 				$('#nota_final').val('');
 				// mensajeAlert('warning', r.error, 'Advertencia');
 			}
-			parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, true);
+			parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, 'static');
+
+			// $('#nota2').inputmask({ regex: '^[1-9][0-9]?$|^100$' }, { placeholder: '' });
+			// $('#nota2').inputmask({ regex: '^[1-9][0-9]?$|^100$' }, { placeholder: '' });
 		});
 	});
 	$('#frm-nota').on('keyup', 'input, select', function (event) {
