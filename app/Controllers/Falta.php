@@ -31,30 +31,24 @@ class Falta extends BaseController
 
         if ($this->request->isAJAX()) {
 
-            if ($this->request->getPost("accion_falta") == "in" && $this->request->getPost("id_tipo_falta") == "") {
+            if ($this->request->getPost("accion_falta") == "in" && $this->request->getPost("id_falta_cometida") == "") {
                 //validación de formulario
                 $validation = \Config\Services::validation();
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "id_kardex_falta"     => "required",
-                        "tipo"          => "required",
-                        "descripcion"   => "required|alpha_space",
-                        "fecha"         => "required",
-                        "registrante"   => "required|alpha_space"
+                        "id_kardex_falta" => "required",
+                        "id_falta"        => "required",
+                        "fecha"           => "required",
+                        "registrante"     => "required|alpha_space"
                     ],
                     [ // errors
                         "id_kardex_falta" => [
                             "required" => "El kardex es requerido"
                         ],
-                        "tipo" => [
+                        "id_falta" => [
                             "required" => "El tipo de falta es requerido"
                         ],
-                        "descripcion" => [
-                            "required" => "La descripción de la falta es requerido",
-                            "alpha_space"    => "La descripción de la falta debe llevar caracteres alfabéticos y espacios"
-                        ]
-                        ,
                         "fecha" => [
                             "required" => "La fecha de la falta es requerido"
                         ],
@@ -74,14 +68,13 @@ class Falta extends BaseController
                     // Insertar datos
                     $data = array(
                         "id_kardex"     => $this->request->getPost("id_kardex_falta"),
-                        "tipo"          => $this->request->getPost("tipo"),
-                        "descripcion"   => trim($this->request->getPost("descripcion")),
+                        "id_falta"      => $this->request->getPost("id_falta"),
                         "fecha"         => $this->request->getPost("fecha"),
                         "registrante"   => trim($this->request->getPost("registrante")),
                         "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->tipo_falta("insert", $data, null, null);
+                    $respuesta = $this->model->falta_cometida("insert", $data, null, null);
 
                     if (is_numeric($respuesta)) {
 
@@ -132,24 +125,18 @@ class Falta extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "id_kardex_falta"     => "required",
-                        "tipo"          => "required",
-                        "descripcion"   => "required|alpha_space",
-                        "fecha"         => "required",
-                        "registrante"   => "required|alpha_space"
+                        "id_kardex_falta" => "required",
+                        "id_falta"        => "required",
+                        "fecha"           => "required",
+                        "registrante"     => "required|alpha_space"
                     ],
                     [ // errors
                         "id_kardex_falta" => [
                             "required" => "El kardex es requerido"
                         ],
-                        "tipo" => [
+                        "id_falta" => [
                             "required" => "El tipo de falta es requerido"
                         ],
-                        "descripcion" => [
-                            "required" => "La descripción de la falta es requerido",
-                            "alpha_space"    => "La descripción de la falta debe llevar caracteres alfabéticos y espacios"
-                        ]
-                        ,
                         "fecha" => [
                             "required" => "La fecha de la falta es requerido"
                         ],
@@ -169,15 +156,14 @@ class Falta extends BaseController
 
                     // Actualizar datos
                     $data = array(
-                        "tipo"           => $this->request->getPost("tipo"),
-                        "descripcion"    => trim($this->request->getPost("descripcion")),
-                        "fecha"          => $this->request->getPost("fecha"),
-                        "registrante"    => trim($this->request->getPost("registrante")),
+                        "id_falta"          => $this->request->getPost("id_falta"),
+                        "fecha"         => $this->request->getPost("fecha"),
+                        "registrante"   => trim($this->request->getPost("registrante")),
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->tipo_falta("update", $data, array(
-                        "id_tipo_falta" => $this->request->getPost("id_tipo_falta")
+                    $respuesta = $this->model->falta_cometida("update", $data, array(
+                        "id_falta_cometida" => $this->request->getPost("id_falta_cometida")
                     ), null);
 
                     if ($respuesta) {
@@ -197,17 +183,19 @@ class Falta extends BaseController
     {
         if ($this->request->isAJAX()) {
             $this->db->transBegin();
-            $table = "rs_tipo_falta";
+            $table = "rs_view_falta_cometida";
             $where = "id_kardex=".$this->request->getGet("id_kardex") . " AND estado = 1";
-            $primaryKey = "id_tipo_falta";
+            $primaryKey = "id_falta_cometida";
             $columns = array(
-                array('db' => 'id_tipo_falta', 'dt' => 0),
-                array('db' => 'id_kardex', 'dt'     => 1),
-                array('db' => 'tipo', 'dt'          => 2),
-                array('db' => 'descripcion', 'dt'   => 3),
-                array('db' => 'fecha', 'dt'         => 4),
-                array('db' => 'registrante', 'dt'   => 5),
-                array('db' => 'visto', 'dt'         => 6)
+                array('db' => 'id_falta_cometida', 'dt' => 0),
+                array('db' => 'id_kardex', 'dt'         => 1),
+                array('db' => 'id_tipo_falta', 'dt'     => 2),
+                array('db' => 'nombre', 'dt'            => 3),
+                array('db' => 'id_falta', 'dt'          => 4),
+                array('db' => 'descripcion', 'dt'       => 5),
+                array('db' => 'fecha', 'dt'             => 6),
+                array('db' => 'registrante', 'dt'       => 7),
+                array('db' => 'visto', 'dt'             => 8)
             );
 
             $sql_details = array(
@@ -228,8 +216,8 @@ class Falta extends BaseController
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
-            $respuesta = $this->model->tipo_falta("update", array("visto" => $this->request->getPost("visto")), array(
-                "id_tipo_falta" => trim($this->request->getPost("id_tipo_falta"))
+            $respuesta = $this->model->falta_cometida("update", array("visto" => $this->request->getPost("visto")), array(
+                "id_falta_cometida" => trim($this->request->getPost("id_falta_cometida"))
             ), null);
 
             if (($this->request->getPost("visto") === "0")) {
@@ -246,15 +234,12 @@ class Falta extends BaseController
         }
     }
 
-    // Editar Kardex
+    // Editar falta
     public function editar_falta()
     {
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
-            $condicion = array(
-                "id_tipo_falta" => trim($this->request->getPost("id"))
-            );
-            $respuesta = $this->model->tipo_falta("select", null, $condicion, null);
+            $respuesta = $this->model->editarFalta(trim($this->request->getPost("id")));
             return $this->response->setJSON(json_encode($respuesta->getResultArray()));
         }
     }
@@ -265,14 +250,19 @@ class Falta extends BaseController
         // se Verifica si es petición ajax
         if ($this->request->isAJAX()) {
 
-            $respuesta = $this->model->tipo_falta("update", array("estado" => 0), array(
-                "id_tipo_falta" => trim($this->request->getPost("id"))
+            $respuesta = $this->model->falta_cometida("update", array("estado" => 0), array(
+                "id_falta_cometida" => trim($this->request->getPost("id"))
             ), null);
 
             if ($respuesta) {
                 $respuesta1 = $this->model->selectContador($this->request->getPost("kardex"));
                 if ($respuesta1){
-                    $cont = intval($respuesta1[0]["contador"])-1;
+                    if( intval($respuesta1[0]["contador"]) <= 0){
+                        $cont = 0;
+                    }else{
+                        $cont = intval($respuesta1[0]["contador"])-1;
+                    }
+
                     $res = $this->kardex->kardex("update", array("contador" => $cont), array("id_kardex" => $this->request->getPost("kardex")), null );
                     if ($res){
                         return $this->response->setJSON(json_encode(array(
@@ -320,6 +310,14 @@ class Falta extends BaseController
         $this->response->setContentType('application/pdf');
         $this->reporte->imprimir($name, $fecha);
 
+    }
+
+    // listar faltas segun id tipo falta
+    public function listarFaltas()
+    {
+        $id_tipo_falta = $this->request->getGet("id_tipo_falta");
+        $respuesta = $this->model->seleccionarFaltas($id_tipo_falta);
+        return json_encode($respuesta);
     }
 
 }

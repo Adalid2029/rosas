@@ -26,6 +26,8 @@ class Kardex extends BaseController
     {
         $this->data["cursos"] = $this->model->listarCursos();
         $this->data["estudiantes"] = $this->estudiante->listarEstudiantes();
+        $this->data["tipo_faltas"] = $this->model->listarTipoFaltas();
+        $this->data["maestros"] = $this->model->listarMaestros();
 
         return $this->templater->view('kardex/listarKardex', $this->data);
 
