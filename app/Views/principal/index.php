@@ -53,7 +53,7 @@
             <div class="container" id="titulos">
                 <h1 class="display-4 wow bounceIn">Unidad Educativa Las Rosas</h1>
                 <p class="wow bounceIn" data-wow-delay=".3s">Cuando enseñar es un arte, aprender en un placer.</p>
-                <a href="contacto.html" class="btn btn-primary btn-lg">Ponte en contacto</a>
+                <a href="<?= base_url("/home/contacto")?>" class="btn btn-primary btn-lg">Ponte en contacto</a>
             </div>
 
         </div>
