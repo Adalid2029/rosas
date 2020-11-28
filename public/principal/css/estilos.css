@@ -9,7 +9,7 @@ body {
 }
 
 .bienvenidos {
-  background: url("../images/rosas_oscuro.png") no-repeat center top;
+  background: url("../images/rosas_oscuro.jpg") no-repeat center top;
   color: #fff;
   background-size: cover;
   background-attachment: fixed !important;
@@ -274,7 +274,7 @@ SECCION TU MEJOR ELECCI├ôN
 SECCION SERVICIOS
 --------------------------------*/
 .servicios {
-  background: url("../images/fondo-servicios.jpg") no-repeat center center;
+  /*background: url("../images/fondo-servicios.jpg") no-repeat center center;*/
   background-size: cover;
   background-attachment: fixed !important;
   color: #fff;
@@ -673,7 +673,7 @@ EMPIEZAN LAS MEDIAS QUERIES
   }
 
   .bienvenidos {
-    background: url("../images/rosas_oscuro.png") no-repeat center top;
+    background: url("../images/rosas_oscuro.jpg") no-repeat center top;
     background-size: cover;
   }
 
