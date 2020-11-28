@@ -61,6 +61,7 @@ $(document).ready(function () {
 			$('#nota3').val('');
 		} else resultado += nota3;
 		if (resultado > 0) $('#nota_final').val(resultado / 3);
+		else $('#nota_final').val('');
 	});
 	$('#frm-nota').on('submit', function (event) {
 		event.preventDefault();
