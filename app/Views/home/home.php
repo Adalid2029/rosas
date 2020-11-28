@@ -3,27 +3,131 @@
         <div class="panel">
             <div class="panel-heading">
                 <div class="panel-control">
-
-                    <button class="btn btn-success btn-active-success agregar-administrativo" data-toggle="modal">
-                        <i class="fa fa-plus-square-o"></i>
-                        Registrar Persona
-                    </button>
-
                 </div>
-                <h3 class="panel-title">Personas</h3>
+                <h3 class="panel-title">Página Principal</h3>
             </div>
             <div class="panel-body">
-                <table id="tbl-administrativo" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <table id="tbl_list_people" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th width="5%">#</th>
-                            <th>Nombre</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                </table>
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-primary panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">53</span>
+                                    <p>Sales</p>
+                                    <i class="demo-pli-shopping-bag icon-lg"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-warning panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">68</span>
+                                    <p>Messages</p>
+                                    <i class="demo-psi-mail icon-lg"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-purple panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">32</span>
+                                    <p>Projects</p>
+                                    <i class="demo-pli-coding"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-dark panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">12</span>
+                                    <p>Reports</p>
+                                    <i class="demo-psi-receipt-4 icon-lg"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-pink panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">53</span>
+                                    <p>Sales</p>
+                                    <i class="demo-pli-shopping-bag icon-lg"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-success panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">68</span>
+                                    <p>Messages</p>
+                                    <i class="demo-psi-mail icon-lg"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-info panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">32</span>
+                                    <p>Projects</p>
+                                    <i class="demo-pli-coding"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6">
+                            <!--Tile-->
+                            <!--===================================================-->
+                            <div class="panel panel-mint panel-colorful">
+                                <div class="pad-all text-center">
+                                    <span class="text-3x text-thin">12</span>
+                                    <p>Reports</p>
+                                    <i class="demo-psi-receipt-4 icon-lg"></i>
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>

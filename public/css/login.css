@@ -12,7 +12,11 @@
     /*remove borders*/
 }
 body {
-    background-color: #364150;
+    background: url("../principal/images/rosas_oscuro.jpg") no-repeat center top;
+    color: #fff;
+    background-size: cover;
+    background-attachment: fixed !important;
+    height: 100vh;
 }
 
 img {
@@ -28,7 +32,7 @@ img {
         padding: 30px;
         margin: 10% auto;
         border-radius: 10px;
-        top: 40%;
+        top: 30%;
     }
 }
 /*Fin Escritorio*/

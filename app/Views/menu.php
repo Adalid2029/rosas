@@ -40,7 +40,16 @@
 						<!--Category name-->
 						<li class="list-header">Navegación</li>
 
-						<!--Menu list Registrar -->
+                        <!--Menu list Dashboard -->
+                        <li class="active-sub active">
+                            <a class="menu--link" href="<?= base_url('/administrativo/inicioPrincipal'); ?>" data-original-title="" title="">
+                                <i class="fa fa fa-home"></i>
+                                <span class="menu-title">Principal</span>
+                            </a>
+                        </li>
+
+
+                        <!--Menu list Registrar -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
@@ -78,7 +87,7 @@
 						</li>
 
 						<!--Menu list Cursos y Areas -->
-						<li class="active-sub active">
+						<li>
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa fa-list-alt"></i>
 								<span class="menu-title">Cursos y Areas</span>

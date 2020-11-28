@@ -8,18 +8,26 @@
       <w>actualizar</w>
       <w>administrativo</w>
       <w>administrativos</w>
+      <w>agencia</w>
       <w>agregar</w>
       <w>alfabéticos</w>
       <w>anio</w>
       <w>apellidos</w>
+      <w>archivos</w>
       <w>asignar</w>
       <w>asistencias</w>
+      <w>bienvenidos</w>
+      <w>bloque</w>
+      <w>boton</w>
+      <w>buscar</w>
       <w>busqueda</w>
+      <w>cabecera</w>
       <w>calificaciones</w>
       <w>calificación</w>
       <w>cambiar</w>
       <w>cantidad</w>
       <w>caracteres</w>
+      <w>carga</w>
       <w>cargar</w>
       <w>cerrar</w>
       <w>citacion</w>
@@ -29,7 +37,9 @@
       <w>cometida</w>
       <w>cometidas</w>
       <w>condicion</w>
+      <w>contacto</w>
       <w>contador</w>
+      <w>contenedor</w>
       <w>correctamente</w>
       <w>creado</w>
       <w>crear</w>
@@ -37,6 +47,7 @@
       <w>cursos</w>
       <w>datos</w>
       <w>debe</w>
+      <w>derechos</w>
       <w>descripcion</w>
       <w>descripción</w>
       <w>devuelve</w>
@@ -46,11 +57,13 @@
       <w>educativa</w>
       <w>eliminado</w>
       <w>eliminar</w>
+      <w>encabezado</w>
       <w>entonces</w>
       <w>errores</w>
       <w>espacios</w>
       <w>estado</w>
       <w>estas</w>
+      <w>estilos</w>
       <w>estudiante</w>
       <w>estudiantes</w>
       <w>estudiantil</w>
@@ -62,12 +75,16 @@
       <w>faltas</w>
       <w>fecha</w>
       <w>formulario</w>
+      <w>fotos</w>
       <w>generado</w>
       <w>gestion</w>
       <w>gestión</w>
       <w>guardar</w>
       <w>idkardex</w>
+      <w>imagen</w>
       <w>imprimir</w>
+      <w>iniciar</w>
+      <w>inicio</w>
       <w>inserta</w>
       <w>insertar</w>
       <w>invitado</w>
@@ -89,8 +106,11 @@
       <w>niveles</w>
       <w>nombre</w>
       <w>nombres</w>
+      <w>nosotros</w>
       <w>numéricos</w>
+      <w>oficial</w>
       <w>orderable</w>
+      <w>paginas</w>
       <w>paralelo</w>
       <w>paralelos</w>
       <w>pararelo</w>
@@ -102,7 +122,9 @@
       <w>procesar</w>
       <w>proferores</w>
       <w>profesor</w>
+      <w>proyecto</w>
       <w>puede</w>
+      <w>página</w>
       <w>registrado</w>
       <w>registrante</w>
       <w>registro</w>
@@ -110,6 +132,7 @@
       <w>reporte</w>
       <w>reportes</w>
       <w>requerido</w>
+      <w>reservados</w>
       <w>responsable</w>
       <w>respuesta</w>
       <w>revertir</w>
@@ -122,6 +145,7 @@
       <w>seleccionar</w>
       <w>seleccione</w>
       <w>sesión</w>
+      <w>sitio</w>
       <w>tener</w>
       <w>tipo</w>
       <w>toastr</w>
@@ -133,6 +157,7 @@
       <w>verifica</w>
       <w>verificar</w>
       <w>visto</w>
+      <w>volver</w>
       <w>warni</w>
       <w>yearpicker</w>
     </words>

@@ -25,7 +25,7 @@ class Auth extends Controller
 	public function login()
 	{
 		if (authenticated()) {
-			return redirect()->to(base_url('/'));
+			return redirect()->to(base_url('/administrativo/inicioPrincipal'));
 		} else {
 			$this->templater->login();
 		}
@@ -47,7 +47,7 @@ class Auth extends Controller
 			$this->session->set(['id_persona' => $userSearched[0]['id_persona']]);
 
 			# Redireccionamos a la pagina principal
-			return redirect()->to(base_url('/'));
+			return redirect()->to(base_url('/administrativo/inicioPrincipal'));
 		}
 		#Si $userSearched no es igual a 1 debemos devolverlo al mismo login
 		else {
@@ -60,6 +60,6 @@ class Auth extends Controller
 	public function logout()
 	{
 		$this->session->destroy();
-		return redirect()->to(base_url('/auth/login'));
+		return redirect()->to(base_url('/'));
 	}
 }// class
