@@ -23,6 +23,11 @@ class Administrativo extends BaseController
         return $this->templater->view('personas/administrativo', $this->data);
     }
 
+    public function inicioPrincipal()
+    {
+        return $this->templater->view('home/home', $this->data);
+    }
+
     // Listado de administrativos
     public function ajaxListarAdministrativos()
     {
