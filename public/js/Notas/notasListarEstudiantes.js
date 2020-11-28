@@ -1,7 +1,4 @@
 $(document).ready(function () {
-	$('#nota1').inputmask('numeric', { min: 0, max: 100 });
-	$('#nota2').inputmask('numeric', { min: 0, max: 100 });
-	$('#nota3').inputmask('numeric', { min: 0, max: 100 });
 	var t = $('#tbl_listar_estudiantes');
 	var tbl_listar_estudiantes = $('#tbl_listar_estudiantes').DataTable({
 		ajax: '/Notas/ajaxListarEstudiantes/?id_curso_paralelo=' + $(t).attr('data-id-curso-paralelo') + '&id_materia=' + $(t).attr('data-id-materia') + '&id_maestro=' + $(t).attr('data-id-maestro'),
@@ -47,16 +44,23 @@ $(document).ready(function () {
 				// mensajeAlert('warning', r.error, 'Advertencia');
 			}
 			parametrosModal('#modal', 'Editar notas del Estudiante: ', 'modal-lg', false, 'static');
-
-			// $('#nota2').inputmask({ regex: '^[1-9][0-9]?$|^100$' }, { placeholder: '' });
-			// $('#nota2').inputmask({ regex: '^[1-9][0-9]?$|^100$' }, { placeholder: '' });
 		});
 	});
 	$('#frm-nota').on('keyup', 'input, select', function (event) {
 		var nota1 = parseInt($('#nota1').val()),
 			nota2 = parseInt($('#nota2').val()),
-			nota3 = parseInt($('#nota3').val());
-		$('#nota_final').val(((isNaN(nota1) ? 0 : nota1) + (isNaN(nota2) ? 0 : nota2) + (isNaN(nota3) ? 0 : nota3)) / 3);
+			nota3 = parseInt($('#nota3').val()),
+			resultado = 0;
+		if (nota1 <= 0 || nota1 > 100 || isNaN(nota1)) {
+			$('#nota1').val('');
+		} else resultado += nota1;
+		if (nota2 <= 0 || nota2 > 100 || isNaN(nota2)) {
+			$('#nota2').val('');
+		} else resultado += nota2;
+		if (nota3 <= 0 || nota3 > 100 || isNaN(nota3)) {
+			$('#nota3').val('');
+		} else resultado += nota3;
+		if (resultado > 0) $('#nota_final').val(resultado / 3);
 	});
 	$('#frm-nota').on('submit', function (event) {
 		event.preventDefault();
