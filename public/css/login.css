@@ -17,7 +17,6 @@ body {
     background-size: cover;
     background-attachment: fixed !important;
     height: 100vh;
-    display: flex;
 }
 
 img {
