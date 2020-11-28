@@ -47,6 +47,7 @@
       <w>cursos</w>
       <w>datos</w>
       <w>debe</w>
+      <w>derechos</w>
       <w>descripcion</w>
       <w>descripción</w>
       <w>devuelve</w>
@@ -130,6 +131,7 @@
       <w>reporte</w>
       <w>reportes</w>
       <w>requerido</w>
+      <w>reservados</w>
       <w>responsable</w>
       <w>respuesta</w>
       <w>revertir</w>
@@ -154,6 +156,7 @@
       <w>verifica</w>
       <w>verificar</w>
       <w>visto</w>
+      <w>volver</w>
       <w>warni</w>
       <w>yearpicker</w>
     </words>

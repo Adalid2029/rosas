@@ -29,13 +29,13 @@
 
     <!-- BEGIN LOGO -->
     <div class="logo">
-        <a href="index.php">
+        <a href="<?= base_url("/")?>">
             <img alt="logo" class="logo" width="60px" height="60px" src="<?= base_url("img/images/escudo_rosas.png")?>" style="margin-top: 15px;">
         </a>
     </div>
     <!-- END LOGO -->
 
-    <h4 class="form-title font-blue" style="text-align: center;">INICIAR SESIÓN</h4>
+    <h4 class="form-title font-blue" style="text-align: center; color: #1a2c3f">INICIAR SESIÓN</h4>
     <br>
 
     <div class="alert alert-danger hide" id="error_disp">
@@ -82,11 +82,13 @@
         </div>
     </form>
     <hr>
-    <div class="copyright" style="text-align: center; color: gray;"> 2020 © Unidad Educativa "Las Rosas".</div>
+    <div class="copyright" style="text-align: center; color: gray;"> 2020 © Unidad Educativa Las Rosas.</div>
+    <br>
+    <center><a href="<?= base_url("/")?>" class="btn btn-default"> <i class="fa fa-arrow-circle-o-left"></i> Volver </a></center>
 </div>
 
 <!-- Recaptcha -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 
 </body>
 
