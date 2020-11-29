@@ -3,45 +3,38 @@
 namespace App\Libraries;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\RequestInterface;
 
-class Templater extends BaseController
+class Email extends BaseController
 {
-    public $request = null;
+    public $config = [];
+    public $email = null;
 
-    public function __construct(RequestInterface $request)
-    {
-        $this->request = $request;
+    public function __construct(
+        $SMTPHost = 'mail.platzi.xyz',
+        $SMTPUser = 'platzixy@platzi.xyz',
+        $SMTPPass = 'NbEQ6uyMAMa%',
+        $SMTPPort = 465,
+        $SMTPCrypto = 'tls'
+    ) {
+        $this->email = \Config\Services::email();
+        $this->config['protocol'] = 'SMTP';
+        $this->config['SMTPHost'] = $SMTPHost;
+        $this->config['SMTPUser'] = $SMTPUser;
+        $this->config['SMTPPass'] = $SMTPPass;
+        $this->config['SMTPPort'] = $SMTPPort;
+        $this->config['SMTPCrypto'] = $SMTPCrypto;
+        $this->config['CRLF'] = '\r\n';
+        $this->config['newline'] = '\r\n';
+        $this->config['mailType'] = 'html';
+        $this->email->initialize($this->config);
     }
 
-    function login()
+    function enviarCorreo()
     {
-        echo view('login');
-    }
-
-    function view($content, $data = array(), $base = "base")
-    {
-
-        $email = \Config\Services::email();
-        $config['protocol'] = 'SMTP';
-        $config['SMTPHost'] = 'mail.platzi.xyz';
-        $config['SMTPUser'] = 'platzixy@platzi.xyz';
-        $config['SMTPPass'] = 'NbEQ6uyMAMa%';
-        $config['SMTPPort'] = 465;
-        $config['SMTPCrypto'] = 'tls';
-        $config['CRLF'] = '\r\n';
-        $config['newline'] = '\r\n';
-
-        $email->initialize($config);
-
-        $email->setFrom('platzixy@platzi.xyz', 'Stack News');
-        $email->setTo('adalidalanoca2029@gmail.com');
-
-
-        $email->setSubject('Hola de nuevo');
-        $email->setMessage('Hola Enrique vagillo.');
-
-        $email->send();
-        return;
+        $this->email->setFrom('platzixy@platzi.xyz', 'Stack News');
+        $this->email->setTo('javiermeneces28@gmail.com');
+        $this->email->setSubject('Hola de nuevo');
+        $this->email->setMessage();
+        $this->email->send();
     }
 }
