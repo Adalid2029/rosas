@@ -80,7 +80,7 @@ class Estudiante extends BaseController
                     helper(['form', 'url']);
                     $val = $this->validate(
                         [ // rules
-                            "rude" => "required|numeric",
+                            "rude" => "required|alpha_numeric",
                             "ci" => "required|alpha_numeric|min_length[6]",
                             "exp" => "required|max_length[2]|alpha",
                             "nombres" => "required|alpha_space",
@@ -94,7 +94,7 @@ class Estudiante extends BaseController
                         [ // errors
                             "rude" => [
                                 "required" => "El rude  del estudiante es requerido",
-                                "numeric"  => "El rude debe contener caracteres numéricos"
+                                "alpha_numeric"  => "El rude debe contener caracteres alfabéticos y numéricos"
                             ],
                             "ci" => [
                                 "required" => "El CI del usuario es requerido",
@@ -199,7 +199,7 @@ class Estudiante extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "rude" => "required|numeric",
+                        "rude" => "required|alpha_numeric",
                         "ci" => "required|alpha_numeric|min_length[6]",
                         "exp" => "required|max_length[2]|alpha",
                         "nombres" => "required|alpha_space",
@@ -213,7 +213,7 @@ class Estudiante extends BaseController
                     [ // errors
                         "rude" => [
                             "required" => "El rude  del estudiante es requerido",
-                            "numeric"  => "El rude debe contener caracteres numéricos"
+                            "alpha_numeric"  => "El rude debe contener caracteres alfabéticos y numéricos"
                         ],
                         "ci" => [
                             "required" => "El CI del usuario es requerido",

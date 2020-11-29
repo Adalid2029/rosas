@@ -10,7 +10,7 @@
                     </button>
 
                 </div>
-                <h3 class="panel-title">Materias</h3>
+                <h3 class="panel-title">Areas</h3>
             </div>
 
             <div class="panel-body">

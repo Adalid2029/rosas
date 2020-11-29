@@ -15,7 +15,10 @@
       <w>apellidos</w>
       <w>archivos</w>
       <w>asignar</w>
+      <w>asis</w>
+      <w>asistencia</w>
       <w>asistencias</w>
+      <w>asistido</w>
       <w>bienvenidos</w>
       <w>bloque</w>
       <w>boton</w>
@@ -36,6 +39,7 @@
       <w>clearfix</w>
       <w>cometida</w>
       <w>cometidas</w>
+      <w>completo</w>
       <w>condicion</w>
       <w>contacto</w>
       <w>contador</w>
@@ -89,6 +93,7 @@
       <w>insertar</w>
       <w>invitado</w>
       <w>kardex</w>
+      <w>licencia</w>
       <w>limpiar</w>
       <w>listado</w>
       <w>listar</w>
@@ -114,17 +119,21 @@
       <w>paralelo</w>
       <w>paralelos</w>
       <w>pararelo</w>
+      <w>pararelos</w>
       <w>paterno</w>
       <w>pedagógico</w>
       <w>perfil</w>
+      <w>permiso</w>
       <w>peticion</w>
       <w>petición</w>
+      <w>presente</w>
       <w>procesar</w>
       <w>proferores</w>
       <w>profesor</w>
       <w>proyecto</w>
       <w>puede</w>
       <w>página</w>
+      <w>recibido</w>
       <w>registrado</w>
       <w>registrante</w>
       <w>registro</w>
@@ -135,6 +144,8 @@
       <w>reservados</w>
       <w>responsable</w>
       <w>respuesta</w>
+      <w>retrasado</w>
+      <w>retraso</w>
       <w>revertir</w>
       <w>revisado</w>
       <w>revisar</w>
@@ -144,9 +155,11 @@
       <w>seguro</w>
       <w>seleccionar</w>
       <w>seleccione</w>
+      <w>selectpicker</w>
       <w>sesión</w>
       <w>sitio</w>
       <w>tener</w>
+      <w>tiene</w>
       <w>tipo</w>
       <w>toastr</w>
       <w>todos</w>
