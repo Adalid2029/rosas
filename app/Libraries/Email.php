@@ -34,7 +34,8 @@ class Email extends BaseController
         $this->email->setFrom('platzixy@platzi.xyz', 'Stack News');
         $this->email->setTo('javiermeneces28@gmail.com');
         $this->email->setSubject('Hola de nuevo');
-        $this->email->setMessage();
-        $this->email->send();
+        $this->email->setMessage('Testing the email class.');
+        var_dump($this->email->send());
+        var_dump($this->email->printDebugger());
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\Reportes\NotasReporte;
 use App\Libraries\Ssp;
 use App\Models\NotasModel;
+use App\Libraries\Email;
 
 class Notas extends BaseController
 {
@@ -18,6 +19,9 @@ class Notas extends BaseController
 	}
 	public function index()
 	{
+		// (new Email)->enviarCorreo();
+
+		// return;
 		return $this->templater->view('Notas/notasListarCursos', $this->data);
 	}
 	public function imp()
