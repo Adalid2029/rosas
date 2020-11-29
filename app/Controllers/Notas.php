@@ -18,7 +18,6 @@ class Notas extends BaseController
 	}
 	public function index()
 	{
-		return;
 		return $this->templater->view('Notas/notasListarCursos', $this->data);
 	}
 	public function imp()
