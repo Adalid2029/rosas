@@ -174,6 +174,25 @@
 							</ul>
 						</li>
 
+                        <!--Menu list Reportes -->
+                        <li class="">
+                            <a href="#" data-original-title="" title="">
+                                <i class="fa fa fa-print"></i>
+                                <span class="menu-title">Reportes</span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <!--Submenu-->
+                            <ul class="collapse" aria-expanded="false">
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('reportes/reporteAsistencia') ?>">
+                                        <i class="fa fa-circle-o"></i>Asistencia
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
 					</ul>
 
 				</div>

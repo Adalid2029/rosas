@@ -77,7 +77,7 @@
             processing: true,
             serverSide: true,
             "order": [ 0, 'desc' ],
-            ajax: '/asistencia/ajaxListarEstudiantesParalelos/?curso=' + curso,
+            ajax: '/asistencia/ajaxListarEstudiantesParalelos/?curso=' + $("#curso_paralelo").val(),
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
