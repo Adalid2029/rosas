@@ -98,6 +98,7 @@ class MaestroModel extends Database
         $builder->select('*');
         $builder->join("maestro as m", "p.id_persona = m.id_maestro");
         $builder->join("usuario as u", "u.id_usuario = p.id_persona");
+        $builder->join("grupo_usuario as gu", "gu.id_usuario = p.id_persona", 'left');
         $builder->where("p.id_persona", $id);
         return $builder->get()->getResultArray();
     }

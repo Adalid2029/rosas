@@ -86,7 +86,7 @@ $(document).ready(function () {
 		else insertarActualizarAsignacion('/maestro/insertarAsignacionesMateriaMaestro', botonSubir);
 	});
 
-	$('select').select2({
+	$('#id_gestion,#id_maestro,#id_curso_paralelo,#id_materia').select2({
 		placeholder: '-- Seleccione --',
 		allowClear: true,
 		dropdownParent: $(`#asignar-materia`),

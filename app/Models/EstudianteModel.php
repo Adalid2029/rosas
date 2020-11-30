@@ -10,13 +10,13 @@ class EstudianteModel extends Database
 
     public function __construct()
     {
-        $this -> db = \config\Database::connect();
+        $this->db = \config\Database::connect();
     }
 
     // PERSONA
     public function persona($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("persona");
+        $builder = $this->db->table("persona");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -37,13 +37,12 @@ class EstudianteModel extends Database
         }
 
         return null;
-
     }
 
     // ESTUDIANTE
     public function estudiante($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("estudiante");
+        $builder = $this->db->table("estudiante");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -64,13 +63,12 @@ class EstudianteModel extends Database
         }
 
         return null;
-
     }
 
     // USUARIO
     public function usuario($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("usuario");
+        $builder = $this->db->table("usuario");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -91,18 +89,17 @@ class EstudianteModel extends Database
         }
 
         return null;
-
     }
 
     // select para edit persona y administrativo
     public function personaEstudiante($id)
     {
-        $builder = $this -> db -> table("persona as p");
-        $builder -> select('*');
-        $builder -> join("estudiante as e", "p.id_persona = e.id_estudiante");
-        $builder -> join("usuario as u", "u.id_usuario = p.id_persona");
-        $builder -> where("p.id_persona", $id);
-        return $builder->get() ->getResultArray();
+        $builder = $this->db->table("persona as p");
+        $builder->select('*');
+        $builder->join("estudiante as e", "p.id_persona = e.id_estudiante");
+        $builder->join("usuario as u", "u.id_usuario = p.id_persona");
+        $builder->join("grupo_usuario as gu", "gu.id_usuario = p.id_persona", 'left');
+        $builder->where("p.id_persona", $id);
+        return $builder->get()->getResultArray();
     }
-
 }// class

@@ -10,13 +10,13 @@ class AdministrativoModel extends Database
 
     public function __construct()
     {
-        $this -> db = \config\Database::connect();
+        $this->db = \config\Database::connect();
     }
 
     // INSERT PERSONA
     public function persona($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("persona");
+        $builder = $this->db->table("persona");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -37,24 +37,24 @@ class AdministrativoModel extends Database
         }
 
         return null;
-
     }
 
     // select para edit persona y administrativo
     public function personaAdministrativo($id)
     {
-        $builder = $this -> db -> table("persona as p");
-        $builder -> select('*');
-        $builder -> join("administrativo as a", "p.id_persona = a.id_administrativo");
-        $builder -> join("usuario as u", "u.id_usuario = p.id_persona");
-        $builder -> where("p.id_persona", $id);
-        return $builder->get() ->getResultArray();
+        $builder = $this->db->table("persona as p");
+        $builder->select('*');
+        $builder->join("administrativo as a", "p.id_persona = a.id_administrativo");
+        $builder->join("usuario as u", "u.id_usuario = p.id_persona");
+        $builder->join("grupo_usuario as gu", "gu.id_usuario = u.id_usuario", 'left');
+        $builder->where("p.id_persona", $id);
+        return $builder->get()->getResultArray();
     }
 
     // INSERT ADMINISTRATIVO
     public function administrativo($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("administrativo");
+        $builder = $this->db->table("administrativo");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -75,18 +75,16 @@ class AdministrativoModel extends Database
         }
 
         return null;
-
     }
 
     // VERIFICAR NOMBRE USUARIO
     public function verificarNombreUsuario($ci)
     {
-        $builder = $this -> db -> table("usuario");
-        $res = $builder ->getWhere(["usuario" => $ci])->getResultArray();
-        if($res)
-        {
+        $builder = $this->db->table("usuario");
+        $res = $builder->getWhere(["usuario" => $ci])->getResultArray();
+        if ($res) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -94,7 +92,7 @@ class AdministrativoModel extends Database
     // INSERT USUARIO
     public function usuario($accion, $datos, $condicion = null, $busqueda = null)
     {
-        $builder = $this -> db -> table("usuario");
+        $builder = $this->db->table("usuario");
         switch ($accion) {
             case 'select':
                 if (is_array($condicion)) {
@@ -115,16 +113,14 @@ class AdministrativoModel extends Database
         }
 
         return null;
-
     }
 
     // select para edit persona y administrativo
     public function administrativoReporte()
     {
-        $builder = $this -> db -> table("view_administrativo");
-        $builder -> select('ci, nombres_apellidos, nacimiento, telefono, sexo, cargo, gestion_ingreso');
-        $builder -> where("estado", 1);
-        return $builder->get() ->getResultArray();
+        $builder = $this->db->table("view_administrativo");
+        $builder->select('ci, nombres_apellidos, nacimiento, telefono, sexo, cargo, gestion_ingreso');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
     }
-
 }// class

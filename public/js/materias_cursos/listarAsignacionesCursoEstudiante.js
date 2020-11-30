@@ -121,7 +121,7 @@ function limpiarCampos() {
 	$('#id_curso_paralelo').val('').trigger('change');
 }
 
-$('select').select2({
+$('#id_gestion,#id_estudiante,#id_curso_paralelo').select2({
 	placeholder: '-- Seleccione --',
 	allowClear: true,
 	dropdownParent: $(`#asignar-curso`),

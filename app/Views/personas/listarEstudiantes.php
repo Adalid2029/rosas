@@ -16,18 +16,18 @@
             <div class="panel-body">
                 <table id="tbl_estudiante" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>Id est</th>
-                        <th>RUDE</th>
-                        <th>CI</th>
-                        <th>Nombres y Apellidos</th>
-                        <th>Fecha Nac.</th>
-                        <th>Telefono</th>
-                        <th>Sexo</th>
-                        <th>Ingreso en</th>
-                        <th>Acciones</th>
-                    </tr>
+                        <tr>
+                            <th width="5%">#</th>
+                            <th>Id est</th>
+                            <th>RUDE</th>
+                            <th>CI</th>
+                            <th>Nombres y Apellidos</th>
+                            <th>Fecha Nac.</th>
+                            <th>Telefono</th>
+                            <th>Sexo</th>
+                            <th>Ingreso en</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
 
                 </table>
@@ -38,8 +38,7 @@
 </div>
 
 <!--  Modal de registro estudiante -->
-<div class="modal fade" id="agregar-estudiante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true" style="overflow-y: scroll;">
+<div class="modal fade" id="agregar-estudiante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document">
         <div class="modal-content">
             <div id="agregar-estudiante-header" class="modal-header">
@@ -94,6 +93,7 @@
                             <input type="hidden" name="id_estudiante" id="id_estudiante">
                             <input type="hidden" name="id_usuario" id="id_usuario">
                             <input type="hidden" name="accion" id="accion" value="">
+                            <input type="hidden" name="id_grupo_usuario" id="id_grupo_usuario">
                         </div>
 
                         <div class="row">
@@ -145,7 +145,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="control-label" for="gestion_ingreso">Gestión ingreso <span style="color: red;">(*)</span> :</label>
-                                    <input type="text" name="gestion_ingreso" id="gestion_ingreso" class="form-control" placeholder="yyyy"  required>
+                                    <input type="text" name="gestion_ingreso" id="gestion_ingreso" class="form-control" placeholder="yyyy" required>
                                 </div>
                             </div>
                         </div>
@@ -173,71 +173,65 @@
 
 <script>
     //Listar datatable
-    $("#tbl_estudiante").DataTable(
-        {
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            ajax: "/estudiante/ajaxListarEstudiantes",
-            language: {
-                sProcessing: "Procesando...",
-                sLengthMenu: "Mostrar _MENU_ registros",
-                sZeroRecords: "No se encontraron resultados",
-                sEmptyTable: "Ningún dato disponible en esta tabla",
-                sInfo:
-                    "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-                sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
-                sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-                sInfoPostFix: "",
-                sSearch: "Buscar:",
-                sUrl: "",
-                sInfoThousands: ",",
-                sLoadingRecords: "Cargando...",
-                oPaginate: {
-                    sFirst: "Primero",
-                    sLast: "Último",
-                    sNext: "Siguiente",
-                    sPrevious: "Anterior"
-                },
-                oAria: {
-                    sSortAscending:
-                        ": Activar para ordenar la columna de manera ascendente",
-                    sSortDescending:
-                        ": Activar para ordenar la columna de manera descendente"
-                }
+    $("#tbl_estudiante").DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: "/estudiante/ajaxListarEstudiantes",
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
             },
-            columnDefs: [
-                {
-                    searchable: false,
-                    orderable: false,
-                    visible: false,
-                    targets: 1
-                },
-                {
-                    searchable: false,
-                    orderable: false,
-                    targets: -1,
-                    data: null,
-                    render: function (data, type, row, meta) {
-                        return (
-                            '<div class="btn-group" role="group">' +
-                            '<a data="' + data[0] +
-                            '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_estudiante" data-toggle="tooltip" title="Editar">' +
-                            '<i class="fa fa-pencil-square-o"></i></a>' +
-                            '<a data="' +
-                            data[0] +
-                            '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_estudiante" data-toggle="tooltip" title="Eliminar">' +
-                            '<i class="fa fa-trash-o"></i></a>' +
-                            '</div>'
-                        );
-                    }
+            oAria: {
+                sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+                sSortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        columnDefs: [{
+                searchable: false,
+                orderable: false,
+                visible: false,
+                targets: 1
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: -1,
+                data: null,
+                render: function(data, type, row, meta) {
+                    return (
+                        '<div class="btn-group" role="group">' +
+                        '<a data="' + data[0] +
+                        '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_estudiante" data-toggle="tooltip" title="Editar">' +
+                        '<i class="fa fa-pencil-square-o"></i></a>' +
+                        '<a data="' +
+                        data[0] +
+                        '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_estudiante" data-toggle="tooltip" title="Eliminar">' +
+                        '<i class="fa fa-trash-o"></i></a>' +
+                        '</div>'
+                    );
                 }
-            ]
-        }
-    );
+            }
+        ]
+    });
 
     // Modal para agregar estudiante
-    $("#agregar_estudiante").on("click", function (e) {
+    $("#agregar_estudiante").on("click", function(e) {
         $("#btn-guardar-estudiante").html("Guardar");
         $("#accion").val("in");
         parametrosModal(
@@ -251,14 +245,14 @@
     });
 
     // Guardar estudiante
-    $("#frm_guardar_estudiante").on("submit", function (e) {
+    $("#frm_guardar_estudiante").on("submit", function(e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/estudiante/guardar_estudiante",
             data: $("#frm_guardar_estudiante").serialize(),
             dataType: "JSON"
-        }).done(function(response){
+        }).done(function(response) {
 
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
@@ -276,14 +270,13 @@
                 limpiarCampos();
             }
 
-        }).fail(function (e) {
+        }).fail(function(e) {
             mensajeAlert("error", "Error al registrar/editar el estudiante", "Error");
         });
     });
 
     // Limpiar Campos
-    function limpiarCampos()
-    {
+    function limpiarCampos() {
         $("#id_persona").val("");
         $("#id_estudiante").val("");
         $("#id_usuario").val("");
@@ -302,14 +295,16 @@
     }
 
     // Editar Estudiante
-    $('#tbl_estudiante').on("click", ".btn_editar_estudiante", function(e){
+    $('#tbl_estudiante').on("click", ".btn_editar_estudiante", function(e) {
         let id = $(this).attr("data");
         $.ajax({
             type: "POST",
             url: "/estudiante/editar_estudiante",
-            data: {"id":id},
+            data: {
+                "id": id
+            },
             dataType: "JSON"
-        }).done(function (response) {
+        }).done(function(response) {
 
             $("#id_persona").val(response[0]["id_persona"]);
             $("#id_estudiante").val(response[0]["id_estudiante"]);
@@ -324,6 +319,7 @@
             $("#telefono").val(response[0]["telefono"]);
             $("#sexo").val(response[0]["sexo"]);
             $("#domicilio").val(response[0]["domicilio"]);
+            $("#id_grupo_usuario").val(response[0]["id_grupo_usuario"]);
             $("#gestion_ingreso").val(response[0]["gestion_ingreso"]);
             $("#accion").val("up");
 
@@ -336,30 +332,32 @@
                 true
             );
 
-        }).fail(function (e) {
+        }).fail(function(e) {
             $("#agregar-estudiante").modal("hide");
         });
 
     });
 
     // Eliminar Estudiante
-    $("#tbl_estudiante").on("click", ".btn_eliminar_estudiante", function(e){
+    $("#tbl_estudiante").on("click", ".btn_eliminar_estudiante", function(e) {
         let id = $(this).attr("data");
-        bootbox.confirm("¿Estas seguro de eliminar al estudiante?", function(result){
-            if (result){
+        bootbox.confirm("¿Estas seguro de eliminar al estudiante?", function(result) {
+            if (result) {
                 $.ajax({
                     type: "POST",
                     url: "/estudiante/eliminar_estudiante",
-                    data: {"id":id},
+                    data: {
+                        "id": id
+                    },
                     dataType: "JSON"
-                }).done(function (response) {
+                }).done(function(response) {
 
                     if (typeof response.exito !== "undefined") {
                         $("#tbl_estudiante").DataTable().draw();
                         mensajeAlert("success", response.exito, "Exito");
                     }
 
-                }).fail(function (e) {
+                }).fail(function(e) {
                     mensajeAlert("error", "Error al procesar la peticion", "Error");
                 });
             }
@@ -367,5 +365,4 @@
 
     });
     // fin script
-
 </script>

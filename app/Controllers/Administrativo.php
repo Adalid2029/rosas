@@ -23,7 +23,7 @@ class Administrativo extends BaseController
         return $this->templater->view('personas/administrativo', $this->data);
     }
 
-    public function inicioPrincipal()
+    public function index()
     {
         return $this->templater->view('home/home', $this->data);
     }
@@ -177,9 +177,16 @@ class Administrativo extends BaseController
                             $respuesta3 = $this->model->usuario("insert", $data3, null, null);
 
                             if (is_numeric($respuesta3)) {
-                                return $this->response->setJSON(json_encode(array(
-                                    'exito' => "Administrativo registrado correctamente"
-                                )));
+                                $id_grupo_usuario = ($this->db->table('grupo_usuario')->insert([
+                                    'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => strtoupper($this->request->getPost("cargo"))])->getRowArray()['id_grupo'],
+                                    'id_usuario' => $respuesta,
+                                    'estado_grupo_usuario' => 'ACTIVO',
+                                ])) ? $this->db->insertID() : $this->db->error();
+                                if (is_numeric($id_grupo_usuario)) {
+                                    return $this->response->setJSON(json_encode(array(
+                                        'exito' => "Administrativo registrado correctamente"
+                                    )));
+                                }
                             }
                         }
                     }
@@ -324,10 +331,27 @@ class Administrativo extends BaseController
                             $respuesta3 = $this->model->usuario("update", $data3, array(
                                 "id_usuario" => trim($this->request->getPost("edit_id_usuario"))
                             ), null);
+
                             if ($respuesta3) {
-                                return $this->response->setJSON(json_encode(array(
-                                    'exito' => "Administrativo editado correctamente"
-                                )));
+                                if (empty($this->request->getPost("edit_id_grupo_usuario"))) {
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->insert([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => strtoupper($this->request->getPost("edit_cargo"))])->getRowArray()['id_grupo'],
+                                        'id_usuario' => trim($this->request->getPost("edit_id_persona")),
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ])) ? $this->db->insertID() : $this->db->error();
+                                } else {
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->update([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => strtoupper($this->request->getPost("edit_cargo"))])->getRowArray()['id_grupo'],
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ], [
+                                        'id_grupo_usuario' => $this->request->getPost("edit_id_grupo_usuario"),
+                                    ]));
+                                }
+                                if ($id_grupo_usuario || is_numeric($id_grupo_usuario)) {
+                                    return $this->response->setJSON(json_encode(array(
+                                        'exito' => "Administrativo editado correctamente"
+                                    )));
+                                }
                             }
                         }
                     }

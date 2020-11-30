@@ -66,7 +66,7 @@
                             <label for="id_curso_paralelo" class="col-md-3 col-form-label">Curso:</label>
                             <div class="col-md-12">
                                 <select name="id_curso_paralelo" id="id_curso_paralelo" class="form-control" required>
-                                    <option value=""></option>  
+                                    <option value=""></option>
                                     <?php foreach ($cursos_paralelos as $key => $value) : ?>
                                         <option value="<?= $value['id_curso_paralelo'] ?>"><?= $value['nivel'] . ' ' . $value['paralelo'] ?></option>
                                     <?php endforeach ?>

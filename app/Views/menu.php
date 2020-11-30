@@ -11,8 +11,8 @@
 						<div class="profile-wrap text-center">
 							<div class="pad-btm">
 								<?php
-								if (isset($user[0]["sexo"])) {
-									if ($user[0]["sexo"] == "M") {
+								if (isset($user["sexo"])) {
+									if ($user["sexo"] == "M") {
 										echo '<img src="' . base_url('img/profile-photos/1.png') . '" class="img-lg img-circle" alt="Profile Picture">';
 									} else {
 										echo '<img src="' . base_url('img/profile-photos/6.png') . '" class="img-lg img-circle" alt="Profile Picture">';
@@ -24,8 +24,8 @@
 								<span class="pull-right dropdown-toggle">
 									<i class="dropdown-caret"></i>
 								</span>
-								<p class="mnp-name"><?= (isset($user[0]["nombres"])) ? $user[0]["nombres"] . " " . $user[0]["paterno"] : "Invitado"; ?></p>
-								<span class="mnp-desc">Director</span>
+								<p class="mnp-name"><?= (isset($user["nombres"])) ? $user["nombres"] . " " . $user["paterno"] : "Invitado"; ?></p>
+								<span class="mnp-desc"><?= (isset($user["nombre_grupo"])) ? $user["nombre_grupo"] : "INVITADO"; ?></span>
 							</a>
 						</div>
 						<div id="profile-nav" class="collapse list-group bg-trans">
@@ -40,16 +40,16 @@
 						<!--Category name-->
 						<li class="list-header">Navegación</li>
 
-                        <!--Menu list Dashboard -->
-                        <li class="active-sub active">
-                            <a class="menu--link" href="<?= base_url('/administrativo/inicioPrincipal'); ?>" data-original-title="" title="">
-                                <i class="fa fa fa-home"></i>
-                                <span class="menu-title">Principal</span>
-                            </a>
-                        </li>
+						<!--Menu list Dashboard -->
+						<li class="active-sub active">
+							<a class="menu--link" href="<?= base_url('/administrativo'); ?>" data-original-title="" title="">
+								<i class="fa fa fa-home"></i>
+								<span class="menu-title">Principal</span>
+							</a>
+						</li>
 
 
-                        <!--Menu list Registrar -->
+						<!--Menu list Registrar -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
@@ -141,7 +141,6 @@
 								</li>
 							</ul>
 						</li>
-
 						<!--Menu list Asistencias y calificación -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
@@ -154,6 +153,7 @@
 								<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Calificaciones</a></li>
 							</ul>
 						</li>
+
 
 						<!--Menu list Kardex Estudiantil -->
 						<li class="">
@@ -177,12 +177,10 @@
 					</ul>
 
 				</div>
-				<div class="nano-pane" style="display: none;">
+				<div class="nano-pane">
 					<div class="nano-slider" style="height: 1719px; transform: translate(0px, 0px);"></div>
 				</div>
 			</div>
 		</div>
-		<!--================================-->
-		<!--End menu-->
 	</div>
 </nav>

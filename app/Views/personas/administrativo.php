@@ -4,7 +4,7 @@
             <div class="panel-heading">
                 <div class="panel-control">
 
-                    <a class="btn btn-danger-basic btn-active-success" id="imprimir_administrativo" target="_blank" href="<?= base_url("/administrativo/imprimir")?>">
+                    <a class="btn btn-danger-basic btn-active-success" id="imprimir_administrativo" target="_blank" href="<?= base_url("/administrativo/imprimir") ?>">
                         <i class="fa fa-file-pdf-o"></i>
                         Imprimir
                     </a>
@@ -21,18 +21,18 @@
             <div class="panel-body">
                 <table id="tbl_administrativo" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>Id adm</th>
-                        <th>CI</th>
-                        <th>Nombres y Apellidos</th>
-                        <th>Fecha Nac.</th>
-                        <th>Telefono</th>
-                        <th>Sexo</th>
-                        <th>Cargo</th>
-                        <th>Ingreso</th>
-                        <th>Acciones</th>
-                    </tr>
+                        <tr>
+                            <th width="5%">#</th>
+                            <th>Id adm</th>
+                            <th>CI</th>
+                            <th>Nombres y Apellidos</th>
+                            <th>Fecha Nac.</th>
+                            <th>Telefono</th>
+                            <th>Sexo</th>
+                            <th>Cargo</th>
+                            <th>Ingreso</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
 
                 </table>
@@ -189,6 +189,7 @@
                             </select>
                         </div>
                         <input type="hidden" name="edit_id_persona" id="edit_id_persona">
+                        <input type="hidden" name="edit_id_grupo_usuario" id="edit_id_grupo_usuario">
                     </div>
 
                     <div class="form-group m-t-10 row">
@@ -273,7 +274,7 @@
 
 <script>
     // Modal para agregar usuario
-    $("#agregar_administrativo").on("click", function (e) {
+    $("#agregar_administrativo").on("click", function(e) {
         parametrosModal(
             "#agregar-administrativo",
             "Agregar administrativo",
@@ -284,77 +285,72 @@
     });
 
     //Listar datatable
-    $("#tbl_administrativo").DataTable(
-        {
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            ajax: "/administrativo/ajaxListarAdministrativos",
-            language: {
-                sProcessing: "Procesando...",
-                sLengthMenu: "Mostrar _MENU_ registros",
-                sZeroRecords: "No se encontraron resultados",
-                sEmptyTable: "Ningún dato disponible en esta tabla",
-                sInfo:
-                    "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-                sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
-                sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-                sInfoPostFix: "",
-                sSearch: "Buscar:",
-                sUrl: "",
-                sInfoThousands: ",",
-                sLoadingRecords: "Cargando...",
-                oPaginate: {
-                    sFirst: "Primero",
-                    sLast: "Último",
-                    sNext: "Siguiente",
-                    sPrevious: "Anterior"
-                },
-                oAria: {
-                    sSortAscending:
-                        ": Activar para ordenar la columna de manera ascendente",
-                    sSortDescending:
-                        ": Activar para ordenar la columna de manera descendente"
-                }
+    $("#tbl_administrativo").DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: "/administrativo/ajaxListarAdministrativos",
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
             },
-            columnDefs: [
-                {
-                    searchable: false,
-                    orderable: false,
-                    visible: false,
-                    targets: 1
-                },
-                {
-                    searchable: false,
-                    orderable: false,
-                    targets: -1,
-                    data: null,
-                    render: function (data, type, row, meta) {
-                        return (
-                            '<div class="btn-group" role="group">' +
-                            '<a data="' + data[0] +
-                            '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_administrativo" data-toggle="tooltip" title="Editar">' +
-                            '<i class="fa fa-pencil-square-o"></i></a>' +
-                            '<a data="' +
-                            data[0] +
-                            '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_administrativo" data-toggle="tooltip" title="Eliminar">' +
-                            '<i class="fa fa-trash-o"></i></a>' +
-                            '</div>'
-                        );
-                    }
+            oAria: {
+                sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+                sSortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        columnDefs: [{
+                searchable: false,
+                orderable: false,
+                visible: false,
+                targets: 1
+            },
+            {
+                searchable: false,
+                orderable: false,
+                targets: -1,
+                data: null,
+                render: function(data, type, row, meta) {
+                    return (
+                        '<div class="btn-group" role="group">' +
+                        '<a data="' + data[0] +
+                        '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_administrativo" data-toggle="tooltip" title="Editar">' +
+                        '<i class="fa fa-pencil-square-o"></i></a>' +
+                        '<a data="' +
+                        data[0] +
+                        '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_administrativo" data-toggle="tooltip" title="Eliminar">' +
+                        '<i class="fa fa-trash-o"></i></a>' +
+                        '</div>'
+                    );
                 }
-            ]
-        });
+            }
+        ]
+    });
 
     // Guardar administrativo
-    $("#frm_agregar_administrativo").on("submit", function (e) {
+    $("#frm_agregar_administrativo").on("submit", function(e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/administrativo/insertar_administrativo",
             data: $("#frm_agregar_administrativo").serialize(),
             dataType: "JSON"
-        }).done(function(response){
+        }).done(function(response) {
 
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
@@ -372,13 +368,12 @@
                 limpiarCamposAgregar();
             }
 
-        }).fail(function (e) {
+        }).fail(function(e) {
             mensajeAlert("error", "Error al registrar el administrativo", "Error");
         });
     });
 
-    function limpiarCamposAgregar()
-    {
+    function limpiarCamposAgregar() {
         $("#id").val("");
         $("#id_administrativo").val("");
         $("#ci").val("");
@@ -394,8 +389,7 @@
         $("#gestion_ingreso").val("");
     }
 
-    function limpiarCamposEditar()
-    {
+    function limpiarCamposEditar() {
         $("#edit_id").val("");
         $("#edit_id_administrativo").val("");
         $("#edit_ci").val("");
@@ -412,14 +406,16 @@
         $("#edit_id_usuario").val("");
     }
     // Editar Administrativo
-    $('#tbl_administrativo').on("click", ".btn_editar_administrativo", function(e){
+    $('#tbl_administrativo').on("click", ".btn_editar_administrativo", function(e) {
         let id = $(this).attr("data");
         $.ajax({
             type: "POST",
             url: "/administrativo/editar_administrativo",
-            data: {"id":id},
+            data: {
+                "id": id
+            },
             dataType: "JSON"
-        }).done(function (response) {
+        }).done(function(response) {
 
             $("#edit_id_persona").val(response[0]["id_persona"]);
             $("#edit_ci").val(response[0]["ci"]);
@@ -431,7 +427,7 @@
             $("#edit_sexo").val(response[0]["sexo"]);
             $("#edit_telefono").val(response[0]["telefono"]);
             $("#edit_domicilio").val(response[0]["domicilio"]);
-
+            $("#edit_id_grupo_usuario").val(response[0]["id_grupo_usuario"]);
             $("#edit_id_administrativo").val(response[0]["id_administrativo"]);
             $("#edit_cargo").val(response[0]["cargo"]);
             $("#edit_gestion_ingreso").val(response[0]["gestion_ingreso"]);
@@ -446,20 +442,19 @@
                 true
             );
 
-        }).fail(function (e) {
-        });
+        }).fail(function(e) {});
 
     });
 
     // Actualizar administrativo
-    $("#frm_editar_administrativo").on("submit", function (e) {
+    $("#frm_editar_administrativo").on("submit", function(e) {
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: "/administrativo/actualizar_administrativo",
             data: $("#frm_editar_administrativo").serialize(),
             dataType: "JSON"
-        }).done(function(response){
+        }).done(function(response) {
 
             if (typeof response.warning !== "undefined") {
                 mensajeAlert("warning", response.warning, "Advertencia");
@@ -477,35 +472,36 @@
                 limpiarCamposEditar();
             }
 
-        }).fail(function (e) {
+        }).fail(function(e) {
             mensajeAlert("error", "Error al editar el administrativo seleccionado", "Error");
         });
     });
 
     // Eliminar Administrativo
-    $("#tbl_administrativo").on("click", ".btn_eliminar_administrativo", function(e){
+    $("#tbl_administrativo").on("click", ".btn_eliminar_administrativo", function(e) {
         let id = $(this).attr("data");
-        bootbox.confirm("¿Estas seguro de eliminar al administrativo?", function(result){
-           if (result){
-               $.ajax({
-                   type: "POST",
-                   url: "/administrativo/eliminar_administrativo",
-                   data: {"id":id},
-                   dataType: "JSON"
-               }).done(function (response) {
+        bootbox.confirm("¿Estas seguro de eliminar al administrativo?", function(result) {
+            if (result) {
+                $.ajax({
+                    type: "POST",
+                    url: "/administrativo/eliminar_administrativo",
+                    data: {
+                        "id": id
+                    },
+                    dataType: "JSON"
+                }).done(function(response) {
 
-                   if (typeof response.exito !== "undefined") {
-                       $("#tbl_administrativo").DataTable().draw();
-                       mensajeAlert("success", response.exito, "Exito");
-                   }
+                    if (typeof response.exito !== "undefined") {
+                        $("#tbl_administrativo").DataTable().draw();
+                        mensajeAlert("success", response.exito, "Exito");
+                    }
 
-               }).fail(function (e) {
-                   mensajeAlert("error", "Error al procesar la peticion", "Error");
-               });
-           }
+                }).fail(function(e) {
+                    mensajeAlert("error", "Error al procesar la peticion", "Error");
+                });
+            }
         });
 
     });
     // fin script
-
 </script>

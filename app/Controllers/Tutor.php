@@ -169,9 +169,16 @@ class Tutor extends BaseController
                                 $respuesta2 = $this->model->usuario("insert", $data2, null, null);
 
                                 if (is_numeric($respuesta2)) {
-                                    return $this->response->setJSON(json_encode(array(
-                                        'exito' => "Tutor registrado correctamente"
-                                    )));
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->insert([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => 'PADRE_FAMILIA'])->getRowArray()['id_grupo'],
+                                        'id_usuario' => $respuesta,
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ])) ? $this->db->insertID() : $this->db->error();
+                                    if (is_numeric($id_grupo_usuario)) {
+                                        return $this->response->setJSON(json_encode(array(
+                                            'exito' => "Tutor registrado correctamente"
+                                        )));
+                                    }
                                 }
                             }
                         }
@@ -286,9 +293,25 @@ class Tutor extends BaseController
                             ), null);
 
                             if ($respuesta2) {
-                                return $this->response->setJSON(json_encode(array(
-                                    'exito' => "Tutor(a) editado correctamente"
-                                )));
+                                if (empty($this->request->getPost("id_grupo_usuario"))) {
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->insert([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => 'PADRE_FAMILIA'])->getRowArray()['id_grupo'],
+                                        'id_usuario' => $this->request->getPost("id_tutor"),
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ])) ? $this->db->insertID() : $this->db->error();
+                                } else {
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->update([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => 'PADRE_FAMILIA'])->getRowArray()['id_grupo'],
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ], [
+                                        'id_grupo_usuario' => $this->request->getPost("id_grupo_usuario"),
+                                    ]));
+                                }
+                                if ($id_grupo_usuario || is_numeric($id_grupo_usuario)) {
+                                    return $this->response->setJSON(json_encode(array(
+                                        'exito' => "Tutor(a) editado correctamente"
+                                    )));
+                                }
                             }
                         }
                     }
@@ -324,5 +347,4 @@ class Tutor extends BaseController
             }
         }
     }
-
 }// class

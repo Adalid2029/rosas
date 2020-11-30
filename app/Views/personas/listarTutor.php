@@ -84,6 +84,7 @@
                             </div>
                             <input type="hidden" name="id_persona" id="id_persona">
                             <input type="hidden" name="id_tutor" id="id_tutor">
+                            <input type="hidden" name="id_grupo_usuario" id="id_grupo_usuario">
                             <input type="hidden" name="id_usuario" id="id_usuario">
                             <input type="hidden" name="accion" id="accion" value="">
                         </div>
@@ -319,6 +320,7 @@
             $("#sexo").val(response[0]["sexo"]);
             $("#domicilio").val(response[0]["domicilio"]);
             $("#parentesco").val(response[0]["parentesco"]);
+            $("#id_grupo_usuario").val(response[0]["id_grupo_usuario"]);
             $("#accion").val("up");
 
             $("#btn-guardar-tutor").html("Editar");

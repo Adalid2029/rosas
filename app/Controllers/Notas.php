@@ -75,21 +75,23 @@ class Notas extends BaseController
 				'nota_final' => (intval($this->request->getPost('nota1')) + intval($this->request->getPost('nota2')) + intval($this->request->getPost('nota3'))) / 3,
 				'fecha_registro' => date('Y-m-d H:i:s')
 			];
-			if ($notas->getRowArray() !== null) {
-				$calificacion = $this->notasModel->calificacion('update', $datos, ['id_calificacion' => $notas->getRowArray()['id_calificacion']]);
-				return ($calificacion == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la calificacion con exito'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al actualizar la calificacion']));
-			} else {
-				$id_calificacion = $this->notasModel->calificacion('insert', $datos, null);
-				return is_numeric($id_calificacion) ? $this->response->setJSON(json_encode(['exito' => 'Se inserto la calificacion con exito'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al insertar la calificacion']));
-			}
+			if ($datos['nota_final'] > 0) {
+				if ($notas->getRowArray() !== null) {
+					$calificacion = $this->notasModel->calificacion('update', $datos, ['id_calificacion' => $notas->getRowArray()['id_calificacion']]);
+					return ($calificacion == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la calificacion con exito'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al actualizar la calificacion']));
+				} else {
+					$id_calificacion = $this->notasModel->calificacion('insert', $datos, null);
+					return is_numeric($id_calificacion) ? $this->response->setJSON(json_encode(['exito' => 'Se inserto la calificacion con exito'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al insertar la calificacion']));
+				}
+			} else return $this->response->setJSON(json_encode(['error' => 'Error al intentar agregar Nota']));
 		}
 	}
 	public function listarCursos()
 	{
-		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona']], '', 'cu.id_curso_paralelo')->getResultArray();
+		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona']], '', 'cu.id_curso_paralelo')->getResultArray();
 		$cursosMaterias = [];
 		foreach ($cursos as $key => $value) {
-			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user[0]['id_persona'], 'cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
+			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona'], 'cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
 		}
 		// var_dump($cursosMaterias);
 		if (!empty($cursosMaterias)) {

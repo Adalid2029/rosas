@@ -16,6 +16,8 @@ namespace App\Controllers;
  */
 
 use CodeIgniter\Controller;
+use App\Models\Querys;
+
 use App\Libraries\Templater;
 
 class BaseController extends Controller
@@ -28,6 +30,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
+
 	protected $helpers = ['Rosas', 'url'];
 	public $templater = null;
 	protected $user = null;
@@ -53,6 +56,7 @@ class BaseController extends Controller
 			return $this->response->redirect(base_url('auth/login'));
 		}
 		$this->data['user'] = $this->user;
+		$this->data['access'] = (new Querys())->verifyUser(['id_persona' => (\Config\Services::session())->get('id_persona')])->getResultArray();
 		setlocale(LC_TIME, 'es_BO.utf8');
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
@@ -60,4 +64,4 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 	}
-}// class
+}
