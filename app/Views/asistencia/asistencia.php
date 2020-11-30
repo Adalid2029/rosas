@@ -115,7 +115,7 @@
                     targets: -1,
                     data: null,
                     render: function(data, type, row, meta) {
-                        return '<select id="asistencia" name="asistencia" class="custom-select" data-style="btn-info" data-live-search="true">' +
+                        return '<select id="asistencia' + data[0]+'" data="'+data[0]+'" name="asistencia" class="custom-select asistencia" data-style="btn-info" data-live-search="true">' +
                                 '<option value="">--seleccione--</option>' +
                                 '<option value="A">ASISTENCIA</option>' +
                                 '<option value="F">FALTA</option>' +
@@ -127,6 +127,41 @@
                 }]
         });
     }
+
+    // insertar asistencia del estudiante
+    $("#tbl_asistencia").on("change", "select.asistencia", function (e) {
+
+        if ($(`#id_maestro`).val() === ""){
+            mensajeAlert("warning", "Por favor seleccione al maestro", "Advertencia!!!")
+        }else{
+            let id = $(this).attr("data");
+            let valor = $("#asistencia"+id).val();
+            let id_maestro = $("#id_maestro").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/asistencia/agregar_asistencia",
+                data: {
+                    "id": id,
+                    "valor": valor,
+                    "id_maestro" : id_maestro
+                },
+                dataType: "JSON"
+            }).done(function(response) {
+
+                if (typeof response.exito !== "undefined") {
+                    mensajeAlert("success", response.exito, "Exito");
+                }
+
+                if (typeof response.cambio !== "undefined") {
+                    mensajeAlert("success", response.cambio, "Exito");
+                }
+
+            }).fail(function(e) {
+                mensajeAlert("error", "Error al procesar la peticion", "Error");
+            });
+        }
+    });
 
 </script>
 

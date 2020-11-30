@@ -305,3 +305,40 @@ join `rs_tutor` `rst` on
     (`rsp`.`id_persona` = `rst`.`id_tutor`));
 
     --- fin de correcion de vistas y de agregar correo
+
+
+
+    -- ASISTENCIA
+
+create or replace view rs_view_asistencia as
+SELECT p.id_persona, rce.id_curso_estudiante, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo,  concat(c.nivel, ' ', rp.paralelo)as curso,
+                rg.gestion,c.nivel, rp.paralelo, p.estado
+                from rs_estudiante e
+                join rs_persona p on p.id_persona = e.id_estudiante
+                join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
+                join rs_gestion rg on rg.id_gestion = rce.id_gestion
+                join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo
+                join rs_curso c on c.id_curso =  cp.id_curso
+                join rs_paralelo rp on rp.id_paralelo = cp.id_paralelo;
+
+
+-- creacion de la tabla de asistencia
+create table rs_asistencia(
+	id_asistencia int not null auto_increment,
+	id_estudiante int not null,
+	id_maestro int not null,
+	valor varchar(1) not null,
+	fecha date not null,
+	hora time not null,
+	observacion varchar(256),
+	creado_en TIMESTAMP not NULL default now(),
+	actualizado_en TIMESTAMP NULL DEFAULT null,
+	estado TINYINT NOT NULL DEFAULT '1',
+	primary key (id_asistencia),
+	constraint fk_estudiante_asistencia foreign key(id_estudiante) references rs_estudiante (id_estudiante),
+	constraint fk_maestro_asistencia foreign key(id_maestro) references rs_maestro (id_maestro)
+);
+
+
+
+
