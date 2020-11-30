@@ -5,15 +5,26 @@ use App\Models\Querys;
 if (!function_exists('authenticated')) {
     function authenticated()
     {
-        $idUser = (new Querys())->view_users(['id_persona' => (\Config\Services::session())->get('id_persona')]);
-        if (!empty($idUser)) {
-            return $idUser;
-        } else {
-            return false;
-        }
+        $idUser = (\Config\Services::session())->get('id_persona');
+        $nameGroup = (\Config\Services::session())->get('nombre_grupo');
+        $user = (new Querys())->verifyUser(['id_persona' => $idUser, 'nombre_grupo' => $nameGroup])->getRowArray();
+        return (is_null($user) ? FALSE : $user);
     }
 }
-
+if (!function_exists('is')) {
+    function is($nameGroup = [])
+    {
+        $roles = (new Querys())->verifyUser(['id_persona' => (\Config\Services::session())->get('id_persona'), 'nombre_grupo' => (\Config\Services::session())->get('nombre_grupo')])->getRowArray();
+        if ($roles != null) {
+            if (is_array($nameGroup)) {
+                return in_array($roles['nombre_grupo'], $nameGroup);
+            } else {
+                // return in_array($nombre_grupo, explode(',', preg_replace('/\s+/', '', $CI->load->get_var('usuario')['nombre_grupo'])));
+                return ($roles['nombre_grupo'] === $nameGroup);
+            }
+        } else return false;
+    }
+}
 if (!function_exists('css_tag')) {
     function css_tag($src = '', $type = 'text/css')
     {

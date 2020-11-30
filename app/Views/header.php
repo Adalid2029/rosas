@@ -3,7 +3,7 @@
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
-            <a href="<?= base_url("/")?>" class="navbar-brand">
+            <a href="<?= base_url("/") ?>" class="navbar-brand">
                 <img src="<?= base_url('img/images/escudo_rosas.png') ?>" alt="Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">Las Rosas</span>
@@ -36,7 +36,7 @@
                             <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                             <i class="demo-pli-male"></i>
                         </span>
-                        <div class="username hidden-xs"><?= (isset($user[0]["nombres"])) ? $user[0]["nombres"] . " " . $user[0]["paterno"] : "Invitado"; ?></div>
+                        <div class="username hidden-xs"><?= (isset($user["nombres"])) ? $user["nombres"] . " " . $user["paterno"] : "Invitado"; ?></div>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
@@ -61,6 +61,23 @@
                 </li>
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <!--End user dropdown-->
+            </ul>
+            <ul class="nav navbar-top-links pull-right">
+                <li id="dropdown-user" class="dropdown tgl-menu-btn">
+                    <?php if (isset($access)) : ?>
+                        <?php if (count($access) >= 1) : ?>
+                            <form method="post" action="<?= base_url('auth/access'); ?>">
+                                <select class="form-control" name="nombre_grupo" onchange="submit()">
+                                    <?php foreach ($access as $key => $value) : ?>
+                                        <option value="<?= $value['nombre_grupo']; ?>" <?= ($value['nombre_grupo'] === (\Config\Services::session())->get('nombre_grupo') ? 'selected' : ''); ?>>
+                                            Rol: <?= $value['nombre_grupo']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </form>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </li>
             </ul>
         </div>
         <!--================================-->

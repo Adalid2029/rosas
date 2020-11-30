@@ -52,7 +52,7 @@
                                 <select name="id_curso" id="id_curso" class="form-control" required>
                                     <?php
                                     foreach ($this->data["niveles"] as $key => $value) {
-                                        echo '<option value="'.$value["id_curso"].'">'.$value["nivel"].'</option>';
+                                        echo '<option value="' . $value["id_curso"] . '">' . $value["nivel"] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -67,7 +67,7 @@
                                 <select name="id_paralelo" id="id_paralelo" class="form-control" required>
                                     <?php
                                     foreach ($this->data["paralelos"] as $key => $value) {
-                                        echo '<option value="'.$value["id_paralelo"].'">'.$value["paralelo"].'</option>';
+                                        echo '<option value="' . $value["id_paralelo"] . '">' . $value["paralelo"] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -85,8 +85,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script>
     //Listar Cursos
@@ -209,7 +207,7 @@
         width: '100%'
     });
 
-    $(".btn-cerrar").on("click", function (e) {
+    $(".btn-cerrar").on("click", function(e) {
         limpiarCampos();
     });
 

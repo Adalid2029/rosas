@@ -182,9 +182,16 @@ class Estudiante extends BaseController
                                 $respuesta2 = $this->model->usuario("insert", $data2, null, null);
 
                                 if (is_numeric($respuesta2)) {
-                                    return $this->response->setJSON(json_encode(array(
-                                        'exito' => "Estudiante registrado correctamente"
-                                    )));
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->insert([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => 'ESTUDIANTE'])->getRowArray()['id_grupo'],
+                                        'id_usuario' => $respuesta,
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ])) ? $this->db->insertID() : $this->db->error();
+                                    if (is_numeric($id_grupo_usuario)) {
+                                        return $this->response->setJSON(json_encode(array(
+                                            'exito' => "Estudiante registrado correctamente"
+                                        )));
+                                    }
                                 }
                             }
                         }
@@ -281,10 +288,14 @@ class Estudiante extends BaseController
                         "actualizado_en"     => $this->fecha->format('Y-m-d H:i:s')
                     );
 
-                    $respuesta = $this->model->persona("update", $data,
+                    $respuesta = $this->model->persona(
+                        "update",
+                        $data,
                         array(
                             "id_persona" => $this->request->getPost("id_persona")
-                        ), null);
+                        ),
+                        null
+                    );
 
                     if ($respuesta) {
                         $data2 = array(
@@ -293,7 +304,8 @@ class Estudiante extends BaseController
                         );
 
                         $respuesta1 = $this->model->estudiante("update", $data2, array(
-                            "id_estudiante" => $this->request->getPost("id_estudiante")), null);
+                            "id_estudiante" => $this->request->getPost("id_estudiante")
+                        ), null);
 
                         if ($respuesta1) {
                             $data2 = array(
@@ -307,9 +319,25 @@ class Estudiante extends BaseController
                             ), null);
 
                             if ($respuesta2) {
-                                return $this->response->setJSON(json_encode(array(
-                                    'exito' => "Estudiante editado correctamente"
-                                )));
+                                if (empty($this->request->getPost("id_grupo_usuario"))) {
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->insert([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => 'ESTUDIANTE'])->getRowArray()['id_grupo'],
+                                        'id_usuario' => $this->request->getPost("id_estudiante"),
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ])) ? $this->db->insertID() : $this->db->error();
+                                } else {
+                                    $id_grupo_usuario = ($this->db->table('grupo_usuario')->update([
+                                        'id_grupo' => $this->db->table('grupo')->getWhere(['nombre_grupo' => 'ESTUDIANTE'])->getRowArray()['id_grupo'],
+                                        'estado_grupo_usuario' => 'ACTIVO',
+                                    ], [
+                                        'id_grupo_usuario' => $this->request->getPost("id_grupo_usuario"),
+                                    ]));
+                                }
+                                if ($id_grupo_usuario || is_numeric($id_grupo_usuario)) {
+                                    return $this->response->setJSON(json_encode(array(
+                                        'exito' => "Estudiante editado correctamente"
+                                    )));
+                                }
                             }
                         }
                     }

@@ -98,8 +98,8 @@ class TutorModel extends Database
         $builder->select('*');
         $builder->join("tutor as t", "p.id_persona = t.id_tutor");
         $builder->join("usuario as u", "u.id_usuario = p.id_persona");
+        $builder->join("grupo_usuario as gu", "gu.id_usuario = p.id_persona", 'left');
         $builder->where("p.id_persona", $id);
         return $builder->get()->getResultArray();
     }
-
 }// class

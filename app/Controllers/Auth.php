@@ -40,14 +40,16 @@ class Auth extends Controller
 		$password = $this->request->getPost('password');
 		#Bucasmos en la base de datos los 2 datos que nos mando el Login
 		$userSearched = $this->querys->view_users(['usuario' => $username, 'clave' => hash("sha512", $password)]);
+		// var_dump($this->db->getLastQuery());
 		#Contamos si $userSearched es ugual a 1 si lo es entendemos que podemos aprobar el inicio de sesion
 		if (count($userSearched) >= 1) {
 			# Agregamos una sesion al navegador
 
 			$this->session->set(['id_persona' => $userSearched[0]['id_persona']]);
+			$this->session->set(['nombre_grupo' => $userSearched[0]['nombre_grupo']]);
 
 			# Redireccionamos a la pagina principal
-			return redirect()->to(base_url('/administrativo/inicioPrincipal'));
+			return redirect()->to(base_url('/administrativo'));
 		}
 		#Si $userSearched no es igual a 1 debemos devolverlo al mismo login
 		else {
@@ -55,7 +57,11 @@ class Auth extends Controller
 			return redirect()->to(base_url('/auth/login'));
 		}
 	}
-
+	public function access()
+	{
+		$this->session->set(['nombre_grupo' => $this->request->getPost('nombre_grupo')]);
+		return redirect()->to(base_url('/administrativo'));
+	}
 	// funcion para cerrar sesion
 	public function logout()
 	{
