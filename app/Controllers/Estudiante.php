@@ -43,10 +43,11 @@ class Estudiante extends BaseController
                 array('db' => 'rude', 'dt'              => 2),
                 array('db' => 'ci', 'dt'                => 3),
                 array('db' => 'nombres_apellidos', 'dt' => 4),
-                array('db' => 'nacimiento', 'dt'        => 5),
-                array('db' => 'telefono', 'dt'          => 6),
-                array('db' => 'sexo', 'dt'              => 7),
-                array('db' => 'gestion_ingreso', 'dt'   => 8)
+                array('db' => 'correo', 'dt'            => 5),
+                array('db' => 'nacimiento', 'dt'        => 6),
+                array('db' => 'telefono', 'dt'          => 7),
+                array('db' => 'sexo', 'dt'              => 8),
+                array('db' => 'gestion_ingreso', 'dt'   => 9)
             );
 
             $sql_details = array(
@@ -80,7 +81,7 @@ class Estudiante extends BaseController
                     helper(['form', 'url']);
                     $val = $this->validate(
                         [ // rules
-                            "rude" => "required|numeric",
+                            "rude" => "required|alpha_numeric",
                             "ci" => "required|alpha_numeric|min_length[6]",
                             "exp" => "required|max_length[2]|alpha",
                             "nombres" => "required|alpha_space",
@@ -94,7 +95,7 @@ class Estudiante extends BaseController
                         [ // errors
                             "rude" => [
                                 "required" => "El rude  del estudiante es requerido",
-                                "numeric"  => "El rude debe contener caracteres numéricos"
+                                "alpha_numeric"  => "El rude debe contener caracteres alfabéticos y numéricos"
                             ],
                             "ci" => [
                                 "required" => "El CI del usuario es requerido",
@@ -152,6 +153,7 @@ class Estudiante extends BaseController
                             "materno"       => trim($this->request->getPost("materno")),
                             "nombres"       => trim($this->request->getPost("nombres")),
                             "nacimiento"    => $this->request->getPost("nacimiento"),
+                            "correo"    => $this->request->getPost("correo"),
                             "sexo"          => $this->request->getPost("sexo"),
                             "telefono"      => trim($this->request->getPost("telefono")),
                             "domicilio"     => trim($this->request->getPost("domicilio")),
@@ -206,7 +208,7 @@ class Estudiante extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "rude" => "required|numeric",
+                        "rude" => "required|alpha_numeric",
                         "ci" => "required|alpha_numeric|min_length[6]",
                         "exp" => "required|max_length[2]|alpha",
                         "nombres" => "required|alpha_space",
@@ -220,7 +222,7 @@ class Estudiante extends BaseController
                     [ // errors
                         "rude" => [
                             "required" => "El rude  del estudiante es requerido",
-                            "numeric"  => "El rude debe contener caracteres numéricos"
+                            "alpha_numeric"  => "El rude debe contener caracteres alfabéticos y numéricos"
                         ],
                         "ci" => [
                             "required" => "El CI del usuario es requerido",
@@ -279,6 +281,7 @@ class Estudiante extends BaseController
                         "materno"       => trim($this->request->getPost("materno")),
                         "nombres"       => trim($this->request->getPost("nombres")),
                         "nacimiento"    => $this->request->getPost("nacimiento"),
+                        "correo"    => $this->request->getPost("correo"),
                         "sexo"          => $this->request->getPost("sexo"),
                         "telefono"      => trim($this->request->getPost("telefono")),
                         "domicilio"     => trim($this->request->getPost("domicilio")),

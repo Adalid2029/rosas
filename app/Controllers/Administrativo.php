@@ -41,11 +41,12 @@ class Administrativo extends BaseController
                 array('db' => 'id_administrativo', 'dt' => 1),
                 array('db' => 'ci', 'dt'                => 2),
                 array('db' => 'nombres_apellidos', 'dt' => 3),
-                array('db' => 'nacimiento', 'dt'        => 4),
-                array('db' => 'telefono', 'dt'          => 5),
-                array('db' => 'sexo', 'dt'              => 6),
-                array('db' => 'cargo', 'dt'             => 7),
-                array('db' => 'gestion_ingreso', 'dt'   => 8)
+                array('db' => 'correo', 'dt'            => 4),
+                array('db' => 'nacimiento', 'dt'        => 5),
+                array('db' => 'telefono', 'dt'          => 6),
+                array('db' => 'sexo', 'dt'              => 7),
+                array('db' => 'cargo', 'dt'             => 8),
+                array('db' => 'gestion_ingreso', 'dt'   => 9)
             );
 
             $sql_details = array(
@@ -149,6 +150,7 @@ class Administrativo extends BaseController
                         "materno"       => trim($this->request->getPost("materno")),
                         "nombres"       => trim($this->request->getPost("nombre")),
                         "nacimiento"    => $this->request->getPost("nacimiento"),
+                        "correo"        => $this->request->getPost("correo"),
                         "sexo"          => $this->request->getPost("sexo"),
                         "telefono"      => trim($this->request->getPost("telefono")),
                         "domicilio"     => trim($this->request->getPost("domicilio")),
@@ -231,16 +233,16 @@ class Administrativo extends BaseController
                 helper(['form', 'url']);
                 $val = $this->validate(
                     [ // rules
-                        "edit_ci" => "required|alpha_numeric|min_length[6]",
-                        "edit_exp" => "required|max_length[2]|alpha",
-                        "edit_nombre" => "required|alpha_space",
-                        "edit_paterno" => "required|alpha_space",
-                        "edit_materno" => "alpha_space",
-                        "edit_nacimiento" => 'required',
-                        "edit_telefono" => "required|numeric",
-                        "edit_sexo" => "required|max_length[1]|alpha",
-                        "edit_cargo" => "required|alpha",
-                        "edit_gestion_ingreso" => "required|numeric|max_length[4]"
+                        "edit_ci"               => "required|alpha_numeric|min_length[6]",
+                        "edit_exp"              => "required|max_length[2]|alpha",
+                        "edit_nombre"           => "required|alpha_space",
+                        "edit_paterno"          => "required|alpha_space",
+                        "edit_materno"          => "alpha_space",
+                        "edit_nacimiento"       => 'required',
+                        "edit_telefono"         => "required|numeric",
+                        "edit_sexo"             => "required|max_length[1]|alpha",
+                        "edit_cargo"            => "required|alpha",
+                        "edit_gestion_ingreso"  => "required|numeric|max_length[4]"
                     ],
                     [ // errors
                         "edit_ci" => [
@@ -302,6 +304,7 @@ class Administrativo extends BaseController
                         "materno"       => trim($this->request->getPost("edit_materno")),
                         "nombres"       => trim($this->request->getPost("edit_nombre")),
                         "nacimiento"    => $this->request->getPost("edit_nacimiento"),
+                        "correo"        => $this->request->getPost("edit_correo"),
                         "sexo"          => $this->request->getPost("edit_sexo"),
                         "telefono"      => trim($this->request->getPost("edit_telefono")),
                         "domicilio"     => trim($this->request->getPost("edit_domicilio")),
@@ -408,7 +411,7 @@ class Administrativo extends BaseController
             $primaryKey = "id_persona";
             $columns = array(
                 array('db' => 'id_persona', 'dt'        => 0),
-                array('db' => 'id_maestro', 'dt' => 1),
+                array('db' => 'id_maestro', 'dt'        => 1),
                 array('db' => 'nombres_apellidos', 'dt' => 2),
                 array('db' => 'nacimiento', 'dt'        => 3),
                 array('db' => 'telefono', 'dt'          => 4),

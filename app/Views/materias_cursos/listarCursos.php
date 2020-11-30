@@ -86,7 +86,6 @@
     </div>
 </div>
 
-
 <script>
     //Listar Cursos
     $("#tbl_curso").DataTable({

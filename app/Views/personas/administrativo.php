@@ -26,6 +26,7 @@
                             <th>Id adm</th>
                             <th>CI</th>
                             <th>Nombres y Apellidos</th>
+                            <th>Correo</th>
                             <th>Fecha Nac.</th>
                             <th>Telefono</th>
                             <th>Sexo</th>
@@ -95,6 +96,13 @@
                         <label for="materno" class="col-md-12 col-form-label">Materno: </label>
                         <div class="col-md-12">
                             <input type="text" name="materno" id="materno" class="form-control" placeholder="Apellido materno...">
+                        </div>
+                    </div>
+
+                    <div class="form-group m-t-10 row">
+                        <label for="correo" class="col-md-12 col-form-label">Correo: </label>
+                        <div class="col-md-12">
+                            <input type="email" name="correo" id="correo" class="form-control" placeholder="Ingrese su correo ">
                         </div>
                     </div>
 
@@ -210,6 +218,13 @@
                         <label for="edit_materno" class="col-md-12 col-form-label">Materno: </label>
                         <div class="col-md-12">
                             <input type="text" name="edit_materno" id="edit_materno" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group m-t-10 row">
+                        <label for="edit_correo" class="col-md-12 col-form-label">Correo: </label>
+                        <div class="col-md-12">
+                            <input type="text" name="edit_correo" id="edit_correo" class="form-control">
                         </div>
                     </div>
 
@@ -381,6 +396,7 @@
         $("#nombre").val("");
         $("#paterno").val("");
         $("#materno").val("");
+        $("#correo").val("");
         $("#nacimiento").val("");
         $("#telefono").val("");
         $("#sexo").val("");
@@ -397,6 +413,7 @@
         $("#edit_nombre").val("");
         $("#edit_paterno").val("");
         $("#edit_materno").val("");
+        $("#edit_correo").val("");
         $("#edit_nacimiento").val("");
         $("#edit_telefono").val("");
         $("#edit_sexo").val("");
@@ -420,6 +437,7 @@
             $("#edit_id_persona").val(response[0]["id_persona"]);
             $("#edit_ci").val(response[0]["ci"]);
             $("#edit_exp").val(response[0]["exp"]);
+            $("#edit_correo").val(response[0]["correo"]);
             $("#edit_paterno").val(response[0]["paterno"]);
             $("#edit_materno").val(response[0]["materno"]);
             $("#edit_nombre").val(response[0]["nombres"]);

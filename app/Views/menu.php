@@ -48,7 +48,6 @@
 							</a>
 						</li>
 
-
 						<!--Menu list Registrar -->
 						<li class="">
 							<a href="#" data-original-title="" title="">
@@ -97,7 +96,7 @@
 							<ul class="collapse" aria-expanded="false">
 								<li>
 									<a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
-										<i class="fa fa-circle-o"></i>Materias
+										<i class="fa fa-circle-o"></i>Areas
 									</a>
 								</li>
 								<li>
@@ -150,6 +149,7 @@
 							</a>
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false">
+								<li><a class="menu--link" href="<?= base_url('/Asistencia') ?>"><i class="fa fa-circle-o"></i> Asistencia</a></li>
 								<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Calificaciones</a></li>
 							</ul>
 						</li>
