@@ -21,6 +21,7 @@
                             <th>id maestro</th>
                             <th>Ci</th>
                             <th>Nombres y Apellidos</th>
+                            <th>Correo</th>
                             <th>Fecha Nac.</th>
                             <th>Telefono</th>
                             <th>Sexo</th>
@@ -103,6 +104,15 @@
                                 <div class="form-group">
                                     <label class="control-label" for="materno">Materno:</label>
                                     <input type="text" name="materno" id="materno" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="correo">Correo:</label>
+                                    <input type="email" name="correo" id="correo" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -290,6 +300,7 @@
         $("#nombres").val("");
         $("#paterno").val("");
         $("#materno").val("");
+        $("#correo").val("");
         $("#nacimiento").val("");
         $("#telefono").val("");
         $("#sexo").val("");
@@ -315,6 +326,7 @@
             $("#exp").val(response[0]["exp"]);
             $("#nombres").val(response[0]["nombres"]);
             $("#paterno").val(response[0]["paterno"]);
+            $("#correo").val(response[0]["correo"]);
             $("#materno").val(response[0]["materno"]);
             $("#nacimiento").val(response[0]["nacimiento"]);
             $("#telefono").val(response[0]["telefono"]);

@@ -39,10 +39,11 @@ class Tutor extends BaseController
                 array('db' => 'id_tutor', 'dt'          => 1),
                 array('db' => 'ci', 'dt'                => 2),
                 array('db' => 'nombres_apellidos', 'dt' => 3),
-                array('db' => 'nacimiento', 'dt'        => 4),
-                array('db' => 'telefono', 'dt'          => 5),
-                array('db' => 'sexo', 'dt'              => 6),
-                array('db' => 'parentesco', 'dt'        => 7)
+                array('db' => 'correo', 'dt'            => 4),
+                array('db' => 'nacimiento', 'dt'        => 5),
+                array('db' => 'telefono', 'dt'          => 6),
+                array('db' => 'sexo', 'dt'              => 7),
+                array('db' => 'parentesco', 'dt'        => 8)
             );
 
             $sql_details = array(
@@ -142,6 +143,7 @@ class Tutor extends BaseController
                             "materno"       => trim($this->request->getPost("materno")),
                             "nombres"       => trim($this->request->getPost("nombres")),
                             "nacimiento"    => $this->request->getPost("nacimiento"),
+                            "correo"        => $this->request->getPost("correo"),
                             "sexo"          => $this->request->getPost("sexo"),
                             "telefono"      => trim($this->request->getPost("telefono")),
                             "domicilio"     => trim($this->request->getPost("domicilio")),
@@ -255,6 +257,7 @@ class Tutor extends BaseController
                         "materno"       => trim($this->request->getPost("materno")),
                         "nombres"       => trim($this->request->getPost("nombres")),
                         "nacimiento"    => $this->request->getPost("nacimiento"),
+                        "correo"    => $this->request->getPost("correo"),
                         "sexo"          => $this->request->getPost("sexo"),
                         "telefono"      => trim($this->request->getPost("telefono")),
                         "domicilio"     => trim($this->request->getPost("domicilio")),

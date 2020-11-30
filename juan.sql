@@ -211,7 +211,97 @@ CREATE TABLE `rs_falta_cometida` (
 -- cracion de la vista de las faltas cometidas
 create or replace view rs_view_falta_cometida as
 select rfc.id_falta_cometida, rk.id_kardex, rtf.id_tipo_falta, rtf.nombre, rf.id_falta, rf.descripcion, rfc.fecha, rfc.registrante, rfc.visto, rfc.estado
-from rs_falta_cometida rfc 
+from rs_falta_cometida rfc
 inner join rs_kardex rk on rfc.id_kardex = rk.id_kardex
 inner join rs_falta rf on rfc.id_falta = rf.id_falta
 inner join rs_tipo_falta rtf on rf.id_tipo_falta = rtf.id_tipo_falta;
+
+
+---- AGREGAR CAMPO CORREO EN PERSONA Y LA CORRECION DE LAS VISTAS
+--- CREACION DE LA COLUMNA CORREO EN PERSONA
+ALTER TABLE `rs_persona` ADD `correo` VARCHAR(50) NULL AFTER `nacimiento`;
+
+-- db_rosas1.rs_view_administrativo source
+
+-- correcion de la vista
+create or replace view `rs_view_administrativo` as
+select
+    `rsp`.`id_persona` as `id_persona`,
+    `rsa`.`id_administrativo` as `id_administrativo`,
+    concat(`rsp`.`ci`, ' ', `rsp`.`exp`) as `ci`,
+    concat(`rsp`.`nombres`, ' ', `rsp`.`paterno`, ' ', `rsp`.`materno`) as `nombres_apellidos`,
+    rsp.correo,
+    `rsp`.`nacimiento` as `nacimiento`,
+    `rsp`.`telefono` as `telefono`,
+    `rsp`.`sexo` as `sexo`,
+    `rsa`.`cargo` as `cargo`,
+    `rsa`.`gestion_ingreso` as `gestion_ingreso`,
+    `rsp`.`estado` as `estado`
+from
+    (`rs_persona` `rsp`
+join `rs_administrativo` `rsa` on
+    (`rsp`.`id_persona` = `rsa`.`id_administrativo`));
+
+-- correccion de la vista estudiante
+-- db_rosas1.rs_view_estudiante source
+
+create or replace view `rs_view_estudiante` as
+select
+    `rp`.`id_persona` as `id_persona`,
+    `re`.`id_estudiante` as `id_estudiante`,
+    `re`.`rude` as `rude`,
+    concat(`rp`.`ci`, ' ', `rp`.`exp`) as `ci`,
+    concat(`rp`.`nombres`, ' ', `rp`.`paterno`, ' ', `rp`.`materno`) as `nombres_apellidos`,
+    rp.correo,
+    `rp`.`nacimiento` as `nacimiento`,
+    `rp`.`telefono` as `telefono`,
+    `rp`.`sexo` as `sexo`,
+    `rp`.`domicilio` as `domicilio`,
+    `re`.`gestion_ingreso` as `gestion_ingreso`,
+    `rp`.`estado` as `estado`
+from
+    (`rs_persona` `rp`
+join `rs_estudiante` `re` on
+    (`re`.`id_estudiante` = `rp`.`id_persona`));
+
+-- correcion de la vista maestro
+-- db_rosas1.rs_view_maestro source
+
+create or replace view `rs_view_maestro` as
+select
+    `rsp`.`id_persona` as `id_persona`,
+    `rsm`.`id_maestro` as `id_maestro`,
+    `rsp`.`ci` as `ci`,
+    concat(`rsp`.`nombres`, ' ', `rsp`.`paterno`, ' ', `rsp`.`materno`) as `nombres_apellidos`,
+    rsp.correo,
+    `rsp`.`nacimiento` as `nacimiento`,
+    `rsp`.`telefono` as `telefono`,
+    `rsp`.`sexo` as `sexo`,
+    `rsm`.`grado_academico` as `grado_academico`,
+    `rsp`.`estado` as `estado`
+from
+    (`rs_persona` `rsp`
+join `rs_maestro` `rsm` on
+    (`rsp`.`id_persona` = `rsm`.`id_maestro`));
+
+   -- correcion de la vista tutor
+-- db_rosas1.rs_view_tutor source
+
+create or replace view `rs_view_tutor` as
+select
+    `rsp`.`id_persona` as `id_persona`,
+    `rst`.`id_tutor` as `id_tutor`,
+    concat(`rsp`.`ci`, ' ', `rsp`.`exp`) as `ci`,
+    concat(`rsp`.`nombres`, ' ', `rsp`.`paterno`, ' ', `rsp`.`materno`) as `nombres_apellidos`,
+    rsp.correo,
+    `rsp`.`nacimiento` as `nacimiento`,
+    `rsp`.`telefono` as `telefono`,
+    `rsp`.`sexo` as `sexo`,
+    `rst`.`parentesco` as `parentesco`,
+    `rsp`.`estado` as `estado`
+from
+    (`rs_persona` `rsp`
+join `rs_tutor` `rst` on
+    (`rsp`.`id_persona` = `rst`.`id_tutor`));
+
+    --- fin de correcion de vistas y de agregar correo

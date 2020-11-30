@@ -22,6 +22,7 @@
                         <th>RUDE</th>
                         <th>CI</th>
                         <th>Nombres y Apellidos</th>
+                        <th>Correo</th>
                         <th>Fecha Nac.</th>
                         <th>Telefono</th>
                         <th>Sexo</th>
@@ -110,6 +111,15 @@
                                 <div class="form-group">
                                     <label class="control-label" for="materno">Materno:</label>
                                     <input type="text" name="materno" id="materno" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="correo">Correo:</label>
+                                    <input type="email" name="correo" id="correo" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -292,6 +302,7 @@
         $("#exp").val("");
         $("#nombres").val("");
         $("#paterno").val("");
+        $("#correo").val("");
         $("#materno").val("");
         $("#nacimiento").val("");
         $("#telefono").val("");
@@ -320,6 +331,7 @@
             $("#nombres").val(response[0]["nombres"]);
             $("#paterno").val(response[0]["paterno"]);
             $("#materno").val(response[0]["materno"]);
+            $("#correo").val(response[0]["correo"]);
             $("#nacimiento").val(response[0]["nacimiento"]);
             $("#telefono").val(response[0]["telefono"]);
             $("#sexo").val(response[0]["sexo"]);
