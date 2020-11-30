@@ -55,5 +55,14 @@ class AsistenciaModel extends Database
         return $builder->get()->getResultArray();
     }
 
+    public function verificarMarcadoAsistenciaHoy($id_estudiante)
+    {
+        $fecha_hoy = new \DateTime();
+        $builder = $this->db->table("asistencia");
+        $builder->select('id_asistencia, fecha');
+        $builder->where(array("id_estudiante" => $id_estudiante, "fecha" => $fecha_hoy->format('Y-m-d')));
+        return $builder->get()->getResultArray();
+    }
+
 
 }// class

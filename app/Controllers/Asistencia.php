@@ -53,5 +53,51 @@ class Asistencia extends BaseController
         return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where)));
     }
 
+    // insertar asistencia o actualizar
+    public function agregar_asistencia()
+    {
+        if($this->request->isAJAX())
+        {
+            $respuesta = $this->model->verificarMarcadoAsistenciaHoy($this->request->getPost("id"));
+            if($respuesta){
+                // Actualizar
+                $data = array(
+                    "id_maestro"    => $this->request->getPost("id_maestro"),
+                    "valor"         => $this->request->getPost("valor"),
+                    "actualizado_en"=> $this->fecha->format('Y-m-d H:i:s')
+                );
+                $cond = array(
+                    "id_estudiante" => $this->request->getPost("id"),
+                    "fecha"         => $this->fecha->format('Y-m-d')
+                );
+
+                $respuesta1 = $this->model->asistencia("update", $data, $cond, null);
+                if ($respuesta1)
+                {
+                    return $this->response->setJSON(json_encode(array(
+                        'exito' => "Asistencia modificado correctamente"
+                    )));
+                }
+            }else{
+                // Insertar
+                $data = array(
+                    "id_estudiante" => $this->request->getPost("id"),
+                    "id_maestro"    => $this->request->getPost("id_maestro"),
+                    "valor"         => $this->request->getPost("valor"),
+                    "fecha"         => $this->fecha->format('Y-m-d'),
+                    "hora"          => $this->fecha->format('H:i:s'),
+                    "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
+                );
+
+                $respuesta1 = $this->model->asistencia("insert", $data, null, null);
+                if (is_numeric($respuesta1))
+                {
+                    return $this->response->setJSON(json_encode(array(
+                        'exito' => "Asistencia registrado correctamente"
+                    )));
+                }
+            }
+        }
+    }
 
 }// class

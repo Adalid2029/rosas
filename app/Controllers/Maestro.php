@@ -76,9 +76,9 @@ class Maestro extends BaseController
         $where = "estado = 1";
         $columns = array(
             array('db' => 'id_materia_maestro', 'dt' => 0),
-            array('db' => 'materia', 'dt' => 1),
-            array('db' => 'nombre_completo', 'dt' => 2),
-            array('db' => 'gestion', 'dt' => 3),
+            array('db' => 'materia', 'dt'            => 1),
+            array('db' => 'nombre_completo', 'dt'    => 2),
+            array('db' => 'gestion', 'dt'            => 3),
         );
 
         $sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);
