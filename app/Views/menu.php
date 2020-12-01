@@ -62,26 +62,25 @@
 										<i class="fa fa-circle-o"></i>Administrativo
 									</a>
 								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url("/estudiante/listarEstudiantes") ?>">
-										<i class="fa fa-circle-o"></i>Estudiante
-									</a>
-								</li>
+
 								<li>
 									<a class="menu--link" href="<?= base_url("/maestro/listarMaestros") ?>">
 										<i class="fa fa-circle-o"></i>Maestro
 									</a>
 								</li>
+
+                                <li>
+                                    <a class="menu--link" href="<?= base_url("/estudiante/listarEstudiantes") ?>">
+                                        <i class="fa fa-circle-o"></i>Estudiante
+                                    </a>
+                                </li>
+
 								<li>
 									<a class="menu--link" href="<?= base_url("/tutor/listarTutor") ?>">
 										<i class="fa fa-circle-o"></i>Tutor
 									</a>
 								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url("/responsable/listarTutoresEstudiantes") ?>">
-										<i class="fa fa-circle-o"></i>Asignar tutor
-									</a>
-								</li>
+
 							</ul>
 						</li>
 
@@ -126,19 +125,26 @@
 							</a>
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false">
-								<li>
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
+                                        <i class="fa fa-circle-o"></i>Asignar Maestro
+                                    </a>
+                                </li>
+
+                                <li>
 									<a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
 										<i class="fa fa-circle-o"></i>Asignar Estudiante
 									</a>
 								</li>
+
+                                <li>
+                                    <a class="menu--link" href="<?= base_url("/responsable/listarTutoresEstudiantes") ?>">
+                                        <i class="fa fa-circle-o"></i>Asignar tutor
+                                    </a>
+                                </li>
+
 							</ul>
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
-										<i class="fa fa-circle-o"></i>Asignar Maestro
-									</a>
-								</li>
-							</ul>
+
 						</li>
 						<!--Menu list Asistencias y calificación -->
 						<li class="">

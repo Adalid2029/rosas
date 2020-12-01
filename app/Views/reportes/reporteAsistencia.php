@@ -71,8 +71,8 @@
 
 <script>
     $('.selectpicker').selectpicker();
-    let fechaInicial = moment().format("YYYY-MM-DD");
-    let fechaFinal = moment().format("YYYY-MM-DD");
+    var fechaInicial = moment().format("YYYY-MM-DD");
+    var fechaFinal = moment().format("YYYY-MM-DD");
 
     // Rango de fecha
     $("#reportrange").click(function(e) {
