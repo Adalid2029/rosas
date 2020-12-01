@@ -18,10 +18,13 @@
       <w>asignar</w>
       <w>asis</w>
       <w>asistencia</w>
+      <w>asistenciareporte</w>
       <w>asistencias</w>
       <w>asistido</w>
+      <w>ayer</w>
       <w>bienvenidos</w>
       <w>bloque</w>
+      <w>bootbox</w>
       <w>boton</w>
       <w>buscar</w>
       <w>busqueda</w>
@@ -51,6 +54,7 @@
       <w>crear</w>
       <w>curso</w>
       <w>cursos</w>
+      <w>daterangepicker</w>
       <w>datos</w>
       <w>debe</w>
       <w>derechos</w>
@@ -89,6 +93,7 @@
       <w>idkardex</w>
       <w>imagen</w>
       <w>imprimir</w>
+      <w>inicial</w>
       <w>iniciar</w>
       <w>inicio</w>
       <w>inserta</w>
@@ -136,6 +141,7 @@
       <w>proyecto</w>
       <w>puede</w>
       <w>página</w>
+      <w>rango</w>
       <w>recibido</w>
       <w>registrado</w>
       <w>registrante</w>
@@ -143,6 +149,7 @@
       <w>registros</w>
       <w>reporte</w>
       <w>reportes</w>
+      <w>reportrange</w>
       <w>requerido</w>
       <w>reservados</w>
       <w>responsable</w>
@@ -177,6 +184,7 @@
       <w>válido</w>
       <w>warni</w>
       <w>yearpicker</w>
+      <w>últimos</w>
     </words>
   </dictionary>
 </component>

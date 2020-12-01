@@ -185,7 +185,7 @@
                             <!--Submenu-->
                             <ul class="collapse" aria-expanded="false">
                                 <li>
-                                    <a class="menu--link" href="<?= base_url('reportes/reporteAsistencia') ?>">
+                                    <a class="menu--link" href="<?= base_url('asistencia/imprimirAsistencia') ?>">
                                         <i class="fa fa-circle-o"></i>Asistencia
                                     </a>
                                 </li>

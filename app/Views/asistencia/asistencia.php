@@ -51,12 +51,6 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
-
-
 <script>
     $('.selectpicker').selectpicker();
     var curso = "PRIMERO A";
@@ -162,6 +156,8 @@
             });
         }
     });
+
+
 
 </script>
 

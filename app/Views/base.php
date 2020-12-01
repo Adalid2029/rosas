@@ -32,7 +32,10 @@
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
     <link href="<?php echo base_url('plugins/pace/pace.min.css') ?>" rel="stylesheet" />
 
+    <link href="<?php echo base_url('plugins/bootstrap-select/bootstrap-select.min.css') ?>" rel="stylesheet" />
+
     <link rel="stylesheet" href="<?php echo base_url('css/toastr.css') ?>" />
+    <link rel="stylesheet" href="<?php echo base_url('css/daterangepicker.css') ?>" />
 
 
     <script src="<?php echo base_url('plugins/pace/pace.min.js') ?>"></script>
@@ -70,9 +73,9 @@
     <link href="<?php echo base_url('img/images/favicon.ico') ?>" rel="apple-touch-icon" />
 
     <script src="<?php echo base_url('js/toastr.min.js') ?>"></script>
+    <script src="<?php echo base_url('js/daterangepicker.js') ?>"></script>
 
     <script src="<?php echo base_url('js/bootbox.min.js') ?>"></script>
-    <script src="<?= base_url('js/administrativo.js') ?>"></script>
 </head>
 
 <!--TIPS-->
