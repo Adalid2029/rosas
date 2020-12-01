@@ -25,7 +25,7 @@ class Administrativo extends BaseController
 
     public function index()
     {
-        return $this->templater->view('home/home', $this->data);
+        return $this->templater->view('Home/home', $this->data);
     }
 
     // Listado de administrativos
