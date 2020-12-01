@@ -9,12 +9,11 @@
                         </div>
                         <div class="col-sm-7 table-toolbar-right">
                             <div class="form-group ">
-                                <select class="selectpicker show-tick show-menu-arrow" data-width="150px" data-style="btn-success"
-                                        data-live-search="true" id="curso_paralelo" name="curso_paralelo">
+                                <select class="selectpicker show-tick show-menu-arrow" data-width="150px" data-style="btn-success" data-live-search="true" id="curso_paralelo" name="curso_paralelo">
                                     <?php
-                                        foreach ($this->data["cursos_paralelos"] as $key => $value) {
-                                            echo '<option value="'.$value["curso"].'">'.$value["curso"].'</option>';
-                                        }
+                                    foreach ($this->data["cursos_paralelos"] as $key => $value) {
+                                        echo '<option value="' . $value["curso"] . '">' . $value["curso"] . '</option>';
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -23,9 +22,9 @@
                                 <select class="selectpicker show-tick show-menu-arrow" data-style="btn-info" data-live-search="true" id="id_maestro" name="id_maestro">
                                     <option value="">-- seleccione maestro --</option>
                                     <?php
-                                        foreach ($this->data["maestros"] as $key => $value) {
-                                            echo '<option value="'.$value["id_maestro"].'">'.$value["nombres_apellidos"].'</option>';
-                                        }
+                                    foreach ($this->data["maestros"] as $key => $value) {
+                                        echo '<option value="' . $value["id_maestro"] . '">' . $value["nombres_apellidos"] . '</option>';
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -59,24 +58,24 @@
 
 <script>
     $('.selectpicker').selectpicker();
-    var curso = "PRIMERO A";
+    var curso = $("#curso_paralelo").val();
     var tbl_asistencia;
     listar();
     // cargar el listado de por paralelos
-    $("#curso_paralelo").on("change", function (e) {
-       curso =  $("#curso_paralelo").val();
+    $("#curso_paralelo").on("change", function(e) {
+        curso = $("#curso_paralelo").val();
         $("#tbl_asistencia").dataTable().fnDestroy();
         listar();
 
     });
 
 
-    function listar(){
+    function listar() {
         tbl_asistencia = $("#tbl_asistencia").DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
-            "order": [ 0, 'desc' ],
+            "order": [0, 'desc'],
             ajax: '/asistencia/ajaxListarEstudiantesParalelos/?curso=' + curso,
             language: {
                 sProcessing: "Procesando...",
@@ -102,8 +101,7 @@
                     sSortDescending: ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            columnDefs: [
-                {
+            columnDefs: [{
                     searchable: false,
                     orderable: false,
                     visible: false,
@@ -115,27 +113,28 @@
                     targets: -1,
                     data: null,
                     render: function(data, type, row, meta) {
-                        return '<select id="asistencia' + data[0]+'" data="'+data[0]+'" name="asistencia" class="custom-select asistencia" data-style="btn-info" data-live-search="true">' +
-                                '<option value="">--seleccione--</option>' +
-                                '<option value="A">ASISTENCIA</option>' +
-                                '<option value="F">FALTA</option>' +
-                                '<option value="L">LICENCIA</option>' +
-                                '<option value="R">RETRASO</option>' +
+                        return '<select id="asistencia' + data[0] + '" data="' + data[0] + '" name="asistencia" class="custom-select asistencia" data-style="btn-info" data-live-search="true">' +
+                            '<option value="">--seleccione--</option>' +
+                            '<option value="A">ASISTENCIA</option>' +
+                            '<option value="F">FALTA</option>' +
+                            '<option value="L">LICENCIA</option>' +
+                            '<option value="R">RETRASO</option>' +
                             '</select>';
 
                     }
-                }]
+                }
+            ]
         });
     }
 
     // insertar asistencia del estudiante
-    $("#tbl_asistencia").on("change", "select.asistencia", function (e) {
+    $("#tbl_asistencia").on("change", "select.asistencia", function(e) {
 
-        if ($(`#id_maestro`).val() === ""){
+        if ($(`#id_maestro`).val() === "") {
             mensajeAlert("warning", "Por favor seleccione al maestro", "Advertencia!!!")
-        }else{
+        } else {
             let id = $(this).attr("data");
-            let valor = $("#asistencia"+id).val();
+            let valor = $("#asistencia" + id).val();
             let id_maestro = $("#id_maestro").val();
 
             $.ajax({
@@ -144,7 +143,7 @@
                 data: {
                     "id": id,
                     "valor": valor,
-                    "id_maestro" : id_maestro
+                    "id_maestro": id_maestro
                 },
                 dataType: "JSON"
             }).done(function(response) {
@@ -162,7 +161,4 @@
             });
         }
     });
-
 </script>
-
-

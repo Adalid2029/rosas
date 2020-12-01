@@ -1,12 +1,8 @@
 <nav id="mainnav-container">
 	<div id="mainnav">
-		<!--Menu-->
-		<!--================================-->
 		<div id="mainnav-menu-wrap">
 			<div class="nano has-scrollbar">
 				<div class="nano-content" tabindex="0" style="right: -17px;">
-					<!--Profile Widget-->
-					<!--================================-->
 					<div id="mainnav-profile" class="mainnav-profile">
 						<div class="profile-wrap text-center">
 							<div class="pad-btm">
@@ -49,133 +45,141 @@
 						</li>
 
 						<!--Menu list Registrar -->
-						<li class="">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa-user"></i>
-								<span class="menu-title">Registrar</span>
-								<i class="arrow"></i>
-							</a>
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li class="">
-									<a class="menu--link" href="<?= base_url('/administrativo/listarAdministrativos'); ?>">
-										<i class="fa fa-circle-o"></i>Administrativo
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url("/estudiante/listarEstudiantes") ?>">
-										<i class="fa fa-circle-o"></i>Estudiante
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url("/maestro/listarMaestros") ?>">
-										<i class="fa fa-circle-o"></i>Maestro
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url("/tutor/listarTutor") ?>">
-										<i class="fa fa-circle-o"></i>Tutor
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url("/responsable/listarTutoresEstudiantes") ?>">
-										<i class="fa fa-circle-o"></i>Asignar tutor
-									</a>
-								</li>
-							</ul>
-						</li>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA'])) : ?>
+							<li>
+								<a href="#" data-original-title="" title="">
+									<i class="fa fa-user"></i>
+									<span class="menu-title">Registrar</span>
+									<i class="arrow"></i>
+								</a>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li class="">
+										<a class="menu--link" href="<?= base_url('/administrativo/listarAdministrativos'); ?>">
+											<i class="fa fa-circle-o"></i>Administrativo
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url("/estudiante/listarEstudiantes") ?>">
+											<i class="fa fa-circle-o"></i>Estudiante
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url("/maestro/listarMaestros") ?>">
+											<i class="fa fa-circle-o"></i>Maestro
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url("/tutor/listarTutor") ?>">
+											<i class="fa fa-circle-o"></i>Tutor
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url("/responsable/listarTutoresEstudiantes") ?>">
+											<i class="fa fa-circle-o"></i>Asignar tutor
+										</a>
+									</li>
+								</ul>
+							</li>
+						<?php endif; ?>
 
 						<!--Menu list Cursos y Areas -->
-						<li>
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-list-alt"></i>
-								<span class="menu-title">Cursos y Areas</span>
-								<i class="arrow"></i>
-							</a>
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
-										<i class="fa fa-circle-o"></i>Areas
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url('/nivel/listarNiveles') ?>">
-										<i class="fa fa-circle-o"></i>Crear Curso
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
-										<i class="fa fa-circle-o"></i>Crear Paralelos
-									</a>
-								</li>
-								<li>
-									<a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
-										<i class="fa fa-circle-o"></i>Asignar Curso
-									</a>
-								</li>
-							</ul>
-						</li>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA'])) : ?>
+							<li>
+								<a href="#" data-original-title="" title="">
+									<i class="fa fa fa-list-alt"></i>
+									<span class="menu-title">Cursos y Areas</span>
+									<i class="arrow"></i>
+								</a>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li>
+										<a class="menu--link" href="<?= base_url('/materia/listarMaterias') ?>">
+											<i class="fa fa-circle-o"></i>Areas
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('/nivel/listarNiveles') ?>">
+											<i class="fa fa-circle-o"></i>Crear Curso
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('/paralelo/listarParalelos') ?>">
+											<i class="fa fa-circle-o"></i>Crear Paralelos
+										</a>
+									</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('/curso/listarCursos') ?>">
+											<i class="fa fa-circle-o"></i>Asignar Curso
+										</a>
+									</li>
+								</ul>
+							</li>
+						<?php endif; ?>
 
-						<!--Menu list Asignar maestros y estudiantes -->
-						<li class="">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-th-list"></i>
-								<span class="menu-title">Asignar Maestros y Estudiantes</span>
-								<i class="arrow"></i>
-							</a>
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
-										<i class="fa fa-circle-o"></i>Asignar Estudiante
-									</a>
-								</li>
-							</ul>
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
-										<i class="fa fa-circle-o"></i>Asignar Maestro
-									</a>
-								</li>
-							</ul>
-						</li>
-						<!--Menu list Asistencias y calificación -->
-						<li class="">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-id-card-o"></i>
-								<span class="menu-title">Asistencias y Calificaciones</span>
-								<i class="arrow"></i>
-							</a>
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li><a class="menu--link" href="<?= base_url('/Asistencia') ?>"><i class="fa fa-circle-o"></i> Asistencia</a></li>
-								<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Calificaciones</a></li>
-							</ul>
-						</li>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA'])) : ?>
+							<!--Menu list Asignar maestros y estudiantes -->
+							<li class="">
+								<a href="#" data-original-title="" title="">
+									<i class="fa fa fa-th-list"></i>
+									<span class="menu-title">Asignar Maestros y Estudiantes</span>
+									<i class="arrow"></i>
+								</a>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li>
+										<a class="menu--link" href="<?= base_url('/curso/listarAsignacionesCursoEstudiante') ?>">
+											<i class="fa fa-circle-o"></i>Asignar Estudiante
+										</a>
+									</li>
+								</ul>
+								<ul class="collapse" aria-expanded="false">
+									<li>
+										<a class="menu--link" href="<?= base_url('/maestro/listarAsignacionesMateriaMaestro') ?>">
+											<i class="fa fa-circle-o"></i>Asignar Maestro
+										</a>
+									</li>
+								</ul>
+							</li>
+						<?php endif; ?>
 
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO'])) : ?>
+							<!--Menu list Asistencias y calificación -->
+							<li class="">
+								<a href="#" data-original-title="" title="">
+									<i class="fa fa fa-id-card-o"></i>
+									<span class="menu-title">Asistencias y Calificaciones</span>
+									<i class="arrow"></i>
+								</a>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li><a class="menu--link" href="<?= base_url('/Asistencia') ?>"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+									<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Calificaciones</a></li>
+								</ul>
+							</li>
+						<?php endif; ?>
 
-						<!--Menu list Kardex Estudiantil -->
-						<li class="">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-address-book-o"></i>
-								<span class="menu-title">Kardex Estudiantil</span>
-								<i class="arrow"></i>
-							</a>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO'])) : ?>
+							<!--Menu list Kardex Estudiantil -->
+							<li class="">
+								<a href="#" data-original-title="" title="">
+									<i class="fa fa fa-address-book-o"></i>
+									<span class="menu-title">Kardex Estudiantil</span>
+									<i class="arrow"></i>
+								</a>
 
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('kardex/listarKardex') ?>">
-										<i class="fa fa-circle-o"></i>Kardex
-									</a>
-								</li>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li>
+										<a class="menu--link" href="<?= base_url('kardex/listarKardex') ?>">
+											<i class="fa fa-circle-o"></i>Kardex
+										</a>
+									</li>
 
-							</ul>
-						</li>
-
+								</ul>
+							</li>
+						<?php endif; ?>
 					</ul>
-
 				</div>
 				<div class="nano-pane">
 					<div class="nano-slider" style="height: 1719px; transform: translate(0px, 0px);"></div>
