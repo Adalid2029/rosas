@@ -8,17 +8,6 @@
                             <h3 class="panel-title">Reporte Asistencia</h3>
                         </div>
                         <div class="col-sm-7 table-toolbar-right">
-                            <div class="form-group ">
-                                <select class="selectpicker show-tick show-menu-arrow" data-width="150px" data-style="btn-success"
-                                        data-live-search="true" id="curso_paralelo" name="curso_paralelo">
-                                    <?php
-                                    foreach ($this->data["cursos_paralelos"] as $key => $value) {
-                                        echo '<option value="'.$value["curso"].'">'.$value["curso"].'</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
                             <div class="form-group">
                                 <button type="button" class="btn btn-default pull-right" id="reportrange">
                                       <span>
@@ -33,12 +22,28 @@
                 </div>
 
                 <div class="row">
-                    <center>
-                        <button type="button" class="btn btn-default-basic" id="btn_imprimir_asistencia">
-                            <i class="fa fa-file-pdf-o" style="color: red"></i>
-                            <span style="color: red">Imprimir</span>
-                        </button>
-                    </center>
+                    <div class="col-lg-12">
+                        <?php
+
+                        $colores =  array("panel-primary", "panel-warning", "panel-purple", "panel-dark", "panel-pink", "panel-success", "panel-info", "panel-success", "panel-mint","panel-primary", "panel-warning", "panel-purple", "panel-dark", "panel-pink", "panel-success", "panel-info", "panel-success", "panel-mint");
+                        foreach ($this->data["cursos_paralelos"] as $key => $value) {
+                            echo '<div class="col-lg-4 col-md-6">
+                                <!--Tile-->
+                                <!--===================================================-->
+                                <div class="panel '.$colores[$key].' panel-colorful">
+                                    <div class="pad-all text-center">                                            
+                                        <span class="text-1x text-thin">Paralelo</span>
+                                        <p>'.$value["curso"].'</p>
+                                        <a data="'.$value["curso"].'" href="#" id="btn_imprimir_asistencia" class="text-2x" style="color: whitesmoke">
+                                            <i class="fa fa-print"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--===================================================-->
+                            </div>';
+                        }?>
+                    </div>
+
                 </div>
 
             </div>
@@ -130,7 +135,8 @@
         fechaFinal = moment().format("YYYY-MM-DD");
     });
 
-    $("#btn_imprimir_asistencia").on("click", function (e) {
+    $("a#btn_imprimir_asistencia").on("click", function (e) {
+        let paralelo = $(this).attr("data");
         $("#reporte_pdf").prop(
             "src",
             "<?= base_url("/")?>" + "/asistencia/imprimir"
