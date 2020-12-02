@@ -45,7 +45,6 @@
 						</li>
 
 						<!--Menu list Registrar -->
-<<<<<<< HEAD
 						<li class="">
 							<a href="#" data-original-title="" title="">
 								<i class="fa fa-user"></i>
@@ -156,7 +155,7 @@
 								<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Calificaciones</a></li>
 							</ul>
 						</li>
-=======
+
 						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA'])) : ?>
 							<li>
 								<a href="#" data-original-title="" title="">
@@ -228,7 +227,6 @@
 								</ul>
 							</li>
 						<?php endif; ?>
->>>>>>> a04781e7695025fd0690c15e8d8253e0e47dd46e
 
 						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA'])) : ?>
 							<!--Menu list Asignar maestros y estudiantes -->
@@ -289,7 +287,10 @@
 										</a>
 									</li>
 
-<<<<<<< HEAD
+								</ul>
+							</li>
+
+						<?php endif; ?>
                         <!--Menu list Reportes -->
                         <li class="">
                             <a href="#" data-original-title="" title="">
@@ -309,11 +310,6 @@
                             </ul>
                         </li>
 
-=======
-								</ul>
-							</li>
-						<?php endif; ?>
->>>>>>> a04781e7695025fd0690c15e8d8253e0e47dd46e
 					</ul>
 				</div>
 				<div class="nano-pane">

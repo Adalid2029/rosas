@@ -25,15 +25,11 @@ class Administrativo extends BaseController
 
     public function index()
     {
-<<<<<<< HEAD
         $this->data["administrativos"] = $this->model->contarPersonas("view_administrativo")[0]["cantidad"];
         $this->data["maestros"] = $this->model->contarPersonas("view_maestro")[0]["cantidad"];
         $this->data["estudiantes"] = $this->model->contarPersonas("view_estudiante")[0]["cantidad"];
         $this->data["tutores"] = $this->model->contarPersonas("view_tutor")[0]["cantidad"];
         return $this->templater->view('home/home', $this->data);
-=======
-        return $this->templater->view('Home/home', $this->data);
->>>>>>> a04781e7695025fd0690c15e8d8253e0e47dd46e
     }
 
     // Listado de administrativos
