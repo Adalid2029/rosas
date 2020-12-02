@@ -57,7 +57,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title" style="color: white">REPORTE DE ASISTENCIA</h5>
+                <h5 class="modal-title" id="titulo_reporte_asistencia" style="color: white"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" style="color: white">×</span>
                 </button>
@@ -137,6 +137,7 @@
 
     $("a#btn_imprimir_asistencia").on("click", function (e) {
         let paralelo = $(this).attr("data");
+        $("#titulo_reporte_asistencia").html("REPORTE DE ASISTENCIA: " + paralelo);
         $("#reporte_pdf").prop(
             "src",
             "<?= base_url("/")?>" + "/asistencia/imprimir"

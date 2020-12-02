@@ -123,4 +123,13 @@ class AdministrativoModel extends Database
         $builder->where("estado", 1);
         return $builder->get()->getResultArray();
     }
+
+    public function contarPersonas($table)
+    {
+        $builder = $this->db->table($table);
+        $builder->select('count(id_persona) as cantidad');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
 }// class
