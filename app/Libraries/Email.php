@@ -16,7 +16,7 @@ class Email extends BaseController
         $SMTPPort = 465,
         $SMTPCrypto = 'tls'
     ) {
-        $this->email = \Config\Services::email();   
+        $this->email = \Config\Services::email();
         $this->config['protocol'] = 'SMTP';
         $this->config['SMTPHost'] = $SMTPHost;
         $this->config['SMTPUser'] = $SMTPUser;
@@ -26,18 +26,18 @@ class Email extends BaseController
         $this->config['CRLF'] = '\r\n';
         $this->config['newline'] = '\r\n';
         $this->config['mailType'] = 'html';
-        $this->email->initialize($this->config);
     }
 
-    function enviarCorreo()
+    function enviarCorreo($correo, $sujeto, $mensaje, $tipoCorreo)
     {
-        $this->email->setFrom('platzixy@platzi.xyz', 'Stack News');
-        $this->email->setTo('jcondori92@outlook.es');
-        $this->email->setCC('juanzapanacondori@gmail.com');
+        $this->config['mailType'] = $tipoCorreo;
+        $this->email->initialize($this->config);
         
-        $this->email->setSubject('Hola de nuevo');
-        $this->email->setMessage('Testing the email class.');
-        var_dump($this->email->send());
-        var_dump($this->email->printDebugger());
+        $this->email->setFrom('platzixy@platzi.xyz', 'Unidad Educativa las Rosas');
+        $this->email->setTo($correo);
+
+        $this->email->setSubject($sujeto);
+        $this->email->setMessage($mensaje);
+        $this->email->send();
     }
 }

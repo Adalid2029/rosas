@@ -66,5 +66,16 @@ class KardexModel extends Database
         return $builder->get()->getResultArray();
     }
 
-
+    // select maestros
+    public function listarTutoresEstudiante($condicion = null)
+    {
+        $builder = $this->db->table("kardex k");
+        $builder->select('*');
+        $builder->join('estudiante e', 'e.id_estudiante = k.id_estudiante');
+        $builder->join('responsable r', 'r.id_estudiante = e.id_estudiante');
+        $builder->join('tutor t', 't.id_tutor = r.id_tutor');
+        $builder->join('persona p', 'p.id_persona = t.id_tutor');
+        $builder->where("p.estado", 1);
+        return is_array($condicion) ? $builder->getWhere($condicion) : $builder->get();
+    }
 } // class

@@ -6,6 +6,7 @@ use App\Controllers\Reportes\CitacionReporte;
 use App\Libraries\Ssp;
 use App\Models\FaltaModel;
 use App\Models\KardexModel;
+use App\Libraries\Email;
 
 class Falta extends BaseController
 {
@@ -80,44 +81,40 @@ class Falta extends BaseController
 
                         $respuesta1 = $this->model->selectContador($this->request->getPost("id_kardex_falta"));
 
-                        if ($respuesta1)
-                        {
-                            $cont = intval($respuesta1[0]["contador"])+1;
-                            $res = $this->kardex->kardex("update", array("contador" => $cont), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null );
-                            if ($res){
+                        if ($respuesta1) {
+                            $cont = intval($respuesta1[0]["contador"]) + 1;
+                            $res = $this->kardex->kardex("update", array("contador" => $cont), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null);
+                            if ($res) {
 
                                 // se verifica el contador de faltas
                                 $respuesta = $this->model->verificar5Faltas($this->request->getPost("id_kardex_falta"));
 
-                                if (intval($respuesta[0]["contador"]) == 5){
+                                if (intval($respuesta[0]["contador"]) == 5) {
                                     // si el contador es 5 entonces se inserta la citacion
                                     $data3 = array(
                                         "id_kardex"     => $this->request->getPost("id_kardex_falta"),
                                         "fecha"     => $this->fecha->format('Y-m-d H:i:s')
                                     );
                                     $re = $this->model->citacion("insert", $data3, null, null);
-                                    if (is_numeric($re))
-                                    {
-                                        $res = $this->kardex->kardex("update", array("contador" => 0), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null );
+                                    if (is_numeric($re)) {
+
+                                        foreach ($this->kardex->listarTutoresEstudiante(['k.id_kardex' => $this->request->getPost("id_kardex_falta")])->getResultArray() as $key => $value) {
+                                            (new Email)->enviarCorreo($value['correo'], 'Citacion ' . date('Y-m-d H:i:s'), 'Su hijo no se porto bien', 'text');
+                                        }
+                                        $res = $this->kardex->kardex("update", array("contador" => 0), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null);
                                         return $this->response->setJSON(json_encode(array(
                                             'exito' => "Falta registrado correctamente y una CITACION GENERADO!!!"
                                         )));
                                     }
-
-                                }else{
+                                } else {
                                     return $this->response->setJSON(json_encode(array(
                                         'exito' => "Falta registrado correctamente"
                                     )));
                                 }
-
                             }
                         }
-
-
-
                     }
                 }
-
             } else {
                 // actualizar formulario
                 //validación de formulario
@@ -184,7 +181,7 @@ class Falta extends BaseController
         if ($this->request->isAJAX()) {
             $this->db->transBegin();
             $table = "rs_view_falta_cometida";
-            $where = "id_kardex=".$this->request->getGet("id_kardex") . " AND estado = 1";
+            $where = "id_kardex=" . $this->request->getGet("id_kardex") . " AND estado = 1";
             $primaryKey = "id_falta_cometida";
             $columns = array(
                 array('db' => 'id_falta_cometida', 'dt' => 0),
@@ -256,22 +253,20 @@ class Falta extends BaseController
 
             if ($respuesta) {
                 $respuesta1 = $this->model->selectContador($this->request->getPost("kardex"));
-                if ($respuesta1){
-                    if( intval($respuesta1[0]["contador"]) <= 0){
+                if ($respuesta1) {
+                    if (intval($respuesta1[0]["contador"]) <= 0) {
                         $cont = 0;
-                    }else{
-                        $cont = intval($respuesta1[0]["contador"])-1;
+                    } else {
+                        $cont = intval($respuesta1[0]["contador"]) - 1;
                     }
 
-                    $res = $this->kardex->kardex("update", array("contador" => $cont), array("id_kardex" => $this->request->getPost("kardex")), null );
-                    if ($res){
+                    $res = $this->kardex->kardex("update", array("contador" => $cont), array("id_kardex" => $this->request->getPost("kardex")), null);
+                    if ($res) {
                         return $this->response->setJSON(json_encode(array(
                             'exito' => "Registro de kardex eliminado correctamente"
                         )));
                     }
                 }
-
-
             }
         }
     }
@@ -282,12 +277,12 @@ class Falta extends BaseController
         if ($this->request->isAJAX()) {
             $this->db->transBegin();
             $table = "rs_view_citacion";
-            $where = "id_kardex=".$this->request->getGet("id_kardex") ;
+            $where = "id_kardex=" . $this->request->getGet("id_kardex");
             $primaryKey = "id_citacion";
             $columns = array(
                 array('db' => 'id_citacion', 'dt'      => 0),
                 array('db' => 'id_kardex', 'dt'        => 1),
-                array('db' => 'nombres_apellidos', 'dt'=> 2),
+                array('db' => 'nombres_apellidos', 'dt' => 2),
                 array('db' => 'fecha', 'dt'            => 3)
             );
 
@@ -304,12 +299,12 @@ class Falta extends BaseController
         }
     }
 
-    public function imprimirCitacion(){
+    public function imprimirCitacion()
+    {
         $name = $this->request->getGet("name");
         $fecha = $this->request->getGet("fecha");
         $this->response->setContentType('application/pdf');
         $this->reporte->imprimir($name, $fecha);
-
     }
 
     // listar faltas segun id tipo falta
@@ -319,5 +314,4 @@ class Falta extends BaseController
         $respuesta = $this->model->seleccionarFaltas($id_tipo_falta);
         return json_encode($respuesta);
     }
-
 }
