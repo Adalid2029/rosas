@@ -94,18 +94,18 @@
                 </a>
 
                 <a href="#">
-                    <h4>Las Rosas</h4>
-                    <img src="<?= base_url("principal/images/imagen1.jpg")?>" alt="Las Rosas">
+                    <h4>Plantel Docentes</h4>
+                    <img src="<?= base_url("principal/images/imagen2.jpg")?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">
-                    <h4>Las Rosas</h4>
-                    <img src="<?= base_url("principal/images/imagen1.jpg")?>" alt="Las Rosas">
+                    <h4>Día del Niño(a)</h4>
+                    <img src="<?= base_url("principal/images/imagen3.jpg")?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">
-                    <h4>Las Rosas</h4>
-                    <img src="<?= base_url("principal/images/imagen1.jpg")?>" alt="Las Rosas">
+                    <h4>Promoción 2019</h4>
+                    <img src="<?= base_url("principal/images/imagen4.jpg")?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">

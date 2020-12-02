@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\AsistenciaReporte;
 use App\Libraries\Ssp;
 use App\Models\AsistenciaModel;
 
@@ -9,11 +10,13 @@ class Asistencia extends BaseController
 {
     public $model = null;
     public $fecha = null;
+    public $reporteAsistencia ;
 
     public function __construct()
     {
         parent::__construct();
         $this->model = new AsistenciaModel();
+        $this->reporteAsistencia = new AsistenciaReporte();
         $this->fecha = new \DateTime();
     }
 
@@ -98,6 +101,18 @@ class Asistencia extends BaseController
                 }
             }
         }
+    }
+
+    public function imprimirAsistencia()
+    {
+        $this->data["cursos_paralelos"] = $this->model->listarCursosParalelos();
+        return $this->templater->view('reportes/reporteAsistencia', $this->data);
+    }
+
+    public function imprimir()
+    {
+        $this->response->setContentType('application/pdf');
+        $this->reporteAsistencia->imprimir();
     }
 
 }// class

@@ -6,6 +6,7 @@
       <w>acción</w>
       <w>actualizado</w>
       <w>actualizar</w>
+      <w>administativos</w>
       <w>administrativo</w>
       <w>administrativos</w>
       <w>advertencia</w>
@@ -18,10 +19,13 @@
       <w>asignar</w>
       <w>asis</w>
       <w>asistencia</w>
+      <w>asistenciareporte</w>
       <w>asistencias</w>
       <w>asistido</w>
+      <w>ayer</w>
       <w>bienvenidos</w>
       <w>bloque</w>
+      <w>bootbox</w>
       <w>boton</w>
       <w>buscar</w>
       <w>busqueda</w>
@@ -38,12 +42,14 @@
       <w>citaciones</w>
       <w>citación</w>
       <w>clearfix</w>
+      <w>colores</w>
       <w>cometida</w>
       <w>cometidas</w>
       <w>completo</w>
       <w>condicion</w>
       <w>contacto</w>
       <w>contador</w>
+      <w>contar</w>
       <w>contenedor</w>
       <w>correctamente</w>
       <w>correo</w>
@@ -51,6 +57,7 @@
       <w>crear</w>
       <w>curso</w>
       <w>cursos</w>
+      <w>daterangepicker</w>
       <w>datos</w>
       <w>debe</w>
       <w>derechos</w>
@@ -89,6 +96,7 @@
       <w>idkardex</w>
       <w>imagen</w>
       <w>imprimir</w>
+      <w>inicial</w>
       <w>iniciar</w>
       <w>inicio</w>
       <w>inserta</w>
@@ -136,6 +144,7 @@
       <w>proyecto</w>
       <w>puede</w>
       <w>página</w>
+      <w>rango</w>
       <w>recibido</w>
       <w>registrado</w>
       <w>registrante</w>
@@ -143,6 +152,7 @@
       <w>registros</w>
       <w>reporte</w>
       <w>reportes</w>
+      <w>reportrange</w>
       <w>requerido</w>
       <w>reservados</w>
       <w>responsable</w>
@@ -164,6 +174,7 @@
       <w>tener</w>
       <w>tiene</w>
       <w>tipo</w>
+      <w>titulo</w>
       <w>toastr</w>
       <w>todos</w>
       <w>toogle</w>
@@ -177,6 +188,7 @@
       <w>válido</w>
       <w>warni</w>
       <w>yearpicker</w>
+      <w>últimos</w>
     </words>
   </dictionary>
 </component>

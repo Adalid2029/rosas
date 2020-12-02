@@ -50,12 +50,6 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
-
-
 <script>
     $('.selectpicker').selectpicker();
     var curso = $("#curso_paralelo").val();
@@ -75,8 +69,13 @@
             responsive: true,
             processing: true,
             serverSide: true,
+<<<<<<< HEAD
+            "order": [ 0, 'desc' ],
+            ajax: '/asistencia/ajaxListarEstudiantesParalelos/?curso=' + $("#curso_paralelo").val(),
+=======
             "order": [0, 'desc'],
             ajax: '/asistencia/ajaxListarEstudiantesParalelos/?curso=' + curso,
+>>>>>>> a04781e7695025fd0690c15e8d8253e0e47dd46e
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
@@ -161,4 +160,13 @@
             });
         }
     });
+<<<<<<< HEAD
+
+
+
 </script>
+
+
+=======
+</script>
+>>>>>>> a04781e7695025fd0690c15e8d8253e0e47dd46e

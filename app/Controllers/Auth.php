@@ -25,7 +25,7 @@ class Auth extends Controller
 	public function login()
 	{
 		if (authenticated()) {
-			return redirect()->to(base_url('/administrativo/inicioPrincipal'));
+			return redirect()->to(base_url('/administrativo'));
 		} else {
 			$this->templater->login();
 		}
