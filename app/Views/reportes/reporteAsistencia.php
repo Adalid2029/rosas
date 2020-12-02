@@ -137,7 +137,7 @@
 
     $("a#btn_imprimir_asistencia").on("click", function (e) {
         let paralelo = $(this).attr("data");
-        $("#titulo_reporte_asistencia").html("REPORTE DE ASISTENCIA: " + paralelo);
+        $("#titulo_reporte_asistencia").html("REPORTE DE ASISTENCIA CURSO: " + paralelo);
         $("#reporte_pdf").prop(
             "src",
             "<?= base_url("/")?>" + "/asistencia/imprimir"
