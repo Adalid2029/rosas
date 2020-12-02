@@ -16,39 +16,23 @@
             <div class="panel-body">
                 <table id="tbl_estudiante" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
-<<<<<<< HEAD
                         <tr>
                             <th width="5%">#</th>
                             <th>Id est</th>
                             <th>RUDE</th>
                             <th>CI</th>
                             <th>Nombres y Apellidos</th>
+                            <th>Correo</th>
                             <th>Fecha Nac.</th>
                             <th>Telefono</th>
                             <th>Sexo</th>
                             <th>Ingreso en</th>
                             <th>Acciones</th>
                         </tr>
-=======
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>Id est</th>
-                        <th>RUDE</th>
-                        <th>CI</th>
-                        <th>Nombres y Apellidos</th>
-                        <th>Correo</th>
-                        <th>Fecha Nac.</th>
-                        <th>Telefono</th>
-                        <th>Sexo</th>
-                        <th>Ingreso en</th>
-                        <th>Acciones</th>
-                    </tr>
->>>>>>> 15782b55e08e833a4326dfb8a3e6cc3691b19b7c
                     </thead>
 
                 </table>
             </div>
-
         </div>
     </div>
 </div>

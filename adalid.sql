@@ -1,8 +1,8 @@
 -- Fecha 25/11/2020
-ALTER TABLE db_rosas.rs_calificacion MODIFY COLUMN nota1 int NULL;
-ALTER TABLE db_rosas.rs_calificacion MODIFY COLUMN nota2 int NULL;
-ALTER TABLE db_rosas.rs_calificacion MODIFY COLUMN nota3 int NULL;
-ALTER TABLE db_rosas.rs_calificacion MODIFY COLUMN nota_final int NULL;
+ALTER TABLE rs_calificacion MODIFY COLUMN nota1 int NULL;
+ALTER TABLE rs_calificacion MODIFY COLUMN nota2 int NULL;
+ALTER TABLE rs_calificacion MODIFY COLUMN nota3 int NULL;
+ALTER TABLE rs_calificacion MODIFY COLUMN nota_final int NULL;
 
 
 -- Fecha 29/11/2020
@@ -28,16 +28,16 @@ CREATE TABLE rs_grupo_usuario (
 ALTER TABLE rs_grupo_usuario ADD CONSTRAINT psg_grupo_usuario_grupo FOREIGN KEY (id_grupo) REFERENCES rs_grupo(id_grupo);
 ALTER TABLE rs_grupo_usuario ADD CONSTRAINT psg_grupo_usuario_usuario FOREIGN KEY (id_usuario) REFERENCES rs_usuario(id_usuario);
 
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('SUPERADMIN', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('ADMINISTRADOR', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('DIRECTOR', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('SECRETARIA', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('PADRE_FAMILIA', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('ESTUDIANTE', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('MAESTRO', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('REGENTE', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('AUXILIAR', 'ACTIVO');
-INSERT INTO db_rosas.rs_grupo (nombre_grupo, estado_grupo) VALUES('PORTERA', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('SUPERADMIN', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('ADMINISTRADOR', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('DIRECTOR', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('SECRETARIA', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('PADRE_FAMILIA', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('ESTUDIANTE', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('MAESTRO', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('REGENTE', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('AUXILIAR', 'ACTIVO');
+INSERT INTO rs_grupo (nombre_grupo, estado_grupo) VALUES('PORTERA', 'ACTIVO');
 
 
 

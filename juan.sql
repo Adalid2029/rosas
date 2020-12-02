@@ -64,7 +64,7 @@ join `rs_tutor` `rst` on
 
 
 -- eliminar llave foranea de kardex
-ALTER TABLE rs_kardex DROP FOREIGN KEY fk_kardex_curso;
+<ALTER TABLE rs_kardex DROP FOREIGN KEY fk_kardex_curso;
 
 -- eliminar index
 ALTER TABLE `rs_kardex` DROP INDEX `fk_kardex_curso`;
