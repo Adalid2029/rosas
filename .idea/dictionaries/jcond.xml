@@ -37,16 +37,19 @@
       <w>caracteres</w>
       <w>carga</w>
       <w>cargar</w>
+      <w>celda</w>
       <w>cerrar</w>
       <w>citacion</w>
       <w>citaciones</w>
       <w>citación</w>
       <w>clearfix</w>
       <w>colores</w>
+      <w>columna</w>
       <w>cometida</w>
       <w>cometidas</w>
       <w>completo</w>
       <w>condicion</w>
+      <w>consulta</w>
       <w>contacto</w>
       <w>contador</w>
       <w>contar</w>
@@ -82,11 +85,13 @@
       <w>estudiantil</w>
       <w>está</w>
       <w>estás</w>
+      <w>existen</w>
       <w>existencia</w>
       <w>exito</w>
       <w>falta</w>
       <w>faltas</w>
       <w>fecha</w>
+      <w>fechas</w>
       <w>formulario</w>
       <w>fotos</w>
       <w>generado</w>
@@ -96,6 +101,7 @@
       <w>idkardex</w>
       <w>imagen</w>
       <w>impreso</w>
+      <w>imprime</w>
       <w>imprimir</w>
       <w>inicial</w>
       <w>iniciar</w>
@@ -104,16 +110,21 @@
       <w>insertar</w>
       <w>invitado</w>
       <w>kardex</w>
+      <w>lenado</w>
       <w>licencia</w>
+      <w>licencias</w>
       <w>limpiar</w>
       <w>listado</w>
       <w>listar</w>
+      <w>llena</w>
+      <w>llenamos</w>
       <w>llevar</w>
       <w>mainnav</w>
       <w>marcado</w>
       <w>marcar</w>
       <w>materia</w>
       <w>materias</w>
+      <w>materno</w>
       <w>modificado</w>
       <w>mostrar</w>
       <w>máximo</w>
@@ -124,6 +135,7 @@
       <w>nombre</w>
       <w>nombres</w>
       <w>nosotros</w>
+      <w>numero</w>
       <w>numéricos</w>
       <w>oficial</w>
       <w>orderable</w>
@@ -138,6 +150,7 @@
       <w>permiso</w>
       <w>peticion</w>
       <w>petición</w>
+      <w>posicionx</w>
       <w>presente</w>
       <w>procesar</w>
       <w>proferores</w>
@@ -160,11 +173,13 @@
       <w>respuesta</w>
       <w>retrasado</w>
       <w>retraso</w>
+      <w>retrasos</w>
       <w>revertir</w>
       <w>revisado</w>
       <w>revisar</w>
       <w>rosas</w>
       <w>sacar</w>
+      <w>secundaria</w>
       <w>segun</w>
       <w>seguro</w>
       <w>seleccionar</w>
@@ -172,6 +187,7 @@
       <w>selectpicker</w>
       <w>sesión</w>
       <w>sitio</w>
+      <w>tamanio</w>
       <w>tener</w>
       <w>tiene</w>
       <w>tipo</w>
@@ -179,9 +195,12 @@
       <w>toastr</w>
       <w>todos</w>
       <w>toogle</w>
+      <w>totales</w>
       <w>tutores</w>
       <w>unidad</w>
+      <w>vacios</w>
       <w>validación</w>
+      <w>valorx</w>
       <w>verifica</w>
       <w>verificar</w>
       <w>visto</w>

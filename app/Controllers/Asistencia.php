@@ -111,8 +111,46 @@ class Asistencia extends BaseController
 
     public function imprimir()
     {
-        $this->response->setContentType('application/pdf');
-        $this->reporteAsistencia->imprimir();
+        set_time_limit(1000000000);
+        $curso_recibido = $this->request->getGet("paralelo");
+        $curso = explode(" ", $curso_recibido);
+        $fechaI = $this->request->getGet("fechaInicio");
+        $fechaF = $this->request->getGet("fechaFinal");
+        // se consulta las fechas para imprimir
+        $fechas = $this->model->verificarFechaAImprimir($fechaI, $fechaF, $curso);
+        // Se consulta los estudiantes del paralelo
+        $id_persona = $this->model->verificarEstudiantesAsistencia($fechaI, $fechaF, $curso);
+
+        if(count($id_persona) == 0 && count($fechas) > 20)
+        {
+            $data = array();
+            $this->response->setContentType('application/pdf');
+            $this->reporteAsistencia->imprimir($data, $curso, $fechaI, $fechaF, $fechas);
+        }else{
+            $data = array();
+            ///
+            $a = 0;
+            for ($i = 0; $i < count($id_persona); $i++):
+                $persona2 = array();
+                array_push($persona2, $this->model->verificarDatos($id_persona[$a]["id_persona"], "paterno")[0]["paterno"]);
+                array_push($persona2, $this->model->verificarDatos($id_persona[$a]["id_persona"], "materno")[0]["materno"]);
+                array_push($persona2, $this->model->verificarDatos($id_persona[$a]["id_persona"], "nombres")[0]["nombres"]);
+                for ($g = 0; $g < count($fechas); $g++)
+                {
+                    array_push($persona2, $this->model->verificarAsistenciaFecha($id_persona[$a]["id_persona"],$fechas[$g]["fecha"])[0]["valor"]);
+                }
+                array_push($persona2, $this->model->contarAsistenciaEstudiantes($fechaI, $fechaF, $curso, $id_persona[$a]["id_persona"], "valor", "A")[0]["valor"]);
+                array_push($persona2, $this->model->contarAsistenciaEstudiantes($fechaI, $fechaF, $curso, $id_persona[$a]["id_persona"], "valor", "R")[0]["valor"]);
+                array_push($persona2, $this->model->contarAsistenciaEstudiantes($fechaI, $fechaF, $curso, $id_persona[$a]["id_persona"], "valor", "L")[0]["valor"]);
+                array_push($persona2, $this->model->contarAsistenciaEstudiantes($fechaI, $fechaF, $curso, $id_persona[$a]["id_persona"], "valor", "F")[0]["valor"]);
+                array_push($data, $persona2);
+                $a++;
+            endfor;
+
+            $this->response->setContentType('application/pdf');
+            $this->reporteAsistencia->imprimir($data, $curso, $fechaI, $fechaF, $fechas);
+        }
+
     }
 
 }// class

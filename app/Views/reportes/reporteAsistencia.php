@@ -140,7 +140,7 @@
         $("#titulo_reporte_asistencia").html("REPORTE DE ASISTENCIA CURSO: " + paralelo);
         $("#reporte_pdf").prop(
             "src",
-            "<?= base_url("/")?>" + "/asistencia/imprimir"
+            "<?= base_url("/")?>" + "/asistencia/imprimir/?paralelo="+paralelo+"&fechaInicio="+fechaInicial+"&fechaFinal="+fechaFinal
         );
         $("#imprimir_reporte_modal").modal("show");
     });

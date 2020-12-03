@@ -8,10 +8,12 @@ class AsistenciaModel extends Database
 {
 
     public $db = null;
+    public $fecha;
 
     public function __construct()
     {
         $this->db = \config\Database::connect();
+        $this->fecha = new \DateTime();
     }
 
     public function asistencia($accion, $datos, $condicion = null, $busqueda = null)
@@ -64,5 +66,56 @@ class AsistenciaModel extends Database
         return $builder->get()->getResultArray();
     }
 
+    public function verificarFechaAImprimir($ini, $fin, $curso)
+    {
+        $builder = $this->db->table("view_asistencia_curso");
+        $builder->select('distinct(fecha)');
+        $builder->where('fecha >=', $ini);
+        $builder->where('fecha <=', $fin);
+        $builder->where('nivel', $curso[0]);
+        $builder->where('paralelo', $curso[1]);
+        $builder->where('gestion', $this->fecha->format('Y'));
+        return $builder->get()->getResultArray();
+    }
+
+    public function verificarEstudiantesAsistencia($ini, $fin, $curso)
+    {
+        $builder = $this->db->table("view_asistencia_curso");
+        $builder->select('distinct(id_persona)');
+        $builder->where('nivel', $curso[0]);
+        $builder->where('paralelo', $curso[1]);
+        $builder->where('gestion', $this->fecha->format('Y'));
+        return $builder->get()->getResultArray();
+    }
+
+    public function verificarDatos($id_persona, $columna)
+    {
+        $builder = $this->db->table("view_asistencia_curso");
+        $builder->select($columna);
+        $builder->where('id_persona', $id_persona);
+        return $builder->get()->getResultArray();
+    }
+
+    public function verificarAsistenciaFecha($id_persona, $fecha)
+    {
+        $builder = $this->db->table("view_asistencia_curso");
+        $builder->select("valor");
+        $builder->where('id_persona', $id_persona);
+        $builder->where('fecha', $fecha);
+        return $builder->get()->getResultArray();
+    }
+
+    public function contarAsistenciaEstudiantes($ini, $fin, $curso, $id_persona, $columna, $valor)
+    {
+        $builder = $this->db->table("view_asistencia_curso");
+        $builder->select("count(".$columna.")as valor");
+        $builder->where('fecha >=', $ini);
+        $builder->where('fecha <=', $fin);
+        $builder->where('nivel', $curso[0]);
+        $builder->where('paralelo', $curso[1]);
+        $builder->where('id_persona', $id_persona);
+        $builder->where('valor', $valor);
+        return $builder->get()->getResultArray();
+    }
 
 }// class
