@@ -339,6 +339,39 @@ create table rs_asistencia(
 	constraint fk_maestro_asistencia foreign key(id_maestro) references rs_maestro (id_maestro)
 );
 
+-- vista asistencia
+-- db_rosas1.rs_view_asistencia_curso source
+
+create or replace view `rs_view_asistencia_curso` as
+select
+    `p`.`id_persona` as `id_persona`,
+    `p`.`paterno` as `paterno`,
+    `p`.`materno` as `materno`,
+    `p`.`nombres` as `nombres`,
+    concat(`c`.`nivel`, ' ', `rp`.`paralelo`) as `curso`,
+    `ra`.`fecha` as `fecha`,
+    `ra`.`valor` as `valor`,
+    `c`.`nivel` as `nivel`,
+    `rp`.`paralelo` as `paralelo`,
+    `rg`.`gestion` as `gestion`,
+    `p`.`estado` as `estado`
+from
+    (((((((`rs_estudiante` `e`
+join `rs_persona` `p` on
+    (`p`.`id_persona` = `e`.`id_estudiante`))
+join `rs_curso_estudiante` `rce` on
+    (`rce`.`id_estudiante` = `e`.`id_estudiante`))
+join `rs_gestion` `rg` on
+    (`rg`.`id_gestion` = `rce`.`id_gestion`))
+join `rs_curso_paralelo` `cp` on
+    (`cp`.`id_curso_paralelo` = `rce`.`id_curso_paralelo`))
+join `rs_curso` `c` on
+    (`c`.`id_curso` = `cp`.`id_curso`))
+join `rs_paralelo` `rp` on
+    (`rp`.`id_paralelo` = `cp`.`id_paralelo`))
+join `rs_asistencia` `ra` on
+    (`ra`.`id_estudiante` = `e`.`id_estudiante`));
+
 
 
 
