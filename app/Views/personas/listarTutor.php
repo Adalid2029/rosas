@@ -157,7 +157,7 @@
                                         <option value="Tio">Tio</option>
                                         <option value="Tia">Tia</option>
                                         <option value="Abuelo">Abuelo</option>
-                                        <option value="Abuela">Abuelo</option>
+                                        <option value="Abuela">Abuela</option>
                                     </select>
                                 </div>
                             </div>
