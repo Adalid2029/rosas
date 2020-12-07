@@ -111,7 +111,7 @@ class Asistencia extends BaseController
 
     public function imprimir()
     {
-        set_time_limit(1000000000);
+//        set_time_limit(1000000000);
         $curso_recibido = $this->request->getGet("paralelo");
         $curso = explode(" ", $curso_recibido);
         $fechaI = $this->request->getGet("fechaInicio");

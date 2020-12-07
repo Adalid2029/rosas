@@ -181,7 +181,7 @@
             processing: true,
             serverSide: true,
             "order": [ 0, 'desc' ],
-            ajax: '/asistencia/ajaxListarEstudiantesParalelos/?curso=' +paralelo,
+            ajax: '/reporte/ajaxListarEstudiantesParalelos/?curso=' +paralelo,
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
@@ -222,7 +222,7 @@
                         return (
                             '<div class="btn-group" role="group">' +
                             '<a data="' + data[0] +
-                            '" class="btn btn-default btn-sm text-white btn_imprimir_seguimiento" data-toggle="tooltip" title="Imprimir">' +
+                            '" data-name="'+data[2]+'" data-curso="'+data[3]+'" class="btn btn-default btn-sm text-white btn_imprimir_seguimiento" data-toggle="tooltip" title="Imprimir">' +
                             '<i style="color: red" class="fa fa-print"></i></a>' +
                             '</div>'
                         );
@@ -248,15 +248,18 @@
 
     $("#tbl_seguimiento_academico").on("click", ".btn_imprimir_seguimiento", function (e) {
         let id = $(this).attr("data");
-        console.log(id);
+        let name = $(this).attr("data-name");
+        let curso = $(this).attr("data-curso");
+
         $("#agregar-seguimiento").modal("hide");
 
         // imprimir pdf
         $("#titulo_reporte_seguimiento").html("REPORTE DE SEGUIMIENTO ACADÉMICO");
         $("#seguimiento_pdf").prop(
             "src",
-            "<?= base_url("/")?>" + "/reporte/imprimirSeguimientoEstudiante/?id="+id+"&fechaInicio="+fechaInicial+"&fechaFinal="+fechaFinal
+            "<?= base_url("/")?>" + "/reporte/imprimirSeguimientoEstudiante/?id="+id+"&fechaInicio="+fechaInicial+"&fechaFinal="+fechaFinal+"&nombre="+ name + "&curso_paralelo=" + curso
         );
+
         $("#imprimir_seguimiento_modal").modal("show");
 
     });

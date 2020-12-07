@@ -66,6 +66,15 @@ class KardexModel extends Database
         return $builder->get()->getResultArray();
     }
 
+    // select materias
+    public function listarMaterias()
+    {
+        $builder = $this->db->table("materia");
+        $builder->select('id_materia, nombre');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
     // select maestros
     public function listarTutoresEstudiante($condicion = null)
     {

@@ -40,12 +40,16 @@ class Falta extends BaseController
                     [ // rules
                         "id_kardex_falta" => "required",
                         "id_falta"        => "required",
+                        "id_materia"      => "required",
                         "fecha"           => "required",
-                        "registrante"     => "required|alpha_space"
+                        "registrante"     => "required"
                     ],
                     [ // errors
                         "id_kardex_falta" => [
                             "required" => "El kardex es requerido"
+                        ],
+                        "id_materia" => [
+                            "required" => "La materia es requerido"
                         ],
                         "id_falta" => [
                             "required" => "El tipo de falta es requerido"
@@ -54,8 +58,7 @@ class Falta extends BaseController
                             "required" => "La fecha de la falta es requerido"
                         ],
                         "registrante" => [
-                            "required" => "El registrante de la falta es requerido",
-                            "alpha_space"    => "El registrante de la falta debe llevar caracteres alfabéticos y espacios"
+                            "required" => "El registrante de la falta es requerido"
                         ]
                     ]
                 );
@@ -70,6 +73,7 @@ class Falta extends BaseController
                     $data = array(
                         "id_kardex"     => $this->request->getPost("id_kardex_falta"),
                         "id_falta"      => $this->request->getPost("id_falta"),
+                        "id_materia"      => $this->request->getPost("id_materia"),
                         "fecha"         => $this->request->getPost("fecha"),
                         "registrante"   => trim($this->request->getPost("registrante")),
                         "creado_en"     => $this->fecha->format('Y-m-d H:i:s')
@@ -124,8 +128,9 @@ class Falta extends BaseController
                     [ // rules
                         "id_kardex_falta" => "required",
                         "id_falta"        => "required",
+                        "id_materia"      => "required",
                         "fecha"           => "required",
-                        "registrante"     => "required|alpha_space"
+                        "registrante"     => "required"
                     ],
                     [ // errors
                         "id_kardex_falta" => [
@@ -134,12 +139,14 @@ class Falta extends BaseController
                         "id_falta" => [
                             "required" => "El tipo de falta es requerido"
                         ],
+                        "id_materia" => [
+                            "required" => "La materia es requerido"
+                        ],
                         "fecha" => [
                             "required" => "La fecha de la falta es requerido"
                         ],
                         "registrante" => [
-                            "required" => "El registrante de la falta es requerido",
-                            "alpha_space"    => "El registrante de la falta debe llevar caracteres alfabéticos y espacios"
+                            "required" => "El registrante de la falta es requerido"
                         ]
                     ]
                 );
@@ -153,7 +160,8 @@ class Falta extends BaseController
 
                     // Actualizar datos
                     $data = array(
-                        "id_falta"          => $this->request->getPost("id_falta"),
+                        "id_falta"      => $this->request->getPost("id_falta"),
+                        "id_materia"      => $this->request->getPost("id_materia"),
                         "fecha"         => $this->request->getPost("fecha"),
                         "registrante"   => trim($this->request->getPost("registrante")),
                         "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
@@ -190,9 +198,10 @@ class Falta extends BaseController
                 array('db' => 'nombre', 'dt'            => 3),
                 array('db' => 'id_falta', 'dt'          => 4),
                 array('db' => 'descripcion', 'dt'       => 5),
-                array('db' => 'fecha', 'dt'             => 6),
-                array('db' => 'registrante', 'dt'       => 7),
-                array('db' => 'visto', 'dt'             => 8)
+                array('db' => 'materia', 'dt'           => 6),
+                array('db' => 'fecha', 'dt'             => 7),
+                array('db' => 'registrante', 'dt'       => 8),
+                array('db' => 'visto', 'dt'             => 9)
             );
 
             $sql_details = array(

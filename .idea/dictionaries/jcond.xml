@@ -50,6 +50,7 @@
       <w>clearfix</w>
       <w>colores</w>
       <w>columna</w>
+      <w>columnas</w>
       <w>cometida</w>
       <w>cometidas</w>
       <w>completo</w>
@@ -99,6 +100,7 @@
       <w>faltas</w>
       <w>fecha</w>
       <w>fechas</w>
+      <w>fila</w>
       <w>formulario</w>
       <w>fotos</w>
       <w>generado</w>
@@ -125,7 +127,9 @@
       <w>listado</w>
       <w>listar</w>
       <w>llena</w>
+      <w>llenado</w>
       <w>llenamos</w>
+      <w>llenar</w>
       <w>llevar</w>
       <w>mainnav</w>
       <w>manera</w>
@@ -198,6 +202,7 @@
       <w>selectpicker</w>
       <w>sesión</w>
       <w>sitio</w>
+      <w>solicitada</w>
       <w>tamanio</w>
       <w>tener</w>
       <w>tiene</w>

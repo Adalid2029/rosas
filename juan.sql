@@ -373,5 +373,95 @@ join `rs_asistencia` `ra` on
     (`ra`.`id_estudiante` = `e`.`id_estudiante`));
 
 
+-- correccion de la vista faltas y para el reporte de la vista de seguimiento de estudiante
+create or replace view `rs_view_seguimiento` as
+select
+    `p`.`id_persona` as `id_persona`,
+    `rce`.`id_curso_estudiante` as `id_curso_estudiante`,
+    concat(`p`.`paterno`, ' ', `p`.`materno`, ' ', `p`.`nombres`) as `nombre_completo`,
+    concat(`c`.`nivel`, ' ', `rp`.`paralelo`) as `curso`,
+    `rg`.`gestion` as `gestion`,
+    `c`.`nivel` as `nivel`,
+    `rp`.`paralelo` as `paralelo`,
+    `p`.`estado` as `estado`
+from
+    ((((((`rs_estudiante` `e`
+join `rs_persona` `p` on
+    (`p`.`id_persona` = `e`.`id_estudiante`))
+join `rs_curso_estudiante` `rce` on
+    (`rce`.`id_estudiante` = `e`.`id_estudiante`))
+join `rs_gestion` `rg` on
+    (`rg`.`id_gestion` = `rce`.`id_gestion`))
+join `rs_curso_paralelo` `cp` on
+    (`cp`.`id_curso_paralelo` = `rce`.`id_curso_paralelo`))
+join `rs_curso` `c` on
+    (`c`.`id_curso` = `cp`.`id_curso`))
+join `rs_paralelo` `rp` on
+    (`rp`.`id_paralelo` = `cp`.`id_paralelo`));
+
+
+-- seguimiento listar falta de cada estudiante
+create or replace view rs_view_falta_estudiante as
+select  re.id_estudiante, rf.id_falta, rtf.id_tipo_falta,rk.id_kardex, rp.paterno, rp.materno, rp.nombres, rp.ci,  rtf.nombre, rf.descripcion, rfc.fecha,
+rk.gestion, rfc.estado, rfc.registrante
+from rs_kardex rk join rs_falta_cometida rfc on rk.id_kardex = rfc.id_kardex
+join rs_falta rf on rfc.id_falta = rf.id_falta
+join rs_tipo_falta rtf on rtf.id_tipo_falta = rf.id_tipo_falta
+join rs_estudiante re on rk.id_estudiante = re.id_estudiante
+join rs_persona rp on re.id_estudiante = rp.id_persona;
+
+-- adicionar columna de id materia a falta cometida
+ALTER TABLE rs_falta_cometida ADD id_materia int not null AFTER `id_falta`;
+alter table rs_falta_cometida  add CONSTRAINT `fk_materia_faltacometida` FOREIGN KEY (`id_materia`) REFERENCES rs_materia (`id_materia`);
+
+-- db_rosas1.rs_view_falta_cometida source
+
+create or replace view `rs_view_falta_cometida` as
+select
+    `rfc`.`id_falta_cometida` as `id_falta_cometida`,
+    `rk`.`id_kardex` as `id_kardex`,
+    `rtf`.`id_tipo_falta` as `id_tipo_falta`,
+    `rtf`.`nombre` as `nombre`,
+    `rf`.`id_falta` as `id_falta`,
+    `rf`.`descripcion` as `descripcion`,
+    rm.nombre as materia,
+    `rfc`.`fecha` as `fecha`,
+    `rfc`.`registrante` as `registrante`,
+    `rfc`.`visto` as `visto`,
+    `rfc`.`estado` as `estado`
+from
+    (((`rs_falta_cometida` `rfc`
+join `rs_kardex` `rk` on
+    (`rfc`.`id_kardex` = `rk`.`id_kardex`))
+join `rs_falta` `rf` on
+    (`rfc`.`id_falta` = `rf`.`id_falta`))
+join `rs_tipo_falta` `rtf` on
+    (`rf`.`id_tipo_falta` = `rtf`.`id_tipo_falta`))
+join rs_materia rm on rm.id_materia = rfc.id_materia;
+
+-- correccion de la vista kardex
+create or replace view `rs_view_kardex` as
+select
+    `rk`.`id_kardex` as `id_kardex`,
+    `rk`.`id_estudiante` as `id_estudiante`,
+    concat(rc.nivel,' ', rpa.paralelo) as curso,
+    concat(`rp`.`nombres`, ' ', `rp`.`paterno`, ' ', `rp`.`materno`) as `estudiante`,
+    `rk`.`gestion` as `gestion`,
+    `rk`.`contador` as `contador`,
+    `rk`.`creado_en` as `creado_en`,
+    `rk`.`estado` as `estado`
+from
+    ((`rs_persona` `rp`
+join `rs_estudiante` `re` on
+    (`rp`.`id_persona` = `re`.`id_estudiante`))
+join `rs_kardex` `rk` on
+    (`re`.`id_estudiante` = `rk`.`id_estudiante`))
+join rs_curso_paralelo rcp on rcp.id_curso_paralelo = rk.id_curso_paralelo
+join rs_curso rc on rcp.id_curso = rc.id_curso
+join rs_paralelo rpa on rpa.id_paralelo = rcp.id_paralelo
+order by
+    `rk`.`id_kardex` desc;
+
+
 
 

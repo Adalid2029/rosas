@@ -28,6 +28,7 @@ class Kardex extends BaseController
         $this->data["estudiantes"] = $this->estudiante->listarEstudiantes();
         $this->data["tipo_faltas"] = $this->model->listarTipoFaltas();
         $this->data["maestros"] = $this->model->listarMaestros();
+        $this->data["materias"] = $this->model->listarMaterias();
 
         return $this->templater->view('kardex/listarKardex', $this->data);
 
@@ -43,7 +44,7 @@ class Kardex extends BaseController
             $primaryKey = "id_kardex";
             $columns = array(
                 array('db' => 'id_kardex', 'dt'         => 0),
-                array('db' => 'id_curso_paralelo', 'dt' => 1),
+                array('db' => 'curso', 'dt'             => 1),
                 array('db' => 'estudiante', 'dt'        => 2),
                 array('db' => 'gestion', 'dt'           => 3),
                 array('db' => 'contador', 'dt'          => 4),
