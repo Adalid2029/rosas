@@ -196,6 +196,12 @@
 									</a>
 								</li>
 
+                                <li>
+                                    <a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
+                                        <i class="fa fa-circle-o"></i>Seguimiento Acad.
+                                    </a>
+                                </li>
+
 							</ul>
 						</li>
 					</ul>

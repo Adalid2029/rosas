@@ -142,6 +142,21 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
+                                    <label class="control-label" for="id_materia">Materia <span style="color: red;">(*)</span> :</label>
+                                    <select name="id_materia" id="id_materia" class="form-control" required>
+                                        <?php
+                                        foreach ($this->data["materias"] as $key => $value) {
+                                            echo '<option value="'.$value["id_materia"].'">'.$value["nombre"].'</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
                                     <label class="control-label" for="fecha">Fecha <span style="color: red;">(*)</span> :</label>
                                     <input type="date" name="fecha" id="fecha" class="form-control" required>
                                 </div>
@@ -177,7 +192,7 @@
 
 <!--  Modal de ver faltas -->
 <div class="modal fade" id="agregar-faltas" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" style="overflow-y: scroll;">
-    <div id="modal-dialog" class="modal-dialog" role="document" style="width: 70%;">
+    <div id="modal-dialog" class="modal-dialog" role="document" style="width: 80%;">
         <div class="modal-content">
             <div id="agregar-faltas-header" class="modal-header">
                 <h5 id="agregar-faltas-title" class="modal-title"></h5>
@@ -195,6 +210,7 @@
                             <th>Tipo Falta</th>
                             <th>Falta</th>
                             <th>Descripción</th>
+                            <th>Área</th>
                             <th>Fecha</th>
                             <th>Registrante</th>
                             <th>Estado</th>
@@ -456,6 +472,7 @@
         $("#id_estudiante").val('').trigger('change');
         $("#tipo").val('').trigger('change');
         $("#id_falta").val('').trigger('change');
+        $("#id_materia").val('').trigger('change');
         $("#registrante").val('').trigger('change');
 
         parametrosModal(
@@ -569,10 +586,10 @@
                 {
                     searchable: false,
                     orderable: false,
-                    targets: 8,
+                    targets: 9,
                     data: null,
                     render: function(data, type, row, meta) {
-                        return data[8] === '0' ? '<a data="'+data[0]+'" class="btn btn-active-danger btn-dark-basic btn-sm text-white btn-revisar" data-value="1" data-toggle="tooltip" title="Marcar revisado"><i class="fa fa-window-close-o"></i> No revisado</a>'
+                        return data[9] === '0' ? '<a data="'+data[0]+'" class="btn btn-active-danger btn-dark-basic btn-sm text-white btn-revisar" data-value="1" data-toggle="tooltip" title="Marcar revisado"><i class="fa fa-window-close-o"></i> No revisado</a>'
                             : '<a data="'+data[0]+'" class="btn btn-success btn-sm text-white btn-revisar" data-toggle="tooltip" data-value="0" title="Marcar no revisado"><i class="fa fa-check-square-o"></i> Revisado</a>';
                     }
                 },
@@ -582,7 +599,7 @@
                 targets: -1,
                 data: null,
                 render: function(data, type, row, meta) {
-                    return  data[8] === '0' ?
+                    return  data[9] === '0' ?
                             '<div class="btn-group" role="group">' +
                             '<a data="' + data[0] +
                             '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_faltas" data-toggle="tooltip" title="Editar">' +
@@ -661,11 +678,12 @@
             },
             dataType: "JSON"
         }).done(function(response) {
-
+            // console.log(response)
             $("#id_falta_cometida").val(response[0]["id_falta_cometida"]);
             $("#id_kardex_falta").val(response[0]["id_kardex"]);
             $("#tipo").val(response[0]["id_tipo_falta"]).trigger('change');
             $("#id_falta").val(response[0]["id_falta"]).trigger('change.id_falta');
+            $("#id_materia").val(response[0]["id_materia"]).trigger('change');
 
             $("#fecha").val(response[0]["fecha"]);
             $("#registrante").val(response[0]["registrante"]).trigger('change');
@@ -811,6 +829,13 @@
     });
     $("#id_falta").select2({
         placeholder: "-- Seleccione Falta --",
+        allowClear: true,
+        dropdownParent: $(`#agregar-falta`),
+        width: '100%'
+    });
+
+    $("#id_materia").select2({
+        placeholder: "-- Seleccione Materia --",
         allowClear: true,
         dropdownParent: $(`#agregar-falta`),
         width: '100%'

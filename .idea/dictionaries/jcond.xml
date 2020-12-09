@@ -1,9 +1,13 @@
 <component name="ProjectDictionaryState">
   <dictionary name="jcond">
     <words>
+      <w>acad</w>
+      <w>academico</w>
+      <w>académico</w>
       <w>accion</w>
       <w>acciones</w>
       <w>acción</w>
+      <w>activar</w>
       <w>actualizado</w>
       <w>actualizar</w>
       <w>administativos</w>
@@ -16,6 +20,7 @@
       <w>anio</w>
       <w>apellidos</w>
       <w>archivos</w>
+      <w>ascendente</w>
       <w>asignar</w>
       <w>asis</w>
       <w>asistencia</w>
@@ -45,6 +50,7 @@
       <w>clearfix</w>
       <w>colores</w>
       <w>columna</w>
+      <w>columnas</w>
       <w>cometida</w>
       <w>cometidas</w>
       <w>completo</w>
@@ -64,8 +70,10 @@
       <w>datos</w>
       <w>debe</w>
       <w>derechos</w>
+      <w>descendente</w>
       <w>descripcion</w>
       <w>descripción</w>
+      <w>desea</w>
       <w>devuelve</w>
       <w>disciplinario</w>
       <w>editado</w>
@@ -92,6 +100,7 @@
       <w>faltas</w>
       <w>fecha</w>
       <w>fechas</w>
+      <w>fila</w>
       <w>formulario</w>
       <w>fotos</w>
       <w>generado</w>
@@ -103,6 +112,7 @@
       <w>impreso</w>
       <w>imprime</w>
       <w>imprimir</w>
+      <w>información</w>
       <w>inicial</w>
       <w>iniciar</w>
       <w>inicio</w>
@@ -117,9 +127,12 @@
       <w>listado</w>
       <w>listar</w>
       <w>llena</w>
+      <w>llenado</w>
       <w>llenamos</w>
+      <w>llenar</w>
       <w>llevar</w>
       <w>mainnav</w>
+      <w>manera</w>
       <w>marcado</w>
       <w>marcar</w>
       <w>materia</w>
@@ -138,6 +151,7 @@
       <w>numero</w>
       <w>numéricos</w>
       <w>oficial</w>
+      <w>ordenar</w>
       <w>orderable</w>
       <w>paginas</w>
       <w>paralelo</w>
@@ -180,6 +194,7 @@
       <w>rosas</w>
       <w>sacar</w>
       <w>secundaria</w>
+      <w>seguimiento</w>
       <w>segun</w>
       <w>seguro</w>
       <w>seleccionar</w>
@@ -187,6 +202,7 @@
       <w>selectpicker</w>
       <w>sesión</w>
       <w>sitio</w>
+      <w>solicitada</w>
       <w>tamanio</w>
       <w>tener</w>
       <w>tiene</w>
