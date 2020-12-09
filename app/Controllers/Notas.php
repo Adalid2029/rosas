@@ -88,10 +88,18 @@ class Notas extends BaseController
 	}
 	public function listarCursos()
 	{
-		$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona']], '', 'cu.id_curso_paralelo')->getResultArray();
+		if (is(['MAESTRO']))
+			$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona']], '', 'cu.id_curso_paralelo')->getResultArray();
+		else if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA']))
+			$cursos = $this->notasModel->listarCursos(null, '', 'cu.id_curso_paralelo')->getResultArray();
+		// var_dump($cursos);
+		// var_dump($this->db->getLastQuery());
 		$cursosMaterias = [];
 		foreach ($cursos as $key => $value) {
-			$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona'], 'cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
+			if (is(['MAESTRO']))
+				$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona'], 'cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
+			else if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA']))
+				$cursosMaterias[] = $this->notasModel->listarCursos(['cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
 		}
 		// var_dump($cursosMaterias);
 		if (!empty($cursosMaterias)) {
