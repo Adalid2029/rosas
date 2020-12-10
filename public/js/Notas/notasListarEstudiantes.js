@@ -9,7 +9,12 @@ $(document).ready(function () {
 				targets: -1,
 				data: null,
 				render: function (data, type, row, meta) {
-					return '<div class="btn-group" role="group"> <a data-id-estudiante="' + data[0] + '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white editar-estudiante" data-toggle="tooltip" title="Editar"> <i class="fa fa-pencil-square-o"></i></a> </div>';
+					grupoUsuario = $(t).attr('data-grupo-usuario').split(',');
+					console.log(data[7]);
+
+					if ((grupoUsuario.includes('SECRETARIA') || grupoUsuario.includes('DIRECTOR')) && data[7] != null) return '<div class="btn-group" role="group"> <a data-id-estudiante="' + data[0] + '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white editar-estudiante" data-toggle="tooltip" title="Editar"> <i class="fa fa-pencil-square-o"></i></a> </div>';
+					else if (grupoUsuario.includes('MAESTRO') || grupoUsuario.includes('SUPERADMIN')) return '<div class="btn-group" role="group"> <a data-id-estudiante="' + data[0] + '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white editar-estudiante" data-toggle="tooltip" title="Editar"> <i class="fa fa-pencil-square-o"></i></a> </div>';
+					else return null;
 				},
 			},
 		],

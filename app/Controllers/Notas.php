@@ -34,6 +34,7 @@ class Notas extends BaseController
 		$this->data['id_materia'] = $this->request->getGet('id_materia');
 		$this->data['id_maestro'] = $this->request->getGet('id_maestro');
 		$this->data['id_curso_paralelo'] = $this->request->getGet('id_curso_paralelo');
+		$this->data['access'] = $this->db->table('grupo g')->select('GROUP_CONCAT(nombre_grupo) as grupo_usuario')->join('grupo_usuario gu', 'gu.id_grupo = g.id_grupo ')->where(['gu.id_usuario' => $this->user['id_persona']])->get()->getRowArray()['grupo_usuario'];
 		return $this->templater->view('Notas/notasListarEstudiantes', $this->data);
 	}
 	public function editarNota()
