@@ -120,7 +120,7 @@ function insertarActualizarAsignacion(url, event) {
 				$('#asignar-materia').modal('hide');
 				limpiarCampos();
 			} else if (typeof response.error !== 'undefined') {
-				mensajeAlert('warning', response.form, 'Advertencia');
+				mensajeAlert('warning', response.error, 'Advertencia');
 			}
 		})
 		.fail(function (e) {

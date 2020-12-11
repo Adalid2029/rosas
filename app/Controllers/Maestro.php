@@ -32,15 +32,24 @@ class Maestro extends BaseController
     public function insertarAsignacionesMateriaMaestro()
     {
         if ($this->request->isAJAX()) {
-            $id_curso_estudiante = $this->db->table('materia_maestro')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
-            return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+            if (empty($this->db->table('materia_maestro')->where($this->request->getPost())->get()->getResultArray())) {
+                $id_curso_estudiante = $this->db->table('materia_maestro')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
+                return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+            } else {
+                return $this->response->setJSON(['error' => 'El Maestro se encuentra asignado a esta Materia, Curso o Gestión']);
+            }
         }
     }
     public function actualizarAsignacionesMateriaMaestro()
     {
         if ($this->request->isAJAX()) {
-            $curso_estudiante = $this->db->table('materia_maestro')->update($this->request->getPost(), ['id_materia_maestro' => $this->request->getPost('id_materia_maestro')]) ? true : $this->db->error();
-            return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error actualizar la asignacion']));
+            return var_dump($this->request->getPost());
+            if (empty($this->db->table('materia_maestro')->where($this->request->getPost())->get()->getResultArray())) {
+                $curso_estudiante = $this->db->table('materia_maestro')->update($this->request->getPost(), ['id_materia_maestro' => $this->request->getPost('id_materia_maestro')]) ? true : $this->db->error();
+                return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error actualizar la asignacion']));
+            } else {
+                return $this->response->setJSON(['error' => 'El Maestro se encuentra asignado a esta Materia, Curso o Gestión']);
+            }
         }
     }
     public function eliminarAsignacionesMateriaMaestro()
@@ -73,7 +82,7 @@ class Maestro extends BaseController
         join rs_materia ma on ma.id_materia = mm.id_materia) temp
         EOT;
         $primaryKey = 'id_materia_maestro';
-        $where = "estado = 1";
+        $where = "estado = 1 and gestion = " . date('Y');
         $columns = array(
             array('db' => 'id_materia_maestro', 'dt' => 0),
             array('db' => 'materia', 'dt'            => 1),
