@@ -198,7 +198,7 @@
 
                                 <li>
                                     <a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
-                                        <i class="fa fa-circle-o"></i>Seguimiento Acad.
+                                        <i class="fa fa-circle-o"></i>Seguimiento Ped.
                                     </a>
                                 </li>
 
