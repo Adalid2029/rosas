@@ -107,11 +107,6 @@ class Reporte extends  BaseController
             $this->reporteSeguimiento->imprimir($data, $fechaI, $fechaF,$faltas, $nombre_completo, $curso_paralelo, $fechas);
         }
 
-
-
-
-
     }
-
 
 }//class

@@ -67,11 +67,7 @@
                             <label for="id_estudiante" class="col-md-3 col-form-label">Estudiante:</label>
                             <div class="col-md-12">
                                 <select name="id_estudiante" id="id_estudiante" class="form-control" required>
-                                    <?php
-                                        foreach ($this->data["estudiantes"] as $key => $value) {
-                                            echo '<option value="'.$value["id_estudiante"].'">'.$value["nombres_apellidos"].' - ' . $value["ci"].'</option>';
-                                        }
-                                    ?>
+
                                 </select>
                             </div>
                         </div>
@@ -858,5 +854,19 @@
             });
 
         });
-    })
+    });
+
+    // Cargar estudiantes segun cursos
+    $("#id_curso_paralelo").on("change", function (e) {
+        let id_curso_paralelo = $("#id_curso_paralelo").val();
+        $("#id_estudiante").val('').trigger('change');
+        $('#id_estudiante').empty();
+
+        $.getJSON("/kardex/listarEstudiantesCursos/?id_curso_paralelo=" + id_curso_paralelo, function(json) {
+            $.each(json, function(i, obj) {
+                $('#id_estudiante').append($('<option>').text(obj.nombre_completo).attr('value', obj.id_estudiante));
+            });
+
+        });
+    });
 </script>
