@@ -5,7 +5,7 @@
                 <div class="pad-btm form-inline">
                     <div class="row">
                         <div class="col-sm-5 table-toolbar-left">
-                            <h3 class="panel-title">Seguimiento Académico</h3>
+                            <h3 class="panel-title">Seguimiento Pedagógico</h3>
                         </div>
                         <div class="col-sm-7 table-toolbar-right">
                             <div class="form-group">
