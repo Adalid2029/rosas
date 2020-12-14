@@ -32,15 +32,24 @@ class Maestro extends BaseController
     public function insertarAsignacionesMateriaMaestro()
     {
         if ($this->request->isAJAX()) {
-            $id_curso_estudiante = $this->db->table('materia_maestro')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
-            return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+            if (empty($this->db->table('materia_maestro')->where($this->request->getPost())->get()->getResultArray())) {
+                $id_curso_estudiante = $this->db->table('materia_maestro')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
+                return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+            } else {
+                return $this->response->setJSON(['error' => 'El Maestro se encuentra asignado a esta Materia, Curso o Gestión']);
+            }
         }
     }
     public function actualizarAsignacionesMateriaMaestro()
     {
         if ($this->request->isAJAX()) {
-            $curso_estudiante = $this->db->table('materia_maestro')->update($this->request->getPost(), ['id_materia_maestro' => $this->request->getPost('id_materia_maestro')]) ? true : $this->db->error();
-            return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error actualizar la asignacion']));
+            // return var_dump($this->request->getPost());
+            if (empty($this->db->table('materia_maestro')->where($this->request->getPost())->get()->getResultArray())) {
+                $curso_estudiante = $this->db->table('materia_maestro')->update($this->request->getPost(), ['id_materia_maestro' => $this->request->getPost('id_materia_maestro')]) ? true : $this->db->error();
+                return ($curso_estudiante == true) ? $this->response->setJSON(json_encode(['exito' => 'Se actualizo la asignacion correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error actualizar la asignacion']));
+            } else {
+                return $this->response->setJSON(['error' => 'El Maestro se encuentra asignado a esta Materia, Curso o Gestión']);
+            }
         }
     }
     public function eliminarAsignacionesMateriaMaestro()
@@ -64,21 +73,23 @@ class Maestro extends BaseController
     {
         // print_r($_REQUEST);
         $table = <<<EOT
-        (SELECT mm.id_materia_maestro, p.estado, concat(ma.codigo, ' ', ma.nombre)as materia, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo, g.gestion 
+        (SELECT mm.id_materia_maestro, p.estado, concat(ma.codigo, ' ', ma.nombre)as materia, concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo, g.gestion, nivel 
         from rs_maestro m
         join rs_persona p on p.id_persona = m.id_maestro
         join rs_materia_maestro mm on mm.id_maestro = m.id_maestro
         join rs_gestion g on g.id_gestion = mm.id_gestion                
         join rs_curso_paralelo cp on cp.id_curso_paralelo =  mm.id_curso_paralelo 
+        join rs_curso c on c.id_curso =  cp.id_curso 
         join rs_materia ma on ma.id_materia = mm.id_materia) temp
         EOT;
         $primaryKey = 'id_materia_maestro';
-        $where = "estado = 1";
+        $where = "estado = 1 and gestion = " . date('Y');
         $columns = array(
             array('db' => 'id_materia_maestro', 'dt' => 0),
-            array('db' => 'materia', 'dt'            => 1),
-            array('db' => 'nombre_completo', 'dt'    => 2),
-            array('db' => 'gestion', 'dt'            => 3),
+            array('db' => 'nivel', 'dt'            => 1),
+            array('db' => 'materia', 'dt'            => 2),
+            array('db' => 'nombre_completo', 'dt'    => 3),
+            array('db' => 'gestion', 'dt'            => 4),
         );
 
         $sql_details = array('user' => $this->db->username, 'pass' => $this->db->password, 'db'   => $this->db->database, 'host' => $this->db->hostname);

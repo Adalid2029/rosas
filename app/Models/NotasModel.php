@@ -15,9 +15,26 @@ class NotasModel extends Database
     {
         $builder = $this->db->table('maestro m');
         $builder->select('*');
-        $builder->join('materia_maestro mm', 'mm.id_maestro = m.id_maestro', 'left');
+        $builder->join('materia_maestro mm', 'mm.id_maestro = m.id_maestro');
         $builder->join('curso_paralelo cu', 'cu.id_curso_paralelo = mm.id_curso_paralelo');
         $builder->join('curso c', 'c.id_curso = cu.id_curso');
+        $builder->join('paralelo p', 'p.id_paralelo = cu.id_paralelo');
+        $builder->join('materia ma', 'ma.id_materia = mm.id_materia');
+        $builder->join('gestion g', 'g.id_gestion = mm.id_gestion');
+        if (is_array($condicion))
+            $builder->where($condicion);
+        $builder->groupBy($agrupacion);
+        $builder->orderBy($orden);
+        return $builder->get();
+    }
+
+    public function listarCursosEstudiante($condicion = null, $orden = '', $agrupacion = '')
+    {
+        $builder = $this->db->table('curso_estudiante ce');
+        $builder->select('*');
+        $builder->join('curso_paralelo cp', 'cp.id_curso_paralelo = ce.id_curso_paralelo');
+        $builder->join('materia_maestro mm', 'mm.id_curso_paralelo = cp.id_curso_paralelo');
+        $builder->join('curso c', 'c.id_curso = cp.id_curso');
         $builder->join('materia ma', 'ma.id_materia = mm.id_materia');
         $builder->join('gestion g', 'g.id_gestion = mm.id_gestion');
         if (is_array($condicion))

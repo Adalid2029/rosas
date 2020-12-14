@@ -6,6 +6,7 @@ use App\Controllers\Reportes\CentralizadorAreasReporte;
 use App\Controllers\Reportes\SeguimientoReporte;
 use App\Libraries\Ssp;
 use App\Models\ReporteModel;
+use App\Models\NotasModel;
 
 class Reporte extends  BaseController
 {
@@ -30,6 +31,20 @@ class Reporte extends  BaseController
         return $this->templater->view('reportes/imprimirSeguimiento', $this->data);
     }
 
+    public function imprimirCentralizadorInterno()
+    {
+        $cursos = [];
+        foreach ((new NotasModel)->listarCursos(null, '', 'cu.id_curso_paralelo')->getResultArray() as $key => $value) {
+            $materiasCurso = (new NotasModel)->listarCursos(['mm.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
+            if ($materiasCurso != null) $cursos[] = array_merge($materiasCurso[0], ['materiasCurso' => $materiasCurso]);
+        }
+        $this->data['materiasCurso'] = $cursos;
+        // var_dump($this->db->getLastQuery());
+        // echo json_encode($cursos);
+        // return;
+        return $this->templater->view('reportes/imprimirCentralizadorInterno', $this->data);
+    }
+
     // listado de estudiantes por pararelos y gestion
     public function ajaxListarEstudiantesParalelos()
     {
@@ -38,7 +53,7 @@ class Reporte extends  BaseController
         $primaryKey = 'id_persona';
         $curso_recibido = $this->request->getGet("curso");
         $curso = explode(" ", $curso_recibido);
-        $where = "estado = 1 and gestion=".$anio." and nivel='".$curso[0]."' and paralelo='".$curso[1]."'";
+        $where = "estado = 1 and gestion=" . $anio . " and nivel='" . $curso[0] . "' and paralelo='" . $curso[1] . "'";
         $columns = array(
             array('db' => 'id_persona', 'dt'          => 0),
             array('db' => 'id_curso_estudiante', 'dt' => 1),
@@ -61,7 +76,7 @@ class Reporte extends  BaseController
 
     public function imprimirSeguimientoEstudiante()
     {
-//        set_time_limit(1000000000);
+        //        set_time_limit(1000000000);
         $id = $this->request->getGet("id");
         $fechaI = $this->request->getGet("fechaInicio");
         $fechaF = $this->request->getGet("fechaFinal");
@@ -70,10 +85,9 @@ class Reporte extends  BaseController
         $faltas = $this->model->listarFaltas();
         $fechas = $this->model->listarFaltasEstudiantesFechas($id, $fechaI, $fechaF);
 
-        if (count($fechas) != 0)
-        {
+        if (count($fechas) != 0) {
             $data = array();
-            for ($k = 0; $k < count($fechas); $k++){
+            for ($k = 0; $k < count($fechas); $k++) {
                 $fila = array();
                 $consulta = $this->model->listarFaltasEstudiantes($id, $fechas[$k]["fecha"]);
                 $j = 0;
@@ -97,19 +111,18 @@ class Reporte extends  BaseController
                 array_push($fila, "0");
                 array_push($fila, "0");
                 array_push($fila, "0");
-                for ($j = 0; $j < count($consulta); $j++){
+                for ($j = 0; $j < count($consulta); $j++) {
                     $fila[$consulta[$j]["id_falta"] + 1] = "x";
                 }
                 array_push($data, $fila);
             }
             $this->response->setContentType('application/pdf');
-            $this->reporteSeguimiento->imprimir($data, $fechaI, $fechaF,$faltas, $nombre_completo, $curso_paralelo, $fechas);
-        }else{
+            $this->reporteSeguimiento->imprimir($data, $fechaI, $fechaF, $faltas, $nombre_completo, $curso_paralelo, $fechas);
+        } else {
             $data = null;
             $this->response->setContentType('application/pdf');
-            $this->reporteSeguimiento->imprimir($data, $fechaI, $fechaF,$faltas, $nombre_completo, $curso_paralelo, $fechas);
+            $this->reporteSeguimiento->imprimir($data, $fechaI, $fechaF, $faltas, $nombre_completo, $curso_paralelo, $fechas);
         }
-
     }
 
     public function imprimirCentralizador()
@@ -127,6 +140,4 @@ class Reporte extends  BaseController
         $this->response->setContentType('application/pdf');
         $this->reporteCentralizador->imprimir($data, $paralelo, $gestion);
     }
-
-
 }//class
