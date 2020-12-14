@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th width="5%">#</th>
+                            <th>Curso</th>
                             <th>Materia</th>
                             <th>Maestro</th>
                             <th>Gestión</th>

@@ -146,7 +146,7 @@
 
 							</li>
 						<?php endif; ?>
-						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO'])) : ?>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO', 'ESTUDIANTE'])) : ?>
 							<!--Menu list Asistencias y calificación -->
 							<li class="">
 								<a href="#" data-original-title="" title="">
@@ -156,7 +156,9 @@
 								</a>
 								<!--Submenu-->
 								<ul class="collapse" aria-expanded="false">
-									<li><a class="menu--link" href="<?= base_url('/Asistencia') ?>"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+									<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO'])) : ?>
+										<li><a class="menu--link" href="<?= base_url('/Asistencia') ?>"><i class="fa fa-circle-o"></i> Asistencia</a></li>
+									<?php endif ?>
 									<li><a class="menu--link" href="<?= base_url('/Notas') ?>"><i class="fa fa-circle-o"></i> Calificaciones</a></li>
 								</ul>
 							</li>
@@ -196,12 +198,17 @@
 									</a>
 								</li>
 
-                                <li>
-                                    <a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
-                                        <i class="fa fa-circle-o"></i>Seguimiento Acad.
-                                    </a>
-                                </li>
+								<li>
+									<a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
+										<i class="fa fa-circle-o"></i>Seguimiento Acad.
+									</a>
+								</li>
 
+								<li>
+									<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizadorInterno') ?>">
+										<i class="fa fa-circle-o"></i>Centralizador Int.
+									</a>
+								</li>
 							</ul>
 						</li>
 					</ul>

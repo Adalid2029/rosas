@@ -93,16 +93,24 @@ class Notas extends BaseController
 			$cursos = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona']], '', 'cu.id_curso_paralelo')->getResultArray();
 		else if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA']))
 			$cursos = $this->notasModel->listarCursos(null, '', 'cu.id_curso_paralelo')->getResultArray();
-		// var_dump($cursos);
+		else if (is(['ESTUDIANTE'])) {
+			$cursos = $this->notasModel->listarCursosEstudiante(['ce.id_estudiante' => $this->user['id_persona']], '', 'cp.id_curso_paralelo')->getResultArray();
+		}
+		// echo json_encode($cursos);
 		// var_dump($this->db->getLastQuery());
+		// return;
 		$cursosMaterias = [];
 		foreach ($cursos as $key => $value) {
 			if (is(['MAESTRO']))
 				$cursosMaterias[] = $this->notasModel->listarCursos(['m.id_maestro' => $this->user['id_persona'], 'cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
 			else if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA']))
 				$cursosMaterias[] = $this->notasModel->listarCursos(['cu.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
+			else if (is(['ESTUDIANTE']))
+				$cursosMaterias[] = $this->notasModel->listarCursosEstudiante(['ce.id_estudiante' => $this->user['id_persona'], 'cp.id_curso_paralelo' => $value['id_curso_paralelo']], '', '')->getResultArray();
 		}
 		// var_dump($cursosMaterias);
+		// var_dump($this->db->getLastQuery());
+		// return;
 		if (!empty($cursosMaterias)) {
 			$vista = '';
 			foreach ($cursosMaterias as $key => $value) {
@@ -126,7 +134,9 @@ class Notas extends BaseController
 			) temp
 			EOT;
 		$primaryKey = 'id_estudiante';
-		$where = "id_curso_paralelo = " . $this->request->getGet('id_curso_paralelo') . " and id_maestro = " . $this->request->getGet('id_maestro') . " and id_materia = " . $this->request->getGet('id_materia') . " and estado=1";
+		$where = "id_curso_paralelo = " . $this->request->getGet('id_curso_paralelo') . " and id_maestro = " . $this->request->getGet('id_maestro') . " and id_materia = " . $this->request->getGet('id_materia') . " and estado=1 ";
+		if (is(['ESTUDIANTE']))
+			$where .= 'and id_estudiante = ' . $this->user['id_persona'];
 		$columns = array(
 			array('db' => 'id_estudiante', 'dt' => 0),
 			array('db' => 'nombre_completo', 'dt' => 1),

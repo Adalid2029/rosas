@@ -17,10 +17,10 @@ $(document).ready(function () {
 					render: function (data, type, row, meta) {
 						return (
 							'<div class="btn-group" role="group">' +
-							'<a data-id-materia-maestro="' +
-							data[0] +
-							'" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn-editar-asignaciones-materia-maestro" data-toggle="tooltip" title="Editar">' +
-							'<i class="fa fa-pencil-square-o"></i></a>' +
+							// '<a data-id-materia-maestro="' +
+							// data[0] +
+							// '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn-editar-asignaciones-materia-maestro" data-toggle="tooltip" title="Editar">' +
+							// '<i class="fa fa-pencil-square-o"></i></a>' +
 							'<a data-id-materia-maestro="' +
 							data[0] +
 							'" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn-eliminar-asignaciones-materia-maestro" data-toggle="tooltip" title="Eliminar">' +

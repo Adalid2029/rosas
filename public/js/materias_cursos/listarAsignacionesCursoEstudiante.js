@@ -16,10 +16,10 @@ $('#tbl-asignaciones-cursos')
 				render: function (data, type, row, meta) {
 					return (
 						'<div class="btn-group" role="group">' +
-						'<a data-id-curso-estudiante="' +
-						data[0] +
-						'" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn-editar-asignaciones-curso-estudiante" data-toggle="tooltip" title="Editar">' +
-						'<i class="fa fa-pencil-square-o"></i></a>' +
+						// '<a data-id-curso-estudiante="' +
+						// data[0] +
+						// '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn-editar-asignaciones-curso-estudiante" data-toggle="tooltip" title="Editar">' +
+						// '<i class="fa fa-pencil-square-o"></i></a>' +
 						'<a data-id-curso-estudiante="' +
 						data[0] +
 						'" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn-eliminar-asignaciones-curso-estudiante" data-toggle="tooltip" title="Eliminar">' +
@@ -107,7 +107,7 @@ function insertarActualizarAsignacion(url, event) {
 				$('#asignar-curso').modal('hide');
 				limpiarCampos();
 			} else if (typeof response.error !== 'undefined') {
-				mensajeAlert('warning', response.form, 'Advertencia');
+				mensajeAlert('warning', response.error, 'Advertencia');
 			}
 		})
 		.fail(function (e) {

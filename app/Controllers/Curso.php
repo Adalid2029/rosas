@@ -40,8 +40,12 @@ class Curso extends BaseController
     public function insertarAsignacionesCursoEstudiante()
     {
         if ($this->request->isAJAX()) {
-            $id_curso_estudiante = $this->db->table('curso_estudiante')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
-            return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+            if (empty($this->db->table('curso_estudiante')->where($this->request->getPost())->get()->getResultArray())) {
+                $id_curso_estudiante = $this->db->table('curso_estudiante')->insert($this->request->getPost()) ? $this->db->insertID() : $this->db->error();
+                return is_numeric($id_curso_estudiante) ? $this->response->setJSON(json_encode(['exito' => 'Se asigno correctamente'])) : $this->response->setJSON(json_encode(['error' => 'Ha ocurrido un error al asignar']));
+            } else {
+                return $this->response->setJSON(['error' => 'El Estudiante se encuentra asignado a este Curso o Gestión']);
+            }
         }
     }
     public function actualizarAsignacionesCursoEstudiante()
