@@ -163,6 +163,28 @@
     </div>
 </div>
 
+<!-- GENERAR REPORTE MODAL -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="imprimir_administrativos_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="titulo_reporte_administrativos" style="color: white"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">×</span>
+                </button>
+            </div>
+            <div style="height: 500px; width: 100%;" class="modal-body">
+                <iframe id="administrativos_pdf" width="100%" height="100%" src=""></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary cerrar" data-dismiss="modal" aria-label="Close">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--  Modal de editar administrativo -->
 <div class="modal fade" id="editar-administrativo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document">
@@ -520,6 +542,16 @@
             }
         });
 
+    });
+
+    $("a#btn_imprimir_asistencia").on("click", function (e) {
+        let paralelo = $(this).attr("data");
+        $("#titulo_reporte_asistencia").html("REPORTE DE ASISTENCIA CURSO: " + paralelo);
+        $("#reporte_pdf").prop(
+            "src",
+            "<?= base_url("/")?>" + "/asistencia/imprimir/?paralelo="+paralelo+"&fechaInicio="+fechaInicial+"&fechaFinal="+fechaFinal
+        );
+        $("#imprimir_reporte_modal").modal("show");
     });
     // fin script
 </script>

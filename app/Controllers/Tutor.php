@@ -81,7 +81,6 @@ class Tutor extends BaseController
                             "exp" => "required|max_length[2]|alpha",
                             "nombres" => "required|alpha_space",
                             "paterno" => "required|alpha_space",
-                            "materno" => "alpha_space",
                             "nacimiento" => 'required',
                             "telefono" => "required|numeric|min_length[6]",
                             "sexo" => "required|max_length[1]|alpha",
@@ -105,9 +104,6 @@ class Tutor extends BaseController
                             "paterno" => [
                                 "required" => "El apellido paterno es requerido",
                                 "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos y espacios."
-                            ],
-                            "materno" => [
-                                "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos y espacios."
                             ],
                             "nacimiento" => [
                                 "required" => "La fecha de nacimiento es requerido"
@@ -201,7 +197,6 @@ class Tutor extends BaseController
                         "exp" => "required|max_length[2]|alpha",
                         "nombres" => "required|alpha_space",
                         "paterno" => "required|alpha_space",
-                        "materno" => "alpha_space",
                         "nacimiento" => 'required',
                         "telefono" => "required|numeric|min_length[6]",
                         "sexo" => "required|max_length[1]|alpha",
@@ -225,9 +220,6 @@ class Tutor extends BaseController
                         "paterno" => [
                             "required" => "El apellido paterno es requerido",
                             "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos y espacios."
-                        ],
-                        "materno" => [
-                            "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos y espacios."
                         ],
                         "nacimiento" => [
                             "required" => "La fecha de nacimiento es requerido"
