@@ -27,7 +27,7 @@ class Notas extends BaseController
 	public function imp()
 	{
 		$this->response->setContentType('application/pdf');
-		$this->notasReporte->imp();
+		$this->notasReporte->imprimir();
 	}
 	public function listarEstudiantes()
 	{
