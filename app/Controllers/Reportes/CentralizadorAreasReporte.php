@@ -17,124 +17,147 @@ class CentralizadorAreasReporte extends FPDF
     public function imprimir($data, $paralelo, $gestion)
     {
         $this->AddPage('L', 'legal');
-        $this->Image("img/images/logo_oficial.png", 50 ,11, 15 , 15,'PNG', '');
+        $this->Image("img/images/logo_oficial.png", 50, 11, 15, 15, 'PNG', '');
         $this->SetFont('Arial', 'BU', 13);
         $this->Cell(0, 3, utf8_decode('CENTRALIZADOR DE AREAS'), 0, 1, 'C', 0);
         $this->Ln();
         $this->SetFont('Arial', '', 12);
         $this->SetX(70);
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(45,5,'UNIDAD EDUCATIVA: ',0,0,'R',0);
+        $this->Cell(45, 5, 'UNIDAD EDUCATIVA: ', 0, 0, 'R', 0);
         $this->SetFont('Arial', '', 12);
-        $this->Cell(35,5,'LAS ROSAS',0,0,'L',0);
+        $this->Cell(35, 5, 'LAS ROSAS', 0, 0, 'L', 0);
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(45,5,'CURSO: ',0,0,'R',0);
+        $this->Cell(45, 5, 'CURSO: ', 0, 0, 'R', 0);
         $this->SetFont('Arial', '', 12);
-        $this->Cell(70,5,utf8_decode($paralelo),0,0,'L',0);
+        $this->Cell(70, 5, utf8_decode($paralelo), 0, 0, 'L', 0);
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(30,5,utf8_decode('GESTIÓN: '),0,0,'R',0);
+        $this->Cell(30, 5, utf8_decode('GESTIÓN: '), 0, 0, 'R', 0);
         $this->SetFont('Arial', '', 12);
-        $this->Cell(30,5,$gestion,0,0,'L',0);
+        $this->Cell(30, 5, $gestion, 0, 0, 'L', 0);
         $this->Ln(7);
         $this->SetX(70);
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(45,5,'',0,0,'R',0);
+        $this->Cell(45, 5, '', 0, 0, 'R', 0);
         $this->SetFont('Arial', '', 12);
-        $this->Cell(35,5,'',0,0,'L',0);
+        $this->Cell(35, 5, '', 0, 0, 'L', 0);
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(45,5,'IMPRESO: ',0,0,'R',0);
+        $this->Cell(45, 5, 'IMPRESO: ', 0, 0, 'R', 0);
         $this->SetFont('Arial', '', 12);
-        $this->Cell(70,5,$this->fecha->format('d-m-Y H:i'),0,0,'L',0);
+        $this->Cell(70, 5, $this->fecha->format('d-m-Y H:i'), 0, 0, 'L', 0);
         $this->SetFont('Arial', 'B', 12);
         $this->Ln(10);
+
         //Cabecera de la tabla//
-        $this->Tabla($data);
-        // imprimir fechas //
-//        $this->imprimirFechas($fechas);
+        $curso = explode(' ', $paralelo);
+
+        if (isset($curso[0]) && $curso[0] == "PRIMERO" || $curso[0] == "SEGUNDO") {
+            // Imprimir para los paralelos primero y segundo de secundaria
+            $this->TablaPrimeroSegundo($data);
+        } else if ($curso[0] == "TERCERO" || $curso[0] == "CUARTO") {
+            // Imprimir para los paralelos tercero y cuarto de secundaria
+            $this->TablaTerceroCuarto($data);
+        } else {
+            // Imprimir para los paralelos quinto y sexto de secundaria
+            $this->TablaQuintoSexto($data);
+        }
+
+
         $this->Output();
     }
 
-    function Tabla()
+    function TablaPrimeroSegundo($data)
     {
-        $this->SetX(10);
+        $this->SetX(25);
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(5, 30, "N" . utf8_decode("°"), 1);
-        $this->TextWithDirection(21, 45, 'APELLIDO', 'R');
-        $this->TextWithDirection(21, 50, 'PATERNO', 'R');
-        $this->TextWithDirection(41, 45, 'APELLIDO', 'R');
-        $this->TextWithDirection(41, 50, 'MATERNO', 'R');
-        $this->TextWithDirection(61, 48, 'NOMBRES', 'R');
+        $this->Cell(5, 30, "N" . utf8_decode("°"), 1, null, "C");
+        $this->TextWithDirection(38, 45, 'APELLIDO', 'R');
+        $this->TextWithDirection(38, 50, 'PATERNO', 'R');
+        $this->TextWithDirection(74, 45, 'APELLIDO', 'R');
+        $this->TextWithDirection(74, 50, 'MATERNO', 'R');
+        $this->TextWithDirection(108, 48, 'NOMBRES', 'R');
         for ($n = 1; $n <= 3; $n++) {
-            $this->Cell(20, 30, "", 1);
+            $this->Cell(35, 30, "", 1);
         }
         // $this->SetXY(15,30);
         $this->SetFontSize(6);
-        $this->TextWithRotation(85, 48, utf8_decode("COMUNICACÍON "), 90, 0);
-        $this->TextWithDirection(88, 46, 'Y LENGUAJES', 'U');
-        $this->TextWithRotation(101, 44, utf8_decode("LENGUA"), 90, 0);
-        $this->TextWithDirection(105, 46, 'EXTRANJERA', 'U');
-        $this->TextWithRotation(115, 44, utf8_decode("CIENCIAS"), 90, 0);
-        $this->TextWithDirection(120, 45, 'SOCIALES', 'U');
-        $this->TextWithRotation(130, 46, utf8_decode("EDUCACIÓN"), 90, 0);
-        $this->TextWithDirection(133, 45, 'FISICA', 'U');
-        $this->TextWithDirection(136, 46, 'Y DEPORTES', 'U');
-        $this->TextWithDirection(145, 46, utf8_decode("EDUCACIÓN"), 'U');
-        $this->TextWithDirection(148, 45, 'MUSICAL', 'U');
-        $this->TextWithDirection(160, 45, 'ARTES', 'U');
-        $this->TextWithDirection(163, 46, 'PLASTICAS', 'U');
-        $this->TextWithDirection(166, 48, 'Y VISUALES', 'U');
-        $this->TextWithDirection(180, 48, 'MATEATICAS', 'U');
-        $this->TextWithDirection(190, 45, 'TECNICA', 'U');
-        $this->TextWithDirection(194, 48, 'TECNOLOGICA', 'U');
-        $this->TextWithDirection(205, 48, 'CIENCIAS', 'U');
-        $this->TextWithDirection(208, 48, 'NATURALES', 'U');
-        $this->TextWithDirection(212, 48, 'BIOLOGICAS', 'U');
-        $this->TextWithDirection(225, 45, 'FISICA', 'U');
-        $this->TextWithDirection(240, 45, 'QUIMICA', 'U');
-        $this->TextWithDirection(250, 49, 'COSMOVISIONES', 'U');
-        $this->TextWithDirection(255, 45, 'FILOSOFIA', 'U');
-        $this->TextWithDirection(258, 46, 'PSICOLOGIA', 'U');
+        $this->TextWithRotation(142, 51, utf8_decode("COMUNICACÍON "), 90, 0);
+        $this->TextWithDirection(145, 50, 'Y  LENGUAJES', 'U');
+
+        $this->TextWithRotation(156, 48, utf8_decode("LENGUA"), 90, 0);
+        $this->TextWithDirection(159, 50, 'EXTRANJERA', 'U');
+
+        $this->TextWithRotation(172, 48, utf8_decode("CIENCIAS"), 90, 0);
+        $this->TextWithDirection(175, 48, 'SOCIALES', 'U');
+
+        $this->TextWithRotation(185, 49, utf8_decode("EDUCACIÓN"), 90, 0);
+        $this->TextWithDirection(188, 46, 'FISICA', 'U');
+        $this->TextWithDirection(191, 49, 'Y DEPORTES', 'U');
+
+        $this->TextWithDirection(202, 49, utf8_decode("EDUCACIÓN"), 'U');
+        $this->TextWithDirection(205, 47, 'MUSICAL', 'U');
+
+        $this->TextWithDirection(215, 47, 'ARTES', 'U');
+        $this->TextWithDirection(218, 49, 'PLASTICAS', 'U');
+        $this->TextWithDirection(221, 49, 'Y VISUALES', 'U');
+
+        $this->TextWithDirection(233, 51, 'MATEMATICAS', 'U');
+
+        $this->TextWithDirection(245, 48, 'TECNICA', 'U');
+        $this->TextWithDirection(248, 51, 'TECNOLOGICA', 'U');
+        $this->TextWithDirection(251, 48, 'GENERAL', 'U');
+
+        $this->TextWithDirection(261, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(264, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(267, 48, 'BIOLOGIA', 'U');
         $this->SetFontSize(5);
-        $this->TextWithDirection(265, 45, 'VALORES', 'U');
-        $this->TextWithDirection(268, 49, 'ESPIRITUALIDADES', 'U');
-        $this->TextWithDirection(272, 48, 'Y RELIGIONES', 'U');
+        $this->TextWithDirection(275, 47, 'VALORES', 'U');
+        $this->TextWithDirection(278, 51, 'ESPIRITUALIDADES', 'U');
+        $this->TextWithDirection(281, 49, 'Y RELIGIONES', 'U');
+
+        $this->TextWithDirection(291, 51, 'COSMOVISIONES,', 'U');
+        $this->TextWithDirection(294, 48, 'FILOSOFIA Y', 'U');
+        $this->TextWithDirection(297, 49, 'PSICOLOGÍA', 'U');
+
         $this->SetFontSize(8);
-        $this->TextWithDirection(284, 48, 'PROMEDIO', 'U');
+        $this->TextWithDirection(308, 51, 'PROMEDIO', 'U');
         $this->SetFontSize(6);
-        for ($n = 1; $n <= 14; $n++) {
+
+        for ($n = 1; $n <= 12; $n++) {
             $this->Cell(15, 20, '', 1);
         }
+
         $this->ln();
-        $this->SetX(80);
-        $num = 83;
+        $this->SetX(135);
+        $num = 138.2;
         $num2 = 0;
-        for ($n = 1; $n <= 14; $n++) {
-            $this->TextWithDirection($num + $num2, 59, '1 TRIM', 'U');
-            $this->TextWithDirection($num + 5 + $num2, 59, '2 TRIM', 'U');
-            $this->TextWithDirection($num + 10 + $num2, 59, '3 TRIM', 'U');
+        for ($n = 1; $n <= 12; $n++) {
+            $this->TextWithDirection($num + $num2, 61, '1 TRIM', 'U');
+            $this->TextWithDirection($num + 5 + $num2, 61, '2 TRIM', 'U');
+            $this->TextWithDirection($num + 10 + $num2, 61, '3 TRIM', 'U');
             $num2 += 15;
             $this->Cell(5, 10, "", 1);
             $this->Cell(5, 10, "", 1);
             $this->Cell(5, 10, "", 1);
         }
+
         $this->ln();
         // llenado de datos
         for ($n = 1; $n <= 2; $n++) {
-            $this->SetX(10);
-            $this->Cell(5, 10, "$n", 1);
-            $this->Cell(20, 10, " ", 1);
-            $this->Cell(20, 10, " ", 1);
-            $this->Cell(20, 10, " ", 1);
-            for ($n = 1; $n <= 42; $n++) {
-                $this->Cell(5, 10, "  ", 1);
+            $this->SetX(25);
+            $this->SetFontSize(8);
+            $this->Cell(5, 6, "$n", 1, null, "C");
+            $this->Cell(35, 6, "CONDORI", 1);
+            $this->Cell(35, 6, "ZAPANA", 1);
+            $this->Cell(35, 6, "JUAN CARLOS", 1);
+            for ($n = 1; $n <= 12; $n++) {
+                $this->SetFontSize(7);
+                $this->Cell(5, 6, 50 + $n, 1, null, "C");
+                $this->Cell(5, 6, 50 + $n, 1, null, "C");
+                $this->Cell(5, 6, 86 + $n, 1, null, "C");
             }
             $this->ln();
         }
-
-        // $this->Cell(20,10,"BAUTISTA",1);
-        // $this->Cell(20,10,"HUANCA",1);
-        // $this->Cell(20,10,"JHON BRAYAN",1);
-        $this->Output();
     }
 
     function TextWithDirection($x, $y, $txt, $direction = 'R')
@@ -171,4 +194,209 @@ class CentralizadorAreasReporte extends FPDF
         $this->_out($s);
     }
 
+    // Cursos de tercero y cuarto de secundaria
+    function TablaTerceroCuarto($data)
+    {
+        $this->SetX(15);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(5, 30, "N" . utf8_decode("°"), 1, null, "C");
+        $this->TextWithDirection(28, 45, 'APELLIDO', 'R');
+        $this->TextWithDirection(28, 50, 'PATERNO', 'R');
+        $this->TextWithDirection(64, 45, 'APELLIDO', 'R');
+        $this->TextWithDirection(64, 50, 'MATERNO', 'R');
+        $this->TextWithDirection(98, 48, 'NOMBRES', 'R');
+        for ($n = 1; $n <= 3; $n++) {
+            $this->Cell(35, 30, "", 1);
+        }
+        // $this->SetXY(15,30);
+        $this->SetFontSize(6);
+        $this->TextWithRotation(132, 51, utf8_decode("COMUNICACÍON "), 90, 0);
+        $this->TextWithDirection(135, 50, 'Y  LENGUAJES', 'U');
+
+        $this->TextWithRotation(146, 48, utf8_decode("LENGUA"), 90, 0);
+        $this->TextWithDirection(148, 50, 'EXTRANJERA', 'U');
+
+        $this->TextWithRotation(161, 48, utf8_decode("CIENCIAS"), 90, 0);
+        $this->TextWithDirection(163, 48, 'SOCIALES', 'U');
+
+        $this->TextWithRotation(175, 49, utf8_decode("EDUCACIÓN"), 90, 0);
+        $this->TextWithDirection(178, 46, 'FISICA', 'U');
+        $this->TextWithDirection(181, 49, 'Y DEPORTES', 'U');
+
+        $this->TextWithDirection(192, 49, utf8_decode("EDUCACIÓN"), 'U');
+        $this->TextWithDirection(195, 47, 'MUSICAL', 'U');
+
+        $this->TextWithDirection(205, 47, 'ARTES', 'U');
+        $this->TextWithDirection(208, 49, 'PLASTICAS', 'U');
+        $this->TextWithDirection(211, 49, 'Y VISUALES', 'U');
+
+        $this->TextWithDirection(223, 51, 'MATEMATICAS', 'U');
+
+        $this->TextWithDirection(235, 48, 'TECNICA', 'U');
+        $this->TextWithDirection(238, 51, 'TECNOLOGICA', 'U');
+        $this->TextWithDirection(241, 48, 'GENERAL', 'U');
+
+        $this->TextWithDirection(250, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(253, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(256, 47, 'FISICA', 'U');
+
+        $this->TextWithDirection(265, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(268, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(271, 48, 'QUIMICA', 'U');
+
+        $this->TextWithDirection(280, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(283, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(286, 48, 'BIOLOGIA', 'U');
+        $this->SetFontSize(5);
+        $this->TextWithDirection(296, 47, 'VALORES', 'U');
+        $this->TextWithDirection(299, 51, 'ESPIRITUALIDADES', 'U');
+        $this->TextWithDirection(302, 49, 'Y RELIGIONES', 'U');
+
+        $this->TextWithDirection(310, 51, 'COSMOVISIONES,', 'U');
+        $this->TextWithDirection(313, 48, 'FILOSOFIA Y', 'U');
+        $this->TextWithDirection(316, 49, 'PSICOLOGÍA', 'U');
+
+        $this->SetFontSize(8);
+        $this->TextWithDirection(328, 51, 'PROMEDIO', 'U');
+        $this->SetFontSize(6);
+
+        for ($n = 1; $n <= 14; $n++) {
+            $this->Cell(15, 20, '', 1);
+        }
+
+        $this->ln();
+        $this->SetX(125);
+        $num = 128;
+        $num2 = 0;
+        for ($n = 1; $n <= 14; $n++) {
+            $this->TextWithDirection($num + $num2, 61, '1 TRIM', 'U');
+            $this->TextWithDirection($num + 5 + $num2, 61, '2 TRIM', 'U');
+            $this->TextWithDirection($num + 10 + $num2, 61, '3 TRIM', 'U');
+            $num2 += 15;
+            $this->Cell(5, 10, "", 1);
+            $this->Cell(5, 10, "", 1);
+            $this->Cell(5, 10, "", 1);
+        }
+
+        $this->ln();
+        // llenado de datos
+        for ($n = 1; $n <= 2; $n++) {
+            $this->SetX(15);
+            $this->SetFontSize(8);
+            $this->Cell(5, 6, "$n", 1, null, "C");
+            $this->Cell(35, 6, "CONDORI", 1);
+            $this->Cell(35, 6, "ZAPANA", 1);
+            $this->Cell(35, 6, "JUAN CARLOS", 1);
+            for ($n = 1; $n <= 14; $n++) {
+                $this->SetFontSize(7);
+                $this->Cell(5, 6, 50 + $n, 1, null, "C");
+                $this->Cell(5, 6, 50 + $n, 1, null, "C");
+                $this->Cell(5, 6, 86 + $n, 1, null, "C");
+            }
+            $this->ln();
+        }
+    }
+
+    // Cursos de quinto y sexto de secundaria
+    function TablaQuintoSexto($data)
+    {
+        $this->SetX(15);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(5, 30, "N" . utf8_decode("°"), 1, null, "C");
+        $this->TextWithDirection(28, 45, 'APELLIDO', 'R');
+        $this->TextWithDirection(28, 50, 'PATERNO', 'R');
+        $this->TextWithDirection(64, 45, 'APELLIDO', 'R');
+        $this->TextWithDirection(64, 50, 'MATERNO', 'R');
+        $this->TextWithDirection(98, 48, 'NOMBRES', 'R');
+        for ($n = 1; $n <= 3; $n++) {
+            $this->Cell(35, 30, "", 1);
+        }
+        // $this->SetXY(15,30);
+        $this->SetFontSize(6);
+        $this->TextWithRotation(132, 51, utf8_decode("COMUNICACÍON "), 90, 0);
+        $this->TextWithDirection(135, 50, 'Y  LENGUAJES', 'U');
+
+        $this->TextWithRotation(146, 48, utf8_decode("LENGUA"), 90, 0);
+        $this->TextWithDirection(148, 50, 'EXTRANJERA', 'U');
+
+        $this->TextWithRotation(161, 48, utf8_decode("CIENCIAS"), 90, 0);
+        $this->TextWithDirection(163, 48, 'SOCIALES', 'U');
+
+        $this->TextWithRotation(175, 49, utf8_decode("EDUCACIÓN"), 90, 0);
+        $this->TextWithDirection(178, 46, 'FISICA', 'U');
+        $this->TextWithDirection(181, 49, 'Y DEPORTES', 'U');
+
+        $this->TextWithDirection(192, 49, utf8_decode("EDUCACIÓN"), 'U');
+        $this->TextWithDirection(195, 47, 'MUSICAL', 'U');
+
+        $this->TextWithDirection(205, 47, 'ARTES', 'U');
+        $this->TextWithDirection(208, 49, 'PLASTICAS', 'U');
+        $this->TextWithDirection(211, 49, 'Y VISUALES', 'U');
+
+        $this->TextWithDirection(223, 51, 'MATEMATICAS', 'U');
+
+        $this->TextWithDirection(235, 48, 'TECNICA', 'U');
+        $this->TextWithDirection(238, 51, 'TECNOLOGICA', 'U');
+        $this->TextWithDirection(241, 52, ' ESPECIALIZADA', 'U');
+
+        $this->TextWithDirection(250, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(253, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(256, 47, 'FISICA', 'U');
+
+        $this->TextWithDirection(265, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(268, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(271, 48, 'QUIMICA', 'U');
+
+        $this->TextWithDirection(280, 48, 'CIENCIAS', 'U');
+        $this->TextWithDirection(283, 49, 'NATURALES', 'U');
+        $this->TextWithDirection(286, 48, 'BIOLOGIA', 'U');
+        $this->SetFontSize(5);
+        $this->TextWithDirection(296, 47, 'VALORES', 'U');
+        $this->TextWithDirection(299, 51, 'ESPIRITUALIDADES', 'U');
+        $this->TextWithDirection(302, 49, 'Y RELIGIONES', 'U');
+
+        $this->TextWithDirection(310, 51, 'COSMOVISIONES,', 'U');
+        $this->TextWithDirection(313, 48, 'FILOSOFIA Y', 'U');
+        $this->TextWithDirection(316, 49, 'PSICOLOGÍA', 'U');
+
+        $this->SetFontSize(8);
+        $this->TextWithDirection(328, 51, 'PROMEDIO', 'U');
+        $this->SetFontSize(6);
+
+        for ($n = 1; $n <= 14; $n++) {
+            $this->Cell(15, 20, '', 1);
+        }
+
+        $this->ln();
+        $this->SetX(125);
+        $num = 128;
+        $num2 = 0;
+        for ($n = 1; $n <= 14; $n++) {
+            $this->TextWithDirection($num + $num2, 61, '1 TRIM', 'U');
+            $this->TextWithDirection($num + 5 + $num2, 61, '2 TRIM', 'U');
+            $this->TextWithDirection($num + 10 + $num2, 61, '3 TRIM', 'U');
+            $num2 += 15;
+            $this->Cell(5, 10, "", 1);
+            $this->Cell(5, 10, "", 1);
+            $this->Cell(5, 10, "", 1);
+        }
+
+        $this->ln();
+        // llenado de datos
+        for ($n = 1; $n <= 2; $n++) {
+            $this->SetX(15);
+            $this->SetFontSize(8);
+            $this->Cell(5, 6, "$n", 1, null, "C");
+            $this->Cell(35, 6, "CONDORI", 1);
+            $this->Cell(35, 6, "ZAPANA", 1);
+            $this->Cell(35, 6, "JUAN CARLOS", 1);
+            for ($n = 1; $n <= 14; $n++) {
+                $this->SetFontSize(7);
+                $this->Cell(5, 6, 50 + $n, 1, null, "C");
+                $this->Cell(5, 6, 50 + $n, 1, null, "C");
+                $this->Cell(5, 6, 86 + $n, 1, null, "C");
+            }
+            $this->ln();
+        }
+    }
 }// class

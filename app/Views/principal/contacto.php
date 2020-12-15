@@ -10,8 +10,8 @@
 
         <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
             <div class="container">
-                <a href="<?= base_url("/")?>" class="logo">
-                    <img src="<?= base_url("principal/images/logo5.png")?>" alt="Logo del sitio">
+                <a href="<?= base_url("/") ?>" class="logo">
+                    <img src="<?= base_url("principal/images/logo5.png") ?>" alt="Logo del sitio">
                 </a>
 
                 <button type="button" class="boton-buscar" data-toggle="collapse" data-target="#bloque-buscar" aria-expanded="false">
@@ -29,17 +29,17 @@
 
                 <nav id="menu-principal" class="collapse">
                     <ul>
-                        <li >
-                            <a class="menu--link" href="<?= base_url("/")?>"> Inicio</a>
-                        </li>
-                        <li >
-                            <a class="menu--link"  href="<?= base_url("/home/nosotros")?>"> Nosotros</a>
-                        </li>
-                        <li class="active">
-                            <a class="menu--link" href="<?= base_url("/home/contacto")?>"> Contacto</a>
+                        <li>
+                            <a class="menu--link" href="<?= base_url("/") ?>"> Inicio</a>
                         </li>
                         <li>
-                            <a class="menu--link" href="<?= base_url("/auth/login")?>"> Iniciar Sesión</a>
+                            <a class="menu--link" href="<?= base_url("/home/nosotros") ?>"> Nosotros</a>
+                        </li>
+                        <li class="active">
+                            <a class="menu--link" href="<?= base_url("/home/contacto") ?>"> Contacto</a>
+                        </li>
+                        <li>
+                            <a class="menu--link" href="<?= base_url("/auth/login") ?>"> Iniciar Sesión</a>
                         </li>
                     </ul>
                 </nav>
@@ -63,7 +63,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-xs-right">
-                    <a href="<?= base_url("/")?>">Inicio</a> » Contacto
+                    <a href="<?= base_url("/") ?>">Inicio</a> » Contacto
 
                 </div>
             </div>
@@ -118,9 +118,15 @@
                 </div>
 
                 <div class="col-md-4">
+
                     <h3>Detalles de contacto</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque laborum commodi suscipit vitae eius perferendis consequuntur? Modi nihil aliquam, quas deserunt vitae atque suscipit ratione rerum eveniet. Qui, adipisci ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque laborum commodi suscipit vitae eius perferendis consequuntur? Modi nihil aliquam, quas deserunt vitae atque suscipit ratione rerum eveniet. Qui, adipisci ad.</p>
+                    <p style="text-align: justify;">
+                        El Sistema de Seguimiento y Comunicación Inmediata de la Unidad Educativa Las Rosas, les invita a realizar sugerencias
+                        a sus usuarios a través del formulario de contacto, para poder mejorar y fortalecer nuestro sistema, para el mejor
+                        servicio de seguimiento de la educación de nuestros educandos. La dirección y la administración de sistema les agradece
+                        de antemano por su participación.
+                    </p>
+
 
                 </div>
             </div>
@@ -133,18 +139,18 @@
 
     <!-- Carga de archivos  JS -->
 
-    <script src="<?= base_url("principal/js/jquery.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/tether.min.js")?>"></script>
+    <script src="<?= base_url("principal/js/jquery.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/tether.min.js") ?>"></script>
     <script type="text/javascript">
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
 
-    <script src="<?= base_url("principal/js/bootstrap.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/wow.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/smooth-scroll.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/sitio.js")?>"></script>
+    <script src="<?= base_url("principal/js/bootstrap.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/wow.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/smooth-scroll.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/sitio.js") ?>"></script>
 
 </body>
 
