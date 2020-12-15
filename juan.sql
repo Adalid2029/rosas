@@ -464,4 +464,18 @@ order by
 
 
 
+    -- creacion de la vista de estudiantes y paralelos
+create or replace view rs_view_estudiantes_cursos as
+SELECT e.id_estudiante , rce.id_curso_paralelo , concat(paterno, ' ', materno, ' ', nombres, ' CI. ', ci, ' ', exp) as nombre_completo,  concat(c.nivel, ' ', rp.paralelo)as curso, 
+                rg.gestion,c.nivel, rp.paralelo, p.estado
+                from rs_estudiante e
+                join rs_persona p on p.id_persona = e.id_estudiante
+                join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
+                join rs_gestion rg on rg.id_gestion = rce.id_gestion 
+                join rs_curso_paralelo cp on cp.id_curso_paralelo =  rce.id_curso_paralelo 
+                join rs_curso c on c.id_curso =  cp.id_curso
+                join rs_paralelo rp on rp.id_paralelo = cp.id_paralelo;
+
+
+
 
