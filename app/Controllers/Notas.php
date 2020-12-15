@@ -24,10 +24,10 @@ class Notas extends BaseController
 		// return;
 		return $this->templater->view('Notas/notasListarCursos', $this->data);
 	}
-	public function imp()
+	public function imprimirCentralizadorInterno()
 	{
-		$this->response->setContentType('application/pdf');
-		$this->notasReporte->imprimir();
+		// $this->response->setContentType('application/pdf');
+		return $this->response->setJSON(json_encode(['exito' => 'data:application/pdf;base64,' . base64_encode($this->notasReporte->imprimir())]));
 	}
 	public function listarEstudiantes()
 	{

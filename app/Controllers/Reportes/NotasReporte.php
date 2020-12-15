@@ -15,7 +15,7 @@ class NotasReporte extends FPDF
         $this->AddPage('P', 'Letter');
         $this->Image("img/images/logo_oficial.png", 50, 14, 15, 15, 'PNG', '');
         $this->SetFont('Arial', 'BU', 13);
-        $this->Cell(0, 3, utf8_decode('CUADRO DE ASISTENCIA'), 0, 1, 'C', 0);
+        $this->Cell(0, 3, utf8_decode('CENTRALIZADOR INTERNO'), 0, 1, 'C', 0);
         $this->Ln();
         $this->SetFont('Arial', '', 12);
         $this->SetX(40);
@@ -43,7 +43,7 @@ class NotasReporte extends FPDF
         $this->Tabla();
         // imprimir fechas //
         // $this->imprimirFechas($fechas);
-        $this->Output();
+        return $this->Output('S');
     }
 
     function Tabla()
