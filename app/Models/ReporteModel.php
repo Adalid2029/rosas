@@ -51,4 +51,12 @@ class ReporteModel extends Database
         return $builder->get()->getResultArray();
     }
 
+    public function listarGestiones()
+    {
+        $builder = $this->db->table("gestion");
+        $builder->select('id_gestion, gestion');
+        $builder->orderBy("id_gestion DESC");
+        return $builder->get()->getResultArray();
+    }
+
 }//class

@@ -18,7 +18,7 @@ class SeguimientoReporte extends FPDF
         $this->AddPage('P', 'letter');
         $this->Image("img/images/logo_oficial.png", 10 ,10, 17 , 18,'PNG', '');
         $this->SetFont('Arial', 'BU', 12);
-        $this->Cell(0, 3, utf8_decode('SEGUIMIENTO ACADÉMICO'), 0, 1, 'C', 0);
+        $this->Cell(0, 3, utf8_decode('SEGUIMIENTO PEDAGÓGICO'), 0, 1, 'C', 0);
         $this->Ln();
         $this->SetX(28);
         $this->SetFont('Arial', 'B', 10);

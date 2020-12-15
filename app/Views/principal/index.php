@@ -10,8 +10,8 @@
 
         <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
             <div class="container">
-                <a href="<?= base_url("/")?>" class="logo">
-                    <img src="<?= base_url("principal/images/logo5.png")?>" alt="Logo del sitio">
+                <a href="<?= base_url("/") ?>" class="logo">
+                    <img src="<?= base_url("principal/images/logo5.png") ?>" alt="Logo del sitio">
                 </a>
 
                 <button type="button" class="boton-buscar" data-toggle="collapse" data-target="#bloque-buscar" aria-expanded="false">
@@ -30,16 +30,16 @@
                 <nav id="menu-principal" class="collapse">
                     <ul>
                         <li class="active">
-                            <a class="menu--link" href="<?= base_url("/")?>"> Inicio</a>
-                        </li>
-                        <li >
-                            <a class="menu--link"  href="<?= base_url("/home/nosotros")?>"> Nosotros</a>
+                            <a class="menu--link" href="<?= base_url("/") ?>"> Inicio</a>
                         </li>
                         <li>
-                            <a class="menu--link" href="<?= base_url("/home/contacto")?>"> Contacto</a>
+                            <a class="menu--link" href="<?= base_url("/home/nosotros") ?>"> Nosotros</a>
                         </li>
                         <li>
-                            <a class="menu--link" href="<?= base_url("/auth/login")?>"> Iniciar Sesión</a>
+                            <a class="menu--link" href="<?= base_url("/home/contacto") ?>"> Contacto</a>
+                        </li>
+                        <li>
+                            <a class="menu--link" href="<?= base_url("/auth/login") ?>"> Iniciar Sesión</a>
                         </li>
                     </ul>
                 </nav>
@@ -52,8 +52,8 @@
 
             <div class="container" id="titulos">
                 <h1 class="display-4 wow bounceIn">Unidad Educativa Las Rosas</h1>
-                <p class="wow bounceIn" data-wow-delay=".3s">Cuando enseñar es un arte, aprender en un placer.</p>
-                <a href="<?= base_url("/home/contacto")?>" class="btn btn-primary btn-lg">Ponte en contacto</a>
+                <p class="wow bounceIn" data-wow-delay=".3s">Cuando enseñar es un arte, aprender es un placer.</p>
+                <a href="<?= base_url("/home/contacto") ?>" class="btn btn-primary btn-lg">Ponte en contacto</a>
             </div>
 
         </div>
@@ -76,7 +76,7 @@
 
                 </div>
                 <div class="col-md-4 col-xl-3 wow bounceIn" data-wow-delay=".6s">
-                    <img src="<?= base_url("principal/images/logo_oficial.png")?>" alt="Escudo de la Unidad Educativa">
+                    <img src="<?= base_url("principal/images/logo_oficial.png") ?>" alt="Escudo de la Unidad Educativa">
                 </div>
             </div>
         </div>
@@ -85,32 +85,32 @@
 
     <section class="ultimos-proyectos p-y-1">
         <div class="container">
-            <h2 class="text-xs-center font-weight-bold">Fotos de la Unidad Educativa</h2>
+            <h2 class="text-xs-center font-weight-bold">Actividades de la Unidad Educativa</h2>
 
             <div class="owl-carousel">
                 <a href="#">
                     <h4>Las Rosas</h4>
-                    <img src="<?= base_url("principal/images/imagen1.jpg")?>" alt="Las Rosas">
+                    <img src="<?= base_url("principal/images/imagen1.jpg") ?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">
                     <h4>Plantel Docentes</h4>
-                    <img src="<?= base_url("principal/images/imagen2.jpg")?>" alt="Las Rosas">
+                    <img src="<?= base_url("principal/images/imagen2.jpg") ?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">
                     <h4>Día del Niño(a)</h4>
-                    <img src="<?= base_url("principal/images/imagen3.jpg")?>" alt="Las Rosas">
+                    <img src="<?= base_url("principal/images/imagen3.jpg") ?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">
                     <h4>Promoción 2019</h4>
-                    <img src="<?= base_url("principal/images/imagen4.jpg")?>" alt="Las Rosas">
+                    <img src="<?= base_url("principal/images/imagen4.jpg") ?>" alt="Las Rosas">
                 </a>
 
                 <a href="#">
                     <h4>Las Rosas</h4>
-                    <img src="<?= base_url("principal/images/imagen1.jpg")?>" alt="Las Rosas">
+                    <img src="<?= base_url("principal/images/imagen1.jpg") ?>" alt="Las Rosas">
                 </a>
 
 
@@ -124,9 +124,9 @@
 
     <!-- Carga de archivos  JS -->
 
-    <script src="<?= base_url("principal/js/jquery.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/bootstrap.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/owl.carousel.min.js")?>"></script>
+    <script src="<?= base_url("principal/js/jquery.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/bootstrap.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/owl.carousel.min.js") ?>"></script>
     <script type="text/javascript">
         $('.owl-carousel').owlCarousel({
             loop: true,
@@ -153,9 +153,9 @@
             }
         })
     </script>
-    <script src="<?= base_url("principal/js/wow.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/smooth-scroll.min.js")?>"></script>
-    <script src="<?= base_url("principal/js/sitio.js")?>"></script>
+    <script src="<?= base_url("principal/js/wow.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/smooth-scroll.min.js") ?>"></script>
+    <script src="<?= base_url("principal/js/sitio.js") ?>"></script>
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\CentralizadorAreasReporte;
 use App\Controllers\Reportes\SeguimientoReporte;
 use App\Libraries\Ssp;
 use App\Models\ReporteModel;
@@ -12,6 +13,7 @@ class Reporte extends  BaseController
 
     public $model = null;
     public $reporteSeguimiento;
+    public $reporteCentralizador;
     public $fecha = null;
 
     public function __construct()
@@ -19,6 +21,7 @@ class Reporte extends  BaseController
         parent::__construct();
         $this->model = new ReporteModel();
         $this->reporteSeguimiento = new SeguimientoReporte();
+        $this->reporteCentralizador = new CentralizadorAreasReporte();
         $this->fecha = new \DateTime();
     }
 
@@ -120,5 +123,21 @@ class Reporte extends  BaseController
             $this->response->setContentType('application/pdf');
             $this->reporteSeguimiento->imprimir($data, $fechaI, $fechaF, $faltas, $nombre_completo, $curso_paralelo, $fechas);
         }
+    }
+
+    public function imprimirCentralizador()
+    {
+        $this->data["cursos_paralelos"] = $this->model->listarCursosParalelos();
+        $this->data["gestiones"] = $this->model->listarGestiones();
+        return $this->templater->view('reportes/imprimirCentralizador', $this->data);
+    }
+
+    public function imprimirCentralizadorAreas()
+    {
+        $paralelo = $this->request->getGet("paralelo");
+        $gestion = $this->request->getGet("gestion");
+        $data = array();
+        $this->response->setContentType('application/pdf');
+        $this->reporteCentralizador->imprimir($data, $paralelo, $gestion);
     }
 }//class

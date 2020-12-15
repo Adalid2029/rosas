@@ -8,10 +8,12 @@ class ResponsableModel extends Database
 {
 
     public $db = null;
+    public $fecha;
 
     public function __construct()
     {
         $this->db = \config\Database::connect();
+        $this->fecha = new \DateTime();
     }
 
     // responsable
@@ -46,6 +48,17 @@ class ResponsableModel extends Database
         $builder = $this->db->table("view_estudiante");
         $builder->select('id_estudiante, nombres_apellidos, ci');
         $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
+    // select para listado de estudiantes con sus cursos
+    public function listarEstudiantesCursos($curso_paralelo)
+    {
+        $builder = $this->db->table("view_estudiantes_cursos");
+        $builder->select('id_estudiante, nombre_completo');
+        $builder->where("estado", 1);
+        $builder->where("id_curso_paralelo", $curso_paralelo);
+        $builder->where("gestion", $this->fecha->format('Y'));
         return $builder->get()->getResultArray();
     }
 

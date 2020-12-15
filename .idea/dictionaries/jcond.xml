@@ -43,6 +43,7 @@
       <w>carga</w>
       <w>cargar</w>
       <w>celda</w>
+      <w>centralizador</w>
       <w>cerrar</w>
       <w>citacion</w>
       <w>citaciones</w>
@@ -105,6 +106,7 @@
       <w>fotos</w>
       <w>generado</w>
       <w>gestion</w>
+      <w>gestiones</w>
       <w>gestión</w>
       <w>guardar</w>
       <w>idkardex</w>
@@ -224,6 +226,7 @@
       <w>válido</w>
       <w>warni</w>
       <w>yearpicker</w>
+      <w>área</w>
       <w>últimos</w>
     </words>
   </dictionary>

@@ -25,7 +25,6 @@ class Kardex extends BaseController
     public function listarKardex()
     {
         $this->data["cursos"] = $this->model->listarCursos();
-        $this->data["estudiantes"] = $this->estudiante->listarEstudiantes();
         $this->data["tipo_faltas"] = $this->model->listarTipoFaltas();
         $this->data["maestros"] = $this->model->listarMaestros();
         $this->data["materias"] = $this->model->listarMaterias();
@@ -223,6 +222,14 @@ class Kardex extends BaseController
                 )));
             }
         }
+    }
+
+    // listar estudiantes y sus cursos en el anio actual
+    public function listarEstudiantesCursos()
+    {
+        $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
+        $respuesta = $this->estudiante->listarEstudiantesCursos($id_curso_paralelo);
+        return json_encode($respuesta);
     }
 
 }

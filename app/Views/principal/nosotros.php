@@ -9,8 +9,8 @@
   <section class="bienvenidos">
     <header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
       <div class="container">
-        <a href="<?= base_url("/")?>" class="logo">
-          <img src="<?= base_url("principal/images/logo5.png")?>" alt="Logo del sitio" />
+        <a href="<?= base_url("/") ?>" class="logo">
+          <img src="<?= base_url("principal/images/logo5.png") ?>" alt="Logo del sitio" />
         </a>
 
         <button type="button" class="boton-buscar" data-toggle="collapse" data-target="#bloque-buscar" aria-expanded="false">
@@ -27,22 +27,22 @@
           </div>
         </form>
 
-          <nav id="menu-principal" class="collapse">
-              <ul>
-                  <li>
-                      <a class="menu--link" href="<?= base_url("/")?>"> Inicio</a>
-                  </li>
-                  <li class="active">
-                      <a class="menu--link"  href="<?= base_url("/home/nosotros")?>"> Nosotros</a>
-                  </li>
-                  <li>
-                      <a class="menu--link" href="<?= base_url("/home/contacto")?>"> Contacto</a>
-                  </li>
-                  <li>
-                      <a class="menu--link" href="<?= base_url("/auth/login")?>"> Iniciar Sesión</a>
-                  </li>
-              </ul>
-          </nav>
+        <nav id="menu-principal" class="collapse">
+          <ul>
+            <li>
+              <a class="menu--link" href="<?= base_url("/") ?>"> Inicio</a>
+            </li>
+            <li class="active">
+              <a class="menu--link" href="<?= base_url("/home/nosotros") ?>"> Nosotros</a>
+            </li>
+            <li>
+              <a class="menu--link" href="<?= base_url("/home/contacto") ?>"> Contacto</a>
+            </li>
+            <li>
+              <a class="menu--link" href="<?= base_url("/auth/login") ?>"> Iniciar Sesión</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
 
@@ -59,7 +59,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 text-xs-right">
-          <a href="<?= base_url("/")?>">Inicio</a> » Nosotros
+          <a href="<?= base_url("/") ?>">Inicio</a> » Nosotros
         </div>
       </div>
     </div>
@@ -124,14 +124,17 @@
               </h4>
               <div id="tab-valores" class="panel-collapse collapse">
                 <p>
-                  valores de la Unidad Educativa.
+                  La Unidad Educativa formando personas comprometidas con las virtudes y valores
+                  que deben formar parte de la vida en sociedad, tales como: solidaridad, responsabilidad,
+                  reciprocidad, respeto, complementariedad, tolerancia, honestidad, equilibrio, justicia, equidad,
+                  igualdad de oportunidades, compromiso y disciplina.
                 </p>
               </div>
             </div>
           </div>
         </article>
         <aside class="col-md-4">
-          <img src="<?= base_url("principal/images/nosotros.svg")?>" alt="Nosotros" />
+          <img src="<?= base_url("principal/images/nosotros.svg") ?>" alt="Nosotros" />
         </aside>
       </div>
     </div>
@@ -144,11 +147,11 @@
 
   <!-- Carga de archivos  JS -->
 
-  <script src="<?= base_url("principal/js/jquery.min.js")?>"></script>
-  <script src="<?= base_url("principal/js/bootstrap.min.js")?>"></script>
-  <script src="<?= base_url("principal/js/wow.min.js")?>"></script>
-  <script src="<?= base_url("principal/js/smooth-scroll.min.js")?>"></script>
-  <script src="<?= base_url("principal/js/sitio.js")?>"></script>
+  <script src="<?= base_url("principal/js/jquery.min.js") ?>"></script>
+  <script src="<?= base_url("principal/js/bootstrap.min.js") ?>"></script>
+  <script src="<?= base_url("principal/js/wow.min.js") ?>"></script>
+  <script src="<?= base_url("principal/js/smooth-scroll.min.js") ?>"></script>
+  <script src="<?= base_url("principal/js/sitio.js") ?>"></script>
 </body>
 
 </html>
