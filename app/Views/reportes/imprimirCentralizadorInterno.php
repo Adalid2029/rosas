@@ -40,17 +40,14 @@
 </div>
 
 <!-- GENERAR REPORTE MODAL -->
-<div class="modal fade" data-backdrop="static" data-keyboard="false" id="imprimir_seguimiento_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="titulo_reporte_seguimiento" style="color: white"></h5>
-                <button type="button" id="seguimiento_cerrar" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="color: white">×</span>
-                </button>
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="centralizador-interno" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id="centralizador-interno-dialog" class="modal-dialog modal-dialog-centered" role="document">
+        <div id="centralizador-interno-content" class="modal-content">
+            <div id="centralizador-interno-header" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 id="centralizador-interno-title" class="modal-title">Modal title</h4>
             </div>
-            <div style="height: 500px; width: 100%;" class="modal-body">
-                <iframe id="seguimiento_pdf" width="100%" height="100%" src=""></iframe>
+            <div id="centralizador-interno-body" class="modal-body">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary seguimiento_cerrar" data-dismiss="modal" aria-label="Close">
