@@ -35,8 +35,8 @@ class Database extends \CodeIgniter\Database\Config
 		'DSN'      => '',
 		'hostname' => 'localhost',
 		'username' => 'root',
-		'password' => '',
-		'database' => 'db_rosas1',
+		'password' => 'e522a5bf',
+		'database' => 'db_rosas',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => 'rs_',
 		'pConnect' => false,
@@ -52,7 +52,7 @@ class Database extends \CodeIgniter\Database\Config
 		'failover' => [],
 		'port'     => 3306,
 	];
-
+ 
 	/**
 	 * This database connection is used when
 	 * running PHPUnit database tests.

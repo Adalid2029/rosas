@@ -14,7 +14,7 @@
             </div>
 
             <div class="panel-body">
-                <table id="tbl_kardex" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="tbl_kardex" class="table table-striped table-bordered" cellspacing="0" width="100%" data-grupo-usuario="<?= $access ?>">
                     <thead>
                         <tr>
                             <th width="5%">#</th>
@@ -53,9 +53,9 @@
                             <div class="col-md-12">
                                 <select name="id_curso_paralelo" id="id_curso_paralelo" class="form-control" required>
                                     <?php
-                                        foreach ($this->data["cursos"] as $key => $value) {
-                                            echo '<option value="'.$value["id_curso_paralelo"].'">'.$value["curso"].'</option>';
-                                        }
+                                    foreach ($this->data["cursos"] as $key => $value) {
+                                        echo '<option value="' . $value["id_curso_paralelo"] . '">' . $value["curso"] . '</option>';
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -114,7 +114,7 @@
                                     <select name="tipo" id="tipo" class="form-control" required>
                                         <?php
                                         foreach ($this->data["tipo_faltas"] as $key => $value) {
-                                            echo '<option value="'.$value["id_tipo_falta"].'">'.$value["nombre"].'</option>';
+                                            echo '<option value="' . $value["id_tipo_falta"] . '">' . $value["nombre"] . '</option>';
                                         }
                                         ?>
                                     </select>
@@ -142,7 +142,7 @@
                                     <select name="id_materia" id="id_materia" class="form-control" required>
                                         <?php
                                         foreach ($this->data["materias"] as $key => $value) {
-                                            echo '<option value="'.$value["id_materia"].'">'.$value["nombre"].'</option>';
+                                            echo '<option value="' . $value["id_materia"] . '">' . $value["nombre"] . '</option>';
                                         }
                                         ?>
                                     </select>
@@ -165,9 +165,9 @@
                                     <label class="control-label" for="registrante">Registrante <span style="color: red;">(*)</span> :</label>
                                     <select name="registrante" id="registrante" class="form-control" required>
                                         <?php
-                                            foreach ($this->data["maestros"] as $key => $value) {
-                                                echo '<option value="'.$value["nombres_apellidos"].'">'.$value["nombres_apellidos"].'</option>';
-                                            }
+                                        foreach ($this->data["maestros"] as $key => $value) {
+                                            echo '<option value="' . $value["nombres_apellidos"] . '">' . $value["nombres_apellidos"] . '</option>';
+                                        }
                                         ?>
                                     </select>
                                 </div>
@@ -187,7 +187,7 @@
 </div>
 
 <!--  Modal de ver faltas -->
-<div class="modal fade" id="agregar-faltas" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" style="overflow-y: scroll;">
+<div class="modal fade" id="agregar-faltas" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document" style="width: 80%;">
         <div class="modal-content">
             <div id="agregar-faltas-header" class="modal-header">
@@ -197,7 +197,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="tbl_faltas" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="tbl_faltas" class="table table-striped table-bordered" cellspacing="0" width="100%" data-grupo-usuario="<?= $access ?>">
                     <thead>
                         <tr>
                             <th width="5%">#</th>
@@ -224,7 +224,7 @@
 </div>
 
 <!--  Modal de ver citaciones -->
-<div class="modal fade" id="agregar-citacion" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" style="overflow-y: scroll;">
+<div class="modal fade" id="agregar-citacion" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: scroll;">
     <div id="modal-dialog" class="modal-dialog" role="document" style="width: 70%;">
         <div class="modal-content">
             <div id="agregar-citacion-header" class="modal-header">
@@ -236,13 +236,13 @@
             <div class="modal-body">
                 <table id="tbl_citacion" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>kardex</th>
-                        <th>Estudiante</th>
-                        <th>Fecha</th>
-                        <th>Acciones</th>
-                    </tr>
+                        <tr>
+                            <th width="5%">#</th>
+                            <th>kardex</th>
+                            <th>Estudiante</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
 
                 </table>
@@ -293,24 +293,18 @@
             targets: -1,
             data: null,
             render: function(data, type, row, meta) {
+                grupoUsuario = $('#tbl_kardex').attr('data-grupo-usuario').split(',');
                 return (
                     '<div class="btn-group" role="group">' +
+                    ((grupoUsuario.includes('SECRETARIA') || grupoUsuario.includes('DIRECTOR') || grupoUsuario.includes('MAESTRO')) ?
+                        '<a data="' + data[0] + '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_kardex" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil-square-o"></i></a><a data="' + data[0] + '" nombre="' + data[2] + '" class="btn btn-info-basic btn-sm mdi mdi-tooltip-edit text-white btn_agregar_falta" data-toggle="tooltip" title="Agregar falta"><i class="fa fa-warning"></i></a>' : '') +
                     '<a data="' + data[0] +
-                    '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_kardex" data-toggle="tooltip" title="Editar">' +
-                    '<i class="fa fa-pencil-square-o"></i></a>' +
-                    '<a data="' + data[0] +
-                    '" nombre="'+data[2]+'" class="btn btn-info-basic btn-sm mdi mdi-tooltip-edit text-white btn_agregar_falta" data-toggle="tooltip" title="Agregar falta">' +
-                    '<i class="fa fa-warning"></i></a>' +
-                    '<a data="' + data[0] +
-                    '" nombre="'+data[2]+'" class="btn btn-success btn-sm mdi mdi-tooltip-edit text-white btn_ver_faltas" data-toggle="tooltip" title="Ver faltas">' +
+                    '" nombre="' + data[2] + '" class="btn btn-success btn-sm mdi mdi-tooltip-edit text-white btn_ver_faltas" data-toggle="tooltip" title="Ver faltas">' +
                     '<i class="fa fa-eye"></i></a>' +
                     '<a data="' + data[0] +
-                    '" nombre="'+data[2]+'" class="btn btn-primary btn-sm mdi mdi-tooltip-edit text-white btn_ver_citacion" data-toggle="tooltip" title="Ver citación">' +
+                    '" nombre="' + data[2] + '" class="btn btn-primary btn-sm mdi mdi-tooltip-edit text-white btn_ver_citacion" data-toggle="tooltip" title="Ver citación">' +
                     '<i class="fa fa-file-archive-o"></i></a>' +
-                    '<a data="' +
-                    data[0] +
-                    '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_kardex" data-toggle="tooltip" title="Eliminar">' +
-                    '<i class="fa fa-trash-o"></i></a>' +
+                    ((grupoUsuario.includes('SECRETARIA') || grupoUsuario.includes('DIRECTOR') || grupoUsuario.includes('MAESTRO')) ? '<a data="' + data[0] + '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_kardex" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash-o"></i></a>' : '') +
                     '</div>'
                 );
             }
@@ -361,7 +355,7 @@
         $("#accion").val("");
     }
 
-    $(".btn-cerrar").on("click", function (e) {
+    $(".btn-cerrar").on("click", function(e) {
         limpiarCampos();
     });
 
@@ -480,7 +474,7 @@
         );
     });
 
-    $(".btn-cerrar-falta").on("click", function (e) {
+    $(".btn-cerrar-falta").on("click", function(e) {
         limpiarCamposFalta();
     });
 
@@ -532,8 +526,8 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            "order": [ 0, 'desc' ],
-            ajax: '/falta/ajaxListarFaltas/?id_kardex=' +id,
+            "order": [0, 'desc'],
+            ajax: '/falta/ajaxListarFaltas/?id_kardex=' + id,
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
@@ -558,8 +552,7 @@
                     sSortDescending: ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            columnDefs: [
-                {
+            columnDefs: [{
                     searchable: false,
                     orderable: false,
                     visible: false,
@@ -585,32 +578,23 @@
                     targets: 9,
                     data: null,
                     render: function(data, type, row, meta) {
-                        return data[9] === '0' ? '<a data="'+data[0]+'" class="btn btn-active-danger btn-dark-basic btn-sm text-white btn-revisar" data-value="1" data-toggle="tooltip" title="Marcar revisado"><i class="fa fa-window-close-o"></i> No revisado</a>'
-                            : '<a data="'+data[0]+'" class="btn btn-success btn-sm text-white btn-revisar" data-toggle="tooltip" data-value="0" title="Marcar no revisado"><i class="fa fa-check-square-o"></i> Revisado</a>';
+
+                        return data[9] === '0' ? '<a data="' + data[0] + '" class="btn btn-active-danger btn-dark-basic btn-sm text-white btn-revisar" data-value="1" data-toggle="tooltip" title="Marcar revisado"><i class="fa fa-window-close-o"></i> No revisado</a>' :
+                            '<a data="' + data[0] + '" class="btn btn-success btn-sm text-white btn-revisar" data-toggle="tooltip" data-value="0" title="Marcar no revisado"><i class="fa fa-check-square-o"></i> Revisado</a>';
                     }
                 },
                 {
-                searchable: false,
-                orderable: false,
-                targets: -1,
-                data: null,
-                render: function(data, type, row, meta) {
-                    return  data[9] === '0' ?
-                            '<div class="btn-group" role="group">' +
-                            '<a data="' + data[0] +
-                            '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_faltas" data-toggle="tooltip" title="Editar">' +
-                            '<i class="fa fa-pencil-square-o"></i></a>' +
-                            '<a data="' + data[0] +
-                            '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_faltas" data-value="'+data[1]+'" data-toggle="tooltip" title="Eliminar">' +
-                            '<i class="fa fa-trash-o"></i></a>' +
-                            '</div>':'<div class="btn-group" role="group">' +
-                        '<a data="' + data[0] +
-                        '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_faltas" data-toggle="tooltip" title="Editar">' +
-                        '<i class="fa fa-pencil-square-o"></i></a>' +
-                        '</div>';
+                    searchable: false,
+                    orderable: false,
+                    targets: -1,
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return ((grupoUsuario.includes('SECRETARIA') || grupoUsuario.includes('DIRECTOR') || grupoUsuario.includes('MAESTRO')) ? (data[9] === '0' ?
+                            '<div class="btn-group" role="group"><a data="' + data[0] + '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_faltas" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil-square-o"></i></a><a data="' + data[0] + '" class="btn btn-danger btn-sm mdi mdi-delete-forever text-white btn_eliminar_faltas" data-value="' + data[1] + '" data-toggle="tooltip" title="Eliminar"><i class="fa fa-trash-o"></i></a></div>' : '<div class="btn-group" role="group"><a data="' + data[0] + '" class="btn btn-warning btn-sm mdi mdi-tooltip-edit text-white btn_editar_faltas" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil-square-o"></i></a></div>') : '')
 
+                    }
                 }
-            }]
+            ]
         });
 
         parametrosModal(
@@ -622,12 +606,12 @@
         );
     });
 
-    $("#close-faltas").on("click", function (e) {
+    $("#close-faltas").on("click", function(e) {
         let table = $('#tbl_faltas').DataTable();
         table.destroy();
     });
 
-    $(".btn-cerrar-faltas").on("click", function (e) {
+    $(".btn-cerrar-faltas").on("click", function(e) {
         let table = $('#tbl_faltas').DataTable();
         table.destroy();
     });
@@ -636,7 +620,7 @@
     $('#tbl_faltas').on("click", ".btn-revisar", function(e) {
         let id = $(this).attr("data");
         let value = $(this).attr("data-value");
-        let msg = value==="0"? "¿Estas seguro de marcar como no visto por sus tutores?" : "¿Estas seguro de marcar como visto por sus tutores?";
+        let msg = value === "0" ? "¿Estas seguro de marcar como no visto por sus tutores?" : "¿Estas seguro de marcar como visto por sus tutores?";
         bootbox.confirm(msg, function(result) {
             if (result) {
                 $.ajax({
@@ -742,8 +726,8 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            "order": [ 0, 'desc' ],
-            ajax: '/falta/ajaxListarCitacion/?id_kardex=' +id,
+            "order": [0, 'desc'],
+            ajax: '/falta/ajaxListarCitacion/?id_kardex=' + id,
             language: {
                 sProcessing: "Procesando...",
                 sLengthMenu: "Mostrar _MENU_ registros",
@@ -768,8 +752,7 @@
                     sSortDescending: ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            columnDefs: [
-                {
+            columnDefs: [{
                     searchable: false,
                     orderable: false,
                     visible: false,
@@ -781,13 +764,14 @@
                     targets: -1,
                     data: null,
                     render: function(data, type, row, meta) {
-                        return ('<a data-name="'+data[2]+'" data-fecha="'+data[3]+'" data="'+data[0]+'" ' +
+                        return ('<a data-name="' + data[2] + '" data-fecha="' + data[3] + '" data="' + data[0] + '" ' +
                             'class="btn btn-active-danger btn-dark-basic btn-sm text-white btn_imprimir_citacion" ' +
                             'data-value="1" data-toggle="tooltip" title="Imprimir citación">' +
                             '<i class="fa fa-file-pdf-o"></i>Imprimir</a>')
 
                     }
-                }]
+                }
+            ]
         });
 
         parametrosModal(
@@ -799,18 +783,18 @@
         );
     });
 
-    $("#close-citacion").on("click", function (e) {
+    $("#close-citacion").on("click", function(e) {
         let table = $('#tbl_citacion').DataTable();
         table.destroy();
     });
 
-    $(".btn-cerrar-citacion").on("click", function (e) {
+    $(".btn-cerrar-citacion").on("click", function(e) {
         let table = $('#tbl_citacion').DataTable();
         table.destroy();
     });
 
     // imprimir citacion
-    $("#tbl_citacion").on("click", ".btn_imprimir_citacion", function (e) {
+    $("#tbl_citacion").on("click", ".btn_imprimir_citacion", function(e) {
         let name = $(this).attr("data-name");
         let fecha = $(this).attr("data-fecha");
         window.location.href = "/falta/imprimirCitacion/?name=" + name + "&fecha=" + fecha;
@@ -844,7 +828,7 @@
     });
 
     // cargar faltas segun tipo de falta
-    $("#tipo").on("change", function (e) {
+    $("#tipo").on("change", function(e) {
         let id_tipo_falta = $("#tipo").val();
         $("#id_falta").val('').trigger('change');
         $('#id_falta').empty();
@@ -857,7 +841,7 @@
     });
 
     // Cargar estudiantes segun cursos
-    $("#id_curso_paralelo").on("change", function (e) {
+    $("#id_curso_paralelo").on("change", function(e) {
         let id_curso_paralelo = $("#id_curso_paralelo").val();
         $("#id_estudiante").val('').trigger('change');
         $('#id_estudiante').empty();
