@@ -3,6 +3,17 @@
         <div class="panel">
             <div class="panel-heading">
                 <div class="panel-control">
+                    <select name="curso" id="curso" class="btn btn-primary-basic" style="color: white">
+                        <?php foreach ($this->data["cursos_paralelos"] as $key => $value) : ?>
+                            <option value="<?= $value['id_curso_paralelo'] ?>"><?= $value['curso']?></option>
+                        <?php endforeach ?>
+                        <option value="todos">TODOS</option>
+                    </select>
+
+                    <button class="btn btn-danger-basic" id="imprimir_estudiantes">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Imprimir
+                    </button>
 
                     <button class="btn btn-success btn-active-success" id="agregar_estudiante">
                         <i class="fa fa-plus-square-o"></i>
@@ -32,6 +43,28 @@
                     </thead>
 
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- GENERAR REPORTE MODAL -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="imprimir_estudiantes_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="titulo_reporte_estudiantes" style="color: white"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">×</span>
+                </button>
+            </div>
+            <div style="height: 500px; width: 100%;" class="modal-body">
+                <iframe id="estudiantes_pdf" width="100%" height="100%" src=""></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary cerrar" data-dismiss="modal" aria-label="Close">
+                    Cerrar
+                </button>
             </div>
         </div>
     </div>
@@ -374,6 +407,17 @@
             }
         });
 
+    });
+
+    // Modal del reporte
+    $("#imprimir_estudiantes").on("click", function (e) {
+        let id_curso_paralelo = $("#curso").val();
+        $("#titulo_reporte_estudiantes").html("REPORTE DE ESTUDIANTES");
+        $("#estudiantes_pdf").prop(
+            "src",
+            "<?= base_url("/")?>" + "/estudiante/imprimir/?id_curso_paralelo=" + id_curso_paralelo
+        );
+        $("#imprimir_estudiantes_modal").modal("show");
     });
     // fin script
 </script>

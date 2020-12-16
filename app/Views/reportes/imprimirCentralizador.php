@@ -34,9 +34,9 @@
                                     <div class="pad-all text-center">                                            
                                         <span class="text-1x text-thin">Paralelo</span>
                                         <p>'.$value["curso"].'</p>
-                                        <a data="'.$value["curso"].'" href="#" id="btn_imprimir_centralizador" class="text-2x" style="color: whitesmoke">
+                                        <button data="'.$value["curso"].'" data-paralelo="'.$value["id_curso_paralelo"].'" id="btn_imprimir_centralizador" class="text-2x btn" style="color: white">
                                             <i class="fa fa-print"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                                 <!--===================================================-->
@@ -78,15 +78,16 @@
 <script>
     $('.selectpicker').selectpicker();
 
-    $("a#btn_imprimir_centralizador").on("click", function (e) {
+    $("button#btn_imprimir_centralizador").on("click", function (e) {
         let paralelo = $(this).attr("data");
+        let id_curso_paralelo = $(this).attr("data-paralelo");
         let gestion = $("#gestion").val();
 
         // imprimir pdf
         $("#titulo_centralizador").html("CENTRALIZADOR DE AREAS");
         $("#centralizador_pdf").prop(
             "src",
-            "<?= base_url("/")?>" + "/reporte/imprimirCentralizadorAreas/?paralelo="+paralelo+"&gestion="+ gestion
+            "<?= base_url("/")?>" + "/reporte/imprimirCentralizadorAreas/?paralelo="+paralelo+"&gestion="+ gestion + "&id_curso_paralelo=" + id_curso_paralelo
         );
 
         $("#imprimir_centralizador_modal").modal("show");

@@ -4,6 +4,11 @@
             <div class="panel-heading">
                 <div class="panel-control">
 
+                    <button class="btn btn-danger btn-hover-danger" id="imprimir_maestros">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Imprimir
+                    </button>
+
                     <button class="btn btn-success btn-active-success" id="agregar_maestro">
                         <i class="fa fa-plus-square-o"></i>
                         Registrar
@@ -33,6 +38,28 @@
 
             </div>
 
+        </div>
+    </div>
+</div>
+
+<!-- GENERAR REPORTE MODAL -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="imprimir_maestros_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="titulo_reporte_maestros" style="color: white"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">×</span>
+                </button>
+            </div>
+            <div style="height: 500px; width: 100%;" class="modal-body">
+                <iframe id="maestros_pdf" width="100%" height="100%" src=""></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary cerrar" data-dismiss="modal" aria-label="Close">
+                    Cerrar
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -176,8 +203,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script>
     //Listar datatable
@@ -371,6 +396,15 @@
             }
         });
 
+    });
+
+    $("#imprimir_maestros").on("click", function (e) {
+        $("#titulo_reporte_maestros").html("REPORTE DE MAESTROS");
+        $("#maestros_pdf").prop(
+            "src",
+            "<?= base_url("/")?>" + "/maestro/imprimir"
+        );
+        $("#imprimir_maestros_modal").modal("show");
     });
     // fin script
 </script>

@@ -87,7 +87,6 @@ class Administrativo extends BaseController
                         "exp" => "required|max_length[2]|alpha",
                         "nombre" => "required|alpha_space",
                         "paterno" => "required|alpha_space",
-                        "materno" => "alpha_space",
                         "nacimiento" => 'required',
                         "telefono" => "required|numeric",
                         "sexo" => "required|max_length[1]|alpha",
@@ -112,9 +111,6 @@ class Administrativo extends BaseController
                         "paterno" => [
                             "required" => "El apellido paterno es requerido",
                             "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos o espacios."
-                        ],
-                        "materno" => [
-                            "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos o espacios."
                         ],
                         "nacimiento" => [
                             "required" => "La fecha de nacimiento es requerido"
@@ -240,8 +236,7 @@ class Administrativo extends BaseController
                         "edit_ci"               => "required|alpha_numeric|min_length[6]",
                         "edit_exp"              => "required|max_length[2]|alpha",
                         "edit_nombre"           => "required|alpha_space",
-                        "edit_paterno"          => "required|alpha_space",
-                        "edit_materno"          => "alpha_space",
+                        "edit_paterno"          => "required",
                         "edit_nacimiento"       => 'required',
                         "edit_telefono"         => "required|numeric",
                         "edit_sexo"             => "required|max_length[1]|alpha",
@@ -264,11 +259,7 @@ class Administrativo extends BaseController
                             "alpha_space" => "El nombre debe llevar caracteres alfabéticos o espacios."
                         ],
                         "edit_paterno" => [
-                            "required" => "El apellido paterno es requerido",
-                            "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos o espacios."
-                        ],
-                        "edit_materno" => [
-                            "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos o espacios."
+                            "required" => "El apellido paterno es requerido"
                         ],
                         "edit_nacimiento" => [
                             "required" => "La fecha de nacimiento es requerido"

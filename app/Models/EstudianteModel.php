@@ -7,10 +7,12 @@ use CodeIgniter\Database\Database;
 class EstudianteModel extends Database
 {
     public $db = null;
+    public $fecha = null;
 
     public function __construct()
     {
         $this->db = \config\Database::connect();
+        $this->fecha = new \DateTime();
     }
 
     // PERSONA
@@ -102,4 +104,30 @@ class EstudianteModel extends Database
         $builder->where("p.id_persona", $id);
         return $builder->get()->getResultArray();
     }
+
+    // select para listado de estudiantes con sus cursos
+    public function listarEstudiantesCursos($curso_paralelo)
+    {
+        $builder = $this->db->table("rs_view_estudiantes_cursos_consulta");
+        $builder->select('rude, ci, nombre_completo, curso, nacimiento, telefono, sexo, gestion');
+        $builder->where("estado", 1);
+        if ($curso_paralelo != "todos")
+        {
+            $builder->where("id_curso_paralelo", $curso_paralelo);
+        }
+
+        $builder->where("gestion", $this->fecha->format('Y'));
+        return $builder->get()->getResultArray();
+    }
+
+    public function seleccionarCursoParalelo($id_curso_paralelo)
+    {
+        $builder = $this->db->table("rs_view_estudiantes_cursos_consulta");
+        $builder->select('curso');
+        $builder->where("estado", 1);
+        $builder->where("id_curso_paralelo", $id_curso_paralelo);
+        $builder->where("gestion", $this->fecha->format('Y'));
+        return $builder->get()->getResultArray();
+    }
+
 }// class

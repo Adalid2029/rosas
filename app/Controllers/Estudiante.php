@@ -1,11 +1,11 @@
 <?php
 
-
 namespace App\Controllers;
 
-
+use App\Controllers\Reportes\EstudiantesReporte;
 use App\Libraries\Ssp;
 use App\Models\AdministrativoModel;
+use App\Models\AsistenciaModel;
 use App\Models\EstudianteModel;
 
 class Estudiante extends BaseController
@@ -13,7 +13,9 @@ class Estudiante extends BaseController
 
     public $model = null;
     public $fecha = null;
-    public $administrativo = null;
+    public $administrativo;
+    public $asistencia;
+    public $reporteEstudiante;
 
     public function __construct()
     {
@@ -21,12 +23,15 @@ class Estudiante extends BaseController
         $this->model = new EstudianteModel();
         $this->fecha = new \DateTime();
         $this->administrativo = new AdministrativoModel();
+        $this->asistencia = new AsistenciaModel();
+        $this->reporteEstudiante = new EstudiantesReporte();
     }
 
     // Cargar la vista estudiantes
     public function listarEstudiantes()
     {
-        return $this->templater->view('personas/listarEstudiantes', []);
+        $this->data["cursos_paralelos"] = $this->asistencia->listarCursosParalelos();
+        return $this->templater->view('personas/listarEstudiantes', $this->data);
     }
 
     // Listado de estudiantes
@@ -86,7 +91,6 @@ class Estudiante extends BaseController
                             "exp" => "required|max_length[2]|alpha",
                             "nombres" => "required|alpha_space",
                             "paterno" => "required|alpha_space",
-                            "materno" => "alpha_space",
                             "nacimiento" => 'required',
                             "telefono" => "required|numeric|min_length[6]",
                             "sexo" => "required|max_length[1]|alpha",
@@ -114,9 +118,6 @@ class Estudiante extends BaseController
                             "paterno" => [
                                 "required" => "El apellido paterno es requerido",
                                 "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos o espacios."
-                            ],
-                            "materno" => [
-                                "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos o espacios."
                             ],
                             "nacimiento" => [
                                 "required" => "La fecha de nacimiento es requerido"
@@ -213,7 +214,6 @@ class Estudiante extends BaseController
                         "exp" => "required|max_length[2]|alpha",
                         "nombres" => "required|alpha_space",
                         "paterno" => "required|alpha_space",
-                        "materno" => "alpha_space",
                         "nacimiento" => 'required',
                         "telefono" => "required|numeric|min_length[6]",
                         "sexo" => "required|max_length[1]|alpha",
@@ -241,9 +241,6 @@ class Estudiante extends BaseController
                         "paterno" => [
                             "required" => "El apellido paterno es requerido",
                             "alpha_space" => "El apellido paterno debe llevar caracteres alfabéticos o espacios."
-                        ],
-                        "materno" => [
-                            "alpha_space" => "El apellido materno debe llevar caracteres alfabéticos o espacios."
                         ],
                         "nacimiento" => [
                             "required" => "La fecha de nacimiento es requerido"
@@ -377,4 +374,21 @@ class Estudiante extends BaseController
             }
         }
     }
+
+    // imprimir pdf
+    public function imprimir()
+    {
+        $data = array();
+        $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
+        $data = $this->model->listarEstudiantesCursos($id_curso_paralelo);
+        $curso = "";
+        if ($id_curso_paralelo != "todos")
+        {
+            $curso = $this->model->seleccionarCursoParalelo($id_curso_paralelo);
+        }
+
+        $this->response->setContentType('application/pdf');
+        $this->reporteEstudiante->imprimir($data, $curso);
+    }
+
 }// class

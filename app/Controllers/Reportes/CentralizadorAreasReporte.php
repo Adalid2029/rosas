@@ -284,9 +284,9 @@ class CentralizadorAreasReporte extends FPDF
             $this->SetX(15);
             $this->SetFontSize(8);
             $this->Cell(5, 6, "$n", 1, null, "C");
-            $this->Cell(35, 6, "CONDORI", 1);
-            $this->Cell(35, 6, "ZAPANA", 1);
-            $this->Cell(35, 6, "JUAN CARLOS", 1);
+            $this->Cell(35, 6, "USER", 1);
+            $this->Cell(35, 6, "USER", 1);
+            $this->Cell(35, 6, "USER", 1);
             for ($n = 1; $n <= 14; $n++) {
                 $this->SetFontSize(7);
                 $this->Cell(5, 6, 50 + $n, 1, null, "C");
