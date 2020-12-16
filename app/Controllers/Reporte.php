@@ -135,8 +135,12 @@ class Reporte extends  BaseController
     public function imprimirCentralizadorAreas()
     {
         $paralelo = $this->request->getGet("paralelo");
+        $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
         $gestion = $this->request->getGet("gestion");
         $data = array();
+
+
+
         $this->response->setContentType('application/pdf');
         $this->reporteCentralizador->imprimir($data, $paralelo, $gestion);
     }

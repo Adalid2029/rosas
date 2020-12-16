@@ -510,3 +510,11 @@ join `rs_curso` `c` on
 join `rs_paralelo` `rp` on
     (`rp`.`id_paralelo` = `cp`.`id_paralelo`));
 
+    -- vista calificacion
+    create or replace view rs_view_calificacion as
+   select rc.id_calificacion, rc.id_estudiante, rc.id_curso_paralelo, rc.id_materia, rm.codigo, rc.nota1, rc.nota2, rc.nota3, rc.fecha_registro
+   from rs_calificacion rc
+   inner join rs_estudiante re ON rc.id_estudiante = re.id_estudiante
+   inner join rs_persona rp on re.id_estudiante =rp.id_persona
+   inner join rs_materia rm on rm.id_materia = rc.id_materia
+
