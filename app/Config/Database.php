@@ -36,7 +36,7 @@ class Database extends \CodeIgniter\Database\Config
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'db_rosas3',
+		'database' => 'prueba_rosas',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => 'rs_',
 		'pConnect' => false,

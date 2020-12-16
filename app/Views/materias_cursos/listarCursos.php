@@ -47,7 +47,7 @@
                     <div class="panel-body">
 
                         <div class="form-group row">
-                            <label for="id_curso" class="col-md-3 col-form-label">Nivel:</label>
+                            <label for="id_curso" class="col-md-3 col-form-label">Grado:</label>
                             <div class="col-md-12">
                                 <select name="id_curso" id="id_curso" class="form-control" required>
                                     <?php
@@ -193,7 +193,7 @@
 
     // Select2 nivel
     $("#id_curso").select2({
-        placeholder: "-- Seleccione Nivel --",
+        placeholder: "-- Seleccione Grado --",
         allowClear: true,
         dropdownParent: $(`#agregar-curso`),
         width: '100%'
