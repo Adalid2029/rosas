@@ -22,7 +22,7 @@
                                         <p><?= $value['nivel'] ?></p>
                                         <div class="list-group bg-trans mar-no">
                                             <?php foreach ($value['materiasCurso'] as $key => $value) : ?>
-                                                <a class="list-group-item list-item-sm seleccion-materia" data-id-materia="1" data-id-maestro="43" data-id-curso-paralelo="7">
+                                                <a class="list-group-item list-item-sm seleccion-materia" data-id-materia="<?= $value['id_materia'] ?>" data-id-maestro="<?= $value['id_maestro'] ?>" data-id-curso-paralelo="<?= $value['id_curso_paralelo'] ?>">
                                                     <span class="label label-danger pull-right"><?= $value['codigo'] ?> <i class="fa fa-print"></i></span>
                                                     <?= $value['nombre'] ?>
                                                 </a>

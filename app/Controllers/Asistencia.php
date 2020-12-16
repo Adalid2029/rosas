@@ -10,7 +10,7 @@ class Asistencia extends BaseController
 {
     public $model = null;
     public $fecha = null;
-    public $reporteAsistencia ;
+    public $reporteAsistencia;
 
     public function __construct()
     {
@@ -35,7 +35,7 @@ class Asistencia extends BaseController
         $primaryKey = 'id_persona';
         $curso_recibido = $this->request->getGet("curso");
         $curso = explode(" ", $curso_recibido);
-        $where = "estado = 1 and gestion=".$anio." and nivel='".$curso[0]."' and paralelo='".$curso[1]."'";
+        $where = "estado = 1 and gestion=" . $anio . " and nivel='" . $curso[0] . "' and paralelo='" . $curso[1] . "'";
         $columns = array(
             array('db' => 'id_persona', 'dt'          => 0),
             array('db' => 'id_curso_estudiante', 'dt' => 1),
@@ -53,21 +53,35 @@ class Asistencia extends BaseController
             'host' => $this->db->hostname
         );
 
-        return $this->response->setJSON(json_encode(SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where)));
+        $sspResult = SSP::complex($_GET, $sql_details, $table, $primaryKey, $columns, null, $where);
+        $finalResultado = [];
+        $resultado = [];
+        foreach ($sspResult as $key => $value) {
+            if (is_array($value))
+                foreach ($value as $key => $val) {
+                    $valor = $this->db->table('asistencia')->select('valor')->where(['id_estudiante' => $val[0], 'fecha' => date('Y-m-d')])->get()->getRowArray();
+                    $resultado[] = array_merge($val, [is_null($valor) ? null : $valor['valor']]);
+                }
+        }
+        $finalResultado['draw'] = $sspResult['draw'];
+        $finalResultado['recordsFiltered'] = $sspResult['recordsFiltered'];
+        $finalResultado['recordsTotal'] = $sspResult['recordsTotal'];
+        $finalResultado['data'] = $resultado;
+
+        return $this->response->setJSON(json_encode($finalResultado));
     }
 
     // insertar asistencia o actualizar
     public function agregar_asistencia()
     {
-        if($this->request->isAJAX())
-        {
+        if ($this->request->isAJAX()) {
             $respuesta = $this->model->verificarMarcadoAsistenciaHoy($this->request->getPost("id"));
-            if($respuesta){
+            if ($respuesta) {
                 // Actualizar
                 $data = array(
                     "id_maestro"    => $this->request->getPost("id_maestro"),
                     "valor"         => $this->request->getPost("valor"),
-                    "actualizado_en"=> $this->fecha->format('Y-m-d H:i:s')
+                    "actualizado_en" => $this->fecha->format('Y-m-d H:i:s')
                 );
                 $cond = array(
                     "id_estudiante" => $this->request->getPost("id"),
@@ -75,13 +89,12 @@ class Asistencia extends BaseController
                 );
 
                 $respuesta1 = $this->model->asistencia("update", $data, $cond, null);
-                if ($respuesta1)
-                {
+                if ($respuesta1) {
                     return $this->response->setJSON(json_encode(array(
                         'exito' => "Asistencia modificado correctamente"
                     )));
                 }
-            }else{
+            } else {
                 // Insertar
                 $data = array(
                     "id_estudiante" => $this->request->getPost("id"),
@@ -93,8 +106,7 @@ class Asistencia extends BaseController
                 );
 
                 $respuesta1 = $this->model->asistencia("insert", $data, null, null);
-                if (is_numeric($respuesta1))
-                {
+                if (is_numeric($respuesta1)) {
                     return $this->response->setJSON(json_encode(array(
                         'exito' => "Asistencia registrado correctamente"
                     )));
@@ -111,7 +123,7 @@ class Asistencia extends BaseController
 
     public function imprimir()
     {
-//        set_time_limit(1000000000);
+        //        set_time_limit(1000000000);
         $curso_recibido = $this->request->getGet("paralelo");
         $curso = explode(" ", $curso_recibido);
         $fechaI = $this->request->getGet("fechaInicio");
@@ -121,23 +133,21 @@ class Asistencia extends BaseController
         // Se consulta los estudiantes del paralelo
         $id_persona = $this->model->verificarEstudiantesAsistencia($fechaI, $fechaF, $curso);
 
-        if(count($id_persona) == 0 && count($fechas) > 20)
-        {
+        if (count($id_persona) == 0 && count($fechas) > 20) {
             $data = array();
             $this->response->setContentType('application/pdf');
             $this->reporteAsistencia->imprimir($data, $curso, $fechaI, $fechaF, $fechas);
-        }else{
+        } else {
             $data = array();
             ///
             $a = 0;
-            for ($i = 0; $i < count($id_persona); $i++):
+            for ($i = 0; $i < count($id_persona); $i++) :
                 $persona2 = array();
                 array_push($persona2, $this->model->verificarDatos($id_persona[$a]["id_persona"], "paterno")[0]["paterno"]);
                 array_push($persona2, $this->model->verificarDatos($id_persona[$a]["id_persona"], "materno")[0]["materno"]);
                 array_push($persona2, $this->model->verificarDatos($id_persona[$a]["id_persona"], "nombres")[0]["nombres"]);
-                for ($g = 0; $g < count($fechas); $g++)
-                {
-                    array_push($persona2, $this->model->verificarAsistenciaFecha($id_persona[$a]["id_persona"],$fechas[$g]["fecha"])[0]["valor"]);
+                for ($g = 0; $g < count($fechas); $g++) {
+                    array_push($persona2, $this->model->verificarAsistenciaFecha($id_persona[$a]["id_persona"], $fechas[$g]["fecha"])[0]["valor"]);
                 }
                 array_push($persona2, $this->model->contarAsistenciaEstudiantes($fechaI, $fechaF, $curso, $id_persona[$a]["id_persona"], "valor", "A")[0]["valor"]);
                 array_push($persona2, $this->model->contarAsistenciaEstudiantes($fechaI, $fechaF, $curso, $id_persona[$a]["id_persona"], "valor", "R")[0]["valor"]);
@@ -150,7 +160,5 @@ class Asistencia extends BaseController
             $this->response->setContentType('application/pdf');
             $this->reporteAsistencia->imprimir($data, $curso, $fechaI, $fechaF, $fechas);
         }
-
     }
-
 }// class

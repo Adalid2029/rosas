@@ -28,9 +28,8 @@ class Kardex extends BaseController
         $this->data["tipo_faltas"] = $this->model->listarTipoFaltas();
         $this->data["maestros"] = $this->model->listarMaestros();
         $this->data["materias"] = $this->model->listarMaterias();
-
+        $this->data['access'] = $this->db->table('grupo g')->select('GROUP_CONCAT(nombre_grupo) as grupo_usuario')->join('grupo_usuario gu', 'gu.id_grupo = g.id_grupo ')->where(['gu.id_usuario' => $this->user['id_persona']])->get()->getRowArray()['grupo_usuario'];
         return $this->templater->view('kardex/listarKardex', $this->data);
-
     }
 
     // Listado de kardex
@@ -104,8 +103,7 @@ class Kardex extends BaseController
                 );
 
                 $res = $this->model->kardex("select", null, $cond, null);
-                if(is_null($res->getRowArray()))
-                {
+                if (is_null($res->getRowArray())) {
                     if (!$val) {
                         // se devuelve todos los errores
                         return $this->response->setJSON(json_encode(array(
@@ -128,13 +126,11 @@ class Kardex extends BaseController
                             )));
                         }
                     }
-                }else{
+                } else {
                     return $this->response->setJSON(json_encode(array(
-                        "warni" => "El estudiante ya está registrado para esta gestión: ". $this->request->getPost("gestion")
+                        "warni" => "El estudiante ya está registrado para esta gestión: " . $this->request->getPost("gestion")
                     )));
                 }
-
-
             } else {
                 // actualizar formulario
                 //validación de formulario
@@ -231,5 +227,4 @@ class Kardex extends BaseController
         $respuesta = $this->estudiante->listarEstudiantesCursos($id_curso_paralelo);
         return json_encode($respuesta);
     }
-
 }

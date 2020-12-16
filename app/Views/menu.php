@@ -164,7 +164,7 @@
 							</li>
 						<?php endif; ?>
 
-						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO'])) : ?>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO', 'ESTUDIANTE'])) : ?>
 							<!--Menu list Kardex Estudiantil -->
 							<li class="">
 								<a href="#" data-original-title="" title="">
@@ -182,43 +182,45 @@
 								</ul>
 							</li>
 						<?php endif; ?>
-						<!--Menu list Reportes -->
-						<li class="">
-							<a href="#" data-original-title="" title="">
-								<i class="fa fa fa-print"></i>
-								<span class="menu-title">Reportes</span>
-								<i class="arrow"></i>
-							</a>
+						<?php if (is(['SUPERADMIN', 'DIRECTOR', 'SECRETARIA', 'MAESTRO'])) : ?>
+							<!--Menu list Reportes -->
+							<li class="">
+								<a href="#" data-original-title="" title="">
+									<i class="fa fa fa-print"></i>
+									<span class="menu-title">Reportes</span>
+									<i class="arrow"></i>
+								</a>
 
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('asistencia/imprimirAsistencia') ?>">
-										<i class="fa fa-circle-o"></i>Asistencia
-									</a>
-								</li>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li>
+										<a class="menu--link" href="<?= base_url('asistencia/imprimirAsistencia') ?>">
+											<i class="fa fa-circle-o"></i>Asistencia
+										</a>
+									</li>
 
-								<li>
-									<a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
-										<i class="fa fa-circle-o"></i>Seguimiento Ped.
-									</a>
-								</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
+											<i class="fa fa-circle-o"></i>Seguimiento Ped.
+										</a>
+									</li>
 
 
-								<li>
-									<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizadorInterno') ?>">
-										<i class="fa fa-circle-o"></i>Centralizador Int.
-									</a>
-								</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizadorInterno') ?>">
+											<i class="fa fa-circle-o"></i>Centralizador Int.
+										</a>
+									</li>
 
-								<li>
-									<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizador') ?>">
-										<i class="fa fa-circle-o"></i>Centralizador Área.
-									</a>
-								</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizador') ?>">
+											<i class="fa fa-circle-o"></i>Centralizador Área.
+										</a>
+									</li>
 
-							</ul>
-						</li>
+								</ul>
+							</li>
+						<?php endif; ?>
 					</ul>
 				</div>
 				<div class="nano-pane">
