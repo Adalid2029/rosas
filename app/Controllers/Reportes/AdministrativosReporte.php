@@ -9,7 +9,7 @@ class AdministrativosReporte extends FPDF
     public function imprimir($data = null)
     {
         $this->AddPage('P', 'letter');
-        $this->Image("img/images/reporte_encabezado.png", 6 ,5, 200 , 20,'PNG', 'https://rosas.com');
+        $this->Image("img/images/logo_oficial.png", 49 ,5, 17 , 17,'PNG');
         $this->SetFont('Arial', 'B', 13);
         $this->Cell(0, 3, utf8_decode('UNIDAD EDUCATIVA "LAS ROSAS"'), 0, 1, 'C', 0);
         $this->Ln();
@@ -43,7 +43,7 @@ class AdministrativosReporte extends FPDF
         $this->SetLineWidth(.3);
 
         // Header
-        $w = array(10, 23, 50, 20, 25, 15, 30, 25);
+        $w = array(8, 19, 64, 17, 25, 11, 30, 25);
         for ($i = 0; $i < count($header); $i++){
             $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
         }
@@ -168,6 +168,85 @@ class AdministrativosReporte extends FPDF
                 $this->x = $this->lMargin;
         } else
             $this->x += $w;
+    }
+
+    // Reporte de maestros
+    public function imprimirMaestros($data = null)
+    {
+        $this->AddPage('P', 'letter');
+        $this->Image("img/images/logo_oficial.png", 49 ,5, 17 , 17,'PNG');
+        $this->SetFont('Arial', 'B', 13);
+        $this->Cell(0, 3, utf8_decode('UNIDAD EDUCATIVA "LAS ROSAS"'), 0, 1, 'C', 0);
+        $this->Ln();
+        $this->SetFont('Arial', 'BU', 10);
+        $this->Cell(0, 3, utf8_decode('MAESTROS'), 0, 1, 'C', 0);
+
+        $header = array(
+            utf8_decode('Nº'),
+            utf8_decode('CI'),
+            utf8_decode('Nombres y Apellidos'),
+            utf8_decode('Nacimiento'),
+            utf8_decode('Telefono'),
+            utf8_decode('Sexo'),
+            utf8_decode('Grado Académico')
+        );
+
+        $this->Ln(10);
+        $this->SetX(15);
+        $this->SetFont('Arial', '', 9);
+        $this->imprimirMaestrosData($header, $data);
+        $this->Output();
+    }
+
+    function imprimirMaestrosData($header, $data)
+    {
+        $this->SetX(15);
+        $this->SetFillColor(105, 105, 105);
+        $this->SetTextColor(255);
+        $this->SetDrawColor(105, 105, 105);
+        $this->SetLineWidth(.3);
+
+        // Header
+        $w = array(10, 18, 65, 22, 20, 15,35);
+        for ($i = 0; $i < count($header); $i++){
+            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
+        }
+        $this->Ln();
+        // Color and font restoration
+        $this->SetFillColor(192, 192, 192);
+        $this->SetTextColor(0);
+
+        // Data
+        $this->SetX(15);
+        $fill = false;
+        if ($data != null) {
+
+            for ($i = 0; $i < count($data); $i++) {
+                $this->SetX(15);
+                $this->SetFont('Arial', '', 8);
+                $this->Cell($w[0], 8, $i+1, 'LR', 0, 'C', $fill);
+                $this->Cell($w[1], 8, utf8_decode($data[$i]['ci']), 'LR', 0, 'C', $fill);
+                $this->Cell($w[2], 8, utf8_decode($data[$i]['nombres_apellidos']), 'LR', 0, 'L', $fill);
+                $this->Cell($w[3], 8, utf8_decode($data[$i]['nacimiento']), 'LR', 0, 'L', $fill);
+                $this->Cell($w[4], 8, utf8_decode($data[$i]['telefono']), 'LR', 0, 'C', $fill);
+                $this->Cell($w[5], 8, utf8_decode($data[$i]['sexo']), 'LR', 0, 'C', $fill);
+                $this->Cell($w[6], 8, utf8_decode($data[$i]['grado_academico']), 'LR', 0, 'C', $fill);
+
+                $this->Ln();
+
+                $fill = !$fill;
+            }
+        } else {
+            $this->SetX(15);
+            $this->Cell(196, 8, "NO EXISTEN DATOS PARA MOSTRAR", 'LR', 0, 'C', false);
+            $this->Ln();
+        }
+
+
+
+        // Closing line
+        $this->SetX(15);
+        $this->Cell(array_sum($w), 0, '', 'T');
     }
 
 }// class

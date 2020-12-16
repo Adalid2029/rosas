@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\TutorReporte;
 use App\Libraries\Ssp;
 use App\Models\AdministrativoModel;
 use App\Models\TutorModel;
@@ -11,6 +12,7 @@ class Tutor extends BaseController
     public $model = null;
     public $fecha = null;
     public $administrativo = null;
+    public $reporteTutor = null;
 
     public function __construct()
     {
@@ -18,7 +20,8 @@ class Tutor extends BaseController
         $this->model = new TutorModel();
         $this->fecha = new \DateTime();
         $this->administrativo = new AdministrativoModel();
-    }
+        $this->reporteTutor = new TutorReporte();
+     }
 
     // Cargar la vista tutor
     public function listarTutor()
@@ -341,5 +344,13 @@ class Tutor extends BaseController
                 )));
             }
         }
+    }
+
+    // Imprimir en pdf
+    public function imprimir()
+    {
+        $data =$this->model->listarTutoresReporte();
+        $this->response->setContentType('application/pdf');
+        $this->reporteTutor->imprimir($data);
     }
 }// class

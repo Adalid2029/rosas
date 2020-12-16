@@ -102,4 +102,13 @@ class TutorModel extends Database
         $builder->where("p.id_persona", $id);
         return $builder->get()->getResultArray();
     }
+
+    // select para edit persona y administrativo
+    public function listarTutoresReporte()
+    {
+        $builder = $this->db->table("view_tutor");
+        $builder->select('ci, nombres_apellidos, correo, telefono, sexo, parentesco');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
 }// class

@@ -118,4 +118,14 @@ class MaestroModel extends Database
         $builder->join('paralelo p', 'p.id_paralelo = cp.id_paralelo');
         return is_array($condicion) ? $builder->getWhere($condicion) : $builder->get();
     }
+
+    // select para edit persona y maestro
+    public function maestroReporte()
+    {
+        $builder = $this->db->table("view_maestro");
+        $builder->select('ci, nombres_apellidos, nacimiento, telefono, sexo, grado_academico');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
 }// class

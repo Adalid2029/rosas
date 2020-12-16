@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Reportes\AdministrativosReporte;
 use App\Libraries\Ssp;
 use App\Models\AdministrativoModel;
 use App\Models\MaestroModel;
@@ -11,12 +12,14 @@ class Maestro extends BaseController
     public $model = null;
     public $fecha = null;
     public $administrativo = null;
+    public $reporteMaestro = null;
     public function __construct()
     {
         parent::__construct();
         $this->model = new MaestroModel();
         $this->fecha = new \DateTime();
         $this->administrativo = new AdministrativoModel();
+        $this->reporteMaestro = new AdministrativosReporte();
     }
 
     public function listarAsignacionesMateriaMaestro()
@@ -418,4 +421,11 @@ class Maestro extends BaseController
             }
         }
     }
-}
+
+    public function imprimir()
+    {
+        $data = $this->model->maestroReporte();
+        $this->response->setContentType('application/pdf');
+        $this->reporteMaestro->imprimirMaestros($data);
+    }
+}// class

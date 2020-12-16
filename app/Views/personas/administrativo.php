@@ -4,10 +4,10 @@
             <div class="panel-heading">
                 <div class="panel-control">
 
-                    <a class="btn btn-danger-basic btn-active-success" id="imprimir_administrativo" target="_blank" href="<?= base_url("/administrativo/imprimir") ?>">
+                    <button class="btn btn-danger-basic btn-active-success" id="imprimir_administrativo" >
                         <i class="fa fa-file-pdf-o"></i>
                         Imprimir
-                    </a>
+                    </button>
 
                     <button class="btn btn-success btn-active-success" id="agregar_administrativo">
                         <i class="fa fa-plus-square-o"></i>
@@ -544,14 +544,13 @@
 
     });
 
-    $("a#btn_imprimir_asistencia").on("click", function (e) {
-        let paralelo = $(this).attr("data");
-        $("#titulo_reporte_asistencia").html("REPORTE DE ASISTENCIA CURSO: " + paralelo);
-        $("#reporte_pdf").prop(
+    $("#imprimir_administrativo").on("click", function (e) {
+        $("#titulo_reporte_administrativos").html("REPORTE DE ADMINISTRATIVOS");
+        $("#administrativos_pdf").prop(
             "src",
-            "<?= base_url("/")?>" + "/asistencia/imprimir/?paralelo="+paralelo+"&fechaInicio="+fechaInicial+"&fechaFinal="+fechaFinal
+            "<?= base_url("/")?>" + "/administrativo/imprimir"
         );
-        $("#imprimir_reporte_modal").modal("show");
+        $("#imprimir_administrativos_modal").modal("show");
     });
     // fin script
 </script>
