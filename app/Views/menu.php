@@ -191,35 +191,36 @@
 									<i class="arrow"></i>
 								</a>
 
-							<!--Submenu-->
-							<ul class="collapse" aria-expanded="false">
-								<li>
-									<a class="menu--link" href="<?= base_url('asistencia/imprimirAsistencia') ?>">
-										<i class="fa fa-circle-o"></i>Asistencia
-									</a>
-								</li>
+								<!--Submenu-->
+								<ul class="collapse" aria-expanded="false">
+									<li>
+										<a class="menu--link" href="<?= base_url('asistencia/imprimirAsistencia') ?>">
+											<i class="fa fa-circle-o"></i>Asistencia
+										</a>
+									</li>
 
-								<li>
-									<a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
-										<i class="fa fa-circle-o"></i>Seguimiento Ped.
-									</a>
-								</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('reporte/imprimirSeguimiento') ?>">
+											<i class="fa fa-circle-o"></i>Seguimiento Ped.
+										</a>
+									</li>
 
 
-								<li>
-									<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizadorInterno') ?>">
-										<i class="fa fa-circle-o"></i>Centralizador Int.
-									</a>
-								</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizadorInterno') ?>">
+											<i class="fa fa-circle-o"></i>Centralizador Int.
+										</a>
+									</li>
 
-								<li>
-									<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizador') ?>">
-										<i class="fa fa-circle-o"></i>Centralizador Área.
-									</a>
-								</li>
+									<li>
+										<a class="menu--link" href="<?= base_url('reporte/imprimirCentralizador') ?>">
+											<i class="fa fa-circle-o"></i>Centralizador Área.
+										</a>
+									</li>
 
-							</ul>
-						</li>
+								</ul>
+							</li>
+						<?php endif; ?>
 					</ul>
 				</div>
 				<div class="nano-pane">
