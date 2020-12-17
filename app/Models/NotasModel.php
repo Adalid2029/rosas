@@ -81,18 +81,49 @@ class NotasModel extends Database
 
     public function estudiantesCalificaciones($condicion = null, $orden = '', $agrupacion = '')
     {
-        $builder = $this->db->table('estudiante e');
-        $builder->select("*");
-        $builder->join('persona p', 'p.id_persona = e.id_estudiante');
-        $builder->join('curso_estudiante ce', 'ce.id_estudiante = e.id_estudiante');
-        $builder->join('curso_paralelo cp', 'cp.id_curso_paralelo = ce.id_curso_paralelo');
-        $builder->join('materia_maestro mm', 'mm.id_curso_paralelo = cp.id_curso_paralelo');
-        $builder->join('calificacion c', 'c.id_materia = mm.id_materia and c.id_maestro = mm.id_maestro and c.id_curso_paralelo = mm.id_curso_paralelo and c.id_estudiante = e.id_estudiante', 'left');
-
-        return is_array($condicion) ? $builder->getWhere($condicion) : $builder->get();
-
-        $builder->where('advance_amount <', function (BaseBuilder $builder) {
-            return $builder->select('*', false)->from('orders')->where('id >', 2);
-        });
+        return $this->db->query("select
+        `id_estudiante`,
+        `nombres`,
+        `materno`,
+        `paterno`,
+        `nacimiento`,
+        `ci`,
+        `nota1`,
+        `nota2`,
+        `nota3`,
+        `nota_final`
+      from
+        (
+          SELECT
+            e.id_estudiante,
+            p.estado,
+            rude,
+            nombres,
+            materno,
+            paterno,
+            ci,
+            rmm.id_maestro,
+            cp.id_curso_paralelo,
+            rmm.id_materia,
+            rc.nota1,
+            rc.nota2,
+            rc.nota3,
+            rc.nota_final,
+            nacimiento,
+            sexo,
+            telefono,
+            domicilio
+          from
+            rs_estudiante e
+            join rs_persona p on p.id_persona = e.id_estudiante
+            join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
+            join rs_curso_paralelo cp on cp.id_curso_paralelo = rce.id_curso_paralelo
+            join rs_materia_maestro rmm on rmm.id_curso_paralelo = cp.id_curso_paralelo
+            left join rs_calificacion rc on rc.id_materia = rmm.id_materia
+            and rc.id_maestro = rmm.id_maestro
+            and rc.id_curso_paralelo = rmm.id_curso_paralelo
+            and rc.id_estudiante = e.id_estudiante
+        ) temp 
+         WHERE id_curso_paralelo = " . $condicion['id_curso_paralelo'] . " and id_maestro = " . $condicion['id_maestro'] . " and id_materia = " . $condicion['id_materia'] . "");
     }
 }
