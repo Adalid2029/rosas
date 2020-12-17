@@ -103,7 +103,7 @@ class Falta extends BaseController
                                     if (is_numeric($re)) {
 
                                         foreach ($this->kardex->listarTutoresEstudiante(['k.id_kardex' => $this->request->getPost("id_kardex_falta")])->getResultArray() as $key => $value) {
-                                            (new Email)->enviarCorreo($value['correo'], 'Citacion ' . date('Y-m-d H:i:s'), 'Su hijo no se porto bien', 'text');
+                                            (new Email)->enviarCorreo($value['correo'], 'Citacion ' . date('Y-m-d H:i:s'), utf8_decode('La Comisión Técnica Pedagógica de nivel secundaria en coordinación con la Dirección, cita a usted señor padre o madre de familia a la entrevista con el asesor de curso y secretaria durante la semana del año en curso entre los horarios de 8:00 AM a 13:30 PM en los predios de la Unidad Educativa, para tratar el rendimiento curricular de su hijo/a'), 'text');
                                         }
                                         $res = $this->kardex->kardex("update", array("contador" => 0), array("id_kardex" => $this->request->getPost("id_kardex_falta")), null);
                                         return $this->response->setJSON(json_encode(array(
