@@ -132,4 +132,45 @@ class AdministrativoModel extends Database
         return $builder->get()->getResultArray();
     }
 
+    public function contarKardex()
+    {
+        $builder = $this->db->table("kardex");
+        $builder->select('count(id_kardex) as cantidad');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
+    public function contarCursos()
+    {
+        $builder = $this->db->table("curso_paralelo");
+        $builder->select('count(id_curso_paralelo) as cantidad');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
+    public function contarAsistencia()
+    {
+        $builder = $this->db->table("asistencia");
+        $builder->select('count(id_asistencia) as cantidad');
+        $builder->where("estado", 1);
+        return $builder->get()->getResultArray();
+    }
+
+    public function contarCalificaciones()
+    {
+        $builder = $this->db->table("calificacion");
+        $builder->select('count(id_calificacion) as cantidad');
+        return $builder->get()->getResultArray();
+    }
+
+    public function contarFaltasPorFechas()
+    {
+        $builder = $this->db->table("falta_cometida");
+        $builder->select('count(fecha), fecha');
+        $builder->where("estado", 1);
+        $builder->groupBy("fecha");
+        $builder->limit(9);
+        return $builder->get()->getResultArray();
+    }
+
 }// class
