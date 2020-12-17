@@ -518,3 +518,8 @@ join `rs_paralelo` `rp` on
    inner join rs_persona rp on re.id_estudiante =rp.id_persona
    inner join rs_materia rm on rm.id_materia = rc.id_materia
 
+   --
+   create or replace view rs_estudiante_notas_curso as
+   select rc.id_calificacion,rc.id_estudiante, rc.id_curso_paralelo,rm.id_materia, rm.codigo, rm.nombre, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, year (rc.fecha_registro) as gestion
+   from rs_calificacion rc inner join rs_materia rm on rc.id_materia = rm.id_materia;
+
