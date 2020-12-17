@@ -135,13 +135,331 @@ class Reporte extends  BaseController
     public function imprimirCentralizadorAreas()
     {
         $paralelo = $this->request->getGet("paralelo");
-        $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
-        $gestion = $this->request->getGet("gestion");
-        $data = array();
+        $id_gestion = $this->request->getGet("gestion");
 
 
+
+        $curso = explode(' ', $paralelo);
+
+        if (isset($curso[0]) && $curso[0] == "PRIMERO" || $curso[0] == "SEGUNDO") {
+            // Imprimir para los paralelos primero y segundo de secundaria
+            $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
+            $data = array();
+            $estudiantes = $this->model->listarEstudiantesCentralizador($id_curso_paralelo, $id_gestion);
+            $gestion = $this->model->sacarGestion($id_gestion);
+
+            $codigo_materias = array("LCO", "LE", "CS", "EFI", "EMU", "APV", "MAT", "TTG", "CNBIO", "VER", "CFS");
+            for($i = 0; $i < count($estudiantes); $i++)
+            {
+
+                $nombre_completo = $this->model->listarNombreCompletoEstudiante($estudiantes[$i]["id_estudiante"]);
+                $fila = array();
+                for ($j = 0; $j < count($nombre_completo); $j++)
+                {
+                    array_push($fila, $nombre_completo[$j]["paterno"]);
+                    array_push($fila, $nombre_completo[$j]["materno"]);
+                    array_push($fila, $nombre_completo[$j]["nombres"]);
+
+                    $suma1 = 0;
+                    $suma2 = 0;
+                    $suma3 = 0;
+
+                    for($h = 0; $h < count($codigo_materias); $h++)
+                    {
+                        $notas = $this->model->obtenerNotasEstudiantes($estudiantes[$i]["id_estudiante"], $codigo_materias[$h], $gestion[0]["gestion"]);
+
+                        if (count($notas) == 0 ||count($notas) == null)
+                        {
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                        }else{
+
+                            for ($b = 0; $b < count($notas); $b++)
+                            {
+                                $nota1 = $notas[0]["nota1"]== null? 0 : $notas[0]["nota1"];
+                                $nota2 = $notas[0]["nota2"]== null? 0 : $notas[0]["nota2"];
+                                $nota3 = $notas[0]["nota3"]== null? 0 : $notas[0]["nota3"];
+
+                                $suma1 = $suma1 + $nota1;
+                                $suma2 = $suma2 + $nota2;
+                                $suma3 = $suma3 + $nota3;
+
+                                array_push($fila, $notas[0]["nota1"]== null? "" : $notas[0]["nota1"]);
+                                array_push($fila,  $notas[0]["nota2"]== null? "" : $notas[0]["nota2"]);
+                                array_push($fila,  $notas[0]["nota3"]== null? "" : $notas[0]["nota3"]);
+
+                            }
+
+
+                        }
+
+
+                    }
+
+                    array_push($fila, round($suma1/11));
+                    array_push($fila, round($suma2/11));
+                    array_push($fila, round($suma3/11));
+
+
+                }
+
+                if (isset($fila)) {
+                    array_push($data, $fila);
+                }
+
+            }
+        } else if ($curso[0] == "TERCERO" || $curso[0] == "CUARTO") {
+            // Imprimir para los paralelos tercero y cuarto de secundaria
+            $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
+            $data = array();
+            $estudiantes = $this->model->listarEstudiantesCentralizador($id_curso_paralelo, $id_gestion);
+            $gestion = $this->model->sacarGestion($id_gestion);
+
+            $codigo_materias = array("LCO", "LE", "CS", "EFI", "EMU", "APV", "MAT", "TTG","CNFIS", "CNQMC", "CNBIO", "VER", "CFS");
+            for($i = 0; $i < count($estudiantes); $i++)
+            {
+
+                $nombre_completo = $this->model->listarNombreCompletoEstudiante($estudiantes[$i]["id_estudiante"]);
+                $fila = array();
+                for ($j = 0; $j < count($nombre_completo); $j++)
+                {
+                    array_push($fila, $nombre_completo[$j]["paterno"]);
+                    array_push($fila, $nombre_completo[$j]["materno"]);
+                    array_push($fila, $nombre_completo[$j]["nombres"]);
+
+                    $suma1 = 0;
+                    $suma2 = 0;
+                    $suma3 = 0;
+
+                    for($h = 0; $h < count($codigo_materias); $h++)
+                    {
+                        $notas = $this->model->obtenerNotasEstudiantes($estudiantes[$i]["id_estudiante"], $codigo_materias[$h], $gestion[0]["gestion"]);
+
+                        if (count($notas) == 0 ||count($notas) == null)
+                        {
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                        }else{
+
+                            for ($b = 0; $b < count($notas); $b++)
+                            {
+                                $nota1 = $notas[0]["nota1"]== null? 0 : $notas[0]["nota1"];
+                                $nota2 = $notas[0]["nota2"]== null? 0 : $notas[0]["nota2"];
+                                $nota3 = $notas[0]["nota3"]== null? 0 : $notas[0]["nota3"];
+
+                                $suma1 = $suma1 + $nota1;
+                                $suma2 = $suma2 + $nota2;
+                                $suma3 = $suma3 + $nota3;
+
+                                array_push($fila, $notas[0]["nota1"]== null? "" : $notas[0]["nota1"]);
+                                array_push($fila,  $notas[0]["nota2"]== null? "" : $notas[0]["nota2"]);
+                                array_push($fila,  $notas[0]["nota3"]== null? "" : $notas[0]["nota3"]);
+
+                            }
+
+
+                        }
+
+
+                    }
+
+                    array_push($fila, round($suma1/11));
+                    array_push($fila, round($suma2/11));
+                    array_push($fila, round($suma3/11));
+
+
+                }
+
+                if (isset($fila)) {
+                    array_push($data, $fila);
+                }
+
+            }
+        } else {
+            // Imprimir para los paralelos quinto y sexto de secundaria
+            $id_curso_paralelo = $this->request->getGet("id_curso_paralelo");
+            $data = array();
+            $estudiantes = $this->model->listarEstudiantesCentralizador($id_curso_paralelo, $id_gestion);
+            $gestion = $this->model->sacarGestion($id_gestion);
+
+            $codigo_materias = array("LCO", "LE", "CS", "EFI", "EMU", "APV", "MAT", "TTE","CNFIS", "CNQMC", "CNBIO", "VER", "CFS");
+            for($i = 0; $i < count($estudiantes); $i++)
+            {
+
+                $nombre_completo = $this->model->listarNombreCompletoEstudiante($estudiantes[$i]["id_estudiante"]);
+                $fila = array();
+                for ($j = 0; $j < count($nombre_completo); $j++)
+                {
+                    array_push($fila, $nombre_completo[$j]["paterno"]);
+                    array_push($fila, $nombre_completo[$j]["materno"]);
+                    array_push($fila, $nombre_completo[$j]["nombres"]);
+
+                    $suma1 = 0;
+                    $suma2 = 0;
+                    $suma3 = 0;
+
+                    for($h = 0; $h < count($codigo_materias); $h++)
+                    {
+                        $notas = $this->model->obtenerNotasEstudiantes($estudiantes[$i]["id_estudiante"], $codigo_materias[$h], $gestion[0]["gestion"]);
+
+                        if (count($notas) == 0 ||count($notas) == null)
+                        {
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                            array_push($fila, "");
+                        }else{
+
+                            for ($b = 0; $b < count($notas); $b++)
+                            {
+                                $nota1 = $notas[0]["nota1"]== null? 0 : $notas[0]["nota1"];
+                                $nota2 = $notas[0]["nota2"]== null? 0 : $notas[0]["nota2"];
+                                $nota3 = $notas[0]["nota3"]== null? 0 : $notas[0]["nota3"];
+
+                                $suma1 = $suma1 + $nota1;
+                                $suma2 = $suma2 + $nota2;
+                                $suma3 = $suma3 + $nota3;
+
+                                array_push($fila, $notas[0]["nota1"]== null? "" : $notas[0]["nota1"]);
+                                array_push($fila,  $notas[0]["nota2"]== null? "" : $notas[0]["nota2"]);
+                                array_push($fila,  $notas[0]["nota3"]== null? "" : $notas[0]["nota3"]);
+
+                            }
+
+
+                        }
+
+
+                    }
+
+                    array_push($fila, round($suma1/11));
+                    array_push($fila, round($suma2/11));
+                    array_push($fila, round($suma3/11));
+
+
+                }
+
+                if (isset($fila)) {
+                    array_push($data, $fila);
+                }
+
+            }
+
+        }
 
         $this->response->setContentType('application/pdf');
-        $this->reporteCentralizador->imprimir($data, $paralelo, $gestion);
+        $this->reporteCentralizador->imprimir($data, $paralelo, $gestion[0]["gestion"]);
     }
 }//class

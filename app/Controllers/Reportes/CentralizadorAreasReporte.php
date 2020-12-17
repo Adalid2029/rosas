@@ -142,19 +142,22 @@ class CentralizadorAreasReporte extends FPDF
         }
 
         $this->ln();
+
         // llenado de datos
-        for ($n = 1; $n <= 2; $n++) {
-            $this->SetX(25);
+
+        for ($k = 0; $k < count($data); $k++) {
             $this->SetFontSize(8);
-            $this->Cell(5, 6, "$n", 1, null, "C");
-            $this->Cell(35, 6, "CONDORI", 1);
-            $this->Cell(35, 6, "ZAPANA", 1);
-            $this->Cell(35, 6, "JUAN CARLOS", 1);
-            for ($n = 1; $n <= 12; $n++) {
+            $this->SetX(25);
+            $this->Cell(5, 6, $k+1, 1, null, "C");
+
+            for ($z = 0; $z < 3; $z++)
+            {
+                $this->Cell(35, 6, $data[$k][$z], 1);
+            }
+
+            for ($x = 3; $x <= 38; $x++) {
                 $this->SetFontSize(7);
-                $this->Cell(5, 6, 50 + $n, 1, null, "C");
-                $this->Cell(5, 6, 50 + $n, 1, null, "C");
-                $this->Cell(5, 6, 86 + $n, 1, null, "C");
+                $this->Cell(5, 6, $data[$k][$x], 1, null, "C");
             }
             $this->ln();
         }
@@ -279,19 +282,20 @@ class CentralizadorAreasReporte extends FPDF
         }
 
         $this->ln();
-        // llenado de datos
-        for ($n = 1; $n <= 2; $n++) {
-            $this->SetX(15);
+
+        for ($k = 0; $k < count($data); $k++) {
             $this->SetFontSize(8);
-            $this->Cell(5, 6, "$n", 1, null, "C");
-            $this->Cell(35, 6, "USER", 1);
-            $this->Cell(35, 6, "USER", 1);
-            $this->Cell(35, 6, "USER", 1);
-            for ($n = 1; $n <= 14; $n++) {
+            $this->SetX(15);
+            $this->Cell(5, 6, $k+1, 1, null, "C");
+
+            for ($z = 0; $z < 3; $z++)
+            {
+                $this->Cell(35, 6, $data[$k][$z], 1);
+            }
+
+            for ($x = 3; $x <= 44; $x++) {
                 $this->SetFontSize(7);
-                $this->Cell(5, 6, 50 + $n, 1, null, "C");
-                $this->Cell(5, 6, 50 + $n, 1, null, "C");
-                $this->Cell(5, 6, 86 + $n, 1, null, "C");
+                $this->Cell(5, 6, $data[$k][$x], 1, null, "C");
             }
             $this->ln();
         }
@@ -383,18 +387,19 @@ class CentralizadorAreasReporte extends FPDF
 
         $this->ln();
         // llenado de datos
-        for ($n = 1; $n <= 2; $n++) {
-            $this->SetX(15);
+        for ($k = 0; $k < count($data); $k++) {
             $this->SetFontSize(8);
-            $this->Cell(5, 6, "$n", 1, null, "C");
-            $this->Cell(35, 6, "CONDORI", 1);
-            $this->Cell(35, 6, "ZAPANA", 1);
-            $this->Cell(35, 6, "JUAN CARLOS", 1);
-            for ($n = 1; $n <= 14; $n++) {
+            $this->SetX(15);
+            $this->Cell(5, 6, $k+1, 1, null, "C");
+
+            for ($z = 0; $z < 3; $z++)
+            {
+                $this->Cell(35, 6, $data[$k][$z], 1);
+            }
+
+            for ($x = 3; $x <= 44; $x++) {
                 $this->SetFontSize(7);
-                $this->Cell(5, 6, 50 + $n, 1, null, "C");
-                $this->Cell(5, 6, 50 + $n, 1, null, "C");
-                $this->Cell(5, 6, 86 + $n, 1, null, "C");
+                $this->Cell(5, 6, $data[$k][$x], 1, null, "C");
             }
             $this->ln();
         }
