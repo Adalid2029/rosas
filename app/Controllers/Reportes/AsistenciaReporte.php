@@ -47,9 +47,19 @@ class AsistenciaReporte extends FPDF
         $this->SetFont('Arial', 'B', 12);
         $this->Ln(10);
         //Cabecera de la tabla//
-        $this->Tabla($data);
         // imprimir fechas //
-        $this->imprimirFechas($fechas);
+        $this->SetX(133);
+        $valorx = 137;
+        for ($i = 0; $i < count($fechas); $i++)
+        {
+            $this->SetFont('Arial', '', 10);
+            $this->fecha = new \DateTime($fechas[$i]["fecha"]);
+            $this->TextWithDirection($valorx, 54, $this->fecha ->format("d-m-Y"), 'U');
+            $valorx = $valorx + 6.5;
+        }
+
+        $this->Tabla($data);
+
         $this->Output();
     }
 
@@ -118,14 +128,7 @@ class AsistenciaReporte extends FPDF
 
     function imprimirFechas($fechas)
     {
-        $this->SetX(133);
-        $valorx = 137;
-        for ($i = 0; $i < count($fechas); $i++)
-        {
-            $this->fecha = new \DateTime($fechas[$i]["fecha"]);
-            $this->TextWithDirection($valorx, 54, $this->fecha ->format("d-m-Y"), 'U');
-            $valorx = $valorx + 6.5;
-        }
+
     }
 
     function TextWithDirection($x, $y, $txt, $direction = 'R')
