@@ -18,7 +18,7 @@ class NotasReporte extends FPDF
         $this->Cell(0, 3, utf8_decode('CENTRALIZADOR INTERNO'), 0, 1, 'C', 0);
         $this->Ln();
         $this->SetFont('Arial', '', 12);
-        $this->SetX(40);
+        $this->SetX(60);
         $this->SetFont('Arial', 'B', 12);
         $this->Cell(10, 5, 'UNIDAD EDUCATIVA: ', 0, 0, 'R', 0);
         $this->SetFont('Arial', '', 12);
@@ -45,7 +45,7 @@ class NotasReporte extends FPDF
         $this->SetWidths([8, 33, 33, 37, 10, 10, 10, 10, 40]);
         $this->SetAligns(['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']);
         foreach ($notas as $key => $value) {
-            $this->Row([$key + 1, $value['paterno'], $value['materno'], $value['nombres'], $value['nota1'], $value['nota2'], $value['nota3'], $value['nota_final'], $value['literal']]);
+            $this->Row([$key + 1, $value['paterno'], $value['materno'], $value['nombres'], $value['nota1'], $value['nota2'], $value['nota3'], $value['nota_final'], isset($value['literal']) ? $value['literal'] : '']);
         }
 
         return $this->Output('S');
