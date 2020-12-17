@@ -91,7 +91,9 @@ class NotasModel extends Database
         `nota1`,
         `nota2`,
         `nota3`,
-        `nota_final`
+        `nota_final`,
+        `nivel`,
+        `paralelo`
       from
         (
           SELECT
@@ -112,12 +114,18 @@ class NotasModel extends Database
             nacimiento,
             sexo,
             telefono,
-            domicilio
+            domicilio,
+            c.nivel,
+            paralelo
           from
             rs_estudiante e
             join rs_persona p on p.id_persona = e.id_estudiante
             join rs_curso_estudiante rce on rce.id_estudiante = e.id_estudiante
             join rs_curso_paralelo cp on cp.id_curso_paralelo = rce.id_curso_paralelo
+            
+            join rs_curso c on c.id_curso = cp.id_curso
+            join rs_paralelo rp on rp.id_paralelo = cp  .id_paralelo
+
             join rs_materia_maestro rmm on rmm.id_curso_paralelo = cp.id_curso_paralelo
             left join rs_calificacion rc on rc.id_materia = rmm.id_materia
             and rc.id_maestro = rmm.id_maestro

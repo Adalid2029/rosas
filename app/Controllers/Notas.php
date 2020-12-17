@@ -36,7 +36,10 @@ class Notas extends BaseController
 				$notas[] = $value;
 		}
 		// return var_dump(var_dump($this->db->getLastQuery()));
-		return $this->response->setJSON(json_encode(['exito' => 'data:application/pdf;base64,' . base64_encode($this->notasReporte->imprimir($notas))]));
+		if (!empty($notas))
+			return $this->response->setJSON(json_encode(['exito' => 'data:application/pdf;base64,' . base64_encode($this->notasReporte->imprimir($notas))]));
+		else
+			return $this->response->setJSON(json_encode(['error' => 'No existen Estudiantes asignados a este curso o materia']));
 	}
 	public function listarEstudiantes()
 	{

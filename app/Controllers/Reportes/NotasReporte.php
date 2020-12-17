@@ -13,31 +13,27 @@ class NotasReporte extends FPDF
     public function imprimir($notas)
     {
         $this->AddPage('P', 'Letter');
-        $this->Image("img/images/logo_oficial.png", 50, 14, 15, 15, 'PNG', '');
-        $this->SetFont('Arial', 'BU', 13);
+        $this->Image("img/images/logo_oficial.png", 10, 14, 15, 15, 'PNG', '');
+        $this->SetFont('Arial', 'BU', 12);
         $this->Cell(0, 3, utf8_decode('CENTRALIZADOR INTERNO'), 0, 1, 'C', 0);
         $this->Ln();
         $this->SetFont('Arial', '', 12);
         $this->SetX(60);
-        $this->SetFont('Arial', 'B', 12);
+        $this->SetFont('Arial', 'B', 10);
         $this->Cell(10, 5, 'UNIDAD EDUCATIVA: ', 0, 0, 'R', 0);
-        $this->SetFont('Arial', '', 12);
+        $this->SetFont('Arial', '', 10);
         $this->Cell(35, 5, 'LAS ROSAS', 0, 0, 'L', 0);
-        $this->SetFont('Arial', 'B', 12);
+        $this->SetFont('Arial', 'B', 10);
         $this->Cell(45, 5, 'CURSO: ', 0, 0, 'R', 0);
-        $this->SetFont('Arial', '', 12);
-        $this->Cell(70, 5, utf8_decode('cursi' . ' "' . 'skdhasjld' . '" SECUNDARIA'), 0, 0, 'L', 0);
+        $this->SetFont('Arial', '', 10);
+        $this->Cell(70, 5, utf8_decode($notas[0]['nivel'] . ' ' . $notas[0]['paralelo'] . ' SECUNDARIA'), 0, 0, 'L', 0);
         $this->Ln(7);
         $this->SetX(40);
-        $this->SetFont('Arial', 'B', 12);
-        $this->Cell(10, 5, 'DE: ', 0, 0, 'R', 0);
-        $this->SetFont('Arial', '', 12);
-        $this->Cell(35, 5, 'as' . ' a ' . 'as', 0, 0, 'L', 0);
-        $this->SetFont('Arial', 'B', 12);
-        $this->Cell(45, 5, 'IMPRESO: ', 0, 0, 'R', 0);
-        $this->SetFont('Arial', '', 12);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(11, 5, 'IMPRESO: ', 0, 0, 'R', 0);
+        $this->SetFont('Arial', '', 10);
         $this->Cell(70, 5, date('d-m-Y H:i'), 0, 0, 'L', 0);
-        $this->SetFont('Arial', 'B', 12);
+        $this->SetFont('Arial', 'B', 10);
         $this->Ln(10);
         //Cabecera de la tabla//
         $this->Tabla();
@@ -169,23 +165,15 @@ class NotasReporte extends FPDF
     function MBGetStringLength($s)
 
     {
-
         if ($this->CurrentFont['type'] == 'Type0') {
-
             $len = 0;
-
             $nbbytes = strlen($s);
 
             for ($i = 0; $i < $nbbytes; $i++) {
-
                 if (ord($s[$i]) < 128)
-
                     $len++;
-
                 else {
-
                     $len++;
-
                     $i++;
                 }
             }
