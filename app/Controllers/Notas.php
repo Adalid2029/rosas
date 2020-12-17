@@ -26,14 +26,12 @@ class Notas extends BaseController
 	}
 	public function imprimirCentralizadorInterno()
 	{
-		// $this->response->setContentType('application/pdf');
-		// return var_dump($_REQUEST);
-		$notas = [];
-
-		var_dump($this->notasModel->estudiantesCalificaciones(['c.id_materia' => $this->request->getGet('id_materia'), 'c.id_maestro' => $this->request->getGet('id_maestro'), 'c.id_curso_paralelo' => $this->request->getGet('id_curso_paralelo')])->getResultArray());
+		$this->notasModel->estudiantesCalificaciones($this->request->getGet())->getResultArray();
+		// echo json_encode($cursos);
+		var_dump($this->db->getLastQuery());
 		return;
-		foreach ($this->db->table('calificacion c')->join('estudiante e', 'e.id_estudiante = c.id_estudiante', 'left')
-			->join('persona p', 'p.id_persona = e.id_estudiante', 'left')->where($this->request->getGet())->get()->getResultArray() as $key => $value) {
+		$notas = [];
+		foreach ($this->notasModel->estudiantesCalificaciones($this->request->getGet())->getResultArray() as $key => $value) {
 			if (is_numeric($value['nota_final']))
 				$notas[] = array_merge($value, ['literal' => trim(strtoupper(numero_literal($value['nota_final'], false, true, true)))]);
 		}
