@@ -523,3 +523,23 @@ join `rs_paralelo` `rp` on
    select rc.id_calificacion,rc.id_estudiante, rc.id_curso_paralelo,rm.id_materia, rm.codigo, rm.nombre, rc.nota1, rc.nota2, rc.nota3, rc.nota_final, year (rc.fecha_registro) as gestion
    from rs_calificacion rc inner join rs_materia rm on rc.id_materia = rm.id_materia;
 
+
+-- db_rosas3.rs_estudiante_notas_curso source
+
+create or replace view `rs_estudiante_notas_curso` as
+select
+    `rc`.`id_calificacion` as `id_calificacion`,
+    `rc`.`id_estudiante` as `id_estudiante`,
+    `rc`.`id_curso_paralelo` as `id_curso_paralelo`,
+    `rm`.`id_materia` as `id_materia`,
+    `rm`.`codigo` as `codigo`,
+    `rm`.`nombre` as `nombre`,
+    `rc`.`nota1` as `nota1`,
+    `rc`.`nota2` as `nota2`,
+    `rc`.`nota3` as `nota3`,
+    `rc`.`nota_final` as `nota_final`,
+    year(`rc`.`fecha_registro`) as `gestion`
+from
+    (`rs_calificacion` `rc`
+join `rs_materia` `rm` on
+    (`rc`.`id_materia` = `rm`.`id_materia`));

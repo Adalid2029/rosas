@@ -118,7 +118,7 @@ class AsistenciaReporte extends FPDF
 
     function imprimirFechas($fechas)
     {
-        $this->SetXY(133, 35);
+        $this->SetX(133);
         $valorx = 137;
         for ($i = 0; $i < count($fechas); $i++)
         {
