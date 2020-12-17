@@ -29,6 +29,11 @@ class Administrativo extends BaseController
         $this->data['maestros'] = $this->model->contarPersonas("view_maestro")[0]["cantidad"];
         $this->data['estudiantes'] = $this->model->contarPersonas("view_estudiante")[0]["cantidad"];
         $this->data['tutores'] = $this->model->contarPersonas("view_tutor")[0]["cantidad"];
+//        $this->data['kardex'] = $this->model->contarKardex();
+//        $this->data['cursos'] = $this->model->contarCursos();
+//        $this->data['asistencia'] = $this->model->contarAsistencia();
+//        $this->data['calificacion'] = $this->model->contarCalificaciones();
+        $this->data["faltas"] = json_encode($this->model->contarFaltasPorFechas());
         return $this->templater->view('Home/home', $this->data);
     }
 

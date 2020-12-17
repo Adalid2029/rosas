@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="<?php echo base_url('css/toastr.css') ?>" />
     <link rel="stylesheet" href="<?php echo base_url('css/daterangepicker.css') ?>" />
 
+    <link rel="stylesheet" href="<?php echo base_url('plugins/morris-js/morris.min.css') ?>">
+
 
     <script src="<?php echo base_url('plugins/pace/pace.min.js') ?>"></script>
     <!--jQuery [ REQUIRED ]-->
@@ -76,6 +78,10 @@
     <script src="<?php echo base_url('js/daterangepicker.js') ?>"></script>
 
     <script src="<?php echo base_url('js/bootbox.min.js') ?>"></script>
+
+    <script src="<?php echo base_url("plugins/morris-js/morris.min.js") ?>"></script>
+    <script src="<?php echo base_url("plugins/morris-js/raphael-js/raphael.min.js") ?>"></script>
+
 </head>
 
 <!--TIPS-->
