@@ -27,14 +27,22 @@ class Notas extends BaseController
 	public function imprimirCentralizadorInterno()
 	{
 		// $this->response->setContentType('application/pdf');
-		return $this->response->setJSON(json_encode(['exito' => 'data:application/pdf;base64,' . base64_encode($this->notasReporte->imprimir())]));
+		// return var_dump($_REQUEST);
+		$notas = [];
+		foreach ($this->db->table('calificacion c')->join('estudiante e', 'e.id_estudiante = c.id_estudiante', 'left')
+			->join('persona p', 'p.id_persona = e.id_estudiante', 'left')->where($this->request->getGet())->get()->getResultArray() as $key => $value) {
+			if (is_numeric($value['nota_final']))
+				$notas[] = array_merge($value, ['literal' => trim(strtoupper(numero_literal($value['nota_final'], false, true, true)))]);
+		}
+		return var_dump(var_dump($this->db->getLastQuery()));
+		return $this->response->setJSON(json_encode(['exito' => 'data:application/pdf;base64,' . base64_encode($this->notasReporte->imprimir($notas))]));
 	}
 	public function listarEstudiantes()
 	{
 		$this->data['id_materia'] = $this->request->getGet('id_materia');
 		$this->data['id_maestro'] = $this->request->getGet('id_maestro');
 		$this->data['id_curso_paralelo'] = $this->request->getGet('id_curso_paralelo');
-		
+
 		$this->data['access'] = $this->db->table('grupo g')->select('GROUP_CONCAT(nombre_grupo) as grupo_usuario')->join('grupo_usuario gu', 'gu.id_grupo = g.id_grupo ')->where(['gu.id_usuario' => $this->user['id_persona']])->get()->getRowArray()['grupo_usuario'];
 		return $this->templater->view('Notas/notasListarEstudiantes', $this->data);
 	}

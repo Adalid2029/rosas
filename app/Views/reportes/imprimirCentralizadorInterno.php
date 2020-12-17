@@ -16,7 +16,7 @@
                         $colores =  array("panel-pink", "panel-success", "panel-info", "panel-mint", "panel-primary", "panel-warning", "panel-purple", "panel-dark", "panel-pink", "panel-success", "panel-info", "panel-success", "panel-mint", "panel-primary", "panel-warning", "panel-purple", "panel-dark");
                         foreach ($materiasCurso as $key => $value) : ?>
                             <div class="col-lg-4 col-md-6 text-center">
-                                <div class="panel <?= $colores[rand(0, count($colores))] ?> panel-colorful">
+                                <div class="panel <?= $colores[rand(0, count($colores) - 1)] ?> panel-colorful">
                                     <div class="pad-all">
                                         <span class="text-1x text-thin">Paralelo <?= $value['paralelo'] ?></span>
                                         <p><?= $value['nivel'] ?></p>
