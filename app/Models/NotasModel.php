@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Database\Database;
+use CodeIgniter\Database\BaseBuilder;
 
 class NotasModel extends Database
 {
@@ -76,5 +77,22 @@ class NotasModel extends Database
         $builder->join('curso c', 'c.id_curso = cp.id_curso');
         $builder->join('paralelo p', 'p.id_paralelo = cp.id_paralelo');
         return is_array($condicion) ? $builder->getWhere($condicion) : $builder->get();
+    }
+
+    public function estudiantesCalificaciones($condicion = null, $orden = '', $agrupacion = '')
+    {
+        $builder = $this->db->table('estudiante e');
+        $builder->select("*");
+        $builder->join('persona p', 'p.id_persona = e.id_estudiante');
+        $builder->join('curso_estudiante ce', 'ce.id_estudiante = e.id_estudiante');
+        $builder->join('curso_paralelo cp', 'cp.id_curso_paralelo = ce.id_curso_paralelo');
+        $builder->join('materia_maestro mm', 'mm.id_curso_paralelo = cp.id_curso_paralelo');
+        $builder->join('calificacion c', 'c.id_materia = mm.id_materia and c.id_maestro = mm.id_maestro and c.id_curso_paralelo = mm.id_curso_paralelo and c.id_estudiante = e.id_estudiante', 'left');
+
+        return is_array($condicion) ? $builder->getWhere($condicion) : $builder->get();
+
+        $builder->where('advance_amount <', function (BaseBuilder $builder) {
+            return $builder->select('*', false)->from('orders')->where('id >', 2);
+        });
     }
 }
