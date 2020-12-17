@@ -9,10 +9,11 @@
                         </div>
                         <div class="col-sm-7 table-toolbar-right">
                             <div class="form-group ">
-                                <select class="selectpicker show-tick show-menu-arrow" data-width="150px" data-style="btn-success" data-live-search="true" id="gestion" name="gestion">
+                                <select class="selectpicker show-tick show-menu-arrow" data-width="150px"
+                                        data-style="btn-success" data-live-search="true" id="gestion" name="gestion">
                                     <?php
                                     foreach ($this->data["gestiones"] as $key => $value) {
-                                        echo '<option value="' . $value["gestion"] . '">' . $value["gestion"] . '</option>';
+                                        echo '<option value="' . $value["id_gestion"] . '">' . $value["gestion"] . '</option>';
                                     }
                                     ?>
                                 </select>

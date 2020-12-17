@@ -49,6 +49,8 @@
       <w>citaciones</w>
       <w>citación</w>
       <w>clearfix</w>
+      <w>cnbio</w>
+      <w>codigo</w>
       <w>colores</w>
       <w>columna</w>
       <w>columnas</w>
@@ -65,6 +67,7 @@
       <w>correo</w>
       <w>creado</w>
       <w>crear</w>
+      <w>cuarto</w>
       <w>curso</w>
       <w>cursos</w>
       <w>daterangepicker</w>
@@ -150,8 +153,11 @@
       <w>nombre</w>
       <w>nombres</w>
       <w>nosotros</w>
+      <w>nota</w>
+      <w>notas</w>
       <w>numero</w>
       <w>numéricos</w>
+      <w>obtener</w>
       <w>oficial</w>
       <w>ordenar</w>
       <w>orderable</w>
@@ -168,6 +174,7 @@
       <w>petición</w>
       <w>posicionx</w>
       <w>presente</w>
+      <w>primero</w>
       <w>procesar</w>
       <w>proferores</w>
       <w>profesor</w>
@@ -205,8 +212,10 @@
       <w>sesión</w>
       <w>sitio</w>
       <w>solicitada</w>
+      <w>suma</w>
       <w>tamanio</w>
       <w>tener</w>
+      <w>tercero</w>
       <w>tiene</w>
       <w>tipo</w>
       <w>titulo</w>
