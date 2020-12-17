@@ -10,7 +10,7 @@ class NotasReporte extends FPDF
     {
         parent::__construct($orientation, $unit, $size);
     }
-    public function imprimir()
+    public function imprimir($notas)
     {
         $this->AddPage('P', 'Letter');
         $this->Image("img/images/logo_oficial.png", 50, 14, 15, 15, 'PNG', '');
@@ -41,8 +41,13 @@ class NotasReporte extends FPDF
         $this->Ln(10);
         //Cabecera de la tabla//
         $this->Tabla();
-        // imprimir fechas //
-        // $this->imprimirFechas($fechas);
+        $this->SetXY(10, 76);
+        $this->SetWidths([8, 33, 33, 37, 10, 10, 10, 10, 40]);
+        $this->SetAligns(['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']);
+        foreach ($notas as $key => $value) {
+            $this->Row([$key + 1, $value['paterno'], $value['materno'], $value['nombres'], $value['nota1'], $value['nota2'], $value['nota3'], $value['nota_final'], $value['literal']]);
+        }
+
         return $this->Output('S');
     }
 
@@ -74,54 +79,6 @@ class NotasReporte extends FPDF
         $this->TextWithDirection($x += 10, 75, 'PROMEDIO ANUAL', 'U');
 
         $this->Ln();
-
-        //$this->Cell(20.5,15,"FALTAS",1);
-        // if (count($data) != 0) {
-
-        //     // LLenado de datos
-        //     //            var_dump($data[0][0]);
-        //     $this->SetFont('Arial', '', 10);
-        //     $tamanioCelda = array(8, 35, 35, 45, 6.5, 20.5);
-        //     for ($i = 0; $i < count($data); $i++) :
-        //         // se imprime el numero
-        //         $this->Cell(8, 7, ($i + 1), 1, "", "C");
-        //         // Se imprime: paterno, materno, $nombres
-        //         for ($j = 0; $j < 3; $j++) :
-        //             $this->Cell($tamanioCelda[$j + 1], 7, $data[$i][$j], 1);
-        //         endfor;
-        //         // se llena las: A, F, L, R
-        //         $tam = count($data[$i]) - 7;
-        //         for ($j = 3; $j < (3 + $tam); $j++) :
-        //             $this->Cell($tamanioCelda[4], 7, $data[$i][$j], 1, "", "C");
-        //         endfor;
-
-        //         // Llenamos los espacios vacios
-        //         $tam_asistencias = 20 - (count($data[$i]) - 7);
-        //         for ($j = 0; $j < $tam_asistencias; $j++) :
-        //             $this->Cell($tamanioCelda[4], 7, " ", 1, "", "C");
-        //         endfor;
-
-        //         // Llenamos las asistencia, retrasos, licencias y faltas totales
-        //         for ($j = (count($data[$i]) - 4); $j < count($data[$i]); $j++) :
-        //             $this->Cell($tamanioCelda[5], 7, $data[$i][$j], 1, "", "C");
-        //         endfor;
-        //         $this->Ln();
-        //     endfor;
-        // } else {
-        //     $this->SetFont('Arial', '', 12);
-        //     $this->Cell(335, 8, "No existen registros de asistencia", 1, "", "C");
-        // }
-    }
-
-    function imprimirFechas($fechas)
-    {
-        $this->SetXY(133, 35);
-        $valorx = 137;
-        for ($i = 0; $i < count($fechas); $i++) {
-            $this->fecha = new \DateTime($fechas[$i]["fecha"]);
-            $this->TextWithDirection($valorx, 54, $this->fecha->format("d-m-Y"), 'U');
-            $valorx = $valorx + 6.5;
-        }
     }
 
     function TextWithDirection($x, $y, $txt, $direction = 'R')
@@ -237,5 +194,94 @@ class NotasReporte extends FPDF
         } else
 
             return strlen($s);
+    }
+    function SetWidths($w)
+    {
+        //Set the array of column widths
+        $this->widths = $w;
+    }
+
+    function SetAligns($a)
+    {
+        //Set the array of column alignments
+        $this->aligns = $a;
+    }
+
+    function Row($data)
+    {
+        //Calculate the height of the row
+        $nb = 0;
+        for ($i = 0; $i < count($data); $i++)
+            $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
+        $h = 3 * $nb;
+        //Issue a page break first if needed
+        $this->CheckPageBreak($h);
+        //Draw the cells of the row
+        for ($i = 0; $i < count($data); $i++) {
+            $w = $this->widths[$i];
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
+            //Save the current position
+            $x = $this->GetX();
+            $y = $this->GetY();
+            //Draw the border
+            $this->Rect($x, $y, $w, $h);
+            //Print the text
+            $this->MultiCell($w, 3, $data[$i], 0, $a);
+            //Put the position to the right of the cell
+            $this->SetXY($x + $w, $y);
+        }
+        //Go to the next line
+        $this->Ln($h);
+    }
+
+    function NbLines($w, $txt)
+    {
+        //Computes the number of lines a MultiCell of width w will take
+        $cw = &$this->CurrentFont['cw'];
+        if ($w == 0)
+            $w = $this->w - $this->rMargin - $this->x;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+        if ($nb > 0 and $s[$nb - 1] == "\n")
+            $nb--;
+        $sep = -1;
+        $i = 0;
+        $j = 0;
+        $l = 0;
+        $nl = 1;
+        while ($i < $nb) {
+            $c = $s[$i];
+            if ($c == "\n") {
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+                continue;
+            }
+            if ($c == ' ')
+                $sep = $i;
+            $l += $cw[$c];
+            if ($l > $wmax) {
+                if ($sep == -1) {
+                    if ($i == $j)
+                        $i++;
+                } else
+                    $i = $sep + 1;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+            } else
+                $i++;
+        }
+        return $nl;
+    }
+    function CheckPageBreak($h)
+    {
+        //If the height h would cause an overflow, add a new page immediately
+        if ($this->GetY() + $h > $this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
     }
 }

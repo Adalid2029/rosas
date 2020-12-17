@@ -15,9 +15,12 @@ $(document)
 			event.stopPropagation();
 			var content = $('.' + (event.target.getAttribute('data-dest') === null ? 'content' : event.target.getAttribute('data-dest')));
 			var url = $(this).attr('href');
-			if (url.substring(0, 17) === 'https://rosas.com') {
-				url = url.substring(18);
+			if (url.substring(0, window.location.origin.length) === window.location.origin) {
+				url = url.substring(window.location.origin.length + 1);
 			}
+			// if (url.substring(0, 17) === 'https://rosas.com') {
+			// 	url = url.substring(18);
+			// }
 			if (url !== '' && url !== '/') {
 				$.ajax({
 					method: 'post',
